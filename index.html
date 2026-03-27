@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سريا AI — حلول ذكاء اصطناعي للشركات الخليجية</title>
+<title>سريا AI — الذكاء الاصطناعي لعملك في السعودية</title>
 
 <!-- SEO Meta Tags -->
 <meta name="description" content="سريا AI — حلول ذكاء اصطناعي مخصصة للشركات السعودية والخليجية. شات بوت، أتمتة واتساب، تحليل بيانات، RAG، وأكثر من 24 خدمة. تسليم خلال 48 ساعة.">
@@ -81,29 +81,9 @@ body {
   color: var(--white);
   font-family: 'Tajawal', sans-serif;
   overflow-x: hidden;
-  cursor: none;
 }
 
-/* Custom cursor */
-.cursor {
-  width: 12px; height: 12px;
-  background: var(--gold);
-  border-radius: 50%;
-  position: fixed; top:0; left:0;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease;
-  mix-blend-mode: difference;
-}
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(201,168,76,0.5);
-  border-radius: 50%;
-  position: fixed; top:0; left:0;
-  pointer-events: none;
-  z-index: 9998;
-  transition: all 0.3s ease;
-}
+
 
 /* Background grid */
 body::before {
@@ -429,7 +409,7 @@ section { position: relative; z-index: 1; }
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  cursor: pointer;
+  cursor: pointer !important;
   border: 1px solid transparent;
 }
 .service-card::before {
@@ -983,15 +963,7 @@ footer {
   to { opacity:1; transform: translateY(0); }
 }
 
-.reveal {
-  opacity:0;
-  transform: translateY(30px);
-  transition: all 0.7s ease;
-}
-.reveal.visible {
-  opacity:1;
-  transform: translateY(0);
-}
+
 
 /* Divider */
 .divider {
@@ -1053,7 +1025,7 @@ footer {
 /* MODAL OVERLAY */
 .modal-overlay {
   position: fixed; inset: 0;
-  z-index: 1000;
+  z-index: 99999;
   display: flex; align-items: center; justify-content: center;
   padding: 20px;
   opacity: 0;
@@ -1076,9 +1048,9 @@ footer {
   z-index: 1;
   background: var(--card2);
   border: 1px solid var(--border);
-  max-width: 760px;
+  max-width: 820px;
   width: 100%;
-  max-height: 88vh;
+  max-height: 90vh;
   overflow-y: auto;
   transform: translateY(40px) scale(0.97);
   transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
@@ -1165,14 +1137,17 @@ footer {
 .modal-benefits {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr;
+  gap: 8px;
 }
 .modal-benefits li {
-  display: flex; align-items: flex-start; gap: 10px;
+  display: flex; align-items: flex-start; gap: 12px;
   font-size: 14px;
-  color: var(--muted);
-  line-height: 1.5;
+  color: var(--white);
+  line-height: 1.6;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.03);
+  border-right: 2px solid var(--gold);
 }
 .modal-benefits li::before {
   content: '◆';
@@ -1249,765 +1224,8 @@ footer {
   footer { padding: 40px 24px; }
 }
 </style>
-</head>
-<body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAV -->
-<nav>
-  <a href="#home" class="nav-logo">
-    <div class="logo-icon"></div>
-    SURAYA <span>AI</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">الخدمات</a></li>
-    <li><a href="#packages">الباقات</a></li>
-    <li><a href="#sectors">القطاعات</a></li>
-    <li><a href="#process">كيف نعمل</a></li>
-    <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
-
-  <div class="hero-badge">SURAYA AI — مملكة العربية السعودية</div>
-
-  <h1>
-    <span class="line1">نحوّل أعمالك</span>
-    <span class="line2">إلى ذكاء</span>
-  </h1>
-
-  <p class="hero-sub">
-    حلول ذكاء اصطناعي مخصصة للشركات الخليجية —<br>
-    من الفكرة إلى التنفيذ في أسرع وقت
-  </p>
-
-  <div class="hero-actions">
-    <a href="#services" class="btn-primary"><span>اكتشف خدماتنا</span></a>
-    <a href="#contact" class="btn-ghost">تحدث معنا</a>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-num">30+</div>
-    <div class="stat-label">خدمة متاحة</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">48H</div>
-    <div class="stat-label">أسرع وقت تسليم</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">100%</div>
-    <div class="stat-label">دعم عربي</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">5★</div>
-    <div class="stat-label">تقييم العملاء</div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="section-header reveal">
-    <div class="section-tag">— خدماتنا —</div>
-    <div class="divider"><div class="divider-gem"></div></div>
-    <h2 class="section-title">كل ما تحتاجه من <em>ذكاء اصطناعي</em></h2>
-    <p class="section-desc">خدمات متكاملة تناسب كل نوع من الأعمال، مهما كان حجمها أو قطاعها</p>
-  </div>
-
-  <div class="services-grid">
-
-    <!-- Row 1 -->
-    <div class="service-card reveal">
-      <span class="service-num">01</span>
-      <span class="service-icon">🤖</span>
-      <div class="service-price">FROM 500 SAR</div>
-      <h3 class="service-title">شات بوت ذكي لموقعك</h3>
-      <p class="service-desc">روبوت محادثة يرد على عملائك 24/7 باللغة العربية والإنجليزية ويتعلم من محتوى شركتك</p>
-      <div class="service-tags">
-        <span class="tag">واتساب</span>
-        <span class="tag">موقع إلكتروني</span>
-        <span class="tag">عربي</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">02</span>
-      <span class="service-icon">📱</span>
-      <div class="service-price">FROM 800 SAR</div>
-      <h3 class="service-title">أتمتة واتساب بالذكاء الاصطناعي</h3>
-      <p class="service-desc">نربط واتساب بالذكاء الاصطناعي فيرد على عملائك تلقائياً، يحجز مواعيد، ويرسل تذكيرات</p>
-      <div class="service-tags">
-        <span class="tag">واتساب API</span>
-        <span class="tag">أتمتة</span>
-        <span class="tag">24/7</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">03</span>
-      <span class="service-icon">📄</span>
-      <div class="service-price">FROM 300 SAR</div>
-      <h3 class="service-title">تلخيص وتحليل المستندات</h3>
-      <p class="service-desc">ارفع أي مستند PDF أو Word ونحلله لك في ثوانٍ — عقود، تقارير، بيانات مالية</p>
-      <div class="service-tags">
-        <span class="tag">PDF</span>
-        <span class="tag">تحليل</span>
-        <span class="tag">سريع</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">04</span>
-      <span class="service-icon">🌐</span>
-      <div class="service-price">FROM 200 SAR</div>
-      <h3 class="service-title">ترجمة ذكية عربي ↔ إنجليزي</h3>
-      <p class="service-desc">ترجمة احترافية تراعي السياق الثقافي الخليجي للمستندات والمواقع والتسويق</p>
-      <div class="service-tags">
-        <span class="tag">عربي</span>
-        <span class="tag">إنجليزي</span>
-        <span class="tag">سياق ثقافي</span>
-      </div>
-    </div>
-
-    <!-- Row 2 - wide -->
-    <div class="service-card wide featured reveal">
-      <span class="service-num">05</span>
-      <span class="service-icon">🧠</span>
-      <div class="service-price">FROM 2,000 SAR</div>
-      <h3 class="service-title">نظام ذاكرة ذكية للشركة (RAG)</h3>
-      <p class="service-desc">ابنِ قاعدة معرفة داخلية لشركتك — الموظفون يسألون والذكاء الاصطناعي يجيب من وثائقك الخاصة. مناسب للشركات التي تريد حفظ خبراتها وتسريع الإنتاجية</p>
-      <div class="service-tags">
-        <span class="tag">RAG</span>
-        <span class="tag">قاعدة معرفة</span>
-        <span class="tag">داخلي</span>
-        <span class="tag">آمن</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">06</span>
-      <span class="service-icon">📊</span>
-      <div class="service-price">FROM 600 SAR</div>
-      <h3 class="service-title">تحليل البيانات وإنتاج تقارير</h3>
-      <p class="service-desc">ارفع بياناتك Excel أو CSV وناخذ منها لك تقارير وإحصاءات واضحة</p>
-      <div class="service-tags">
-        <span class="tag">Excel</span>
-        <span class="tag">تقارير</span>
-        <span class="tag">رسوم بيانية</span>
-      </div>
-    </div>
-
-    <!-- Row 3 -->
-    <div class="service-card reveal">
-      <span class="service-num">07</span>
-      <span class="service-icon">✍️</span>
-      <div class="service-price">FROM 150 SAR</div>
-      <h3 class="service-title">كتابة محتوى تسويقي بالذكاء الاصطناعي</h3>
-      <p class="service-desc">كتابة منشورات سوشيال ميديا، إعلانات، بريد إلكتروني بأسلوب شركتك</p>
-      <div class="service-tags">
-        <span class="tag">سوشيال</span>
-        <span class="tag">إعلانات</span>
-        <span class="tag">SEO</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">08</span>
-      <span class="service-icon">🗓️</span>
-      <div class="service-price">FROM 700 SAR</div>
-      <h3 class="service-title">نظام حجز مواعيد ذكي</h3>
-      <p class="service-desc">نظام يحجز مواعيد العملاء تلقائياً ويرسل تذكيرات ويدير الجدول عبر واتساب أو الموقع</p>
-      <div class="service-tags">
-        <span class="tag">حجز</span>
-        <span class="tag">تذكير</span>
-        <span class="tag">تلقائي</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">09</span>
-      <span class="service-icon">📧</span>
-      <div class="service-price">FROM 400 SAR</div>
-      <h3 class="service-title">أتمتة البريد الإلكتروني</h3>
-      <p class="service-desc">ردود تلقائية ذكية على بريدك الإلكتروني، تصنيف الرسائل، وإرسال متابعات احترافية</p>
-      <div class="service-tags">
-        <span class="tag">Gmail</span>
-        <span class="tag">Outlook</span>
-        <span class="tag">أتمتة</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">10</span>
-      <span class="service-icon">🔍</span>
-      <div class="service-price">FROM 500 SAR</div>
-      <h3 class="service-title">محرك بحث داخلي للشركة</h3>
-      <p class="service-desc">ابحث في كل وثائق شركتك بلغة طبيعية — كأنك تسأل موظفاً خبيراً</p>
-      <div class="service-tags">
-        <span class="tag">بحث ذكي</span>
-        <span class="tag">داخلي</span>
-        <span class="tag">سريع</span>
-      </div>
-    </div>
-
-    <!-- Row 4 -->
-    <div class="service-card reveal">
-      <span class="service-num">11</span>
-      <span class="service-icon">🎙️</span>
-      <div class="service-price">FROM 900 SAR</div>
-      <h3 class="service-title">تحويل الصوت إلى نص وتحليله</h3>
-      <p class="service-desc">نحول اجتماعاتك ومقابلاتك لنصوص مرتبة مع ملخص وأبرز النقاط</p>
-      <div class="service-tags">
-        <span class="tag">Whisper AI</span>
-        <span class="tag">اجتماعات</span>
-        <span class="tag">ملخص</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">12</span>
-      <span class="service-icon">🖼️</span>
-      <div class="service-price">FROM 300 SAR</div>
-      <h3 class="service-title">توليد صور وفيديوهات بالذكاء الاصطناعي</h3>
-      <p class="service-desc">صور تسويقية، لوغو مفاهيمي، فيديوهات قصيرة لمنصاتك الاجتماعية</p>
-      <div class="service-tags">
-        <span class="tag">تصميم</span>
-        <span class="tag">فيديو</span>
-        <span class="tag">سوشيال</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">13</span>
-      <span class="service-icon">💬</span>
-      <div class="service-price">FROM 1,200 SAR</div>
-      <h3 class="service-title">وكيل ذكاء اصطناعي للمبيعات</h3>
-      <p class="service-desc">وكيل AI يتحدث مع عملائك المحتملين، يجيب على أسئلتهم، ويحول الاهتمام لمبيعات</p>
-      <div class="service-tags">
-        <span class="tag">مبيعات</span>
-        <span class="tag">تحويل</span>
-        <span class="tag">ذكي</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">14</span>
-      <span class="service-icon">📰</span>
-      <div class="service-price">FROM 250 SAR</div>
-      <h3 class="service-title">ملخص يومي ذكي للأخبار والمجال</h3>
-      <p class="service-desc">تصلك كل يوم ملخص بأهم أخبار مجالك، منافسيك، والسوق — مخصص لك</p>
-      <div class="service-tags">
-        <span class="tag">أخبار</span>
-        <span class="tag">يومي</span>
-        <span class="tag">مخصص</span>
-      </div>
-    </div>
-
-    <!-- Row 5 -->
-    <div class="service-card wide reveal">
-      <span class="service-num">15</span>
-      <span class="service-icon">🏗️</span>
-      <div class="service-price">FROM 3,000 SAR</div>
-      <h3 class="service-title">بناء تطبيق ويب مدعوم بالذكاء الاصطناعي</h3>
-      <p class="service-desc">تطبيق ويب كامل يحتوي على ميزات ذكاء اصطناعي — لوحة تحكم، قاعدة بيانات، ذكاء اصطناعي مدمج. مثالي للشركات الناشئة ورواد الأعمال</p>
-      <div class="service-tags">
-        <span class="tag">Full Stack</span>
-        <span class="tag">تطبيق كامل</span>
-        <span class="tag">مخصص</span>
-        <span class="tag">قابل للتوسع</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">16</span>
-      <span class="service-icon">🎓</span>
-      <div class="service-price">FROM 400 SAR</div>
-      <h3 class="service-title">استشارة AI لعملك</h3>
-      <p class="service-desc">جلسة استشارية لتحديد أفضل حلول الذكاء الاصطناعي لشركتك وخارطة طريق للتطبيق</p>
-      <div class="service-tags">
-        <span class="tag">استشارة</span>
-        <span class="tag">خارطة طريق</span>
-        <span class="tag">رؤية 2030</span>
-      </div>
-    </div>
-
-    <!-- Row 6 -->
-    <div class="service-card reveal">
-      <span class="service-num">17</span>
-      <span class="service-icon">🔐</span>
-      <div class="service-price">FROM 1,500 SAR</div>
-      <h3 class="service-title">نظام AI آمن داخل شبكتك</h3>
-      <p class="service-desc">نثبت نماذج ذكاء اصطناعي على سيرفراتك المحلية — بياناتك لا تخرج أبداً</p>
-      <div class="service-tags">
-        <span class="tag">On-Premise</span>
-        <span class="tag">أمان</span>
-        <span class="tag">خاص</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">18</span>
-      <span class="service-icon">🛒</span>
-      <div class="service-price">FROM 800 SAR</div>
-      <h3 class="service-title">توصيات ذكية لمتجرك</h3>
-      <p class="service-desc">نظام توصية بالمنتجات مبني على ذكاء اصطناعي يزيد معدل الشراء ومتوسط الطلب</p>
-      <div class="service-tags">
-        <span class="tag">e-Commerce</span>
-        <span class="tag">توصيات</span>
-        <span class="tag">مبيعات</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">19</span>
-      <span class="service-icon">📈</span>
-      <div class="service-price">FROM 700 SAR</div>
-      <h3 class="service-title">تحليل مشاعر العملاء</h3>
-      <p class="service-desc">نحلل تقييمات ومراجعات عملائك لتعرف ما يحبونه وما يزعجهم بدقة</p>
-      <div class="service-tags">
-        <span class="tag">مشاعر</span>
-        <span class="tag">تقييمات</span>
-        <span class="tag">تحسين</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">20</span>
-      <span class="service-icon">🤝</span>
-      <div class="service-price">FROM 600 SAR</div>
-      <h3 class="service-title">موظف استقبال افتراضي</h3>
-      <p class="service-desc">بدّل موظف الاستقبال بذكاء اصطناعي يرد بالعربية ويدير الزيارات والأسئلة 24 ساعة</p>
-      <div class="service-tags">
-        <span class="tag">استقبال</span>
-        <span class="tag">اتصال</span>
-        <span class="tag">24/7</span>
-      </div>
-    </div>
-
-    <!-- Row 7 -->
-    <div class="service-card reveal">
-      <span class="service-num">21</span>
-      <span class="service-icon">🧪</span>
-      <div class="service-price">FROM 1,000 SAR</div>
-      <h3 class="service-title">تحليل صور المنتجات والجودة</h3>
-      <p class="service-desc">ذكاء اصطناعي يفحص صور منتجاتك أو خطوط الإنتاج ويكتشف العيوب تلقائياً</p>
-      <div class="service-tags">
-        <span class="tag">رؤية حاسوبية</span>
-        <span class="tag">جودة</span>
-        <span class="tag">تصنيع</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">22</span>
-      <span class="service-icon">📋</span>
-      <div class="service-price">FROM 350 SAR</div>
-      <h3 class="service-title">توليد تقارير HR والموظفين</h3>
-      <p class="service-desc">تقارير أداء وحضور وإجازات ومهام تلقائياً من بيانات شركتك</p>
-      <div class="service-tags">
-        <span class="tag">HR</span>
-        <span class="tag">تقارير</span>
-        <span class="tag">أداء</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">23</span>
-      <span class="service-icon">🌍</span>
-      <div class="service-price">FROM 1,800 SAR</div>
-      <h3 class="service-title">نموذج لغوي مخصص لشركتك</h3>
-      <p class="service-desc">نُدرّب نموذج ذكاء اصطناعي على لغة وبيانات وأسلوب شركتك فقط — خاص بك 100%</p>
-      <div class="service-tags">
-        <span class="tag">Fine-tuning</span>
-        <span class="tag">مخصص</span>
-        <span class="tag">عربي</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <span class="service-num">24</span>
-      <span class="service-icon">⚡</span>
-      <div class="service-price">FROM 500 SAR</div>
-      <h3 class="service-title">أتمتة المهام المتكررة</h3>
-      <p class="service-desc">نحول أي عملية يدوية متكررة في شركتك لعملية تلقائية توفر وقتاً وجهداً</p>
-      <div class="service-tags">
-        <span class="tag">أتمتة</span>
-        <span class="tag">n8n</span>
-        <span class="tag">توفير وقت</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PACKAGES -->
-<section class="packages" id="packages">
-  <div class="section-header reveal">
-    <div class="section-tag">— الباقات —</div>
-    <div class="divider"><div class="divider-gem"></div></div>
-    <h2 class="section-title">باقات جاهزة لكل <em>قطاع</em></h2>
-    <p class="section-desc">اخترنا أكثر الخدمات طلباً وجمعناها في باقات واضحة السعر</p>
-  </div>
-
-  <div class="packages-grid">
-    <div class="pkg-card reveal">
-      <span class="pkg-icon">🏪</span>
-      <div class="pkg-name">STARTER PACKAGE</div>
-      <h3 class="pkg-title">باقة المتجر والمطعم</h3>
-      <div class="pkg-price">1,499</div>
-      <div class="pkg-price-note">ريال سعودي — شهر واحد</div>
-      <ul class="pkg-features">
-        <li>شات بوت واتساب ذكي يرد على العملاء</li>
-        <li>نظام حجز مواعيد أو طلبات تلقائي</li>
-        <li>ردود تلقائية على الأسئلة المتكررة</li>
-        <li>تقرير شهري بأداء النظام</li>
-        <li>دعم فني 30 يوم</li>
-      </ul>
-      <a href="#contact" class="btn-ghost" style="width:100%;text-align:center;display:block;">ابدأ الآن</a>
-    </div>
-
-    <div class="pkg-card featured-pkg reveal">
-      <span class="pkg-icon">🏢</span>
-      <div class="pkg-name">BUSINESS PACKAGE</div>
-      <h3 class="pkg-title">باقة الشركات الصغيرة</h3>
-      <div class="pkg-price">3,499</div>
-      <div class="pkg-price-note">ريال سعودي — إعداد كامل</div>
-      <ul class="pkg-features">
-        <li>شات بوت ذكي للموقع + واتساب</li>
-        <li>قاعدة معرفة داخلية (RAG) للموظفين</li>
-        <li>أتمتة البريد الإلكتروني والمهام</li>
-        <li>تحليل بيانات شهري مع تقرير</li>
-        <li>محتوى سوشيال ميديا أسبوعي (4 منشورات)</li>
-        <li>دعم فني 3 أشهر</li>
-      </ul>
-      <a href="#contact" class="btn-primary" style="width:100%;text-align:center;display:block;"><span>ابدأ الآن</span></a>
-    </div>
-
-    <div class="pkg-card reveal">
-      <span class="pkg-icon">🏥</span>
-      <div class="pkg-name">CLINIC PACKAGE</div>
-      <h3 class="pkg-title">باقة العيادات والمراكز</h3>
-      <div class="pkg-price">2,299</div>
-      <div class="pkg-price-note">ريال سعودي — إعداد كامل</div>
-      <ul class="pkg-features">
-        <li>نظام حجز مواعيد ذكي عبر واتساب</li>
-        <li>تذكيرات تلقائية للمرضى قبل الموعد</li>
-        <li>شات بوت يجيب على أسئلة المرضى</li>
-        <li>تلخيص ملفات المرضى بالذكاء الاصطناعي</li>
-        <li>دعم فني 3 أشهر</li>
-      </ul>
-      <a href="#contact" class="btn-ghost" style="width:100%;text-align:center;display:block;">ابدأ الآن</a>
-    </div>
-  </div>
-</section>
-
-<!-- SECTORS -->
-<section class="sectors" id="sectors">
-  <div class="section-header reveal">
-    <div class="section-tag">— القطاعات —</div>
-    <div class="divider"><div class="divider-gem"></div></div>
-    <h2 class="section-title">نخدم كل <em>القطاعات</em></h2>
-    <p class="section-desc">خبرة عميقة في القطاعات الأكثر حاجة للذكاء الاصطناعي في السوق الخليجي</p>
-  </div>
-
-  <div class="sectors-grid">
-    <div class="sector-card reveal">
-      <span class="sector-emoji">🏥</span>
-      <div class="sector-name">الصحة والعيادات</div>
-      <div class="sector-sub">حجز مواعيد، ملخصات طبية، دعم المرضى</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">🛒</span>
-      <div class="sector-name">التجارة الإلكترونية</div>
-      <div class="sector-sub">توصيات، خدمة عملاء، تحليل مبيعات</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">🏗️</span>
-      <div class="sector-name">العقارات والمقاولات</div>
-      <div class="sector-sub">إدارة عقود، تحليل مستندات، متابعة مشاريع</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">🎓</span>
-      <div class="sector-name">التعليم والتدريب</div>
-      <div class="sector-sub">مساعد تعليمي، تلخيص محاضرات، اختبارات</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">🍽️</span>
-      <div class="sector-name">المطاعم والضيافة</div>
-      <div class="sector-sub">طلبات، قوائم ذكية، تحليل رضا العملاء</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">⚖️</span>
-      <div class="sector-name">المحاماة والقانون</div>
-      <div class="sector-sub">تحليل عقود، بحث قانوني، صياغة مستندات</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">💰</span>
-      <div class="sector-name">المالية والمحاسبة</div>
-      <div class="sector-sub">تحليل بيانات، تقارير مالية، توقعات</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">🏭</span>
-      <div class="sector-name">التصنيع والمستودعات</div>
-      <div class="sector-sub">مراقبة جودة، جدولة، فحص بصري</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">🚗</span>
-      <div class="sector-name">السيارات والخدمات</div>
-      <div class="sector-sub">حجز خدمات، متابعة طلبات، دعم ذكي</div>
-    </div>
-    <div class="sector-card reveal">
-      <span class="sector-emoji">📣</span>
-      <div class="sector-name">التسويق والإعلام</div>
-      <div class="sector-sub">محتوى، تحليل جمهور، حملات ذكية</div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="section-header reveal">
-    <div class="section-tag">— كيف نعمل —</div>
-    <div class="divider"><div class="divider-gem"></div></div>
-    <h2 class="section-title">من الفكرة إلى <em>التنفيذ</em></h2>
-    <p class="section-desc">عملية واضحة وسريعة للحصول على نتائج حقيقية</p>
-  </div>
-
-  <div class="process-steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <h3 class="step-title">استشارة مجانية</h3>
-      <p class="step-desc">نفهم احتياجات شركتك ونحدد أفضل حل ذكاء اصطناعي يناسبك</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">02</div>
-      <h3 class="step-title">عرض سعر واضح</h3>
-      <p class="step-desc">نقدم عرضاً مفصلاً بالتكلفة والوقت وكل ما ستحصل عليه بدون مفاجآت</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">03</div>
-      <h3 class="step-title">تطوير وتسليم</h3>
-      <p class="step-desc">نبني الحل في 48 ساعة إلى أسبوعين حسب تعقيده — ونسلمه مع شرح كامل وتدريب</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">04</div>
-      <h3 class="step-title">دعم ومتابعة</h3>
-      <p class="step-desc">ندعمك بعد التسليم ونتأكد إن كل شيء يعمل كما توقعت</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="whyus" id="whyus">
-  <div class="whyus-grid">
-    <div class="whyus-visual reveal">
-      <div class="whyus-box">
-        <div class="whyus-num">AI</div>
-        <div class="section-tag" style="text-align:right;">— لماذا سريا AI —</div>
-        <h2 class="section-title" style="text-align:right; margin-bottom:32px;">ما يميزنا <em>عن غيرنا</em></h2>
-        <ul class="whyus-list">
-          <li>
-            <div class="why-icon">⚡</div>
-            <div class="why-text">
-              <h4>تسليم خلال 48 ساعة</h4>
-              <p>معظم مشاريعنا تُسلَّم في يومين — سرعة بدون تنازل عن الجودة</p>
-            </div>
-          </li>
-          <li>
-            <div class="why-icon">🔒</div>
-            <div class="why-text">
-              <h4>بياناتك آمنة 100%</h4>
-              <p>نبني حلول تعمل داخل بيئتك ولا تخرج بياناتك لأي طرف ثالث</p>
-            </div>
-          </li>
-          <li>
-            <div class="why-icon">🌐</div>
-            <div class="why-text">
-              <h4>ذكاء اصطناعي عربي متقدم</h4>
-              <p>متخصصون في معالجة اللغة العربية والمحتوى الخليجي</p>
-            </div>
-          </li>
-          <li>
-            <div class="why-icon">💎</div>
-            <div class="why-text">
-              <h4>أسعار شفافة ومنطقية</h4>
-              <p>لا عروض مخفية — سعر واضح من البداية ونتيجة مضمونة</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="reveal">
-      <div class="section-tag">— رؤية 2030 —</div>
-      <h2 class="section-title" style="margin-bottom:24px;">نساهم في <em>تحوّل</em> المملكة الرقمي</h2>
-      <p style="color:var(--muted); line-height:1.9; font-size:15px; font-weight:300; margin-bottom:32px;">
-        في ظل رؤية 2030، الشركات التي تتبنى الذكاء الاصطناعي اليوم ستقود السوق غداً. سريا AI تساعدك تبدأ رحلتك الرقمية بثقة وبأسعار مناسبة.
-      </p>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px;">
-        <div style="border:1px solid var(--border); padding:24px; text-align:center;">
-          <div style="font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--gold);">70%</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:4px;">توفير في وقت المهام المتكررة</div>
-        </div>
-        <div style="border:1px solid var(--border); padding:24px; text-align:center;">
-          <div style="font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--cyan);">3x</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:4px;">زيادة في إنتاجية الفريق</div>
-        </div>
-        <div style="border:1px solid var(--border); padding:24px; text-align:center;">
-          <div style="font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--gold);">24/7</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:4px;">خدمة عملاء بدون توقف</div>
-        </div>
-        <div style="border:1px solid var(--border); padding:24px; text-align:center;">
-          <div style="font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--cyan);">48H</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:4px;">من الفكرة للتنفيذ</div>
-        </div>
-      </div>
-      <a href="#contact" class="btn-primary"><span>ابدأ مشروعك اليوم</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA + CONTACT -->
-<section class="cta-section" id="contact">
-
-  <div class="hero-badge" style="position:relative;z-index:2;">جاهز تبدأ؟</div>
-  <h2 class="cta-title" style="position:relative;z-index:2;">
-    تواصل معنا<br>
-    <span style="background:linear-gradient(135deg,var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">مجاناً الآن</span>
-  </h2>
-  <p class="cta-sub" style="position:relative;z-index:2;">استشارة مجانية — عرض سعر خلال 24 ساعة — تسليم خلال 48 ساعة</p>
-
-  <!-- Direct contact buttons -->
-  <div class="cta-actions" style="position:relative;z-index:2;">
-    <a href="https://wa.me/966564124426" class="btn-primary" target="_blank" rel="noopener noreferrer"><span>💬 واتساب</span></a>
-    <a href="mailto:alezz.aldumaini@gmail.com" class="btn-ghost">📧 البريد الإلكتروني</a>
-  </div>
-
-  <!-- Contact info cards -->
-  <div class="contact-cards">
-    <div class="contact-card">
-      <div class="contact-card-icon">📞</div>
-      <div class="contact-card-label">رقم الجوال</div>
-      <a href="tel:+966564124426" class="contact-card-value" dir="ltr">+966 564 124 426</a>
-    </div>
-    <div class="contact-card">
-      <div class="contact-card-icon">📧</div>
-      <div class="contact-card-label">البريد الإلكتروني</div>
-      <a href="mailto:alezz.aldumaini@gmail.com" class="contact-card-value" dir="ltr">alezz.aldumaini@gmail.com</a>
-    </div>
-    <div class="contact-card">
-      <div class="contact-card-icon">💬</div>
-      <div class="contact-card-label">واتساب</div>
-      <a href="https://wa.me/966564124426" class="contact-card-value" target="_blank" rel="noopener noreferrer" dir="ltr">+966 564 124 426</a>
-    </div>
-  </div>
-
-  <!-- Custom project section -->
-  <div class="custom-project">
-    <div class="custom-project-inner">
-      <div class="custom-project-badge">فكرة مختلفة؟</div>
-      <h3 class="custom-project-title">لديك مشروع أو فكرة خاصة؟</h3>
-      <p class="custom-project-desc">
-        لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة مهما كانت.
-      </p>
-      <div class="custom-project-features">
-        <div class="custom-feature">
-          <span class="custom-feature-dot"></span>
-          <span>نستمع لفكرتك بدون التزام</span>
-        </div>
-        <div class="custom-feature">
-          <span class="custom-feature-dot"></span>
-          <span>نقترح الحل الأمثل لها</span>
-        </div>
-        <div class="custom-feature">
-          <span class="custom-feature-dot"></span>
-          <span>عرض سعر واضح خلال 24 ساعة</span>
-        </div>
-        <div class="custom-feature">
-          <span class="custom-feature-dot"></span>
-          <span>نبنيها لك من الصفر</span>
-        </div>
-      </div>
-      <a href="https://wa.me/966564124426?text=مرحباً،%20لدي%20فكرة%20مشروع%20أود%20مناقشتها%20معكم" class="btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:8px;">
-        <span>🚀 شاركنا فكرتك</span>
-      </a>
-    </div>
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">SURAYA AI</div>
-  <div class="footer-copy">
-    © 2025–2026 Suraya AI — جميع الحقوق محفوظة<br>
-    <span style="font-size:11px;opacity:0.6;display:block;margin-top:4px;">
-      <a href="mailto:alezz.aldumaini@gmail.com" style="color:inherit;text-decoration:none;">alezz.aldumaini@gmail.com</a>
-      &nbsp;·&nbsp;
-      <a href="tel:+966564124426" style="color:inherit;text-decoration:none;" dir="ltr">+966 564 124 426</a>
-    </span>
-  </div>
-  <ul class="footer-links">
-    <li><a href="#services">الخدمات</a></li>
-    <li><a href="#packages">الباقات</a></li>
-    <li><a href="#contact">تواصل</a></li>
-  </ul>
-</footer>
-
-<!-- SERVICE DETAIL MODAL -->
-<div class="modal-overlay" id="serviceModal" role="dialog" aria-modal="true">
-  <div class="modal-backdrop" id="modalBackdrop"></div>
-  <div class="modal-panel" id="modalPanel">
-    <div class="modal-header">
-      <button class="modal-close" id="modalClose" aria-label="إغلاق">✕</button>
-      <div class="modal-num" id="mNum"></div>
-      <span class="modal-icon" id="mIcon"></span>
-      <div class="modal-price-badge" id="mPrice"></div>
-      <h2 class="modal-title" id="mTitle"></h2>
-      <p class="modal-short-desc" id="mShortDesc"></p>
-      <div id="mDelivery" style="margin-top:14px;font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:2px;font-weight:600;"></div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-section">
-        <div class="modal-section-title">— ما هي الخدمة —</div>
-        <p id="mFullDesc" style="font-size:14px;color:var(--muted);line-height:1.9;font-weight:300;"></p>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">— الفوائد والمزايا —</div>
-        <ul class="modal-benefits" id="mBenefits"></ul>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">— أمثلة على الاستخدام —</div>
-        <ul class="modal-use-cases" id="mUseCases"></ul>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">— التقنيات المستخدمة —</div>
-        <div class="modal-tags-row" id="mTechTags"></div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <div class="modal-footer-price">
-        <span>السعر يبدأ من</span>
-        <strong id="mFooterPrice"></strong>
-      </div>
-      <a href="#contact" class="btn-primary" id="mCTA" onclick="closeModal()"><span>تواصل معنا للبدء</span></a>
-    </div>
-  </div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ============================================================
-// SERVICE DATA — full details for each service card
-// ============================================================
+<script>
 const SERVICES = [
   {
     num:"01", delivery:"48 ساعة", deliveryColor:"gold", icon:"🤖", price:"FROM 500 SAR",
@@ -2515,144 +1733,763 @@ const SERVICES = [
   }
 ];
 
-// ============================================================
-// MODAL LOGIC
-// ============================================================
-const modal = document.getElementById('serviceModal');
-
-function openModal(idx) {
-  const s = SERVICES[idx];
+window.openModal = function(idx) {
+  var s = SERVICES[idx];
   if (!s) return;
-
   document.getElementById('mNum').textContent = s.num;
   document.getElementById('mIcon').textContent = s.icon;
   document.getElementById('mPrice').textContent = s.price;
   document.getElementById('mTitle').textContent = s.title;
   document.getElementById('mShortDesc').textContent = s.shortDesc;
   document.getElementById('mFullDesc').textContent = s.fullDesc;
-  document.getElementById('mFooterPrice').textContent = s.price.replace('FROM ', '');
-  // Delivery time badge
-  const colorMap = { gold: 'var(--gold)', cyan: 'var(--cyan)', muted: 'var(--muted)' };
-  const delivEl = document.getElementById('mDelivery');
-  delivEl.textContent = '⏱ وقت التسليم: ' + s.delivery;
-  delivEl.style.color = colorMap[s.deliveryColor] || 'var(--gold)';
-
-  const bList = document.getElementById('mBenefits');
-  bList.innerHTML = s.benefits.map(b => `<li>${b}</li>`).join('');
-
-  const uList = document.getElementById('mUseCases');
-  uList.innerHTML = s.useCases.map(u => `<li>${u}</li>`).join('');
-
-  const tRow = document.getElementById('mTechTags');
-  tRow.innerHTML = s.tech.map(t => `<span class="modal-tag">${t}</span>`).join('');
-
-  modal.classList.add('open');
+  document.getElementById('mFooterPrice').textContent = s.price.replace('FROM ','');
+  var colorMap = { gold:'var(--gold)', cyan:'var(--cyan)', muted:'var(--muted)' };
+  var d = document.getElementById('mDelivery');
+  d.textContent = '⏱ وقت التسليم: ' + s.delivery;
+  d.style.color = colorMap[s.deliveryColor] || 'var(--gold)';
+  var bList = document.getElementById('mBenefits');
+  bList.innerHTML = s.benefits.map(function(b){ return '<li>' + b + '</li>'; }).join('');
+  var uList = document.getElementById('mUseCases');
+  uList.innerHTML = s.useCases.map(function(u){ return '<li>' + u + '</li>'; }).join('');
+  var tRow = document.getElementById('mTechTags');
+  tRow.innerHTML = s.tech.map(function(t){ return '<span class="modal-tag">' + t + '</span>'; }).join('');
+  document.getElementById('serviceModal').classList.add('open');
   document.body.style.overflow = 'hidden';
   document.getElementById('modalPanel').scrollTop = 0;
-}
+};
 
-function closeModal() {
-  modal.classList.remove('open');
+window.closeModal = function() {
+  document.getElementById('serviceModal').classList.remove('open');
   document.body.style.overflow = '';
-}
+};
+</script>
+</head>
+<body>
 
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('modalBackdrop').addEventListener('click', closeModal);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// Attach click handlers to service cards + delivery badge + hint
-const colorClassMap = { gold: 'medium', cyan: 'fast', muted: 'slow' };
-document.querySelectorAll('.service-card').forEach((card, i) => {
-  card.style.cursor = 'pointer';
-  const s = SERVICES[i];
-  if (s) {
-    // Delivery badge
-    const badge = document.createElement('div');
-    badge.className = 'service-delivery ' + (colorClassMap[s.deliveryColor] || 'medium');
-    badge.innerHTML = '⏱ ' + s.delivery;
-    card.appendChild(badge);
-  }
-  // Click hint
-  const hint = document.createElement('div');
-  hint.style.cssText = 'margin-top:10px;font-size:11px;color:var(--cyan);letter-spacing:1px;font-family:Rajdhani,sans-serif;opacity:0;transition:opacity 0.3s;display:flex;align-items:center;gap:6px;';
-  hint.innerHTML = '→ اضغط لمعرفة التفاصيل';
-  card.appendChild(hint);
-  card.addEventListener('mouseenter', () => hint.style.opacity = '1');
-  card.addEventListener('mouseleave', () => hint.style.opacity = '0');
-  card.addEventListener('click', () => openModal(i));
-});
 
-// ============================================================
-// CUSTOM CURSOR
-// ============================================================
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+<!-- NAV -->
 
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX; mouseY = e.clientY;
-  cursor.style.left = mouseX - 6 + 'px';
-  cursor.style.top = mouseY - 6 + 'px';
-});
+<nav>
+  <a href="#home" class="nav-logo">
+    <div class="logo-icon"></div>
+    SURAYA <span>AI</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#packages">الباقات</a></li>
+    <li><a href="#sectors">القطاعات</a></li>
+    <li><a href="#process">كيف نعمل</a></li>
+    <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
+  </ul>
+</nav>
 
-function animateRing() {
-  ringX += (mouseX - ringX - 18) * 0.12;
-  ringY += (mouseY - ringY - 18) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top = ringY + 'px';
-  requestAnimationFrame(animateRing);
-}
-animateRing();
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
 
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'scale(2)';
-    ring.style.transform = 'scale(1.5)';
-    ring.style.borderColor = 'rgba(201,168,76,0.8)';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'scale(1)';
-    ring.style.transform = 'scale(1)';
-    ring.style.borderColor = 'rgba(201,168,76,0.5)';
-  });
-});
+  <div class="hero-badge">SURAYA AI — مملكة العربية السعودية</div>
 
-// Scroll reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 60);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  <h1>
+    <span class="line1">الذكاء الاصطناعي</span>
+    <span class="line2">لعملك في السعودية</span>
+  </h1>
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  <p class="hero-sub">
+    حلول ذكاء اصطناعي مخصصة للشركات الخليجية —<br>
+    من الفكرة إلى التنفيذ في أسرع وقت
+  </p>
 
-// Nav scroll effect
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  nav.style.borderBottomColor = window.scrollY > 50
-    ? 'rgba(201,168,76,0.2)'
-    : 'rgba(201,168,76,0.1)';
-});
+  <div class="hero-actions">
+    <a href="#services" class="btn-primary"><span>اكتشف خدماتنا</span></a>
+    <a href="#contact" class="btn-ghost">تحدث معنا</a>
+  </div>
+</section>
 
-// Number counter animation
-function animateCounter(el, target, suffix='') {
-  let current = 0;
-  const increment = target / 60;
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) { current = target; clearInterval(timer); }
-    el.textContent = Math.floor(current) + suffix;
-  }, 25);
-}
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">30+</div>
+    <div class="stat-label">خدمة متاحة</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">48H</div>
+    <div class="stat-label">أسرع وقت تسليم</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">دعم عربي</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5★</div>
+    <div class="stat-label">تقييم العملاء</div>
+  </div>
+</div>
 
-const statsObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const nums = entry.target.querySelectorAll('.stat-num');
-      nums[0] && animateCounter(nums[0], 30, '+');
-      statsObserver.unobserve(entry.target);
-    }
-  });
-}, { th
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <div class="section-tag">— خدماتنا —</div>
+    <div class="divider"><div class="divider-gem"></div></div>
+    <h2 class="section-title">كل ما تحتاجه من <em>ذكاء اصطناعي</em></h2>
+    <p class="section-desc">خدمات متكاملة تناسب كل نوع من الأعمال، مهما كان حجمها أو قطاعها</p>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- Row 1 -->
+    <div class="service-card" data-index="0" onclick="openModal(0)" style="cursor:pointer">
+      <span class="service-num">01</span>
+      <span class="service-icon">🤖</span>
+      <div class="service-price">FROM 500 SAR</div>
+      <h3 class="service-title">شات بوت ذكي لموقعك</h3>
+      <p class="service-desc">روبوت محادثة يرد على عملائك 24/7 باللغة العربية والإنجليزية ويتعلم من محتوى شركتك</p>
+      <div class="service-tags">
+        <span class="tag">واتساب</span>
+        <span class="tag">موقع إلكتروني</span>
+        <span class="tag">عربي</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="1" onclick="openModal(1)" style="cursor:pointer">
+      <span class="service-num">02</span>
+      <span class="service-icon">📱</span>
+      <div class="service-price">FROM 800 SAR</div>
+      <h3 class="service-title">أتمتة واتساب بالذكاء الاصطناعي</h3>
+      <p class="service-desc">نربط واتساب بالذكاء الاصطناعي فيرد على عملائك تلقائياً، يحجز مواعيد، ويرسل تذكيرات</p>
+      <div class="service-tags">
+        <span class="tag">واتساب API</span>
+        <span class="tag">أتمتة</span>
+        <span class="tag">24/7</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="2" onclick="openModal(2)" style="cursor:pointer">
+      <span class="service-num">03</span>
+      <span class="service-icon">📄</span>
+      <div class="service-price">FROM 300 SAR</div>
+      <h3 class="service-title">تلخيص وتحليل المستندات</h3>
+      <p class="service-desc">ارفع أي مستند PDF أو Word ونحلله لك في ثوانٍ — عقود، تقارير، بيانات مالية</p>
+      <div class="service-tags">
+        <span class="tag">PDF</span>
+        <span class="tag">تحليل</span>
+        <span class="tag">سريع</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="3" onclick="openModal(3)" style="cursor:pointer">
+      <span class="service-num">04</span>
+      <span class="service-icon">🌐</span>
+      <div class="service-price">FROM 200 SAR</div>
+      <h3 class="service-title">ترجمة ذكية عربي ↔ إنجليزي</h3>
+      <p class="service-desc">ترجمة احترافية تراعي السياق الثقافي الخليجي للمستندات والمواقع والتسويق</p>
+      <div class="service-tags">
+        <span class="tag">عربي</span>
+        <span class="tag">إنجليزي</span>
+        <span class="tag">سياق ثقافي</span>
+      </div>
+    </div>
+
+    <!-- Row 2 - wide -->
+    <div class="service-card wide featured" data-index="4" onclick="openModal(4)" style="cursor:pointer">
+      <span class="service-num">05</span>
+      <span class="service-icon">🧠</span>
+      <div class="service-price">FROM 2,000 SAR</div>
+      <h3 class="service-title">نظام ذاكرة ذكية للشركة (RAG)</h3>
+      <p class="service-desc">ابنِ قاعدة معرفة داخلية لشركتك — الموظفون يسألون والذكاء الاصطناعي يجيب من وثائقك الخاصة. مناسب للشركات التي تريد حفظ خبراتها وتسريع الإنتاجية</p>
+      <div class="service-tags">
+        <span class="tag">RAG</span>
+        <span class="tag">قاعدة معرفة</span>
+        <span class="tag">داخلي</span>
+        <span class="tag">آمن</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="5" onclick="openModal(5)" style="cursor:pointer">
+      <span class="service-num">06</span>
+      <span class="service-icon">📊</span>
+      <div class="service-price">FROM 600 SAR</div>
+      <h3 class="service-title">تحليل البيانات وإنتاج تقارير</h3>
+      <p class="service-desc">ارفع بياناتك Excel أو CSV وناخذ منها لك تقارير وإحصاءات واضحة</p>
+      <div class="service-tags">
+        <span class="tag">Excel</span>
+        <span class="tag">تقارير</span>
+        <span class="tag">رسوم بيانية</span>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="service-card" data-index="6" onclick="openModal(6)" style="cursor:pointer">
+      <span class="service-num">07</span>
+      <span class="service-icon">✍️</span>
+      <div class="service-price">FROM 150 SAR</div>
+      <h3 class="service-title">كتابة محتوى تسويقي بالذكاء الاصطناعي</h3>
+      <p class="service-desc">كتابة منشورات سوشيال ميديا، إعلانات، بريد إلكتروني بأسلوب شركتك</p>
+      <div class="service-tags">
+        <span class="tag">سوشيال</span>
+        <span class="tag">إعلانات</span>
+        <span class="tag">SEO</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="7" onclick="openModal(7)" style="cursor:pointer">
+      <span class="service-num">08</span>
+      <span class="service-icon">🗓️</span>
+      <div class="service-price">FROM 700 SAR</div>
+      <h3 class="service-title">نظام حجز مواعيد ذكي</h3>
+      <p class="service-desc">نظام يحجز مواعيد العملاء تلقائياً ويرسل تذكيرات ويدير الجدول عبر واتساب أو الموقع</p>
+      <div class="service-tags">
+        <span class="tag">حجز</span>
+        <span class="tag">تذكير</span>
+        <span class="tag">تلقائي</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="8" onclick="openModal(8)" style="cursor:pointer">
+      <span class="service-num">09</span>
+      <span class="service-icon">📧</span>
+      <div class="service-price">FROM 400 SAR</div>
+      <h3 class="service-title">أتمتة البريد الإلكتروني</h3>
+      <p class="service-desc">ردود تلقائية ذكية على بريدك الإلكتروني، تصنيف الرسائل، وإرسال متابعات احترافية</p>
+      <div class="service-tags">
+        <span class="tag">Gmail</span>
+        <span class="tag">Outlook</span>
+        <span class="tag">أتمتة</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="9" onclick="openModal(9)" style="cursor:pointer">
+      <span class="service-num">10</span>
+      <span class="service-icon">🔍</span>
+      <div class="service-price">FROM 500 SAR</div>
+      <h3 class="service-title">محرك بحث داخلي للشركة</h3>
+      <p class="service-desc">ابحث في كل وثائق شركتك بلغة طبيعية — كأنك تسأل موظفاً خبيراً</p>
+      <div class="service-tags">
+        <span class="tag">بحث ذكي</span>
+        <span class="tag">داخلي</span>
+        <span class="tag">سريع</span>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="service-card" data-index="10" onclick="openModal(10)" style="cursor:pointer">
+      <span class="service-num">11</span>
+      <span class="service-icon">🎙️</span>
+      <div class="service-price">FROM 900 SAR</div>
+      <h3 class="service-title">تحويل الصوت إلى نص وتحليله</h3>
+      <p class="service-desc">نحول اجتماعاتك ومقابلاتك لنصوص مرتبة مع ملخص وأبرز النقاط</p>
+      <div class="service-tags">
+        <span class="tag">Whisper AI</span>
+        <span class="tag">اجتماعات</span>
+        <span class="tag">ملخص</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="11" onclick="openModal(11)" style="cursor:pointer">
+      <span class="service-num">12</span>
+      <span class="service-icon">🖼️</span>
+      <div class="service-price">FROM 300 SAR</div>
+      <h3 class="service-title">توليد صور وفيديوهات بالذكاء الاصطناعي</h3>
+      <p class="service-desc">صور تسويقية، لوغو مفاهيمي، فيديوهات قصيرة لمنصاتك الاجتماعية</p>
+      <div class="service-tags">
+        <span class="tag">تصميم</span>
+        <span class="tag">فيديو</span>
+        <span class="tag">سوشيال</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="12" onclick="openModal(12)" style="cursor:pointer">
+      <span class="service-num">13</span>
+      <span class="service-icon">💬</span>
+      <div class="service-price">FROM 1,200 SAR</div>
+      <h3 class="service-title">وكيل ذكاء اصطناعي للمبيعات</h3>
+      <p class="service-desc">وكيل AI يتحدث مع عملائك المحتملين، يجيب على أسئلتهم، ويحول الاهتمام لمبيعات</p>
+      <div class="service-tags">
+        <span class="tag">مبيعات</span>
+        <span class="tag">تحويل</span>
+        <span class="tag">ذكي</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="13" onclick="openModal(13)" style="cursor:pointer">
+      <span class="service-num">14</span>
+      <span class="service-icon">📰</span>
+      <div class="service-price">FROM 250 SAR</div>
+      <h3 class="service-title">ملخص يومي ذكي للأخبار والمجال</h3>
+      <p class="service-desc">تصلك كل يوم ملخص بأهم أخبار مجالك، منافسيك، والسوق — مخصص لك</p>
+      <div class="service-tags">
+        <span class="tag">أخبار</span>
+        <span class="tag">يومي</span>
+        <span class="tag">مخصص</span>
+      </div>
+    </div>
+
+    <!-- Row 5 -->
+    <div class="service-card wide" data-index="14" onclick="openModal(14)" style="cursor:pointer">
+      <span class="service-num">15</span>
+      <span class="service-icon">🏗️</span>
+      <div class="service-price">FROM 3,000 SAR</div>
+      <h3 class="service-title">بناء تطبيق ويب مدعوم بالذكاء الاصطناعي</h3>
+      <p class="service-desc">تطبيق ويب كامل يحتوي على ميزات ذكاء اصطناعي — لوحة تحكم، قاعدة بيانات، ذكاء اصطناعي مدمج. مثالي للشركات الناشئة ورواد الأعمال</p>
+      <div class="service-tags">
+        <span class="tag">Full Stack</span>
+        <span class="tag">تطبيق كامل</span>
+        <span class="tag">مخصص</span>
+        <span class="tag">قابل للتوسع</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="15" onclick="openModal(15)" style="cursor:pointer">
+      <span class="service-num">16</span>
+      <span class="service-icon">🎓</span>
+      <div class="service-price">FROM 400 SAR</div>
+      <h3 class="service-title">استشارة AI لعملك</h3>
+      <p class="service-desc">جلسة استشارية لتحديد أفضل حلول الذكاء الاصطناعي لشركتك وخارطة طريق للتطبيق</p>
+      <div class="service-tags">
+        <span class="tag">استشارة</span>
+        <span class="tag">خارطة طريق</span>
+        <span class="tag">رؤية 2030</span>
+      </div>
+    </div>
+
+    <!-- Row 6 -->
+    <div class="service-card" data-index="16" onclick="openModal(16)" style="cursor:pointer">
+      <span class="service-num">17</span>
+      <span class="service-icon">🔐</span>
+      <div class="service-price">FROM 1,500 SAR</div>
+      <h3 class="service-title">نظام AI آمن داخل شبكتك</h3>
+      <p class="service-desc">نثبت نماذج ذكاء اصطناعي على سيرفراتك المحلية — بياناتك لا تخرج أبداً</p>
+      <div class="service-tags">
+        <span class="tag">On-Premise</span>
+        <span class="tag">أمان</span>
+        <span class="tag">خاص</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="17" onclick="openModal(17)" style="cursor:pointer">
+      <span class="service-num">18</span>
+      <span class="service-icon">🛒</span>
+      <div class="service-price">FROM 800 SAR</div>
+      <h3 class="service-title">توصيات ذكية لمتجرك</h3>
+      <p class="service-desc">نظام توصية بالمنتجات مبني على ذكاء اصطناعي يزيد معدل الشراء ومتوسط الطلب</p>
+      <div class="service-tags">
+        <span class="tag">e-Commerce</span>
+        <span class="tag">توصيات</span>
+        <span class="tag">مبيعات</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="18" onclick="openModal(18)" style="cursor:pointer">
+      <span class="service-num">19</span>
+      <span class="service-icon">📈</span>
+      <div class="service-price">FROM 700 SAR</div>
+      <h3 class="service-title">تحليل مشاعر العملاء</h3>
+      <p class="service-desc">نحلل تقييمات ومراجعات عملائك لتعرف ما يحبونه وما يزعجهم بدقة</p>
+      <div class="service-tags">
+        <span class="tag">مشاعر</span>
+        <span class="tag">تقييمات</span>
+        <span class="tag">تحسين</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="19" onclick="openModal(19)" style="cursor:pointer">
+      <span class="service-num">20</span>
+      <span class="service-icon">🤝</span>
+      <div class="service-price">FROM 600 SAR</div>
+      <h3 class="service-title">موظف استقبال افتراضي</h3>
+      <p class="service-desc">بدّل موظف الاستقبال بذكاء اصطناعي يرد بالعربية ويدير الزيارات والأسئلة 24 ساعة</p>
+      <div class="service-tags">
+        <span class="tag">استقبال</span>
+        <span class="tag">اتصال</span>
+        <span class="tag">24/7</span>
+      </div>
+    </div>
+
+    <!-- Row 7 -->
+    <div class="service-card" data-index="20" onclick="openModal(20)" style="cursor:pointer">
+      <span class="service-num">21</span>
+      <span class="service-icon">🧪</span>
+      <div class="service-price">FROM 1,000 SAR</div>
+      <h3 class="service-title">تحليل صور المنتجات والجودة</h3>
+      <p class="service-desc">ذكاء اصطناعي يفحص صور منتجاتك أو خطوط الإنتاج ويكتشف العيوب تلقائياً</p>
+      <div class="service-tags">
+        <span class="tag">رؤية حاسوبية</span>
+        <span class="tag">جودة</span>
+        <span class="tag">تصنيع</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="21" onclick="openModal(21)" style="cursor:pointer">
+      <span class="service-num">22</span>
+      <span class="service-icon">📋</span>
+      <div class="service-price">FROM 350 SAR</div>
+      <h3 class="service-title">توليد تقارير HR والموظفين</h3>
+      <p class="service-desc">تقارير أداء وحضور وإجازات ومهام تلقائياً من بيانات شركتك</p>
+      <div class="service-tags">
+        <span class="tag">HR</span>
+        <span class="tag">تقارير</span>
+        <span class="tag">أداء</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="22" onclick="openModal(22)" style="cursor:pointer">
+      <span class="service-num">23</span>
+      <span class="service-icon">🌍</span>
+      <div class="service-price">FROM 1,800 SAR</div>
+      <h3 class="service-title">نموذج لغوي مخصص لشركتك</h3>
+      <p class="service-desc">نُدرّب نموذج ذكاء اصطناعي على لغة وبيانات وأسلوب شركتك فقط — خاص بك 100%</p>
+      <div class="service-tags">
+        <span class="tag">Fine-tuning</span>
+        <span class="tag">مخصص</span>
+        <span class="tag">عربي</span>
+      </div>
+    </div>
+
+    <div class="service-card" data-index="23" onclick="openModal(23)" style="cursor:pointer">
+      <span class="service-num">24</span>
+      <span class="service-icon">⚡</span>
+      <div class="service-price">FROM 500 SAR</div>
+      <h3 class="service-title">أتمتة المهام المتكررة</h3>
+      <p class="service-desc">نحول أي عملية يدوية متكررة في شركتك لعملية تلقائية توفر وقتاً وجهداً</p>
+      <div class="service-tags">
+        <span class="tag">أتمتة</span>
+        <span class="tag">n8n</span>
+        <span class="tag">توفير وقت</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="section-header">
+    <div class="section-tag">— الباقات —</div>
+    <div class="divider"><div class="divider-gem"></div></div>
+    <h2 class="section-title">باقات جاهزة لكل <em>قطاع</em></h2>
+    <p class="section-desc">اخترنا أكثر الخدمات طلباً وجمعناها في باقات واضحة السعر</p>
+  </div>
+
+  <div class="packages-grid">
+    <div class="pkg-card">
+      <span class="pkg-icon">🏪</span>
+      <div class="pkg-name">STARTER PACKAGE</div>
+      <h3 class="pkg-title">باقة المتجر والمطعم</h3>
+      <div class="pkg-price">1,499</div>
+      <div class="pkg-price-note">ريال سعودي — شهر واحد</div>
+      <ul class="pkg-features">
+        <li>شات بوت واتساب ذكي يرد على العملاء</li>
+        <li>نظام حجز مواعيد أو طلبات تلقائي</li>
+        <li>ردود تلقائية على الأسئلة المتكررة</li>
+        <li>تقرير شهري بأداء النظام</li>
+        <li>دعم فني 30 يوم</li>
+      </ul>
+      <a href="#contact" class="btn-ghost" style="width:100%;text-align:center;display:block;">ابدأ الآن</a>
+    </div>
+
+    <div class="pkg-card featured-pkg">
+      <span class="pkg-icon">🏢</span>
+      <div class="pkg-name">BUSINESS PACKAGE</div>
+      <h3 class="pkg-title">باقة الشركات الصغيرة</h3>
+      <div class="pkg-price">3,499</div>
+      <div class="pkg-price-note">ريال سعودي — إعداد كامل</div>
+      <ul class="pkg-features">
+        <li>شات بوت ذكي للموقع + واتساب</li>
+        <li>قاعدة معرفة داخلية (RAG) للموظفين</li>
+        <li>أتمتة البريد الإلكتروني والمهام</li>
+        <li>تحليل بيانات شهري مع تقرير</li>
+        <li>محتوى سوشيال ميديا أسبوعي (4 منشورات)</li>
+        <li>دعم فني 3 أشهر</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="width:100%;text-align:center;display:block;"><span>ابدأ الآن</span></a>
+    </div>
+
+    <div class="pkg-card">
+      <span class="pkg-icon">🏥</span>
+      <div class="pkg-name">CLINIC PACKAGE</div>
+      <h3 class="pkg-title">باقة العيادات والمراكز</h3>
+      <div class="pkg-price">2,299</div>
+      <div class="pkg-price-note">ريال سعودي — إعداد كامل</div>
+      <ul class="pkg-features">
+        <li>نظام حجز مواعيد ذكي عبر واتساب</li>
+        <li>تذكيرات تلقائية للمرضى قبل الموعد</li>
+        <li>شات بوت يجيب على أسئلة المرضى</li>
+        <li>تلخيص ملفات المرضى بالذكاء الاصطناعي</li>
+        <li>دعم فني 3 أشهر</li>
+      </ul>
+      <a href="#contact" class="btn-ghost" style="width:100%;text-align:center;display:block;">ابدأ الآن</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="section-header">
+    <div class="section-tag">— القطاعات —</div>
+    <div class="divider"><div class="divider-gem"></div></div>
+    <h2 class="section-title">نخدم كل <em>القطاعات</em></h2>
+    <p class="section-desc">خبرة عميقة في القطاعات الأكثر حاجة للذكاء الاصطناعي في السوق الخليجي</p>
+  </div>
+
+  <div class="sectors-grid">
+    <div class="sector-card">
+      <span class="sector-emoji">🏥</span>
+      <div class="sector-name">الصحة والعيادات</div>
+      <div class="sector-sub">حجز مواعيد، ملخصات طبية، دعم المرضى</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">🛒</span>
+      <div class="sector-name">التجارة الإلكترونية</div>
+      <div class="sector-sub">توصيات، خدمة عملاء، تحليل مبيعات</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">🏗️</span>
+      <div class="sector-name">العقارات والمقاولات</div>
+      <div class="sector-sub">إدارة عقود، تحليل مستندات، متابعة مشاريع</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">🎓</span>
+      <div class="sector-name">التعليم والتدريب</div>
+      <div class="sector-sub">مساعد تعليمي، تلخيص محاضرات، اختبارات</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">🍽️</span>
+      <div class="sector-name">المطاعم والضيافة</div>
+      <div class="sector-sub">طلبات، قوائم ذكية، تحليل رضا العملاء</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">⚖️</span>
+      <div class="sector-name">المحاماة والقانون</div>
+      <div class="sector-sub">تحليل عقود، بحث قانوني، صياغة مستندات</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">💰</span>
+      <div class="sector-name">المالية والمحاسبة</div>
+      <div class="sector-sub">تحليل بيانات، تقارير مالية، توقعات</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">🏭</span>
+      <div class="sector-name">التصنيع والمستودعات</div>
+      <div class="sector-sub">مراقبة جودة، جدولة، فحص بصري</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">🚗</span>
+      <div class="sector-name">السيارات والخدمات</div>
+      <div class="sector-sub">حجز خدمات، متابعة طلبات، دعم ذكي</div>
+    </div>
+    <div class="sector-card">
+      <span class="sector-emoji">📣</span>
+      <div class="sector-name">التسويق والإعلام</div>
+      <div class="sector-sub">محتوى، تحليل جمهور، حملات ذكية</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-header">
+    <div class="section-tag">— كيف نعمل —</div>
+    <div class="divider"><div class="divider-gem"></div></div>
+    <h2 class="section-title">من الفكرة إلى <em>التنفيذ</em></h2>
+    <p class="section-desc">عملية واضحة وسريعة للحصول على نتائج حقيقية</p>
+  </div>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3 class="step-title">استشارة مجانية</h3>
+      <p class="step-desc">نفهم احتياجات شركتك ونحدد أفضل حل ذكاء اصطناعي يناسبك</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3 class="step-title">عرض سعر واضح</h3>
+      <p class="step-desc">نقدم عرضاً مفصلاً بالتكلفة والوقت وكل ما ستحصل عليه بدون مفاجآت</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3 class="step-title">تطوير وتسليم</h3>
+      <p class="step-desc">نبني الحل في 48 ساعة إلى أسبوعين حسب تعقيده — ونسلمه مع شرح كامل وتدريب</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3 class="step-title">دعم ومتابعة</h3>
+      <p class="step-desc">ندعمك بعد التسليم ونتأكد إن كل شيء يعمل كما توقعت</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="whyus" id="whyus">
+  <div class="whyus-grid">
+    <div class="whyus-visual">
+      <div class="whyus-box">
+        <div class="whyus-num">AI</div>
+        <div class="section-tag" style="text-align:right;">— لماذا سريا AI —</div>
+        <h2 class="section-title" style="text-align:right; margin-bottom:32px;">ما يميزنا <em>عن غيرنا</em></h2>
+        <ul class="whyus-list">
+          <li>
+            <div class="why-icon">⚡</div>
+            <div class="why-text">
+              <h4>تسليم خلال 48 ساعة</h4>
+              <p>معظم مشاريعنا تُسلَّم في يومين — سرعة بدون تنازل عن الجودة</p>
+            </div>
+          </li>
+          <li>
+            <div class="why-icon">🔒</div>
+            <div class="why-text">
+              <h4>بياناتك آمنة 100%</h4>
+              <p>نبني حلول تعمل داخل بيئتك ولا تخرج بياناتك لأي طرف ثالث</p>
+            </div>
+          </li>
+          <li>
+            <div class="why-icon">🌐</div>
+            <div class="why-text">
+              <h4>ذكاء اصطناعي عربي متقدم</h4>
+              <p>متخصصون في معالجة اللغة العربية والمحتوى الخليجي</p>
+            </div>
+          </li>
+          <li>
+            <div class="why-icon">💎</div>
+            <div class="why-text">
+              <h4>أسعار شفافة ومنطقية</h4>
+              <p>لا عروض مخفية — سعر واضح من البداية ونتيجة مضمونة</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="">
+      <div class="section-tag">— رؤية 2030 —</div>
+      <h2 class="section-title" style="margin-bottom:24px;">نساهم في <em>تحوّل</em> المملكة الرقمي</h2>
+      <p style="color:var(--muted); line-height:1.9; font-size:15px; font-weight:300; margin-bottom:32px;">
+        في ظل رؤية 2030، الشركات التي تتبنى الذكاء الاصطناعي اليوم ستقود السوق غداً. سريا AI تساعدك تبدأ رحلتك الرقمية بثقة وبأسعار مناسبة.
+      </p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px;">
+        <div style="border:1px solid var(--border); padding:24px; text-align:center;">
+          <div style="font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--gold);">70%</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">توفير في وقت المهام المتكررة</div>
+        </div>
+        <div style="border:1px solid var(--border); padding:24px; text-align:center;">
+          <div style="font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--cyan);">3x</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">زيادة في إنتاجية الفريق</div>
+        </div>
+        <div style="border:1px solid var(--border); padding:24px; text-align:center;">
+          <div style="font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--gold);">24/7</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">خدمة عملاء بدون توقف</div>
+        </div>
+        <div style="border:1px solid var(--border); padding:24px; text-align:center;">
+          <div style="font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--cyan);">48H</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">من الفكرة للتنفيذ</div>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary"><span>ابدأ مشروعك اليوم</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + CONTACT -->
+<section class="cta-section" id="contact">
+
+  <div class="hero-badge" style="position:relative;z-index:2;">جاهز تبدأ؟</div>
+  <h2 class="cta-title" style="position:relative;z-index:2;">
+    تواصل معنا<br>
+    <span style="background:linear-gradient(135deg,var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">مجاناً الآن</span>
+  </h2>
+  <p class="cta-sub" style="position:relative;z-index:2;">استشارة مجانية — عرض سعر خلال 24 ساعة — تسليم خلال 48 ساعة</p>
+
+  <!-- Direct contact buttons -->
+  <div class="cta-actions" style="position:relative;z-index:2;">
+    <a href="https://wa.me/966564124426" class="btn-primary" target="_blank" rel="noopener noreferrer"><span>💬 واتساب</span></a>
+    <a href="/cdn-cgi/l/email-protection#7a1b161f0000541b161e0f171b1314133a1d171b131654191517" class="btn-ghost">📧 البريد الإلكتروني</a>
+  </div>
+
+  <!-- Custom project section -->
+  <div class="custom-project">
+    <div class="custom-project-inner">
+      <div class="custom-project-badge">فكرة مختلفة؟</div>
+      <h3 class="custom-project-title">لديك مشروع أو فكرة خاصة؟</h3>
+      <p class="custom-project-desc">
+        لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة مهما كانت.
+      </p>
+      <div class="custom-project-features">
+        <div class="custom-feature">
+          <span class="custom-feature-dot"></span>
+          <span>نستمع لفكرتك بدون التزام</span>
+        </div>
+        <div class="custom-feature">
+          <span class="custom-feature-dot"></span>
+          <span>نقترح الحل الأمثل لها</span>
+        </div>
+        <div class="custom-feature">
+          <span class="custom-feature-dot"></span>
+          <span>عرض سعر واضح خلال 24 ساعة</span>
+        </div>
+        <div class="custom-feature">
+          <span class="custom-feature-dot"></span>
+          <span>نبنيها لك من الصفر</span>
+        </div>
+      </div>
+      <a href="https://wa.me/966564124426?text=مرحباً،%20لدي%20فكرة%20مشروع%20أود%20مناقشتها%20معكم" class="btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:8px;">
+        <span>🚀 شاركنا فكرتك</span>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SURAYA AI</div>
+  <div class="footer-copy">
+    © 2025–2026 Suraya AI — جميع الحقوق محفوظة<br>
+    <span style="font-size:11px;opacity:0.6;display:block;margin-top:4px;">
+      <a href="/cdn-cgi/l/email-protection#7f1e131a0505511e131b0a121e1611163f18121e1613511c1012" style="color:inherit;text-decoration:none;"><span class="__cf_email__" data-cfemail="7e1f121b0404501f121a0b131f1710173e19131f1712501d1113">[email&#160;protected]</span></a>
+      &nbsp;·&nbsp;
+      <a href="tel:+966564124426" style="color:inherit;text-decoration:none;" dir="ltr">+966 564 124 426</a>
+    </span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#packages">الباقات</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+</footer>
+
+<!-- SERVICE DETAIL MODAL -->
+<div class="modal-overlay" id="serviceModal" role="dialog" aria-modal="true">
+  <div class="modal-backdrop" id="modalBackdrop" onclick="window.closeModal()"></div>
+  <div class="modal-panel" id="modalPanel">
+    <div class="modal-header">
+      <button class="modal-close" id="modalClose" onclick="window.closeModal()" aria-label="إغلاق">✕</button>
+      <div class="modal-num" id="mNum"></div>
+      <span class="modal-icon" id="mIcon"></span>
+      <div class="modal-price-badge" id="mPrice"></div>
+      <h2 class="modal-title" id="mTitle"></h2>
+      <p class="modal-short-desc" id="mShortDesc"></p>
+      <div id="mDelivery" style="margin-top:14px;font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:2px;font-weight:600;"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">📌 ما هي هذه الخدمة؟</div>
+        <p id="mFullDesc" style="font-size:15px;color:var(--muted);line-height:2;font-weight:300;"></p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">✅ الفوائد والمزايا</div>
+        <ul class="modal-benefits" id="mBenefits"></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">💡 أمثلة على الاستخدام</div>
+        <ul class="modal-use-cases" id="mUseCases"></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">⚙️ التقنيات المستخدمة</div>
+        <div class="modal-tags-row" id="mTechTags"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-price">
+        <span>السعر يبدأ من</span>
+        <strong id="mFooterPrice"></strong>
