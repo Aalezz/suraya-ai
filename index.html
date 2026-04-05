@@ -4,2361 +4,681 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سريا AI — حوّل أعمالك بالذكاء الاصطناعي</title>
-
-<!-- SEO Meta Tags -->
-<meta name="description" content="سريا AI — حلول ذكاء اصطناعي لأتمتة أعمالك وزيادة إنتاجيتك. شات بوت، أتمتة واتساب، تحليل بيانات، RAG، وأكثر من 24 خدمة. تسليم خلال 48 ساعة.">
-<meta name="keywords" content="ذكاء اصطناعي, شات بوت عربي, أتمتة واتساب, ذكاء اصطناعي, شات بوت عربي, أتمتة واتساب, RAG, تحليل بيانات">
-<meta name="author" content="Suraya AI">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://surayaai.com/">
-
-<!-- Open Graph (WhatsApp / Social sharing preview) -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://surayaai.com/">
-<meta property="og:title" content="سريا AI — نحوّل أعمالك إلى ذكاء">
-<meta property="og:description" content="حلول ذكاء اصطناعي تُوفّر وقتك وتزيد إنتاجيتك — من الفكرة إلى التنفيذ">
-<meta property="og:image" content="https://surayaai.com/og-image.png">
-<meta property="og:locale" content="ar_SA">
-<meta property="og:site_name" content="Suraya AI">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="سريا AI — نحوّل أعمالك إلى ذكاء">
-<meta name="twitter:description" content="حلول ذكاء اصطناعي تُوفّر وقتك وتزيد إنتاجيتك — من الفكرة إلى التنفيذ">
-<meta name="twitter:image" content="https://surayaai.com/og-image.png">
-
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23020408'/><text y='.9em' font-size='80' x='10'>🤖</text></svg>">
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Suraya AI",
-  "alternateName": "سريا AI",
-  "url": "https://surayaai.com",
-  "logo": "https://surayaai.com/og-image.png",
-  "description": "حلول ذكاء اصطناعي لأتمتة أعمالك وزيادة إنتاجيتك",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "AE"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "availableLanguage": ["Arabic", "English"]
-  },
-  "sameAs": []
-}
-</script>
-
-<meta name="theme-color" content="#020408">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #020408;
-    --deep: #060d18;
-    --card: #0a1628;
-    --card2: #0d1f3c;
-    --gold: #c9a84c;
-    --gold2: #f0c96a;
-    --cyan: #00d4ff;
-    --cyan2: #7fecff;
-    --white: #eef2ff;
-    --muted: #6b7fa3;
-    --border: rgba(201,168,76,0.15);
-    --border2: rgba(0,212,255,0.12);
-  }
-
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Tajawal', sans-serif;
-  overflow-x: hidden;
-}
-
-
-
-/* Background grid */
-body::before {
-  content:'';
-  position: fixed; inset:0;
-  background-image:
-    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events:none;
-  z-index:0;
-}
-
-/* Noise texture */
-body::after {
-  content:'';
-  position: fixed; inset:0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none;
-  z-index:0;
-  opacity: 0.4;
-}
-
-/* NAV */
-nav {
-  position: fixed; top:0; left:0; right:0;
-  z-index: 100;
-  padding: 0 60px;
-  height: 72px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(2,4,8,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-logo {
-  display: flex; align-items: center; gap: 10px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 22px; font-weight: 700;
-  letter-spacing: 3px;
-  color: var(--white);
-  text-decoration: none;
-}
-.nav-logo span { color: var(--gold); }
-
-/* logo-icon replaced with SVG */
-
-.nav-links {
-  display: flex; align-items: center; gap: 40px;
-  list-style: none;
-}
-.nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: color 0.3s;
-  position: relative;
-}
-.nav-links a::after {
-  content:'';
-  position: absolute; bottom:-4px; right:0;
-  width:0; height:1px;
-  background: var(--gold);
-  transition: width 0.3s;
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-links a:hover::after { width: 100%; }
-
-.nav-cta {
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold) !important;
-  padding: 8px 24px;
-  font-size: 13px !important;
-  letter-spacing: 2px !important;
-  transition: all 0.3s !important;
-  font-family: 'Tajawal', sans-serif;
-}
-.nav-cta:hover {
-  background: var(--gold) !important;
-  color: var(--black) !important;
-}
-.nav-cta::after { display:none !important; }
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  padding: 120px 40px 80px;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid var(--border);
-  padding: 6px 20px;
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--gold);
-  margin-bottom: 48px;
-  animation: fadeUp 0.8s ease both;
-  font-family: 'Rajdhani', sans-serif;
-}
-.hero-badge::before {
-  content:'';
-  width:6px; height:6px;
-  border-radius:50%;
-  background: var(--gold);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%,100% { opacity:1; transform:scale(1); }
-  50% { opacity:0.5; transform:scale(0.8); }
-}
-
-.hero h1 {
-  font-size: clamp(48px, 8vw, 100px);
-  font-weight: 900;
-  line-height: 1.05;
-  margin-bottom: 32px;
-  animation: fadeUp 0.8s 0.1s ease both;
-}
-.hero h1 .line1 { display:block; color: var(--white); }
-.hero h1 .line2 {
-  display:block;
-  background: linear-gradient(135deg, var(--gold), var(--gold2), var(--cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  font-size: 18px;
-  color: var(--muted);
-  max-width: 600px;
-  line-height: 1.8;
-  margin-bottom: 56px;
-  animation: fadeUp 0.8s 0.2s ease both;
-  font-weight: 300;
-}
-
-.hero-actions {
-  display: flex; align-items: center; gap: 20px;
-  animation: fadeUp 0.8s 0.3s ease both;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--gold), var(--gold2));
-  color: var(--black);
-  border: none;
-  padding: 16px 40px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  cursor: pointer;
-  font-family: 'Tajawal', sans-serif;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-  display: inline-block;
-}
-.btn-primary::before {
-  content:'';
-  position:absolute; inset:0;
-  background: linear-gradient(135deg, var(--cyan), var(--cyan2));
-  opacity:0;
-  transition: opacity 0.3s;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(201,168,76,0.3); }
-.btn-primary:hover::before { opacity:1; }
-.btn-primary span { position:relative; z-index:1; }
-
-.btn-ghost {
-  border: 1px solid var(--border);
-  color: var(--muted);
-  background: transparent;
-  padding: 16px 40px;
-  font-size: 14px;
-  letter-spacing: 2px;
-  cursor: pointer;
-  font-family: 'Tajawal', sans-serif;
-  transition: all 0.3s;
-  text-decoration: none;
-  display: inline-block;
-}
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-
-/* Floating orbs */
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  animation: float 8s ease-in-out infinite;
-}
-.orb1 {
-  width: 400px; height: 400px;
-  background: rgba(201,168,76,0.08);
-  top: 10%; right: -10%;
-  animation-delay: 0s;
-}
-.orb2 {
-  width: 300px; height: 300px;
-  background: rgba(0,212,255,0.06);
-  bottom: 20%; left: -5%;
-  animation-delay: -4s;
-}
-.orb3 {
-  width: 200px; height: 200px;
-  background: rgba(201,168,76,0.05);
-  top: 50%; left: 50%;
-  animation-delay: -2s;
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-30px) scale(1.05); }
-}
-
-/* Stats bar */
-.stats-bar {
-  display: flex; justify-content: center;
-  gap: 0;
-  margin-top: 80px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 32px 0;
-  animation: fadeUp 0.8s 0.4s ease both;
-  position: relative; z-index:1;
-}
-.stat-item {
-  text-align: center;
-  padding: 0 60px;
-  border-left: 1px solid var(--border);
-}
-.stat-item:first-child { border-left: none; }
-.stat-num {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.stat-label {
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 2px;
-  font-weight: 300;
-}
-
-/* SECTIONS */
-section { position: relative; z-index: 1; }
-
-.section-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
-.section-tag {
-  display: inline-block;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--cyan);
-  margin-bottom: 16px;
-}
-.section-title {
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-.section-title em {
-  font-style: normal;
-  color: var(--gold);
-}
-.section-desc {
-  font-size: 16px;
-  color: var(--muted);
-  max-width: 500px;
-  margin: 0 auto;
-  line-height: 1.8;
-  font-weight: 300;
-}
-
-/* SERVICES */
-.services {
-  padding: 120px 60px;
-  background: var(--deep);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.service-card {
-  background: var(--card);
-  padding: 40px 32px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  cursor: pointer !important;
-  border: 1px solid transparent;
-}
-.service-card::before {
-  content:'';
-  position:absolute; inset:0;
-  background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
-  opacity:0;
-  transition: opacity 0.4s;
-}
-.service-card::after {
-  content:'';
-  position:absolute;
-  bottom:0; left:0; right:0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--cyan));
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s;
-}
-.service-card:hover {
-  border-color: var(--border);
-  transform: translateY(-4px);
-  background: var(--card2);
-}
-.service-card:hover::before { opacity:1; }
-.service-card:hover::after { transform: scaleX(1); transform-origin: left; }
-
-.service-icon {
-  font-size: 36px;
-  margin-bottom: 20px;
-  display: block;
-  filter: grayscale(0.3);
-  transition: filter 0.3s, transform 0.3s;
-}
-.service-card:hover .service-icon {
-  filter: grayscale(0);
-  transform: scale(1.1);
-}
-
-.service-num {
-  position: absolute;
-  top: 24px; left: 24px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 2px;
-}
-
-.service-price {
-  display: inline-block;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  border: 1px solid var(--border);
-  padding: 4px 12px;
-  margin-bottom: 16px;
-}
-
-.service-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--white);
-  line-height: 1.3;
-}
-.service-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-.service-tags {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-top: 20px;
-}
-.tag {
-  font-size: 10px;
-  padding: 3px 10px;
-  background: rgba(201,168,76,0.08);
-  color: var(--gold);
-  letter-spacing: 1px;
-  border: 1px solid rgba(201,168,76,0.15);
-}
-
-/* Featured wide cards */
-.service-card.wide { grid-column: span 2; }
-.service-card.featured {
-  background: linear-gradient(135deg, #0a1628, #0d2040);
-}
-
-/* PACKAGES */
-.packages {
-  padding: 120px 60px;
-}
-
-.packages-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.pkg-card {
-  border: 1px solid var(--border);
-  padding: 48px 36px;
-  position: relative;
-  transition: all 0.4s;
-  background: var(--card);
-}
-.pkg-card.featured-pkg {
-  border-color: var(--gold);
-  background: linear-gradient(160deg, var(--card2), var(--card));
-}
-.pkg-card.featured-pkg::before {
-  content: 'الأكثر طلباً';
-  position: absolute;
-  top: -13px; right: 50%;
-  transform: translateX(50%);
-  background: var(--gold);
-  color: var(--black);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 20px;
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-.pkg-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-
-.pkg-icon { font-size: 40px; margin-bottom: 20px; display: block; }
-.pkg-name {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--cyan);
-  margin-bottom: 8px;
-}
-.pkg-title {
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-.pkg-price {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.pkg-price-note {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 32px;
-}
-.pkg-features {
-  list-style: none;
-  margin-bottom: 36px;
-}
-.pkg-features li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 14px;
-  color: var(--muted);
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  line-height: 1.5;
-  font-weight: 300;
-}
-.pkg-features li::before {
-  content: '◆';
-  color: var(--gold);
-  font-size: 8px;
-  flex-shrink: 0;
-  margin-top: 5px;
-}
-
-/* SECTORS */
-.sectors {
-  padding: 120px 60px;
-  background: var(--deep);
-}
-
-.sectors-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.sector-card {
-  background: var(--card);
-  padding: 40px 24px;
-  text-align: center;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.sector-card::before {
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0;
-  height:2px;
-  background: linear-gradient(90deg, var(--gold), var(--cyan));
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-.sector-card:hover { background: var(--card2); transform: translateY(-4px); }
-.sector-card:hover::before { transform: scaleX(1); }
-
-.sector-emoji { font-size: 40px; display: block; margin-bottom: 16px; }
-.sector-name { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-.sector-sub { font-size: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
-
-/* PROCESS */
-.process {
-  padding: 120px 60px;
-}
-
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-.process-steps::before {
-  content:'';
-  position:absolute;
-  top: 40px; left: 12.5%; right: 12.5%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), transparent);
-}
-
-.step {
-  text-align: center;
-  padding: 0 24px;
-  position: relative;
-}
-.step-num {
-  width: 80px; height: 80px;
-  border: 1px solid var(--gold);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 24px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--gold);
-  background: var(--black);
-  position: relative;
-  z-index: 1;
-  transition: all 0.3s;
-}
-.step:hover .step-num {
-  background: var(--gold);
-  color: var(--black);
-}
-.step-title { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
-.step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; font-weight: 300; }
-
-/* WHY US */
-.whyus {
-  padding: 120px 60px;
-  background: var(--deep);
-}
-
-.whyus-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: center;
-}
-
-.whyus-visual {
-  position: relative;
-}
-.whyus-box {
-  border: 1px solid var(--border);
-  padding: 48px;
-  background: var(--card);
-  position: relative;
-}
-.whyus-box::before {
-  content:'';
-  position:absolute;
-  top:-1px; left:-1px; right:-1px; bottom:-1px;
-  border: 1px solid transparent;
-  background: linear-gradient(135deg, rgba(201,168,76,0.3), transparent, rgba(0,212,255,0.2)) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-}
-
-.whyus-num {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 120px;
-  font-weight: 700;
-  color: rgba(201,168,76,0.08);
-  line-height: 1;
-  position: absolute;
-  top: -20px; right: -10px;
-}
-
-.whyus-list { list-style: none; }
-.whyus-list li {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: all 0.3s;
-}
-.whyus-list li:hover { padding-right: 12px; }
-.whyus-list li:last-child { border-bottom: none; }
-
-.why-icon {
-  width: 40px; height: 40px;
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-.why-text h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-.why-text p { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
-
-/* CTA */
-.cta-section {
-  padding: 120px 60px 160px;
-  text-align: center;
-  position: relative;
-}
-.cta-section::before {
-  content:'';
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%);
-}
-.cta-title {
-  font-size: clamp(40px, 6vw, 80px);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 24px;
-  position: relative;
-}
-.cta-sub {
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 56px;
-  font-weight: 300;
-  position: relative;
-}
-.cta-actions {
-  display: flex; justify-content: center; gap: 20px;
-  position: relative;
-}
-
-/* Contact fade - always visible */
-@keyframes contactFadeUp {
-  from { opacity:0; transform: translateY(24px); }
-  to   { opacity:1; transform: translateY(0); }
-}
-.contact-fade {
-  animation: contactFadeUp 0.7s ease both;
-}
-.contact-cards.contact-fade { animation-delay: 0.2s; }
-.custom-project.contact-fade { animation-delay: 0.4s; }
-
-/* CONTACT CARDS */
-.contact-cards {
-  display: flex;
-  gap: 16px;
-  margin-top: 48px;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-}
-.contact-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 24px 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  min-width: 200px;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.contact-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--cyan));
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-.contact-card:hover { border-color: var(--border2); transform: translateY(-4px); }
-.contact-card:hover::after { transform: scaleX(1); }
-.contact-card-icon { font-size: 22px; margin-bottom: 4px; }
-.contact-card-label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--muted);
-  font-family: 'Rajdhani', sans-serif;
-}
-.contact-card-value {
-  font-size: 13px;
-  color: var(--gold);
-  text-decoration: none;
-  font-family: 'Rajdhani', sans-serif;
-  letter-spacing: 1px;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-.contact-card-value:hover { color: var(--cyan); }
-
-/* CUSTOM PROJECT */
-.custom-project {
-  margin-top: 80px;
-  max-width: 700px;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-}
-.custom-project-inner {
-  border: 1px solid var(--border);
-  padding: 52px 48px;
-  background: var(--card);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.custom-project-inner::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), var(--gold), transparent);
-}
-.custom-project-inner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top center, rgba(201,168,76,0.04) 0%, transparent 60%);
-  pointer-events: none;
-}
-.custom-project-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgba(0,212,255,0.2);
-  padding: 4px 16px;
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--cyan);
-  margin-bottom: 20px;
-  font-family: 'Rajdhani', sans-serif;
-  background: rgba(0,212,255,0.04);
-}
-.custom-project-badge::before {
-  content: '';
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--cyan);
-  animation: pulse 2s infinite;
-}
-.custom-project-title {
-  font-size: 26px;
-  font-weight: 800;
-  margin-bottom: 16px;
-  color: var(--white);
-}
-.custom-project-desc {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.8;
-  font-weight: 300;
-  max-width: 500px;
-  margin: 0 auto 32px;
-}
-.custom-project-features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  max-width: 420px;
-  margin: 0 auto 32px;
-  text-align: right;
-}
-.custom-feature {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--muted);
-}
-.custom-feature-dot {
-  width: 6px; height: 6px;
-  background: var(--gold);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-
-@media (max-width: 1024px) {
-  .contact-cards { flex-direction: column; align-items: stretch; }
-  .contact-card { min-width: unset; }
-  .custom-project-inner { padding: 36px 24px; }
-  .custom-project-features { grid-template-columns: 1fr; }
-}
-
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 60px;
-  display: flex; justify-content: space-between; align-items: center;
-  position: relative; z-index:1;
-}
-.footer-logo {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: var(--gold);
-}
-.footer-copy {
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 1px;
-}
-.footer-links {
-  display: flex; gap: 32px;
-  list-style: none;
-}
-.footer-links a {
-  font-size: 12px;
-  color: var(--muted);
-  text-decoration: none;
-  letter-spacing: 1px;
-  transition: color 0.3s;
-}
-.footer-links a:hover { color: var(--gold); }
-
-/* Animations */
-@keyframes fadeUp {
-  from { opacity:0; transform: translateY(30px); }
-  to { opacity:1; transform: translateY(0); }
-}
-
-
-
-/* Divider */
-.divider {
-  display: flex; align-items: center; gap: 20px;
-  max-width: 200px;
-  margin: 0 auto 32px;
-}
-.divider::before, .divider::after {
-  content:'';
-  flex:1;
-  height:1px;
-  background: linear-gradient(90deg, transparent, var(--gold));
-}
-.divider::after { background: linear-gradient(90deg, var(--gold), transparent); }
-.divider-gem {
-  width: 8px; height: 8px;
-  background: var(--gold);
-  transform: rotate(45deg);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--gold); }
-
-/* Delivery badge on service card */
-.service-delivery {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: var(--muted);
-  margin-top: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
-  padding: 3px 10px;
-  background: rgba(255,255,255,0.02);
-}
-.service-delivery.fast { color: var(--cyan); border-color: rgba(0,212,255,0.15); }
-.service-delivery.medium { color: var(--gold); border-color: rgba(201,168,76,0.2); }
-.service-delivery.slow { color: var(--muted); border-color: rgba(107,127,163,0.2); }
-
-/* Service card click hint */
-.service-card .click-hint {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 16px;
-  font-size: 11px;
-  color: var(--cyan);
-  letter-spacing: 1px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-family: 'Rajdhani', sans-serif;
-}
-.service-card:hover .click-hint { opacity: 1; }
-.service-card .click-hint::before {
-  content: '→';
-  font-size: 13px;
-}
-
-/* MODAL OVERLAY */
-.modal-overlay {
-  position: fixed; inset: 0;
-  z-index: 99999;
-  display: flex; align-items: center; justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-.modal-overlay.open {
-  opacity: 1;
-  pointer-events: all;
-}
-.modal-backdrop {
-  position: absolute; inset: 0;
-  background: rgba(2,4,8,0.88);
-  backdrop-filter: blur(12px);
-}
-
-/* MODAL PANEL */
-.modal-panel {
-  position: relative;
-  z-index: 1;
-  background: var(--card2);
-  border: 1px solid var(--border);
-  max-width: 820px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  transform: translateY(40px) scale(0.97);
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold) transparent;
-}
-.modal-overlay.open .modal-panel {
-  transform: translateY(0) scale(1);
-}
-
-/* Gradient border top */
-.modal-panel::before {
-  content:'';
-  position: absolute; top:0; left:0; right:0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--cyan), var(--gold));
-}
-
-.modal-header {
-  padding: 36px 40px 24px;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-}
-.modal-close {
-  position: absolute; top: 24px; left: 24px;
-  width: 36px; height: 36px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--muted);
-  font-size: 18px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
-  font-family: 'Tajawal', sans-serif;
-}
-.modal-close:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
-
-.modal-num {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-.modal-icon { font-size: 48px; margin-bottom: 12px; display: block; }
-.modal-price-badge {
-  display: inline-block;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 13px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  border: 1px solid var(--border);
-  padding: 5px 16px;
-  margin-bottom: 14px;
-}
-.modal-title {
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-.modal-short-desc {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.8;
-  font-weight: 300;
-}
-
-.modal-body { padding: 32px 40px 40px; }
-
-.modal-section {
-  margin-bottom: 28px;
-}
-.modal-section-title {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--cyan);
-  margin-bottom: 14px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border2);
-}
-
-.modal-benefits {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-.modal-benefits li {
-  display: flex; align-items: flex-start; gap: 12px;
-  font-size: 14px;
-  color: var(--white);
-  line-height: 1.6;
-  padding: 8px 12px;
-  background: rgba(255,255,255,0.03);
-  border-right: 2px solid var(--gold);
-}
-.modal-benefits li::before {
-  content: '◆';
-  color: var(--gold);
-  font-size: 7px;
-  flex-shrink: 0;
-  margin-top: 5px;
-}
-
-.modal-use-cases {
-  list-style: none;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.modal-use-cases li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.5;
-  padding: 10px 14px;
-  background: rgba(255,255,255,0.02);
-  border-right: 2px solid var(--gold);
-}
-
-.modal-tags-row {
-  display: flex; flex-wrap: wrap; gap: 8px;
-}
-.modal-tag {
-  font-size: 11px;
-  padding: 4px 14px;
-  background: rgba(0,212,255,0.06);
-  color: var(--cyan);
-  border: 1px solid rgba(0,212,255,0.15);
-  letter-spacing: 1px;
-}
-
-.modal-footer {
-  padding: 24px 40px;
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  flex-wrap: wrap;
-}
-.modal-footer-price {
-  font-family: 'Rajdhani', sans-serif;
-}
-.modal-footer-price span {
-  font-size: 11px; color: var(--muted); letter-spacing: 2px; display: block; margin-bottom: 2px;
-}
-.modal-footer-price strong {
-  font-size: 32px; color: var(--gold); font-weight: 700;
-}
-
-@media (max-width: 640px) {
-  .modal-panel { max-height: 95vh; }
-  .modal-header, .modal-body, .modal-footer { padding-right: 20px; padding-left: 20px; }
-  .modal-benefits { grid-template-columns: 1fr; }
-  .modal-title { font-size: 22px; }
-  .modal-footer { flex-direction: column; align-items: stretch; }
-}
-
-@media (max-width: 1024px) {
-  nav { padding: 0 24px; }
-  .nav-links { display: none; }
-  .services, .packages, .sectors, .process, .whyus, .cta-section { padding: 80px 24px; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .packages-grid { grid-template-columns: 1fr; gap: 16px; }
-  .sectors-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-  .process-steps::before { display:none; }
-  .whyus-grid { grid-template-columns: 1fr; }
-  .footer { flex-direction: column; gap: 24px; text-align: center; }
-  .stats-bar { flex-wrap: wrap; gap: 32px; }
-  .stat-item { border-left: none; }
-  .service-card.wide { grid-column: span 1; }
-  footer { padding: 40px 24px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#0a0d15;
+  --bg2:#0d1120;
+  --card:#101525;
+  --card2:#141c30;
+  --gold:#c9a84c;
+  --gold2:#e8c96d;
+  --gold-glow:rgba(201,168,76,0.18);
+  --green:#4ade80;
+  --text:#e8eaf6;
+  --muted:#5a6480;
+  --border:rgba(201,168,76,0.15);
+  --r:12px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;direction:rtl}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.25;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;
+  background:rgba(10,13,21,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.12em;color:#fff}
+.logo-text{display:flex;align-items:center;gap:6px}
+.logo-text .suraya{color:#fff;letter-spacing:.12em}
+.logo-text .ai{color:var(--gold2);letter-spacing:.12em}
+/* Hexagon logo mark */
+.logo-hex{width:36px;height:36px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-hex svg{width:36px;height:36px}
+.logo-hex .hex-letter{font-family:'Syne',sans-serif;font-weight:800;font-size:.8rem;fill:#0a0d15;letter-spacing:0}
+
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:600;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-wa{display:flex;align-items:center;gap:8px;background:#25d366!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;transition:opacity .2s,transform .2s}
+.nav-wa:hover{opacity:.88;transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 24px 80px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(201,168,76,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.06) 1px,transparent 1px);
+  background-size:72px 72px;mask-image:radial-gradient(ellipse 75% 55% at 50% 50%,black,transparent);pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(201,168,76,.14),transparent 65%);top:-160px;left:50%;animation:f1 9s ease-in-out infinite}
+.orb2{width:380px;height:380px;background:radial-gradient(circle,rgba(201,168,76,.08),transparent 65%);bottom:60px;left:5%;animation:f2 11s ease-in-out infinite}
+.orb3{width:260px;height:260px;background:radial-gradient(circle,rgba(74,222,128,.07),transparent 65%);bottom:80px;right:5%;animation:f2 8s ease-in-out 3s infinite}
+@keyframes f1{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-22px)}}
+@keyframes f2{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:100px;padding:6px 18px;font-size:.75rem;font-weight:700;color:var(--gold2);letter-spacing:.06em;margin-bottom:28px;animation:up .7s ease both}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:blink 2s ease infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.hero h1{font-family:'Cairo',sans-serif;font-size:clamp(2.8rem,7vw,5.8rem);font-weight:900;line-height:1.08;letter-spacing:-.01em;max-width:860px;margin-bottom:24px;animation:up .7s .1s ease both;color:#fff}
+.grad{background:linear-gradient(120deg,var(--gold) 0%,var(--gold2) 50%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:500px;font-weight:400;line-height:1.9;margin-bottom:40px;animation:up .7s .2s ease both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:up .7s .3s ease both}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:14px 32px;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 28px rgba(37,211,102,.2)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 0 44px rgba(37,211,102,.4)}
+.btn-out{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);padding:14px 32px;border-radius:8px;border:1px solid var(--border);font-family:'Cairo',sans-serif;font-weight:600;font-size:.92rem;text-decoration:none;transition:border-color .2s,background .2s}
+.btn-out:hover{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.06)}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0a0d15;padding:14px 32px;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 28px rgba(201,168,76,.3)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 44px rgba(201,168,76,.5)}
+
+/* ── STATS BAR ── */
+.stats-bar{position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:36px 24px;text-align:center;border-left:1px solid var(--border);transition:background .2s}
+.stat:last-child{border-left:none}
+.stat:hover{background:rgba(201,168,76,.03)}
+.stat-n{font-family:'Cairo',sans-serif;font-size:2.5rem;font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--gold2);margin-bottom:6px}
+.stat-l{font-size:.78rem;color:var(--muted);font-weight:500}
+
+/* ── SECTIONS ── */
+.sec{position:relative;z-index:1;padding:90px 52px;max-width:1200px;margin:0 auto}
+.sec-full{position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-full-inner{max-width:1200px;margin:0 auto;padding:90px 52px}
+.lbl{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.lbl::before{content:'';width:20px;height:1px;background:var(--gold)}
+.ttl{font-family:'Cairo',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;letter-spacing:-.01em;line-height:1.2;margin-bottom:16px;color:#fff}
+.sub{color:var(--muted);font-size:.95rem;max-width:500px;font-weight:400;line-height:1.85;margin-bottom:52px}
+
+/* ── SERVICE FILTER ── */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.filter-btn{padding:7px 18px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.45);color:var(--gold2)}
+
+/* ── SERVICES ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.svc{background:var(--card);padding:32px 28px;position:relative;overflow:hidden;transition:background .25s;cursor:pointer}
+.svc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-glow),transparent 60%);opacity:0;transition:opacity .3s}
+.svc:hover{background:var(--card2)}
+.svc:hover::before{opacity:1}
+.svc-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+.svc-ico{width:46px;height:46px;border-radius:10px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative;z-index:1;flex-shrink:0}
+.svc-price{font-size:.7rem;font-weight:700;color:var(--green);background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);border-radius:100px;padding:3px 10px;white-space:nowrap;position:relative;z-index:1}
+.svc h3{font-family:'Cairo',sans-serif;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:8px;position:relative;z-index:1;line-height:1.45}
+.svc p{font-size:.82rem;color:var(--muted);line-height:1.75;position:relative;z-index:1}
+.svc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;position:relative;z-index:1}
+.tag{font-size:.68rem;padding:2px 9px;border-radius:100px;background:rgba(201,168,76,.08);color:rgba(201,168,76,.75);font-weight:600;border:1px solid rgba(201,168,76,.15)}
+.svc[data-hidden="true"]{display:none}
+
+/* ── PACKAGES ── */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pkg{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 32px;position:relative;transition:transform .2s,border-color .2s;overflow:hidden}
+.pkg::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-glow),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.pkg:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.35)}
+.pkg:hover::before{opacity:1}
+.pkg.featured{border-color:rgba(201,168,76,.45);background:linear-gradient(135deg,rgba(201,168,76,.07),var(--card))}
+.pkg-badge{position:absolute;top:20px;left:20px;background:var(--gold);color:#0a0d15;font-size:.68rem;font-weight:800;padding:3px 10px;border-radius:100px;letter-spacing:.06em}
+.pkg-ico{font-size:2rem;margin-bottom:14px}
+.pkg-type{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-family:'Syne',sans-serif}
+.pkg h3{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.12rem;color:#fff;margin-bottom:20px}
+.pkg-price{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.pkg-price .num{font-family:'Cairo',sans-serif;font-size:2.8rem;font-weight:900;letter-spacing:-.03em;color:var(--gold2)}
+.pkg-price .cur{font-size:.85rem;color:var(--muted)}
+.pkg-period{font-size:.78rem;color:var(--muted);margin-bottom:28px}
+.pkg-features{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:32px}
+.pkg-features li{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:var(--text);line-height:1.6}
+.pkg-features li::before{content:'✓';color:var(--green);font-weight:800;margin-top:1px;flex-shrink:0}
+.pkg .pkg-cta{display:block;text-align:center;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold2);padding:13px 24px;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s}
+.pkg .pkg-cta:hover{background:var(--gold);color:#0a0d15;border-color:var(--gold)}
+.pkg.featured .pkg-cta{background:var(--gold);color:#0a0d15;border-color:var(--gold)}
+.pkg.featured .pkg-cta:hover{box-shadow:0 0 28px rgba(201,168,76,.4)}
+
+/* ── SECTORS ── */
+.sector-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.sector{background:var(--card);padding:28px 20px;text-align:center;cursor:pointer;transition:background .2s}
+.sector:hover{background:var(--card2)}
+.sector-ico{font-size:1.9rem;margin-bottom:10px}
+.sector-name{font-family:'Cairo',sans-serif;font-weight:700;font-size:.85rem;color:var(--text);margin-bottom:4px}
+.sector-sub{font-size:.72rem;color:var(--muted);line-height:1.5}
+
+/* ── PROCESS ── */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.step{background:var(--card);padding:44px 28px;position:relative;transition:background .2s}
+.step:hover{background:var(--card2)}
+.step-n{font-family:'Syne',sans-serif;font-size:3.8rem;font-weight:800;color:rgba(201,168,76,.12);line-height:1;margin-bottom:20px}
+.step h4{font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;color:#fff;margin-bottom:10px}
+.step p{font-size:.83rem;color:var(--muted);line-height:1.75}
+.step-arrow{position:absolute;top:44px;left:24px;color:rgba(201,168,76,.2);font-size:1.2rem}
+
+/* ── WHY ── */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;display:flex;gap:18px;align-items:flex-start;transition:background .2s,border-color .2s}
+.why-card:hover{background:var(--card2);border-color:rgba(201,168,76,.3)}
+.why-ico{width:46px;height:46px;border-radius:10px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.why-card h4{font-family:'Cairo',sans-serif;font-weight:700;font-size:.97rem;color:#fff;margin-bottom:7px}
+.why-card p{font-size:.83rem;color:var(--muted);line-height:1.75}
+
+/* ── CUSTOM CTA STRIP ── */
+.cta-strip{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.05));border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:52px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden}
+.cta-strip::before{content:'S';position:absolute;font-family:'Syne',sans-serif;font-size:16rem;font-weight:800;color:rgba(201,168,76,.04);top:-60px;left:30px;pointer-events:none;line-height:1}
+.cta-text h3{font-family:'Cairo',sans-serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;letter-spacing:-.01em;margin-bottom:10px;color:#fff}
+.cta-text p{color:var(--muted);font-size:.92rem;max-width:460px;line-height:1.8}
+.cta-btns{display:flex;flex-direction:column;gap:10px;min-width:200px;align-items:flex-end}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-options{display:flex;flex-direction:column;gap:14px}
+.contact-opt{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 24px;text-decoration:none;color:inherit;transition:background .2s,border-color .2s}
+.contact-opt:hover{background:var(--card2);border-color:rgba(201,168,76,.3)}
+.contact-opt-ico{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.contact-opt-ico.wa{background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.2)}
+.contact-opt-ico.em{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2)}
+.contact-opt h4{font-family:'Cairo',sans-serif;font-weight:700;font-size:.95rem;color:#fff;margin-bottom:3px}
+.contact-opt p{font-size:.8rem;color:var(--muted)}
+.contact-opt .arr{margin-right:auto;color:var(--muted);font-size:1.1rem;transition:transform .2s}
+.contact-opt:hover .arr{transform:translateX(-4px)}
+.custom-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px 32px}
+.custom-card h3{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.1rem;color:#fff;margin-bottom:10px}
+.custom-card p{font-size:.85rem;color:var(--muted);line-height:1.8;margin-bottom:22px}
+.custom-points{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.custom-points li{display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--text)}
+.custom-points li::before{content:'←';color:var(--gold);font-size:.9rem}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52px 32px;position:relative;z-index:1}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-brand-txt{font-size:.84rem;color:var(--muted);line-height:1.8;max-width:300px;margin-top:14px}
+.footer-col h5{font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:16px}
+.footer-col a{display:block;font-size:.83rem;color:var(--muted);text-decoration:none;margin-bottom:9px;transition:color .2s}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.78rem;color:var(--muted)}
+.back-top{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 16px;cursor:pointer;font-family:'Cairo',sans-serif;font-size:.78rem;color:var(--muted);transition:all .2s;text-decoration:none}
+.back-top:hover{border-color:rgba(201,168,76,.4);color:var(--gold2)}
+
+/* ── BACK TO TOP FLOAT ── */
+#btt{position:fixed;bottom:28px;left:28px;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#0a0d15;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:300;box-shadow:0 4px 20px rgba(201,168,76,.35);opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;border:none;font-size:1.1rem;font-weight:700}
+#btt.show{opacity:1;transform:translateY(0)}
+#btt:hover{box-shadow:0 4px 32px rgba(201,168,76,.55)}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:0 20px}.nav-links{display:none}
+  .sec,.sec-full-inner{padding:64px 20px}
+  .svc-grid{grid-template-columns:1fr}
+  .pkg-grid{grid-template-columns:1fr}
+  .sector-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .cta-strip{flex-direction:column;padding:36px 24px}
+  .cta-btns{align-items:flex-start;width:100%}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat{border-left:none;border-bottom:1px solid var(--border)}
 }
 </style>
-
-<script>
-const SERVICES = [
-  {
-    num:"01", delivery:"48 ساعة", deliveryColor:"gold", icon:"🤖", price:"FROM 500 SAR",
-    title:"شات بوت ذكي لموقعك",
-    shortDesc:"روبوت محادثة يرد على عملائك 24/7 باللغة العربية والإنجليزية ويتعلم من محتوى شركتك",
-    fullDesc:"شات بوت مدرّب على بيانات شركتك — أسئلة شائعة، كتالوج منتجات، سياسات، وأي محتوى تختاره. يتحدث بطريقة طبيعية مع الزوار ويوجههم لاتخاذ القرار المناسب. يعمل على موقعك الإلكتروني وواتساب في آن واحد، ويوفر إجابات فورية في أي وقت.",
-    benefits:[
-      "رد فوري على العملاء 24/7 بدون انتظار",
-      "يقلل الأسئلة المتكررة على فريق الدعم بنسبة 70%",
-      "يتكلم العربية والإنجليزية بشكل طبيعي",
-      "يتعلم تلقائياً من تحديثات محتوى شركتك",
-      "يسجل بيانات العملاء ويحولها لفرص مبيعات",
-      "يعمل على الموقع وواتساب وتيليجرام"
-    ],
-    useCases:[
-      "🛍️ متجر إلكتروني يجيب على أسئلة المنتجات والشحن والإرجاع",
-      "🏢 شركة خدمات ترد على استفسارات العملاء وتحجز مواعيد",
-      "🏥 عيادة تجيب على أسئلة المرضى عن الخدمات والأوقات",
-      "📚 مركز تدريب يشرح الكورسات ويقبل التسجيلات تلقائياً"
-    ],
-    tech:["GPT-4","Langchain","Arabic NLP","Webhook API","React Widget"]
-  },
-  {
-    num:"02", delivery:"48–72 ساعة", deliveryColor:"gold", icon:"📱", price:"FROM 800 SAR",
-    title:"أتمتة واتساب بالذكاء الاصطناعي",
-    shortDesc:"نربط واتساب بالذكاء الاصطناعي فيرد على عملائك تلقائياً، يحجز مواعيد، ويرسل تذكيرات",
-    fullDesc:"نربط رقم واتساب Business الخاص بشركتك بنظام ذكاء اصطناعي متكامل. يستقبل رسائل العملاء، يفهمها، ويرد عليها بطريقة طبيعية — سواء كانت استفساراً أو طلباً أو حجزاً. النظام يتذكر سياق المحادثة ويعالج الطلبات من البداية للنهاية.",
-    benefits:[
-      "استجابة فورية لكل رسالة واتساب خلال ثوانٍ",
-      "يحجز المواعيد ويضيفها للتقويم تلقائياً",
-      "يرسل تذكيرات للعملاء قبل مواعيدهم",
-      "يعالج الطلبات ويرسل تأكيدات فورية",
-      "يصعّد المحادثات المعقدة لموظف بشري",
-      "تقارير يومية بكل المحادثات والطلبات"
-    ],
-    useCases:[
-      "🍕 مطعم يستقبل الطلبات ويؤكدها عبر واتساب تلقائياً",
-      "💇 صالون حلاقة يحجز مواعيد ويذكّر العملاء",
-      "🚗 ورشة سيارات تستقبل طلبات الخدمة وتحدد المواعيد",
-      "🏠 وكيل عقاري يرد على استفسارات العقارات ويحدد مشاهدات"
-    ],
-    tech:["WhatsApp Business API","n8n Automation","GPT-4","Google Calendar API","Make.com"]
-  },
-  {
-    num:"03", delivery:"24 ساعة", deliveryColor:"cyan", icon:"📄", price:"FROM 300 SAR",
-    title:"تلخيص وتحليل المستندات",
-    shortDesc:"ارفع أي مستند PDF أو Word ونحلله لك في ثوانٍ — عقود، تقارير، بيانات مالية",
-    fullDesc:"نظام يقرأ أي مستند بأي لغة ويستخرج منه المعلومات المطلوبة. سواء كان عقداً تريد فهم بنوده، تقريراً تريد ملخصه، أو بيانات مالية تريد تحليلها — يوفر عليك ساعات من القراءة ويعطيك نتائج دقيقة في دقائق.",
-    benefits:[
-      "تلخيص مستندات بمئات الصفحات في دقيقة واحدة",
-      "استخراج أي معلومة محددة بدقة عالية",
-      "مقارنة مستندات متعددة واكتشاف الفروق",
-      "يدعم العربية والإنجليزية وأكثر من 50 لغة",
-      "اكتشاف البنود الخطرة في العقود تلقائياً",
-      "تحويل التقارير لجداول وأرقام قابلة للتحليل"
-    ],
-    useCases:[
-      "⚖️ محامٍ يحتاج تحليل عقد من 80 صفحة خلال دقائق",
-      "💰 محاسب يريد استخراج أرقام من تقارير مالية معقدة",
-      "🏗️ مقاول يحتاج مراجعة وثيقة مناقصة ضخمة",
-      "🎓 باحث يريد ملخصاً لعشرات الدراسات العلمية"
-    ],
-    tech:["Claude AI","PyPDF2","Azure Document Intelligence","LlamaIndex","FastAPI"]
-  },
-  {
-    num:"04", delivery:"24 ساعة", deliveryColor:"cyan", icon:"🌐", price:"FROM 200 SAR",
-    title:"ترجمة ذكية عربي ↔ إنجليزي",
-    shortDesc:"ترجمة احترافية تراعي السياق الثقافي للمستندات والمواقع والتسويق",
-    fullDesc:"ترجمة تتجاوز الكلمات — تفهم السياق والثقافة والأسلوب المطلوب. سواء كنت تحتاج ترجمة رسمية لعقد، ترجمة تسويقية لحملة إعلانية، أو ترجمة موقعك للعربية بأسلوب يناسب السوق المستهدف. النتيجة نص طبيعي وصحيح لغوياً.",
-    benefits:[
-      "ترجمة تراعي الفروق الثقافية والسياق",
-      "أسرع 10 مرات من الترجمة اليدوية",
-      "الحفاظ على التنسيق الأصلي للمستند",
-      "مراجعة لغوية مدمجة في كل ترجمة",
-      "ترجمة متسقة تحافظ على أسلوب شركتك",
-      "دعم جميع صيغ الملفات: PDF, Word, Excel, HTML"
-    ],
-    useCases:[
-      "🌐 شركة تريد ترجمة موقعها للعربية باحترافية",
-      "📢 وكالة تسويق تترجم حملات إعلانية للسوق الاحترافي",
-      "📋 شركة تريد ترجمة عقودها وسياساتها للمستثمرين",
-      "🛒 متجر إلكتروني يريد ترجمة أوصاف منتجاته"
-    ],
-    tech:["GPT-4 Turbo","DeepL API","Arabic NLP","Document Parser","Custom Glossary Engine"]
-  },
-  {
-    num:"06", delivery:"48 ساعة", deliveryColor:"gold", icon:"📊", price:"FROM 600 SAR",
-    title:"تحليل البيانات وإنتاج تقارير",
-    shortDesc:"ارفع بياناتك Excel أو CSV وناخذ منها لك تقارير وإحصاءات واضحة",
-    fullDesc:"نحول بياناتك الخام إلى رؤى قابلة للتنفيذ. ارفع ملف Excel أو CSV مهما كان حجمه، وسيحلله النظام تلقائياً — يكتشف الأنماط، يرسم الرسوم البيانية، ويقدم تقريراً واضحاً مع توصيات. مناسب للمبيعات، الموارد البشرية، العمليات، وأي قسم يتعامل مع أرقام.",
-    benefits:[
-      "تحليل آلاف الصفوف في ثوانٍ",
-      "رسوم بيانية تفاعلية قابلة للتصدير",
-      "اكتشاف تلقائي للأنماط والشذوذات",
-      "توقعات مستقبلية بناءً على بيانات تاريخية",
-      "تقارير جاهزة للعرض التقديمي",
-      "مقارنة أداء فترات زمنية مختلفة"
-    ],
-    useCases:[
-      "📈 مدير مبيعات يريد تقرير أداء الفريق شهرياً",
-      "👥 HR يحلل بيانات الحضور والأداء والرواتب",
-      "🏭 مدير عمليات يتابع مؤشرات الإنتاج يومياً",
-      "💰 محاسب يريد مقارنة المصاريف بين أقسام الشركة"
-    ],
-    tech:["Python Pandas","Plotly","GPT-4 Code Interpreter","Power BI API","Excel Export"]
-  },
-  {
-    num:"07", delivery:"24 ساعة", deliveryColor:"cyan", icon:"✍️", price:"FROM 150 SAR",
-    title:"كتابة محتوى تسويقي بالذكاء الاصطناعي",
-    shortDesc:"كتابة منشورات سوشيال ميديا، إعلانات، بريد إلكتروني بأسلوب شركتك",
-    fullDesc:"محتوى تسويقي مكتوب بأسلوبك الخاص — يمثل صوت شركتك بدقة. ندرّب النموذج على أسلوب كتابتك ومنتجاتك وجمهورك المستهدف، فيكتب محتوى يبدو وكأنه كتبه فريق تسويق محترف. من منشورات انستقرام، إلى إيميلات تسويقية، إلى إعلانات جوجل.",
-    benefits:[
-      "محتوى مخصص يعكس أسلوب شركتك تماماً",
-      "ينتج 10 منشورات في وقت كتابة منشور واحد",
-      "محتوى محسّن لخوارزميات المنصات",
-      "هاشتاقات ومقترحات توقيت نشر ذكية",
-      "تنويعات متعددة لنفس الفكرة",
-      "يدعم العربية بأسلوب احترافي طبيعي"
-    ],
-    useCases:[
-      "📸 براند ملابس يحتاج 30 منشور انستقرام شهرياً",
-      "🏢 شركة تريد حملة بريد إلكتروني لمنتج جديد",
-      "🎯 وكالة تسويق تدير محتوى 10 عملاء في آنٍ واحد",
-      "🛒 متجر يريد أوصاف منتجات جذابة ومحسّنة لـ SEO"
-    ],
-    tech:["GPT-4","Claude AI","Custom Style Training","Buffer API","Canva Integration"]
-  },
-  {
-    num:"08", delivery:"48–72 ساعة", deliveryColor:"gold", icon:"🗓️", price:"FROM 700 SAR",
-    title:"نظام حجز مواعيد ذكي",
-    shortDesc:"نظام يحجز مواعيد العملاء تلقائياً ويرسل تذكيرات ويدير الجدول عبر واتساب أو الموقع",
-    fullDesc:"نظام حجز متكامل يتحدث مع عملائك ويحجز لهم المواعيد المتاحة تلقائياً. يتحقق من جدولك الحالي، يقترح أوقاتاً مناسبة، يؤكد الحجز، ويرسل تذكيرات قبل الموعد. يقلل الحجوزات الملغاة ويزيد الالتزام بنسبة كبيرة.",
-    benefits:[
-      "حجوزات تلقائية 24/7 بدون تدخل بشري",
-      "تذكيرات تلقائية تقلل الغياب بنسبة 60%",
-      "تزامن فوري مع Google Calendar وOutlook",
-      "إدارة قوائم الانتظار والإلغاء تلقائياً",
-      "قبول الدفع المسبق عبر واجهة الحجز",
-      "تقارير بمعدلات الحضور والإلغاء"
-    ],
-    useCases:[
-      "💇 صالون تجميل يدير مواعيد عدة موظفين",
-      "🏥 عيادة تحجز مراجعات المرضى وترسل تذكيرات",
-      "🎓 مدرب خاص يدير جلساته الأسبوعية",
-      "🔧 شركة صيانة تجدول زيارات الفنيين للعملاء"
-    ],
-    tech:["Calendly API","Google Calendar","Twilio WhatsApp","Stripe","React Booking Widget"]
-  },
-  {
-    num:"09", delivery:"48 ساعة", deliveryColor:"gold", icon:"📧", price:"FROM 400 SAR",
-    title:"أتمتة البريد الإلكتروني",
-    shortDesc:"ردود تلقائية ذكية على بريدك الإلكتروني، تصنيف الرسائل، وإرسال متابعات احترافية",
-    fullDesc:"حوّل بريدك الإلكتروني إلى نظام ذكي يعمل وحده. يقرأ الرسائل الواردة، يصنفها حسب الأولوية والنوع، يرد على الاستفسارات المعتادة تلقائياً، ويحول الرسائل المعقدة لك مع ملخص واقتراح رد. يوفر ساعات يومياً ويضمن عدم ضياع أي رسالة مهمة.",
-    benefits:[
-      "رد تلقائي على 70% من الرسائل المتكررة",
-      "تصنيف ذكي حسب الأولوية والنوع",
-      "لا ضياع لأي رسالة مهمة — تنبيه فوري",
-      "متابعات تلقائية للعملاء الذين لم يردوا",
-      "قوالب ردود ذكية تتكيف مع كل سياق",
-      "تقرير يومي بملخص صندوق البريد"
-    ],
-    useCases:[
-      "📞 فريق مبيعات يتابع عشرات العملاء المحتملين",
-      "🛠️ دعم فني يرد على تذاكر الدعم بسرعة",
-      "🤝 شركاء أعمال يديرون مراسلات كثيرة يومياً",
-      "📢 حملات تسويقية بريدية مع متابعة ذكية"
-    ],
-    tech:["Gmail API","Outlook Graph API","GPT-4","Make.com","Zapier","HubSpot CRM"]
-  },
-  {
-    num:"10", delivery:"3–5 أيام", deliveryColor:"muted", icon:"🔍", price:"FROM 500 SAR",
-    title:"محرك بحث داخلي للشركة",
-    shortDesc:"ابحث في كل وثائق شركتك بلغة طبيعية — كأنك تسأل موظفاً خبيراً",
-    fullDesc:"بدلاً من البحث اليدوي في مجلدات ومشاركات الشبكة، يتيح لك هذا النظام البحث بلغة طبيعية عبر كل وثائق شركتك. اكتب سؤالاً مثل 'ما هي سياسة الإجازات؟' أو 'أين عقد مورد الطباعة؟' وستحصل على الإجابة مع رابط المصدر الدقيق.",
-    benefits:[
-      "بحث طبيعي عبر آلاف الوثائق فورياً",
-      "يجد المعلومة حتى لو لم تتذكر اسم الملف",
-      "يدعم PDF, Word, Excel, PowerPoint",
-      "صلاحيات وصول حسب أدوار الموظفين",
-      "يتعلم من أكثر الأسئلة شيوعاً",
-      "واجهة بحث بسيطة لا تحتاج تدريب"
-    ],
-    useCases:[
-      "🏢 موظف يبحث عن سياسة شركة بدون سؤال HR",
-      "⚖️ محامٍ يبحث في سوابق قضائية وعقود سابقة",
-      "🏥 طبيب يبحث في بروتوكولات علاج محددة",
-      "📦 مسؤول مشتريات يجد عروض موردين قديمة"
-    ],
-    tech:["Elasticsearch","OpenAI Embeddings","Pinecone","SharePoint API","Google Drive API"]
-  },
-  {
-    num:"11", delivery:"24–48 ساعة", deliveryColor:"gold", icon:"🎙️", price:"FROM 900 SAR",
-    title:"تحويل الصوت إلى نص وتحليله",
-    shortDesc:"نحول اجتماعاتك ومقابلاتك لنصوص مرتبة مع ملخص وأبرز النقاط",
-    fullDesc:"حوّل تسجيلاتك الصوتية والفيديو إلى نصوص مرتبة ومنظمة. يتعرف على الأصوات المختلفة ويميز المتحدثين، يترجم المحتوى العربي بدقة عالية، ثم يستخرج النقاط الرئيسية، المهام المكلف بها كل شخص، والقرارات المتخذة.",
-    benefits:[
-      "دقة تحويل صوت-نص تتجاوز 95% بالعربية",
-      "تمييز تلقائي بين أصوات المتحدثين",
-      "ملخص تنفيذي جاهز في دقيقة",
-      "استخراج المهام والمواعيد تلقائياً",
-      "بحث في محتوى التسجيلات نصياً",
-      "تصدير النص لـ Word و PDF"
-    ],
-    useCases:[
-      "🤝 اجتماع مجلس إدارة يحتاج محضر رسمي دقيق",
-      "🎤 مقابلات HR تحتاج تحليل وتقييم المرشحين",
-      "📞 مكالمات عملاء تحتاج توثيق وتحليل",
-      "🎓 محاضرات تعليمية تحتاج تحويل لمادة دراسية"
-    ],
-    tech:["Whisper AI","GPT-4","Arabic ASR","Speaker Diarization","FastAPI","Webhook"]
-  },
-  {
-    num:"12", delivery:"24–48 ساعة", deliveryColor:"gold", icon:"🖼️", price:"FROM 300 SAR",
-    title:"توليد صور وفيديوهات بالذكاء الاصطناعي",
-    shortDesc:"صور تسويقية، لوغو مفاهيمي، فيديوهات قصيرة لمنصاتك الاجتماعية",
-    fullDesc:"أنشئ محتوى بصري احترافي بأقل التكاليف. من صور المنتجات والإعلانات إلى الفيديوهات القصيرة لريلز وتيك توك — نستخدم أحدث نماذج الذكاء الاصطناعي لإنتاج محتوى بصري يناسب هوية شركتك ويجذب جمهورك.",
-    benefits:[
-      "إنتاج صور احترافية بجزء بسيط من تكلفة المصور",
-      "تسليم خلال 24 ساعة",
-      "تعديلات غير محدودة حتى تحصل على المطلوب",
-      "محتوى بصري مُحسَّن لكل منصة",
-      "الحفاظ على هوية براندك في كل التصاميم",
-      "فيديوهات قصيرة للسوشيال ميديا"
-    ],
-    useCases:[
-      "👗 متجر أزياء يحتاج صور منتجات احترافية يومياً",
-      "🍔 مطعم يريد صور شهية لمنيو جديد",
-      "🏠 وكالة عقارية تريد صور عقارات جذابة",
-      "📢 براند جديد يحتاج هوية بصرية متكاملة"
-    ],
-    tech:["DALL-E 3","Midjourney","Stable Diffusion","RunwayML","Canva API","Adobe Firefly"]
-  },
-  {
-    num:"13", delivery:"3–5 أيام", deliveryColor:"muted", icon:"💬", price:"FROM 1,200 SAR",
-    title:"وكيل ذكاء اصطناعي للمبيعات",
-    shortDesc:"وكيل AI يتحدث مع عملائك المحتملين، يجيب على أسئلتهم، ويحول الاهتمام لمبيعات",
-    fullDesc:"وكيل مبيعات رقمي لا يتعب ولا ينام. يتحدث مع زوار موقعك أو واتساب، يسألهم عن احتياجاتهم، يعرض المنتجات المناسبة، يتعامل مع الاعتراضات، ويحولهم لعملاء فعليين. مبني على تقنيات NLP المتقدمة ومدرّب على منتجاتك وأسعارك.",
-    benefits:[
-      "يتابع كل عميل محتمل فورياً بدون تأخير",
-      "يقلل دورة المبيعات من أيام لساعات",
-      "يتعامل مع اعتراضات الأسعار باحترافية",
-      "يحدد العملاء الجاهزين للشراء تلقائياً",
-      "يرفع معدل تحويل الزيارات لمبيعات بنسبة 40%",
-      "تقارير مفصلة بكل محادثة ومرحلة مبيعات"
-    ],
-    useCases:[
-      "💻 شركة SaaS تريد تحويل زوار الموقع لعملاء مدفوعين",
-      "🏠 وكيل عقاري يريد تأهيل المشترين المحتملين تلقائياً",
-      "📱 متجر إلكتروني يريد تقليل معدل التخلي عن السلة",
-      "🎓 معهد تدريب يحول الاستفسارات لتسجيلات مدفوعة"
-    ],
-    tech:["GPT-4","Sales Playbook Training","CRM Integration","Twilio","HubSpot","Zapier"]
-  },
-  {
-    num:"14", delivery:"48 ساعة", deliveryColor:"gold", icon:"📰", price:"FROM 250 SAR",
-    title:"ملخص يومي ذكي للأخبار والمجال",
-    shortDesc:"تصلك كل يوم ملخص بأهم أخبار مجالك، منافسيك، والسوق — مخصص لك",
-    fullDesc:"كل صباح يصلك بريد إلكتروني أو رسالة واتساب مخصصة — ملخص ذكي لأهم أخبار مجالك، تحديثات منافسيك، اتجاهات السوق، والفرص الجديدة. موفر لساعات من تصفح الأخبار يومياً.",
-    benefits:[
-      "توفير ساعة يومياً في متابعة الأخبار",
-      "لا تفوتك فرصة أو تهديد في سوقك",
-      "متابعة منافسيك وتحركاتهم الجديدة",
-      "تلقي تنبيهات لأخبار عالية الأهمية فوراً",
-      "ملخص مخصص لمجالك تماماً",
-      "أرشيف قابل للبحث لكل الملخصات السابقة"
-    ],
-    useCases:[
-      "👔 رئيس تنفيذي يريد متابعة السوق بدون إضاعة الوقت",
-      "📈 مستثمر يتابع أخبار القطاعات التي يستثمر فيها",
-      "🏢 فريق تسويق يراقب حملات المنافسين",
-      "⚖️ محامٍ يتابع التحديثات التشريعية في مجاله"
-    ],
-    tech:["NewsAPI","Web Scraping","GPT-4 Summarization","SendGrid","WhatsApp API","RSS Feeds"]
-  },
-  {
-    num:"16", delivery:"24 ساعة", deliveryColor:"cyan", icon:"🎓", price:"FROM 400 SAR",
-    title:"استشارة AI لعملك",
-    shortDesc:"جلسة استشارية لتحديد أفضل حلول الذكاء الاصطناعي لشركتك وخارطة طريق للتطبيق",
-    fullDesc:"جلسة استشارية عميقة مع خبرائنا — نتعرف على عملياتك الحالية، نحدد أين يمكن للذكاء الاصطناعي توفير وقت وتقليل تكاليف، ونضع خارطة طريق واضحة للتطبيق مع أولويات واضحة وتكاليف متوقعة. تخرج من الجلسة بخطة عمل جاهزة.",
-    benefits:[
-      "تحديد الفرص الحقيقية في عمليات شركتك",
-      "خارطة طريق واضحة بأولويات وجدول زمني",
-      "تقدير دقيق للتكاليف والعوائد المتوقعة",
-      "تجنب الاستثمار في حلول غير مناسبة",
-      "توصيات بأفضل التقنيات لحجم شركتك",
-      "تقرير مكتوب شامل بعد الجلسة"
-    ],
-    useCases:[
-      "🏢 مدير يريد فهم أين يبدأ رحلة الذكاء الاصطناعي",
-      "💼 شركة تريد تقييم حلول AI متاحة في السوق",
-      "🚀 ناشئة تريد بناء منتجها التقني بالطريقة الصحيحة",
-      "🏭 مصنع يريد تقييم أتمتة خطوط إنتاجه"
-    ],
-    tech:["AI Audit Framework","Process Mapping","ROI Analysis","Technology Assessment","Roadmap Planning"]
-  },
-  {
-    num:"18", delivery:"5–7 أيام", deliveryColor:"muted", icon:"🛒", price:"FROM 800 SAR",
-    title:"توصيات ذكية لمتجرك",
-    shortDesc:"نظام توصية بالمنتجات مبني على ذكاء اصطناعي يزيد معدل الشراء ومتوسط الطلب",
-    fullDesc:"نظام توصية مشابه لأمازون وزاندو — يتعلم من سلوك كل زائر ويعرض له المنتجات الأنسب في الوقت المناسب. يزيد معدل الشراء، متوسط قيمة الطلب، وعدد المنتجات في كل سلة.",
-    benefits:[
-      "زيادة معدل التحويل بنسبة تصل 35%",
-      "زيادة متوسط قيمة الطلب بنسبة تصل 25%",
-      "تخصيص تجربة كل زائر تلقائياً",
-      "توصيات تبيع المنتجات الأبطأ حركة",
-      "تكامل مع Shopify وWooCommerce وغيرها",
-      "تقارير بأداء التوصيات وأثرها على المبيعات"
-    ],
-    useCases:[
-      "👗 متجر أزياء يريد زيادة قيمة الطلبات",
-      "💄 متجر تجميل يريد تسويق منتجات مكملة",
-      "📚 متجر كتب يريد توصية قراء بكتب مناسبة",
-      "🛒 سوبرماركت إلكتروني يريد زيادة حجم الطلبات"
-    ],
-    tech:["Collaborative Filtering","Matrix Factorization","Shopify API","WooCommerce API","Python ML","Real-time Engine"]
-  },
-  {
-    num:"19", delivery:"48–72 ساعة", deliveryColor:"gold", icon:"📈", price:"FROM 700 SAR",
-    title:"تحليل مشاعر العملاء",
-    shortDesc:"نحلل تقييمات ومراجعات عملائك لتعرف ما يحبونه وما يزعجهم بدقة",
-    fullDesc:"نجمع تقييمات عملائك من كل المنصات — Google, Tripadvisor, Noon, Amazon, سوشيال ميديا — ونحللها بالذكاء الاصطناعي لنخبرك بالضبط: ما الذي يحبه عملاؤك؟ ما الذي يزعجهم؟ أي منتج يحتاج تحسيناً؟ وكيف تقارن مع منافسيك؟",
-    benefits:[
-      "فهم عميق لرضا العملاء بدون قراءة يدوية",
-      "اكتشاف المشاكل قبل أن تتضاعف",
-      "مقارنة مشاعر العملاء عبر الزمن",
-      "تحديد نقاط القوة لتسويقها",
-      "مقارنة مع مشاعر عملاء المنافسين",
-      "تقارير أسبوعية بمؤشرات الرضا"
-    ],
-    useCases:[
-      "🍽️ مطعم يريد فهم سبب انخفاض تقييماته",
-      "🏨 فندق يحلل تعليقات الضيوف لتحسين خدماته",
-      "📱 شركة تقنية تحلل مراجعات تطبيقها في المتاجر",
-      "🛍️ علامة تجارية تتابع ردود الفعل على منتج جديد"
-    ],
-    tech:["Arabic NLP","BERT Sentiment Analysis","Google Reviews API","Social Media Scraping","Power BI Dashboard"]
-  },
-  {
-    num:"20", delivery:"48–72 ساعة", deliveryColor:"gold", icon:"🤝", price:"FROM 600 SAR",
-    title:"موظف استقبال افتراضي",
-    shortDesc:"بدّل موظف الاستقبال بذكاء اصطناعي يرد بالعربية ويدير الزيارات والأسئلة 24 ساعة",
-    fullDesc:"مساعد رقمي يعمل على شاشة استقبالك أو موقعك — يرحب بالزوار، يجيب على أسئلتهم، يوجههم للقسم المناسب، ويحجز لهم مواعيد. يعمل 24 ساعة، لا يتأخر، ولا يحتاج إجازة.",
-    benefits:[
-      "استقبال احترافي على مدار الساعة",
-      "توجيه الزوار للشخص الصحيح فوراً",
-      "تقليل الضغط على موظفي الاستقبال",
-      "جمع بيانات الزوار تلقائياً",
-      "يتحدث العربية والإنجليزية بطلاقة",
-      "تقارير بإحصاءات الزيارات والأسئلة الشائعة"
-    ],
-    useCases:[
-      "🏢 مبنى مكاتب يريد استقبال ذكي بدون موظف دوام كامل",
-      "🏥 عيادة تريد توجيه المرضى للقسم الصحيح",
-      "🏨 فندق يريد خدمة ضيوف 24/7 بدون تكلفة إضافية",
-      "🏛️ حكومة أو جهة رسمية تريد تسهيل تجربة الزوار"
-    ],
-    tech:["GPT-4","Text-to-Speech Arabic","Kiosk App","React","Raspberry Pi / Tablet","Calendar API"]
-  },
-  {
-    num:"22", delivery:"48 ساعة", deliveryColor:"gold", icon:"📋", price:"FROM 350 SAR",
-    title:"توليد تقارير HR والموظفين",
-    shortDesc:"تقارير أداء وحضور وإجازات ومهام تلقائياً من بيانات شركتك",
-    fullDesc:"اربط بيانات موظفيك — نظام الحضور، مؤشرات الأداء، الإجازات، الرواتب — ونولّد لك تقارير شاملة تلقائياً. تقارير أداء فردية، مقارنات بين الفرق، تحليل معدلات التغيب، وتوصيات لتحسين الإنتاجية.",
-    benefits:[
-      "تقارير شهرية شاملة تُنتَج تلقائياً",
-      "اكتشاف مبكر للموظفين المرشحين للترقية",
-      "تحديد مشاكل الحضور قبل تفاقمها",
-      "مقارنة أداء الأقسام المختلفة",
-      "تقارير جاهزة لاجتماعات مجلس الإدارة",
-      "تتكامل مع SAP, Oracle, وأنظمة HR الشائعة"
-    ],
-    useCases:[
-      "👥 HR Director يريد تقرير أداء ربعي احترافي",
-      "🏢 شركة 200+ موظف تريد أتمتة تقارير الرواتب والإجازات",
-      "📊 مدير يريد متابعة إنتاجية فريقه أسبوعياً",
-      "🏭 مصنع يتابع ساعات عمل وإنتاجية خطوط الإنتاج"
-    ],
-    tech:["Python Pandas","SAP API","Oracle HCM","Power BI","Automated PDF Reports","Email Scheduler"]
-  },
-  {
-    num:"24", delivery:"48–72 ساعة", deliveryColor:"gold", icon:"⚡", price:"FROM 500 SAR",
-    title:"أتمتة المهام المتكررة",
-    shortDesc:"نحول أي عملية يدوية متكررة في شركتك لعملية تلقائية توفر وقتاً وجهداً",
-    fullDesc:"خريطة العمليات اليدوية المتكررة في شركتك — نسجلها، ندرسها، ونحولها لتدفقات أتمتة تعمل وحدها. من نقل البيانات بين أنظمة، تفعيل إشعارات، إنشاء تقارير دورية، إلى معالجة الطلبات — كل شيء قابل للأتمتة.",
-    benefits:[
-      "توفير 10-20 ساعة عمل يدوي أسبوعياً",
-      "القضاء على أخطاء الإدخال البشري",
-      "العمليات تعمل 24/7 بدون إشراف",
-      "تسريع دورة العمل بشكل ملحوظ",
-      "توثيق تلقائي لكل خطوة في العملية",
-      "إشعارات فورية عند أي مشكلة"
-    ],
-    useCases:[
-      "📊 نقل بيانات المبيعات اليومية تلقائياً لتقارير الإدارة",
-      "📧 إرسال فواتير وعروض أسعار تلقائياً عند الطلب",
-      "📦 تحديث المخزون تلقائياً عند كل عملية بيع",
-      "🔔 إشعار الفريق تلقائياً عند وصول طلبات جديدة"
-    ],
-    tech:["n8n","Make.com","Zapier","Python Scripts","REST APIs","Webhooks","Cron Jobs"]
-  }
-];
-
-window.openModal = function(idx) {
-  var s = SERVICES[idx];
-  if (!s) return;
-  document.getElementById('mNum').textContent = s.num;
-  document.getElementById('mIcon').textContent = s.icon;
-  document.getElementById('mPrice').textContent = s.price;
-  document.getElementById('mTitle').textContent = s.title;
-  document.getElementById('mShortDesc').textContent = s.shortDesc;
-  document.getElementById('mFullDesc').textContent = s.fullDesc;
-  document.getElementById('mFooterPrice').textContent = s.price.replace('FROM ','');
-  var colorMap = { gold:'var(--gold)', cyan:'var(--cyan)', muted:'var(--muted)' };
-  var d = document.getElementById('mDelivery');
-  d.textContent = '⏱ وقت التسليم: ' + s.delivery;
-  d.style.color = colorMap[s.deliveryColor] || 'var(--gold)';
-  var bList = document.getElementById('mBenefits');
-  bList.innerHTML = s.benefits.map(function(b){ return '<li>' + b + '</li>'; }).join('');
-  var uList = document.getElementById('mUseCases');
-  uList.innerHTML = s.useCases.map(function(u){ return '<li>' + u + '</li>'; }).join('');
-  var tRow = document.getElementById('mTechTags');
-  tRow.innerHTML = s.tech.map(function(t){ return '<span class="modal-tag">' + t + '</span>'; }).join('');
-  // Set WhatsApp link with pre-filled service name
-  var msg = encodeURIComponent('مرحباً، أنا مهتم بخدمة: ' + s.title + ' — السعر: ' + s.price + ' — أرجو التواصل معي للمزيد من التفاصيل 🙏');
-  document.getElementById('mCTA').href = 'https://wa.me/966564124426?text=' + msg;
-  document.getElementById('serviceModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('modalPanel').scrollTop = 0;
-};
-
-window.closeModal = function() {
-  document.getElementById('serviceModal').classList.remove('open');
-  document.body.style.overflow = '';
-};
-</script>
 </head>
 <body>
 
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-
-<!-- NAV -->
-
+<!-- ── NAV ── -->
 <nav>
-  <a href="#home" class="nav-logo">
-    <svg width="36" height="36" viewBox="0 0 70 70" fill="none" style="flex-shrink:0;">
-      <rect x="8" y="8" width="54" height="54" rx="6" transform="rotate(45 35 35)" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-      <rect x="15" y="15" width="40" height="40" rx="4" transform="rotate(45 35 35)" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-width="0.6"/>
-      <circle cx="35" cy="6"  r="2.5" fill="#c9a84c"/>
-      <circle cx="35" cy="64" r="2.5" fill="#c9a84c"/>
-      <circle cx="6"  cy="35" r="2.5" fill="#c9a84c"/>
-      <circle cx="64" cy="35" r="2.5" fill="#c9a84c"/>
-      <text x="35" y="42" text-anchor="middle" fill="#c9a84c" font-family="Rajdhani,sans-serif" font-size="24" font-weight="700">S</text>
-    </svg>
-    <span>AI</span> SURAYA
+  <a href="#home" class="logo">
+    <!-- Exact hexagon/diamond logo from original site -->
+    <div class="logo-hex">
+      <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <!-- Diamond/rhombus shape -->
+        <polygon points="18,2 34,18 18,34 2,18" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+        <polygon points="18,5 31,18 18,31 5,18" fill="#c9a84c" opacity="0.15"/>
+        <text x="18" y="23" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#e8c96d">S</text>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <span class="suraya">SURAYA</span>
+      <span class="ai">AI</span>
+    </div>
   </a>
   <ul class="nav-links">
     <li><a href="#services">الخدمات</a></li>
     <li><a href="#packages">الباقات</a></li>
     <li><a href="#sectors">القطاعات</a></li>
     <li><a href="#process">كيف نعمل</a></li>
-    <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
+    <li><a href="#contact" class="nav-wa">
+      <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#fff;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.563 4.14 1.547 5.877L.057 23.943l6.203-1.488A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.032-1.388l-.361-.214-3.681.883.933-3.582-.236-.375A9.818 9.818 0 012.182 12c0-5.419 4.399-9.818 9.818-9.818 5.42 0 9.818 4.399 9.818 9.818 0 5.419-4.398 9.818-9.818 9.818z"/></svg>
+      واتساب
+    </a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section class="hero" id="home">
+  <div class="hero-grid"></div>
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
 
-  <div class="hero-badge">SURAYA AI — حلول ذكاء اصطناعي</div>
-
-  <h1>
-    <span class="line1">حوّل أعمالك</span>
-    <span class="line2">بالذكاء الاصطناعي</span>
-  </h1>
-
-  <p class="hero-sub">
-    حلول ذكاء اصطناعي تُوفّر وقتك وتزيد إنتاجيتك —<br>
-    من الفكرة إلى التنفيذ في أسرع وقت
-  </p>
-
-  <div class="hero-actions">
-    <a href="#services" class="btn-primary"><span>اكتشف خدماتنا</span></a>
-    <a href="#contact" class="btn-ghost">تحدث معنا</a>
+  <div class="badge"><span class="bdot"></span>SURAYA AI · حلول ذكاء اصطناعي</div>
+  <h1>حوّل أعمالك<br><span class="grad">بالذكاء الاصطناعي</span></h1>
+  <p class="hero-sub">حلول ذكاء اصطناعي تُوفّر وقتك وتزيد إنتاجيتك —<br>من الفكرة إلى التنفيذ في أسرع وقت</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/966564124426" class="btn-wa" target="_blank">
+      <svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.563 4.14 1.547 5.877L.057 23.943l6.203-1.488A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.032-1.388l-.361-.214-3.681.883.933-3.582-.236-.375A9.818 9.818 0 012.182 12c0-5.419 4.399-9.818 9.818-9.818 5.42 0 9.818 4.399 9.818 9.818 0 5.419-4.398 9.818-9.818 9.818z"/></svg>
+      ابدأ مجاناً — واتساب
+    </a>
+    <a href="#services" class="btn-out">اكتشف الخدمات ↓</a>
   </div>
 </section>
 
-<!-- STATS -->
+<!-- ── STATS ── -->
 <div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-num">19+</div>
-    <div class="stat-label">خدمة متاحة</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">48H</div>
-    <div class="stat-label">أسرع وقت تسليم</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">100%</div>
-    <div class="stat-label">دعم عربي</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">5★</div>
-    <div class="stat-label">تقييم العملاء</div>
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-n">19+</div><div class="stat-l">خدمة متاحة</div></div>
+    <div class="stat"><div class="stat-n">48H</div><div class="stat-l">أسرع وقت تسليم</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">دعم عربي</div></div>
+    <div class="stat"><div class="stat-n">5★</div><div class="stat-l">تقييم العملاء</div></div>
   </div>
 </div>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="section-header">
-    <div class="section-tag">— خدماتنا —</div>
-    <div class="divider"><div class="divider-gem"></div></div>
-    <h2 class="section-title">كل ما تحتاجه من <em>ذكاء اصطناعي</em></h2>
-    <p class="section-desc">خدمات ذكاء اصطناعي جاهزة للتنفيذ الفوري لأي نوع من الأعمال</p>
+<!-- ── SERVICES ── -->
+<section class="sec" id="services">
+  <div class="lbl">خدماتنا</div>
+  <div class="ttl">كل ما تحتاجه من <span class="grad">ذكاء اصطناعي</span></div>
+  <div class="sub">خدمات ذكاء اصطناعي جاهزة للتنفيذ الفوري لأي نوع من الأعمال — اختر ما يناسبك</div>
+
+  <div class="filter-row">
+    <button class="filter-btn active" data-filter="all">الكل</button>
+    <button class="filter-btn" data-filter="chatbot">المحادثة والأتمتة</button>
+    <button class="filter-btn" data-filter="data">البيانات والتحليل</button>
+    <button class="filter-btn" data-filter="content">المحتوى والتسويق</button>
+    <button class="filter-btn" data-filter="ops">العمليات الداخلية</button>
   </div>
 
-  <div class="services-grid">
-
-    <!-- Row 1 -->
-    <div class="service-card" data-index="0" onclick="openModal(0)" style="cursor:pointer">
-      <span class="service-num">01</span>
-      <span class="service-icon">🤖</span>
-      <div class="service-price">FROM 500 SAR</div>
-      <h3 class="service-title">شات بوت ذكي لموقعك</h3>
-      <p class="service-desc">روبوت محادثة يرد على عملائك 24/7 باللغة العربية والإنجليزية ويتعلم من محتوى شركتك</p>
-      <div class="service-tags">
-        <span class="tag">واتساب</span>
-        <span class="tag">موقع إلكتروني</span>
-        <span class="tag">عربي</span>
-      </div>
+  <div class="svc-grid">
+    <div class="svc" data-cat="chatbot">
+      <div class="svc-head"><div class="svc-ico">🤖</div><span class="svc-price">من 500 ريال</span></div>
+      <h3>شات بوت ذكي لموقعك</h3>
+      <p>روبوت محادثة يرد على عملائك 24/7 باللغة العربية والإنجليزية ويتعلم من محتوى شركتك</p>
+      <div class="svc-tags"><span class="tag">واتساب</span><span class="tag">موقع إلكتروني</span><span class="tag">عربي</span></div>
     </div>
-
-    <div class="service-card" data-index="1" onclick="openModal(1)" style="cursor:pointer">
-      <span class="service-num">02</span>
-      <span class="service-icon">📱</span>
-      <div class="service-price">FROM 800 SAR</div>
-      <h3 class="service-title">أتمتة واتساب بالذكاء الاصطناعي</h3>
-      <p class="service-desc">نربط واتساب بالذكاء الاصطناعي فيرد على عملائك تلقائياً، يحجز مواعيد، ويرسل تذكيرات</p>
-      <div class="service-tags">
-        <span class="tag">واتساب API</span>
-        <span class="tag">أتمتة</span>
-        <span class="tag">24/7</span>
-      </div>
+    <div class="svc" data-cat="chatbot">
+      <div class="svc-head"><div class="svc-ico">📱</div><span class="svc-price">من 800 ريال</span></div>
+      <h3>أتمتة واتساب بالذكاء الاصطناعي</h3>
+      <p>نربط واتساب بالذكاء الاصطناعي فيرد على عملائك تلقائياً، يحجز مواعيد، ويرسل تذكيرات</p>
+      <div class="svc-tags"><span class="tag">واتساب API</span><span class="tag">أتمتة</span><span class="tag">24/7</span></div>
     </div>
-
-    <div class="service-card" data-index="2" onclick="openModal(2)" style="cursor:pointer">
-      <span class="service-num">03</span>
-      <span class="service-icon">📄</span>
-      <div class="service-price">FROM 300 SAR</div>
-      <h3 class="service-title">تلخيص وتحليل المستندات</h3>
-      <p class="service-desc">ارفع أي مستند PDF أو Word ونحلله لك في ثوانٍ — عقود، تقارير، بيانات مالية</p>
-      <div class="service-tags">
-        <span class="tag">PDF</span>
-        <span class="tag">تحليل</span>
-        <span class="tag">سريع</span>
-      </div>
+    <div class="svc" data-cat="chatbot">
+      <div class="svc-head"><div class="svc-ico">🗓️</div><span class="svc-price">من 700 ريال</span></div>
+      <h3>نظام حجز مواعيد ذكي</h3>
+      <p>نظام يحجز مواعيد العملاء تلقائياً ويرسل تذكيرات ويدير الجدول عبر واتساب أو الموقع</p>
+      <div class="svc-tags"><span class="tag">حجز</span><span class="tag">تذكير</span><span class="tag">تلقائي</span></div>
     </div>
-
-    <div class="service-card" data-index="3" onclick="openModal(3)" style="cursor:pointer">
-      <span class="service-num">04</span>
-      <span class="service-icon">🌐</span>
-      <div class="service-price">FROM 200 SAR</div>
-      <h3 class="service-title">ترجمة ذكية عربي ↔ إنجليزي</h3>
-      <p class="service-desc">ترجمة احترافية تراعي السياق الثقافي للمستندات والمواقع والتسويق</p>
-      <div class="service-tags">
-        <span class="tag">عربي</span>
-        <span class="tag">إنجليزي</span>
-        <span class="tag">سياق ثقافي</span>
-      </div>
+    <div class="svc" data-cat="data">
+      <div class="svc-head"><div class="svc-ico">📄</div><span class="svc-price">من 300 ريال</span></div>
+      <h3>تلخيص وتحليل المستندات</h3>
+      <p>ارفع أي مستند PDF أو Word ونحلله لك في ثوانٍ — عقود، تقارير، بيانات مالية</p>
+      <div class="svc-tags"><span class="tag">PDF</span><span class="tag">تحليل</span><span class="tag">سريع</span></div>
     </div>
-
-    <!-- Row 2 - wide -->
-    
-
-    <div class="service-card" data-index="4" onclick="openModal(4)" style="cursor:pointer">
-      <span class="service-num">06</span>
-      <span class="service-icon">📊</span>
-      <div class="service-price">FROM 600 SAR</div>
-      <h3 class="service-title">تحليل البيانات وإنتاج تقارير</h3>
-      <p class="service-desc">ارفع بياناتك Excel أو CSV وناخذ منها لك تقارير وإحصاءات واضحة</p>
-      <div class="service-tags">
-        <span class="tag">Excel</span>
-        <span class="tag">تقارير</span>
-        <span class="tag">رسوم بيانية</span>
-      </div>
+    <div class="svc" data-cat="data">
+      <div class="svc-head"><div class="svc-ico">📊</div><span class="svc-price">من 600 ريال</span></div>
+      <h3>تحليل البيانات وإنتاج تقارير</h3>
+      <p>ارفع بياناتك Excel أو CSV ونأخذ منها تقارير وإحصاءات واضحة ورسوم بيانية</p>
+      <div class="svc-tags"><span class="tag">Excel</span><span class="tag">تقارير</span><span class="tag">رسوم بيانية</span></div>
     </div>
-
-    <!-- Row 3 -->
-    <div class="service-card" data-index="5" onclick="openModal(5)" style="cursor:pointer">
-      <span class="service-num">07</span>
-      <span class="service-icon">✍️</span>
-      <div class="service-price">FROM 150 SAR</div>
-      <h3 class="service-title">كتابة محتوى تسويقي بالذكاء الاصطناعي</h3>
-      <p class="service-desc">كتابة منشورات سوشيال ميديا، إعلانات، بريد إلكتروني بأسلوب شركتك</p>
-      <div class="service-tags">
-        <span class="tag">سوشيال</span>
-        <span class="tag">إعلانات</span>
-        <span class="tag">SEO</span>
-      </div>
+    <div class="svc" data-cat="data">
+      <div class="svc-head"><div class="svc-ico">📈</div><span class="svc-price">من 700 ريال</span></div>
+      <h3>تحليل مشاعر العملاء</h3>
+      <p>نحلل تقييمات ومراجعات عملائك لتعرف ما يحبونه وما يزعجهم بدقة</p>
+      <div class="svc-tags"><span class="tag">مشاعر</span><span class="tag">تقييمات</span><span class="tag">تحسين</span></div>
     </div>
-
-    <div class="service-card" data-index="6" onclick="openModal(6)" style="cursor:pointer">
-      <span class="service-num">08</span>
-      <span class="service-icon">🗓️</span>
-      <div class="service-price">FROM 700 SAR</div>
-      <h3 class="service-title">نظام حجز مواعيد ذكي</h3>
-      <p class="service-desc">نظام يحجز مواعيد العملاء تلقائياً ويرسل تذكيرات ويدير الجدول عبر واتساب أو الموقع</p>
-      <div class="service-tags">
-        <span class="tag">حجز</span>
-        <span class="tag">تذكير</span>
-        <span class="tag">تلقائي</span>
-      </div>
+    <div class="svc" data-cat="content">
+      <div class="svc-head"><div class="svc-ico">✍️</div><span class="svc-price">من 150 ريال</span></div>
+      <h3>كتابة محتوى تسويقي بالذكاء الاصطناعي</h3>
+      <p>كتابة منشورات سوشيال ميديا، إعلانات، بريد إلكتروني بأسلوب شركتك</p>
+      <div class="svc-tags"><span class="tag">سوشيال</span><span class="tag">إعلانات</span><span class="tag">SEO</span></div>
     </div>
-
-    <div class="service-card" data-index="7" onclick="openModal(7)" style="cursor:pointer">
-      <span class="service-num">09</span>
-      <span class="service-icon">📧</span>
-      <div class="service-price">FROM 400 SAR</div>
-      <h3 class="service-title">أتمتة البريد الإلكتروني</h3>
-      <p class="service-desc">ردود تلقائية ذكية على بريدك الإلكتروني، تصنيف الرسائل، وإرسال متابعات احترافية</p>
-      <div class="service-tags">
-        <span class="tag">Gmail</span>
-        <span class="tag">Outlook</span>
-        <span class="tag">أتمتة</span>
-      </div>
+    <div class="svc" data-cat="content">
+      <div class="svc-head"><div class="svc-ico">🌐</div><span class="svc-price">من 200 ريال</span></div>
+      <h3>ترجمة ذكية عربي ↔ إنجليزي</h3>
+      <p>ترجمة احترافية تراعي السياق الثقافي للمستندات والمواقع والتسويق</p>
+      <div class="svc-tags"><span class="tag">عربي</span><span class="tag">إنجليزي</span><span class="tag">سياق ثقافي</span></div>
     </div>
-
-    <div class="service-card" data-index="8" onclick="openModal(8)" style="cursor:pointer">
-      <span class="service-num">10</span>
-      <span class="service-icon">🔍</span>
-      <div class="service-price">FROM 500 SAR</div>
-      <h3 class="service-title">محرك بحث داخلي للشركة</h3>
-      <p class="service-desc">ابحث في كل وثائق شركتك بلغة طبيعية — كأنك تسأل موظفاً خبيراً</p>
-      <div class="service-tags">
-        <span class="tag">بحث ذكي</span>
-        <span class="tag">داخلي</span>
-        <span class="tag">سريع</span>
-      </div>
+    <div class="svc" data-cat="content">
+      <div class="svc-head"><div class="svc-ico">🖼️</div><span class="svc-price">من 300 ريال</span></div>
+      <h3>توليد صور وفيديوهات بالذكاء الاصطناعي</h3>
+      <p>صور تسويقية، لوغو مفاهيمي، فيديوهات قصيرة لمنصاتك الاجتماعية</p>
+      <div class="svc-tags"><span class="tag">تصميم</span><span class="tag">فيديو</span><span class="tag">سوشيال</span></div>
     </div>
-
-    <!-- Row 4 -->
-    <div class="service-card" data-index="9" onclick="openModal(9)" style="cursor:pointer">
-      <span class="service-num">11</span>
-      <span class="service-icon">🎙️</span>
-      <div class="service-price">FROM 900 SAR</div>
-      <h3 class="service-title">تحويل الصوت إلى نص وتحليله</h3>
-      <p class="service-desc">نحول اجتماعاتك ومقابلاتك لنصوص مرتبة مع ملخص وأبرز النقاط</p>
-      <div class="service-tags">
-        <span class="tag">Whisper AI</span>
-        <span class="tag">اجتماعات</span>
-        <span class="tag">ملخص</span>
-      </div>
+    <div class="svc" data-cat="ops">
+      <div class="svc-head"><div class="svc-ico">📧</div><span class="svc-price">من 400 ريال</span></div>
+      <h3>أتمتة البريد الإلكتروني</h3>
+      <p>ردود تلقائية ذكية على بريدك الإلكتروني، تصنيف الرسائل، وإرسال متابعات احترافية</p>
+      <div class="svc-tags"><span class="tag">Gmail</span><span class="tag">Outlook</span><span class="tag">أتمتة</span></div>
     </div>
-
-    <div class="service-card" data-index="10" onclick="openModal(10)" style="cursor:pointer">
-      <span class="service-num">12</span>
-      <span class="service-icon">🖼️</span>
-      <div class="service-price">FROM 300 SAR</div>
-      <h3 class="service-title">توليد صور وفيديوهات بالذكاء الاصطناعي</h3>
-      <p class="service-desc">صور تسويقية، لوغو مفاهيمي، فيديوهات قصيرة لمنصاتك الاجتماعية</p>
-      <div class="service-tags">
-        <span class="tag">تصميم</span>
-        <span class="tag">فيديو</span>
-        <span class="tag">سوشيال</span>
-      </div>
+    <div class="svc" data-cat="ops">
+      <div class="svc-head"><div class="svc-ico">🔍</div><span class="svc-price">من 500 ريال</span></div>
+      <h3>محرك بحث داخلي للشركة</h3>
+      <p>ابحث في كل وثائق شركتك بلغة طبيعية — كأنك تسأل موظفاً خبيراً</p>
+      <div class="svc-tags"><span class="tag">بحث ذكي</span><span class="tag">داخلي</span><span class="tag">سريع</span></div>
     </div>
-
-    <div class="service-card" data-index="11" onclick="openModal(11)" style="cursor:pointer">
-      <span class="service-num">13</span>
-      <span class="service-icon">💬</span>
-      <div class="service-price">FROM 1,200 SAR</div>
-      <h3 class="service-title">وكيل ذكاء اصطناعي للمبيعات</h3>
-      <p class="service-desc">وكيل AI يتحدث مع عملائك المحتملين، يجيب على أسئلتهم، ويحول الاهتمام لمبيعات</p>
-      <div class="service-tags">
-        <span class="tag">مبيعات</span>
-        <span class="tag">تحويل</span>
-        <span class="tag">ذكي</span>
-      </div>
+    <div class="svc" data-cat="ops">
+      <div class="svc-head"><div class="svc-ico">🎙️</div><span class="svc-price">من 900 ريال</span></div>
+      <h3>تحويل الصوت إلى نص وتحليله</h3>
+      <p>نحول اجتماعاتك ومقابلاتك لنصوص مرتبة مع ملخص وأبرز النقاط</p>
+      <div class="svc-tags"><span class="tag">Whisper AI</span><span class="tag">اجتماعات</span><span class="tag">ملخص</span></div>
     </div>
-
-    <div class="service-card" data-index="12" onclick="openModal(12)" style="cursor:pointer">
-      <span class="service-num">14</span>
-      <span class="service-icon">📰</span>
-      <div class="service-price">FROM 250 SAR</div>
-      <h3 class="service-title">ملخص يومي ذكي للأخبار والمجال</h3>
-      <p class="service-desc">تصلك كل يوم ملخص بأهم أخبار مجالك، منافسيك، والسوق — مخصص لك</p>
-      <div class="service-tags">
-        <span class="tag">أخبار</span>
-        <span class="tag">يومي</span>
-        <span class="tag">مخصص</span>
-      </div>
+    <div class="svc" data-cat="chatbot">
+      <div class="svc-head"><div class="svc-ico">💬</div><span class="svc-price">من 1,200 ريال</span></div>
+      <h3>وكيل ذكاء اصطناعي للمبيعات</h3>
+      <p>وكيل AI يتحدث مع عملائك المحتملين، يجيب على أسئلتهم، ويحول الاهتمام لمبيعات</p>
+      <div class="svc-tags"><span class="tag">مبيعات</span><span class="tag">تحويل</span><span class="tag">ذكي</span></div>
     </div>
-
-    <!-- Row 5 -->
-    
-
-    <div class="service-card" data-index="13" onclick="openModal(13)" style="cursor:pointer">
-      <span class="service-num">16</span>
-      <span class="service-icon">🎓</span>
-      <div class="service-price">FROM 400 SAR</div>
-      <h3 class="service-title">استشارة AI لعملك</h3>
-      <p class="service-desc">جلسة استشارية لتحديد أفضل حلول الذكاء الاصطناعي لشركتك وخارطة طريق للتطبيق</p>
-      <div class="service-tags">
-        <span class="tag">استشارة</span>
-        <span class="tag">خارطة طريق</span>
-        
-      </div>
+    <div class="svc" data-cat="ops">
+      <div class="svc-head"><div class="svc-ico">📰</div><span class="svc-price">من 250 ريال</span></div>
+      <h3>ملخص يومي ذكي للأخبار والمجال</h3>
+      <p>تصلك كل يوم ملخص بأهم أخبار مجالك، منافسيك، والسوق — مخصص لك</p>
+      <div class="svc-tags"><span class="tag">أخبار</span><span class="tag">يومي</span><span class="tag">مخصص</span></div>
     </div>
-
-    <!-- Row 6 -->
-    
-
-    <div class="service-card" data-index="14" onclick="openModal(14)" style="cursor:pointer">
-      <span class="service-num">18</span>
-      <span class="service-icon">🛒</span>
-      <div class="service-price">FROM 800 SAR</div>
-      <h3 class="service-title">توصيات ذكية لمتجرك</h3>
-      <p class="service-desc">نظام توصية بالمنتجات مبني على ذكاء اصطناعي يزيد معدل الشراء ومتوسط الطلب</p>
-      <div class="service-tags">
-        <span class="tag">e-Commerce</span>
-        <span class="tag">توصيات</span>
-        <span class="tag">مبيعات</span>
-      </div>
+    <div class="svc" data-cat="data">
+      <div class="svc-head"><div class="svc-ico">🛒</div><span class="svc-price">من 800 ريال</span></div>
+      <h3>توصيات ذكية لمتجرك</h3>
+      <p>نظام توصية بالمنتجات مبني على ذكاء اصطناعي يزيد معدل الشراء ومتوسط الطلب</p>
+      <div class="svc-tags"><span class="tag">e-Commerce</span><span class="tag">توصيات</span><span class="tag">مبيعات</span></div>
     </div>
-
-    <div class="service-card" data-index="15" onclick="openModal(15)" style="cursor:pointer">
-      <span class="service-num">19</span>
-      <span class="service-icon">📈</span>
-      <div class="service-price">FROM 700 SAR</div>
-      <h3 class="service-title">تحليل مشاعر العملاء</h3>
-      <p class="service-desc">نحلل تقييمات ومراجعات عملائك لتعرف ما يحبونه وما يزعجهم بدقة</p>
-      <div class="service-tags">
-        <span class="tag">مشاعر</span>
-        <span class="tag">تقييمات</span>
-        <span class="tag">تحسين</span>
-      </div>
+    <div class="svc" data-cat="chatbot">
+      <div class="svc-head"><div class="svc-ico">🤝</div><span class="svc-price">من 600 ريال</span></div>
+      <h3>موظف استقبال افتراضي</h3>
+      <p>بدّل موظف الاستقبال بذكاء اصطناعي يرد بالعربية ويدير الزيارات والأسئلة 24 ساعة</p>
+      <div class="svc-tags"><span class="tag">استقبال</span><span class="tag">اتصال</span><span class="tag">24/7</span></div>
     </div>
-
-    <div class="service-card" data-index="16" onclick="openModal(16)" style="cursor:pointer">
-      <span class="service-num">20</span>
-      <span class="service-icon">🤝</span>
-      <div class="service-price">FROM 600 SAR</div>
-      <h3 class="service-title">موظف استقبال افتراضي</h3>
-      <p class="service-desc">بدّل موظف الاستقبال بذكاء اصطناعي يرد بالعربية ويدير الزيارات والأسئلة 24 ساعة</p>
-      <div class="service-tags">
-        <span class="tag">استقبال</span>
-        <span class="tag">اتصال</span>
-        <span class="tag">24/7</span>
-      </div>
+    <div class="svc" data-cat="ops">
+      <div class="svc-head"><div class="svc-ico">📋</div><span class="svc-price">من 350 ريال</span></div>
+      <h3>توليد تقارير HR والموظفين</h3>
+      <p>تقارير أداء وحضور وإجازات ومهام تلقائياً من بيانات شركتك</p>
+      <div class="svc-tags"><span class="tag">HR</span><span class="tag">تقارير</span><span class="tag">أداء</span></div>
     </div>
-
-    <!-- Row 7 -->
-    
-
-    <div class="service-card" data-index="17" onclick="openModal(17)" style="cursor:pointer">
-      <span class="service-num">22</span>
-      <span class="service-icon">📋</span>
-      <div class="service-price">FROM 350 SAR</div>
-      <h3 class="service-title">توليد تقارير HR والموظفين</h3>
-      <p class="service-desc">تقارير أداء وحضور وإجازات ومهام تلقائياً من بيانات شركتك</p>
-      <div class="service-tags">
-        <span class="tag">HR</span>
-        <span class="tag">تقارير</span>
-        <span class="tag">أداء</span>
-      </div>
+    <div class="svc" data-cat="ops">
+      <div class="svc-head"><div class="svc-ico">⚡</div><span class="svc-price">من 500 ريال</span></div>
+      <h3>أتمتة المهام المتكررة</h3>
+      <p>نحول أي عملية يدوية متكررة في شركتك لعملية تلقائية توفر وقتاً وجهداً</p>
+      <div class="svc-tags"><span class="tag">أتمتة</span><span class="tag">n8n</span><span class="tag">توفير وقت</span></div>
     </div>
-
-    
-
-    <div class="service-card" data-index="18" onclick="openModal(18)" style="cursor:pointer">
-      <span class="service-num">24</span>
-      <span class="service-icon">⚡</span>
-      <div class="service-price">FROM 500 SAR</div>
-      <h3 class="service-title">أتمتة المهام المتكررة</h3>
-      <p class="service-desc">نحول أي عملية يدوية متكررة في شركتك لعملية تلقائية توفر وقتاً وجهداً</p>
-      <div class="service-tags">
-        <span class="tag">أتمتة</span>
-        <span class="tag">n8n</span>
-        <span class="tag">توفير وقت</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PACKAGES -->
-<section class="packages" id="packages">
-  <div class="section-header">
-    <div class="section-tag">— الباقات —</div>
-    <div class="divider"><div class="divider-gem"></div></div>
-    <h2 class="section-title">باقات جاهزة لكل <em>قطاع</em></h2>
-    <p class="section-desc">اخترنا أكثر الخدمات طلباً وجمعناها في باقات واضحة السعر</p>
-  </div>
-
-  <div class="packages-grid">
-    <div class="pkg-card">
-      <span class="pkg-icon">🏪</span>
-      <div class="pkg-name">STARTER PACKAGE</div>
-      <h3 class="pkg-title">باقة المتجر والمطعم</h3>
-      <div class="pkg-price">1,499</div>
-      <div class="pkg-price-note">ريال سعودي — شهر واحد</div>
-      <ul class="pkg-features">
-        <li>شات بوت واتساب ذكي يرد على العملاء</li>
-        <li>نظام حجز مواعيد أو طلبات تلقائي</li>
-        <li>ردود تلقائية على الأسئلة المتكررة</li>
-        <li>تقرير شهري بأداء النظام</li>
-        <li>دعم فني 30 يوم</li>
-      </ul>
-      <a href="#contact" class="btn-ghost" style="width:100%;text-align:center;display:block;">ابدأ الآن</a>
-    </div>
-
-    <div class="pkg-card featured-pkg">
-      <span class="pkg-icon">🏢</span>
-      <div class="pkg-name">BUSINESS PACKAGE</div>
-      <h3 class="pkg-title">باقة الشركات الصغيرة</h3>
-      <div class="pkg-price">3,499</div>
-      <div class="pkg-price-note">ريال سعودي — إعداد كامل</div>
-      <ul class="pkg-features">
-        <li>شات بوت ذكي للموقع + واتساب</li>
-        <li>قاعدة معرفة داخلية (RAG) للموظفين</li>
-        <li>أتمتة البريد الإلكتروني والمهام</li>
-        <li>تحليل بيانات شهري مع تقرير</li>
-        <li>محتوى سوشيال ميديا أسبوعي (4 منشورات)</li>
-        <li>دعم فني 3 أشهر</li>
-      </ul>
-      <a href="#contact" class="btn-primary" style="width:100%;text-align:center;display:block;"><span>ابدأ الآن</span></a>
-    </div>
-
-    <div class="pkg-card">
-      <span class="pkg-icon">🏥</span>
-      <div class="pkg-name">CLINIC PACKAGE</div>
-      <h3 class="pkg-title">باقة العيادات والمراكز</h3>
-      <div class="pkg-price">2,299</div>
-      <div class="pkg-price-note">ريال سعودي — إعداد كامل</div>
-      <ul class="pkg-features">
-        <li>نظام حجز مواعيد ذكي عبر واتساب</li>
-        <li>تذكيرات تلقائية للمرضى قبل الموعد</li>
-        <li>شات بوت يجيب على أسئلة المرضى</li>
-        <li>تلخيص ملفات المرضى بالذكاء الاصطناعي</li>
-        <li>دعم فني 3 أشهر</li>
-      </ul>
-      <a href="#contact" class="btn-ghost" style="width:100%;text-align:center;display:block;">ابدأ الآن</a>
+    <div class="svc" data-cat="data">
+      <div class="svc-head"><div class="svc-ico">🎓</div><span class="svc-price">من 400 ريال</span></div>
+      <h3>استشارة AI لعملك</h3>
+      <p>جلسة استشارية لتحديد أفضل حلول الذكاء الاصطناعي لشركتك وخارطة طريق للتطبيق</p>
+      <div class="svc-tags"><span class="tag">استشارة</span><span class="tag">خارطة طريق</span></div>
     </div>
   </div>
 </section>
 
-<!-- SECTORS -->
-<section class="sectors" id="sectors">
-  <div class="section-header">
-    <div class="section-tag">— القطاعات —</div>
-    <div class="divider"><div class="divider-gem"></div></div>
-    <h2 class="section-title">نخدم كل <em>القطاعات</em></h2>
-    <p class="section-desc">خبرة عميقة في القطاعات الأكثر حاجة للذكاء الاصطناعي</p>
-  </div>
+<!-- ── PACKAGES ── -->
+<div class="sec-full" id="packages">
+  <div class="sec-full-inner">
+    <div class="lbl">الباقات</div>
+    <div class="ttl">باقات جاهزة لكل <span class="grad">قطاع</span></div>
+    <div class="sub">اخترنا أكثر الخدمات طلباً وجمعناها في باقات واضحة السعر</div>
 
-  <div class="sectors-grid">
-    <div class="sector-card">
-      <span class="sector-emoji">🏥</span>
-      <div class="sector-name">الصحة والعيادات</div>
-      <div class="sector-sub">حجز مواعيد، ملخصات طبية، دعم المرضى</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">🛒</span>
-      <div class="sector-name">التجارة الإلكترونية</div>
-      <div class="sector-sub">توصيات، خدمة عملاء، تحليل مبيعات</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">🏗️</span>
-      <div class="sector-name">العقارات والمقاولات</div>
-      <div class="sector-sub">إدارة عقود، تحليل مستندات، متابعة مشاريع</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">🎓</span>
-      <div class="sector-name">التعليم والتدريب</div>
-      <div class="sector-sub">مساعد تعليمي، تلخيص محاضرات، اختبارات</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">🍽️</span>
-      <div class="sector-name">المطاعم والضيافة</div>
-      <div class="sector-sub">طلبات، قوائم ذكية، تحليل رضا العملاء</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">⚖️</span>
-      <div class="sector-name">المحاماة والقانون</div>
-      <div class="sector-sub">تحليل عقود، بحث قانوني، صياغة مستندات</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">💰</span>
-      <div class="sector-name">المالية والمحاسبة</div>
-      <div class="sector-sub">تحليل بيانات، تقارير مالية، توقعات</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">🏭</span>
-      <div class="sector-name">التصنيع والمستودعات</div>
-      <div class="sector-sub">مراقبة جودة، جدولة، فحص بصري</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">🚗</span>
-      <div class="sector-name">السيارات والخدمات</div>
-      <div class="sector-sub">حجز خدمات، متابعة طلبات، دعم ذكي</div>
-    </div>
-    <div class="sector-card">
-      <span class="sector-emoji">📣</span>
-      <div class="sector-name">التسويق والإعلام</div>
-      <div class="sector-sub">محتوى، تحليل جمهور، حملات ذكية</div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="section-header">
-    <div class="section-tag">— كيف نعمل —</div>
-    <div class="divider"><div class="divider-gem"></div></div>
-    <h2 class="section-title">من الفكرة إلى <em>التنفيذ</em></h2>
-    <p class="section-desc">عملية واضحة وسريعة للحصول على نتائج حقيقية</p>
-  </div>
-
-  <div class="process-steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3 class="step-title">استشارة مجانية</h3>
-      <p class="step-desc">نفهم احتياجات شركتك ونحدد أفضل حل ذكاء اصطناعي يناسبك</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3 class="step-title">عرض سعر واضح</h3>
-      <p class="step-desc">نقدم عرضاً مفصلاً بالتكلفة والوقت وكل ما ستحصل عليه بدون مفاجآت</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3 class="step-title">تطوير وتسليم</h3>
-      <p class="step-desc">نبني الحل في 48 ساعة إلى أسبوعين حسب تعقيده — ونسلمه مع شرح كامل وتدريب</p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <h3 class="step-title">دعم ومتابعة</h3>
-      <p class="step-desc">ندعمك بعد التسليم ونتأكد إن كل شيء يعمل كما توقعت</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="whyus" id="whyus">
-  <div class="whyus-grid">
-    <div class="whyus-visual">
-      <div class="whyus-box">
-        <div class="whyus-num">AI</div>
-        <div class="section-tag" style="text-align:right;">— لماذا سريا AI —</div>
-        <h2 class="section-title" style="text-align:right; margin-bottom:32px;">ما يميزنا <em>عن غيرنا</em></h2>
-        <ul class="whyus-list">
-          <li>
-            <div class="why-icon">⚡</div>
-            <div class="why-text">
-              <h4>تسليم خلال 48 ساعة</h4>
-              <p>معظم مشاريعنا تُسلَّم في يومين — سرعة بدون تنازل عن الجودة</p>
-            </div>
-          </li>
-          <li>
-            <div class="why-icon">🔒</div>
-            <div class="why-text">
-              <h4>بياناتك آمنة 100%</h4>
-              <p>نبني حلول تعمل داخل بيئتك ولا تخرج بياناتك لأي طرف ثالث</p>
-            </div>
-          </li>
-          <li>
-            <div class="why-icon">🌐</div>
-            <div class="why-text">
-              <h4>ذكاء اصطناعي عربي متقدم</h4>
-              <p>متخصصون في معالجة اللغة العربية بدقة عالية</p>
-            </div>
-          </li>
-          <li>
-            <div class="why-icon">💎</div>
-            <div class="why-text">
-              <h4>أسعار شفافة ومنطقية</h4>
-              <p>لا عروض مخفية — سعر واضح من البداية ونتيجة مضمونة</p>
-            </div>
-          </li>
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-ico">🏪</div>
+        <div class="pkg-type">STARTER PACKAGE</div>
+        <h3>باقة المتجر والمطعم</h3>
+        <div class="pkg-price"><span class="num">1,499</span><span class="cur">ريال سعودي</span></div>
+        <div class="pkg-period">شهر واحد — إعداد + دعم</div>
+        <ul class="pkg-features">
+          <li>شات بوت واتساب ذكي يرد على العملاء</li>
+          <li>نظام حجز مواعيد أو طلبات تلقائي</li>
+          <li>ردود تلقائية على الأسئلة المتكررة</li>
+          <li>تقرير شهري بأداء النظام</li>
+          <li>دعم فني 30 يوم</li>
         </ul>
+        <a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a>
+      </div>
+      <div class="pkg featured">
+        <div class="pkg-badge">الأكثر طلباً</div>
+        <div class="pkg-ico">🏢</div>
+        <div class="pkg-type">BUSINESS PACKAGE</div>
+        <h3>باقة الشركات الصغيرة</h3>
+        <div class="pkg-price"><span class="num">3,499</span><span class="cur">ريال سعودي</span></div>
+        <div class="pkg-period">إعداد كامل — شامل كل شيء</div>
+        <ul class="pkg-features">
+          <li>شات بوت ذكي للموقع + واتساب</li>
+          <li>قاعدة معرفة داخلية (RAG) للموظفين</li>
+          <li>أتمتة البريد الإلكتروني والمهام</li>
+          <li>تحليل بيانات شهري مع تقرير</li>
+          <li>محتوى سوشيال ميديا أسبوعي (4 منشورات)</li>
+          <li>دعم فني 3 أشهر</li>
+        </ul>
+        <a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a>
+      </div>
+      <div class="pkg">
+        <div class="pkg-ico">🏥</div>
+        <div class="pkg-type">CLINIC PACKAGE</div>
+        <h3>باقة العيادات والمراكز</h3>
+        <div class="pkg-price"><span class="num">2,299</span><span class="cur">ريال سعودي</span></div>
+        <div class="pkg-period">إعداد كامل — إعداد + دعم</div>
+        <ul class="pkg-features">
+          <li>نظام حجز مواعيد ذكي عبر واتساب</li>
+          <li>تذكيرات تلقائية للمرضى قبل الموعد</li>
+          <li>شات بوت يجيب على أسئلة المرضى</li>
+          <li>تلخيص ملفات المرضى بالذكاء الاصطناعي</li>
+          <li>دعم فني 3 أشهر</li>
+        </ul>
+        <a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="">
-      </div>
+<!-- ── SECTORS ── -->
+<section class="sec" id="sectors">
+  <div class="lbl">القطاعات</div>
+  <div class="ttl">نخدم كل <span class="grad">القطاعات</span></div>
+  <div class="sub">خبرة عميقة في القطاعات الأكثر حاجة للذكاء الاصطناعي</div>
+
+  <div class="sector-grid">
+    <div class="sector"><div class="sector-ico">🏥</div><div class="sector-name">الصحة والعيادات</div><div class="sector-sub">حجز مواعيد، ملخصات طبية، دعم المرضى</div></div>
+    <div class="sector"><div class="sector-ico">🛒</div><div class="sector-name">التجارة الإلكترونية</div><div class="sector-sub">توصيات، خدمة عملاء، تحليل مبيعات</div></div>
+    <div class="sector"><div class="sector-ico">🏗️</div><div class="sector-name">العقارات والمقاولات</div><div class="sector-sub">إدارة عقود، تحليل مستندات</div></div>
+    <div class="sector"><div class="sector-ico">🎓</div><div class="sector-name">التعليم والتدريب</div><div class="sector-sub">مساعد تعليمي، تلخيص محاضرات</div></div>
+    <div class="sector"><div class="sector-ico">🍽️</div><div class="sector-name">المطاعم والضيافة</div><div class="sector-sub">طلبات، قوائم ذكية، رضا العملاء</div></div>
+    <div class="sector"><div class="sector-ico">⚖️</div><div class="sector-name">المحاماة والقانون</div><div class="sector-sub">تحليل عقود، بحث قانوني</div></div>
+    <div class="sector"><div class="sector-ico">💰</div><div class="sector-name">المالية والمحاسبة</div><div class="sector-sub">تقارير مالية، توقعات</div></div>
+    <div class="sector"><div class="sector-ico">🏭</div><div class="sector-name">التصنيع والمستودعات</div><div class="sector-sub">مراقبة جودة، فحص بصري</div></div>
+    <div class="sector"><div class="sector-ico">🚗</div><div class="sector-name">السيارات والخدمات</div><div class="sector-sub">حجز خدمات، دعم ذكي</div></div>
+    <div class="sector"><div class="sector-ico">📣</div><div class="sector-name">التسويق والإعلام</div><div class="sector-sub">محتوى، تحليل جمهور، حملات</div></div>
+  </div>
 </section>
 
-<!-- CTA + CONTACT -->
-<section class="cta-section" id="contact">
+<!-- ── PROCESS ── -->
+<div class="sec-full" id="process">
+  <div class="sec-full-inner">
+    <div class="lbl">كيف نعمل</div>
+    <div class="ttl">من الفكرة إلى <span class="grad">التنفيذ</span></div>
+    <div class="sub">عملية واضحة وسريعة للحصول على نتائج حقيقية</div>
 
-  <div class="hero-badge" style="position:relative;z-index:2;">جاهز تبدأ؟</div>
-  <h2 class="cta-title" style="position:relative;z-index:2;">
-    تواصل معنا<br>
-    <span style="background:linear-gradient(135deg,var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">مجاناً الآن</span>
-  </h2>
-  <p class="cta-sub" style="position:relative;z-index:2;">استشارة مجانية — عرض سعر خلال 24 ساعة — تسليم خلال 48 ساعة</p>
-
-  <!-- Direct contact buttons -->
-  <div class="cta-actions" style="position:relative;z-index:2;">
-    <a href="https://wa.me/966564124426" class="btn-primary" target="_blank" rel="noopener noreferrer"><span>💬 واتساب</span></a>
-    <a href="mailto:alezz.aldumaini@gmail.com" class="btn-ghost">📧 البريد الإلكتروني</a>
-  </div>
-
-  <!-- Custom project section -->
-  <div class="custom-project">
-    <div class="custom-project-inner">
-      <div class="custom-project-badge">فكرة مختلفة؟</div>
-      <h3 class="custom-project-title">لديك مشروع أو فكرة خاصة؟</h3>
-      <p class="custom-project-desc">
-        لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة مهما كانت.
-      </p>
-      <div class="custom-project-features">
-        <div class="custom-feature">
-          <span class="custom-feature-dot"></span>
-          <span>نستمع لفكرتك بدون التزام</span>
-        </div>
-        <div class="custom-feature">
-          <span class="custom-feature-dot"></span>
-          <span>نقترح الحل الأمثل لها</span>
-        </div>
-        <div class="custom-feature">
-          <span class="custom-feature-dot"></span>
-          <span>عرض سعر واضح خلال 24 ساعة</span>
-        </div>
-        <div class="custom-feature">
-          <span class="custom-feature-dot"></span>
-          <span>نبنيها لك من الصفر</span>
-        </div>
+    <div class="process-steps">
+      <div class="step">
+        <span class="step-arrow">←</span>
+        <div class="step-n">01</div>
+        <h4>استشارة مجانية</h4>
+        <p>نفهم احتياجات شركتك ونحدد أفضل حل ذكاء اصطناعي يناسبك</p>
       </div>
-      <a href="https://wa.me/966564124426?text=مرحباً،%20لدي%20فكرة%20مشروع%20أود%20مناقشتها%20معكم" class="btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:8px;">
-        <span>🚀 شاركنا فكرتك</span>
+      <div class="step">
+        <span class="step-arrow">←</span>
+        <div class="step-n">02</div>
+        <h4>عرض سعر واضح</h4>
+        <p>نقدم عرضاً مفصلاً بالتكلفة والوقت وكل ما ستحصل عليه بدون مفاجآت</p>
+      </div>
+      <div class="step">
+        <span class="step-arrow">←</span>
+        <div class="step-n">03</div>
+        <h4>تطوير وتسليم</h4>
+        <p>نبني الحل في 48 ساعة إلى أسبوعين حسب تعقيده — ونسلمه مع شرح كامل وتدريب</p>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <h4>دعم ومتابعة</h4>
+        <p>ندعمك بعد التسليم ونتأكد إن كل شيء يعمل كما توقعت</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHY ── -->
+<section class="sec">
+  <div class="lbl">لماذا سريا AI</div>
+  <div class="ttl">ما يميزنا <span class="grad">عن غيرنا</span></div>
+  <div class="sub">نتحدث بالنتائج والأرقام لا بالوعود الفارغة</div>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-ico">⚡</div>
+      <div>
+        <h4>تسليم خلال 48 ساعة</h4>
+        <p>معظم مشاريعنا تُسلَّم في يومين — سرعة بدون تنازل عن الجودة</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-ico">🔒</div>
+      <div>
+        <h4>بياناتك آمنة 100%</h4>
+        <p>نبني حلول تعمل داخل بيئتك ولا تخرج بياناتك لأي طرف ثالث</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-ico">🌐</div>
+      <div>
+        <h4>ذكاء اصطناعي عربي متقدم</h4>
+        <p>متخصصون في معالجة اللغة العربية بدقة عالية وفهم السياق الثقافي</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-ico">💎</div>
+      <div>
+        <h4>أسعار شفافة ومنطقية</h4>
+        <p>لا عروض مخفية — سعر واضح من البداية ونتيجة مضمونة</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CUSTOM PROJECT STRIP ── -->
+<div class="sec-full">
+  <div class="sec-full-inner">
+    <div class="cta-strip">
+      <div class="cta-text">
+        <h3>لديك فكرة أو مشروع مختلف؟</h3>
+        <p>لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة مهما كانت</p>
+      </div>
+      <div class="cta-btns">
+        <a href="https://wa.me/966564124426" class="btn-wa" target="_blank">💬 ناقشنا فكرتك</a>
+        <a href="mailto:alezz.aldumaini@gmail.com" class="btn-out">📧 راسلنا بالإيميل</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTACT ── -->
+<section class="sec" id="contact">
+  <div class="lbl">تواصل معنا</div>
+  <div class="ttl">تواصل معنا مجاناً <span class="grad">الآن</span></div>
+  <div class="sub">استشارة مجانية — عرض سعر خلال 24 ساعة — تسليم خلال 48 ساعة</div>
+
+  <div class="contact-grid">
+    <div class="contact-options">
+      <a href="https://wa.me/966564124426" class="contact-opt" target="_blank">
+        <div class="contact-opt-ico wa">💬</div>
+        <div>
+          <h4>واتساب</h4>
+          <p>تواصل فوري — نرد خلال دقائق</p>
+        </div>
+        <span class="arr">←</span>
+      </a>
+      <a href="mailto:alezz.aldumaini@gmail.com" class="contact-opt">
+        <div class="contact-opt-ico em">📧</div>
+        <div>
+          <h4>البريد الإلكتروني</h4>
+          <p>alezz.aldumaini@gmail.com</p>
+        </div>
+        <span class="arr">←</span>
       </a>
     </div>
+    <div class="custom-card">
+      <h3>لديك مشروع أو فكرة خاصة؟</h3>
+      <p>لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة</p>
+      <ul class="custom-points">
+        <li>نستمع لفكرتك بدون التزام</li>
+        <li>نقترح الحل الأمثل لها</li>
+        <li>عرض سعر واضح خلال 24 ساعة</li>
+        <li>نبنيها ونسلمها في أسرع وقت</li>
+      </ul>
+      <a href="https://wa.me/966564124426" class="btn-wa" target="_blank" style="width:100%;justify-content:center">💬 ابدأ المحادثة</a>
+    </div>
   </div>
-
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-logo">AI SURAYA</div>
-  <div class="footer-copy">© 2025–2026 Suraya AI — جميع الحقوق محفوظة</div>
-  <ul class="footer-links">
-    <li><a href="#services">الخدمات</a></li>
-    <li><a href="#packages">الباقات</a></li>
-    <li><a href="#contact">تواصل</a></li>
-  </ul>
-</footer>
-
-<!-- SERVICE DETAIL MODAL -->
-<div class="modal-overlay" id="serviceModal" role="dialog" aria-modal="true">
-  <div class="modal-backdrop" id="modalBackdrop" onclick="window.closeModal()"></div>
-  <div class="modal-panel" id="modalPanel">
-    <div class="modal-header">
-      <button class="modal-close" id="modalClose" onclick="window.closeModal()" aria-label="إغلاق">✕</button>
-      <div class="modal-num" id="mNum"></div>
-      <span class="modal-icon" id="mIcon"></span>
-      <div class="modal-price-badge" id="mPrice"></div>
-      <h2 class="modal-title" id="mTitle"></h2>
-      <p class="modal-short-desc" id="mShortDesc"></p>
-      <div id="mDelivery" style="margin-top:14px;font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:2px;font-weight:600;"></div>
+  <div class="footer-top">
+    <div>
+      <a href="#home" class="logo" style="margin-bottom:0">
+        <div class="logo-hex">
+          <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="18,2 34,18 18,34 2,18" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+            <polygon points="18,5 31,18 18,31 5,18" fill="#c9a84c" opacity="0.15"/>
+            <text x="18" y="23" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#e8c96d">S</text>
+          </svg>
+        </div>
+        <div class="logo-text"><span class="suraya">SURAYA</span><span class="ai">AI</span></div>
+      </a>
+      <p class="footer-brand-txt">شركة ذكاء اصطناعي متخصصة في بناء حلول عربية جاهزة للتنفيذ — من الفكرة إلى النتيجة في أسرع وقت.</p>
     </div>
-    <div class="modal-body">
-      <div class="modal-section">
-        <div class="modal-section-title">📌 ما هي هذه الخدمة؟</div>
-        <p id="mFullDesc" style="font-size:15px;color:var(--muted);line-height:2;font-weight:300;"></p>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">✅ الفوائد والمزايا</div>
-        <ul class="modal-benefits" id="mBenefits"></ul>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">💡 أمثلة على الاستخدام</div>
-        <ul class="modal-use-cases" id="mUseCases"></ul>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">⚙️ التقنيات المستخدمة</div>
-        <div class="modal-tags-row" id="mTechTags"></div>
-      </div>
+    <div class="footer-col">
+      <h5>الخدمات</h5>
+      <a href="#services">شات بوت ذكي</a>
+      <a href="#services">أتمتة واتساب</a>
+      <a href="#services">تحليل البيانات</a>
+      <a href="#services">محتوى تسويقي</a>
+      <a href="#services">وكيل مبيعات AI</a>
     </div>
-    <div class="modal-footer">
-      <div class="modal-footer-price">
-        <span>السعر يبدأ من</span>
-        <strong id="mFooterPrice"></strong>
-      </div>
-      <a href="https://wa.me/966564124426" class="btn-primary" id="mCTA" target="_blank" rel="noopener noreferrer"><span>💬 تواصل عبر واتساب</span></a>
+    <div class="footer-col">
+      <h5>الشركة</h5>
+      <a href="#packages">الباقات</a>
+      <a href="#sectors">القطاعات</a>
+      <a href="#process">كيف نعمل</a>
+      <a href="#contact">تواصل معنا</a>
     </div>
   </div>
-</div>
-
-<!-- FOOTER -->
-
+  <div class="footer-bottom">
+    <p>© 2025 SURAYA AI — جميع الحقوق محفوظة</p>
+    <a href="#home" class="back-top">↑ العودة للأعلى</a>
+  </div>
+</footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // ESC key to close modal
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') window.closeModal();
-  });
+// Floating back-to-top
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
 
-  // Delivery badges on cards
-  var colorMap = { gold:'medium', cyan:'fast', muted:'slow' };
-  document.querySelectorAll('.service-card').forEach(function(card, i) {
-    var s = SERVICES[i];
-    if (s) {
-      var badge = document.createElement('div');
-      badge.className = 'service-delivery ' + (colorMap[s.deliveryColor] || 'medium');
-      badge.textContent = '⏱ ' + s.delivery;
-      card.appendChild(badge);
-    }
-  });
-
-  // Nav scroll effect
-  var nav = document.querySelector('nav');
-  if (nav) {
-    window.addEventListener('scroll', function() {
-      nav.style.borderBottomColor = window.scrollY > 50
-        ? 'rgba(201,168,76,0.2)' : 'rgba(201,168,76,0.1)';
+// Service category filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.svc').forEach(svc => {
+      svc.setAttribute('data-hidden', f !== 'all' && svc.dataset.cat !== f);
     });
-  }
-
-  // Stats counter
-  function animateCounter(el, target, suffix) {
-    var current = 0;
-    var inc = target / 60;
-    var t = setInterval(function() {
-      current += inc;
-      if (current >= target) { current = target; clearInterval(t); }
-      el.textContent = Math.floor(current) + (suffix||'');
-    }, 25);
-  }
-  var statsBar = document.querySelector('.stats-bar');
-  if (statsBar) {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var nums = entry.target.querySelectorAll('.stat-num');
-          if (nums[0]) animateCounter(nums[0], 19, '+');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    io.observe(statsBar);
-  }
+    // Re-check grid gaps after filter
+    const grid = document.querySelector('.svc-grid');
+    const visible = [...grid.querySelectorAll('.svc:not([data-hidden="true"])')];;
+    grid.style.gridTemplateColumns = visible.length === 1 ? '1fr' : 'repeat(3,1fr)';
+  });
 });
 </script>
-
 </body>
 </html>
