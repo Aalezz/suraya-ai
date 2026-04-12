@@ -29,14 +29,15 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:998;op
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;
-  background:rgba(10,13,21,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  background:rgba(10,13,21,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:height .3s}
+nav.scrolled{height:54px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.12em;color:#fff}
 .logo-text{display:flex;align-items:center;gap:6px}
 .logo-text .suraya{color:#fff;letter-spacing:.12em}
 .logo-text .ai{color:var(--gold2);letter-spacing:.12em}
 .logo-hex{width:36px;height:36px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-hex svg{width:36px;height:36px}
-.logo-hex .hex-letter{font-family:'Syne',sans-serif;font-weight:800;font-size:.8rem;fill:#0a0d15;letter-spacing:0}
+.logo-hex svg{width:36px;height:36px;transition:transform .3s}
+.logo:hover .logo-hex svg{transform:rotate(15deg) scale(1.1)}
 
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:600;transition:color .2s}
@@ -48,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 24px 80px;overflow:hidden}
 .hero-grid{position:absolute;inset:0;
   background-image:linear-gradient(rgba(201,168,76,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.06) 1px,transparent 1px);
-  background-size:72px 72px;mask-image:radial-gradient(ellipse 75% 55% at 50% 50%,black,transparent);pointer-events:none}
+  background-size:72px 72px;mask-image:radial-gradient(ellipse 75% 55% at 50% 50%,black,transparent);pointer-events:none;will-change:transform}
 .orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
 .orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(201,168,76,.14),transparent 65%);top:-160px;left:50%;animation:f1 9s ease-in-out infinite}
 .orb2{width:380px;height:380px;background:radial-gradient(circle,rgba(201,168,76,.08),transparent 65%);bottom:60px;left:5%;animation:f2 11s ease-in-out infinite}
@@ -56,26 +57,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 @keyframes f1{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-22px)}}
 @keyframes f2{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:100px;padding:6px 18px;font-size:.75rem;font-weight:700;color:var(--gold2);letter-spacing:.06em;margin-bottom:28px;animation:up .7s ease both}
+#hero-particles{position:absolute;inset:0;pointer-events:none;z-index:0}
+
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:100px;padding:6px 18px;font-size:.75rem;font-weight:700;color:var(--gold2);letter-spacing:.06em;margin-bottom:28px;animation:up .7s ease forwards;position:relative;z-index:1}
 .bdot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:blink 2s ease infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-.hero h1{font-family:'Cairo',sans-serif;font-size:clamp(2.8rem,7vw,5.8rem);font-weight:900;line-height:1.08;letter-spacing:-.01em;max-width:860px;margin-bottom:24px;animation:up .7s .1s ease both;color:#fff}
+.hero h1{font-family:'Cairo',sans-serif;font-size:clamp(2.8rem,7vw,5.8rem);font-weight:900;line-height:1.08;letter-spacing:-.01em;max-width:860px;margin-bottom:24px;animation:up .7s .1s ease forwards;color:#fff;position:relative;z-index:1}
 .grad{background:linear-gradient(120deg,var(--gold) 0%,var(--gold2) 50%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.05rem;color:var(--muted);max-width:500px;font-weight:400;line-height:1.9;margin-bottom:40px;animation:up .7s .2s ease both}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:up .7s .3s ease both}
-.btn-wa{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:14px 32px;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 28px rgba(37,211,102,.2)}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:500px;font-weight:400;line-height:1.9;margin-bottom:40px;animation:up .7s .2s ease forwards;position:relative;z-index:1}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:up .7s .3s ease forwards;position:relative;z-index:1}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:14px 32px;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .25s cubic-bezier(.25,.46,.45,.94),box-shadow .25s;box-shadow:0 0 28px rgba(37,211,102,.2);will-change:transform}
 .btn-wa:hover{transform:translateY(-2px);box-shadow:0 0 44px rgba(37,211,102,.4)}
 .btn-out{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);padding:14px 32px;border-radius:8px;border:1px solid var(--border);font-family:'Cairo',sans-serif;font-weight:600;font-size:.92rem;text-decoration:none;transition:border-color .2s,background .2s}
 .btn-out:hover{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.06)}
-.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0a0d15;padding:14px 32px;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 28px rgba(201,168,76,.3)}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0a0d15;padding:14px 32px;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 0 28px rgba(201,168,76,.3);will-change:transform}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 44px rgba(201,168,76,.5)}
 
 /* ── STATS BAR ── */
 .stats-bar{position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:36px 24px;text-align:center;border-left:1px solid var(--border);transition:background .2s}
+.stat{padding:36px 24px;text-align:center;border-left:1px solid var(--border);transition:background .2s,opacity .6s,transform .6s}
 .stat:last-child{border-left:none}
 .stat:hover{background:rgba(201,168,76,.03)}
 .stat-n{font-family:'Cairo',sans-serif;font-size:2.5rem;font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--gold2);margin-bottom:6px}
@@ -90,6 +93,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 .ttl{font-family:'Cairo',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;letter-spacing:-.01em;line-height:1.2;margin-bottom:16px;color:#fff}
 .sub{color:var(--muted);font-size:.95rem;max-width:500px;font-weight:400;line-height:1.85;margin-bottom:52px}
 
+/* ── SCROLL REVEAL ── */
+.sr{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.sr.sr-on{opacity:1;transform:translateY(0)}
+.tag,.tech-pill{opacity:0;transform:scale(.82) translateY(6px);transition:opacity .4s,transform .4s cubic-bezier(.34,1.56,.64,1)}
+.tags-on .tag,.tags-on .tech-pill{opacity:1;transform:scale(1) translateY(0)}
+.tag:nth-child(1),.tech-pill:nth-child(1){transition-delay:.04s}.tag:nth-child(2),.tech-pill:nth-child(2){transition-delay:.1s}
+.tag:nth-child(3),.tech-pill:nth-child(3){transition-delay:.16s}.tag:nth-child(4),.tech-pill:nth-child(4){transition-delay:.22s}
+.tag:nth-child(5),.tech-pill:nth-child(5){transition-delay:.28s}.tag:nth-child(6),.tech-pill:nth-child(6){transition-delay:.34s}
+.tag:nth-child(7),.tech-pill:nth-child(7){transition-delay:.40s}.tag:nth-child(8),.tech-pill:nth-child(8){transition-delay:.46s}
+.stat.sr-on{opacity:1 !important;transform:translateY(0) !important}
+
 /* ── SERVICE FILTER ── */
 .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
 .filter-btn{padding:7px 18px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
@@ -97,7 +111,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 
 /* ── SERVICES ── */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.svc{background:var(--card);padding:32px 28px;position:relative;overflow:hidden;transition:background .25s;cursor:pointer}
+.svc{background:var(--card);padding:32px 28px;position:relative;overflow:hidden;transition:background .25s,transform .25s cubic-bezier(.25,.46,.45,.94),box-shadow .25s;cursor:pointer;will-change:transform}
 .svc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-glow),transparent 60%);opacity:0;transition:opacity .3s}
 .svc:hover{background:var(--card2)}
 .svc:hover::before{opacity:1}
@@ -107,12 +121,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 .svc h3{font-family:'Cairo',sans-serif;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:8px;position:relative;z-index:1;line-height:1.45}
 .svc p{font-size:.82rem;color:var(--muted);line-height:1.75;position:relative;z-index:1}
 .svc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;position:relative;z-index:1}
-.tag{font-size:.68rem;padding:2px 9px;border-radius:100px;background:rgba(201,168,76,.08);color:rgba(201,168,76,.75);font-weight:600;border:1px solid rgba(201,168,76,.15)}
 .svc[data-hidden="true"]{display:none}
+.svc-more{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;color:var(--gold);font-weight:600;margin-top:14px;opacity:0;transform:translateX(6px);transition:opacity .25s,transform .25s;position:relative;z-index:1}
+.svc:hover .svc-more{opacity:1;transform:translateX(0)}
 
 /* ── PACKAGES ── */
 .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.pkg{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 32px;position:relative;transition:transform .2s,border-color .2s;overflow:hidden}
+.pkg{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 32px;position:relative;transition:transform .2s,border-color .2s;overflow:hidden;will-change:transform}
 .pkg::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-glow),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
 .pkg:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.35)}
 .pkg:hover::before{opacity:1}
@@ -135,30 +150,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 
 /* ── SECTORS ── */
 .sector-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.sector{background:var(--card);padding:28px 20px;text-align:center;cursor:pointer;transition:background .2s}
-.sector:hover{background:var(--card2)}
-.sector-ico{font-size:1.9rem;margin-bottom:10px}
+.sector{background:var(--card);padding:28px 20px;text-align:center;cursor:pointer;transition:background .2s,transform .2s cubic-bezier(.34,1.56,.64,1)}
+.sector:hover{background:var(--card2);transform:translateY(-4px)}
+.sector-ico{font-size:1.9rem;margin-bottom:10px;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.sector:hover .sector-ico{transform:scale(1.25) translateY(-4px)}
 .sector-name{font-family:'Cairo',sans-serif;font-weight:700;font-size:.85rem;color:var(--text);margin-bottom:4px}
 .sector-sub{font-size:.72rem;color:var(--muted);line-height:1.5}
 
 /* ── PROCESS ── */
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.step{background:var(--card);padding:44px 28px;position:relative;transition:background .2s}
-.step:hover{background:var(--card2)}
-.step-n{font-family:'Syne',sans-serif;font-size:3.8rem;font-weight:800;color:rgba(201,168,76,.12);line-height:1;margin-bottom:20px}
+.step{background:var(--card);padding:44px 28px;position:relative;transition:background .2s,transform .2s cubic-bezier(.34,1.4,.64,1)}
+.step:hover{background:var(--card2);transform:translateY(-3px)}
+.step-n{font-family:'Syne',sans-serif;font-size:3.8rem;font-weight:800;color:rgba(201,168,76,.12);line-height:1;margin-bottom:20px;animation:step-glow 3s ease-in-out infinite}
+@keyframes step-glow{0%,100%{color:rgba(201,168,76,.12)}50%{color:rgba(201,168,76,.28)}}
 .step h4{font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;color:#fff;margin-bottom:10px}
 .step p{font-size:.83rem;color:var(--muted);line-height:1.75}
 .step-arrow{position:absolute;top:44px;left:24px;color:rgba(201,168,76,.2);font-size:1.2rem}
 
 /* ── WHY ── */
 .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;display:flex;gap:18px;align-items:flex-start;transition:background .2s,border-color .2s}
-.why-card:hover{background:var(--card2);border-color:rgba(201,168,76,.3)}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;display:flex;gap:18px;align-items:flex-start;transition:background .2s,border-color .2s,transform .25s cubic-bezier(.25,.46,.45,.94)}
+.why-card:hover{background:var(--card2);border-color:rgba(201,168,76,.3);transform:translateY(-3px)}
 .why-ico{width:46px;height:46px;border-radius:10px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
 .why-card h4{font-family:'Cairo',sans-serif;font-weight:700;font-size:.97rem;color:#fff;margin-bottom:7px}
 .why-card p{font-size:.83rem;color:var(--muted);line-height:1.75}
 
-/* ── CUSTOM CTA STRIP ── */
+/* ── CTA STRIP ── */
 .cta-strip{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.05));border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:52px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden}
 .cta-strip::before{content:'S';position:absolute;font-family:'Syne',sans-serif;font-size:16rem;font-weight:800;color:rgba(201,168,76,.04);top:-60px;left:30px;pointer-events:none;line-height:1}
 .cta-text h3{font-family:'Cairo',sans-serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;letter-spacing:-.01em;margin-bottom:10px;color:#fff}
@@ -168,8 +185,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 /* ── CONTACT ── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .contact-options{display:flex;flex-direction:column;gap:14px}
-.contact-opt{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 24px;text-decoration:none;color:inherit;transition:background .2s,border-color .2s}
-.contact-opt:hover{background:var(--card2);border-color:rgba(201,168,76,.3)}
+.contact-opt{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 24px;text-decoration:none;color:inherit;transition:background .2s,border-color .2s,transform .25s cubic-bezier(.25,.46,.45,.94)}
+.contact-opt:hover{background:var(--card2);border-color:rgba(201,168,76,.3);transform:translateX(-4px)}
 .contact-opt-ico{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
 .contact-opt-ico.wa{background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.2)}
 .contact-opt-ico.em{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2)}
@@ -196,13 +213,12 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 .back-top{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 16px;cursor:pointer;font-family:'Cairo',sans-serif;font-size:.78rem;color:var(--muted);transition:all .2s;text-decoration:none}
 .back-top:hover{border-color:rgba(201,168,76,.4);color:var(--gold2)}
 
-/* ── BACK TO TOP FLOAT ── */
+/* ── BACK TO TOP ── */
 #btt{position:fixed;bottom:28px;left:28px;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#0a0d15;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:300;box-shadow:0 4px 20px rgba(201,168,76,.35);opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;border:none;font-size:1.1rem;font-weight:700}
 #btt.show{opacity:1;transform:translateY(0)}
 #btt:hover{box-shadow:0 4px 32px rgba(201,168,76,.55)}
 
-/* ── MOBILE ── */
-/* ── SERVICE MODAL ── */
+/* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(5,7,15,.85);backdrop-filter:blur(12px);z-index:500;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--card2);border:1px solid var(--border);border-radius:20px;max-width:640px;width:100%;max-height:85vh;overflow-y:auto;padding:44px 40px;position:relative;transform:translateY(20px);transition:transform .3s}
@@ -222,15 +238,12 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 .modal-tech{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
 .modal-tech span{font-size:.72rem;padding:3px 10px;border-radius:6px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);color:var(--gold2);font-weight:600}
 .modal .btn-wa{width:100%;justify-content:center;margin-top:12px}
-.svc{cursor:pointer}
-.svc-more{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;color:var(--gold);font-weight:600;margin-top:14px;opacity:0;transform:translateX(6px);transition:opacity .25s,transform .25s;position:relative;z-index:1}
-.svc:hover .svc-more{opacity:1;transform:translateX(0)}
 
-/* ── SUCCESS STORIES ── */
+/* ── STORIES ── */
 .stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.story-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden;transition:border-color .2s,background .2s}
+.story-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden;transition:border-color .2s,background .2s,transform .25s cubic-bezier(.25,.46,.45,.94)}
 .story-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-glow),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
-.story-card:hover{border-color:rgba(201,168,76,.3);background:var(--card2)}
+.story-card:hover{border-color:rgba(201,168,76,.3);background:var(--card2);transform:translateY(-4px)}
 .story-card:hover::before{opacity:1}
 .story-sector{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .story-card h3{font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;color:#fff;margin-bottom:14px;line-height:1.45}
@@ -264,21 +277,55 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 .lead-success h3{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.1rem;color:#fff;margin-bottom:8px}
 .lead-success p{font-size:.85rem;color:var(--muted)}
 
-/* ── SECURITY SECTION ── */
+/* ── SECURITY ── */
 .security-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:40px}
-.sec-item{background:var(--card);padding:36px 28px;transition:background .2s}
-.sec-item:hover{background:var(--card2)}
+.sec-item{background:var(--card);padding:36px 28px;transition:background .2s,transform .2s cubic-bezier(.34,1.4,.64,1)}
+.sec-item:hover{background:var(--card2);transform:translateY(-3px)}
 .sec-item-ico{font-size:1.8rem;margin-bottom:14px}
 .sec-item h4{font-family:'Cairo',sans-serif;font-weight:700;font-size:.97rem;color:#fff;margin-bottom:8px}
 .sec-item p{font-size:.83rem;color:var(--muted);line-height:1.75}
 .tech-stack-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .tech-pill{display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--text);transition:border-color .2s}
 .tech-pill:hover{border-color:rgba(201,168,76,.3)}
+.tech-pill span{font-size:1rem}
+
+/* ═══════════════════════════════════════
+   TALK TO SURAYA SECTION
+═══════════════════════════════════════ */
+.talk-suraya-inner{display:grid;grid-template-columns:280px 1fr;gap:72px;align-items:center}
+.ts-visual{position:relative;width:220px;height:220px;margin:0 auto;flex-shrink:0}
+#ts-mini-canvas{position:absolute;inset:0;pointer-events:none;z-index:0;border-radius:50%}
+.ts-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.2);top:50%;left:50%;transform:translate(-50%,-50%);animation:ts-ring-spin linear infinite}
+.ts-ring::before{content:'';position:absolute;width:6px;height:6px;border-radius:50%;background:var(--gold);top:-3px;left:50%;margin-left:-3px;box-shadow:0 0 10px var(--gold),0 0 20px var(--gold)}
+.ts-ring-1{width:220px;height:220px;animation-duration:16s;border-color:rgba(201,168,76,.28)}
+.ts-ring-2{width:168px;height:168px;animation-duration:11s;animation-direction:reverse;border-color:rgba(201,168,76,.2)}
+.ts-ring-2::before{background:var(--gold2);box-shadow:0 0 10px var(--gold2)}
+.ts-ring-3{width:122px;height:122px;animation-duration:7s;border-color:rgba(74,222,128,.22)}
+.ts-ring-3::before{background:var(--green);box-shadow:0 0 10px var(--green);width:4px;height:4px;top:-2px;margin-left:-2px}
+@keyframes ts-ring-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.ts-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(201,168,76,.32),rgba(201,168,76,.06) 60%,transparent);border:1.5px solid rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;animation:ts-pulse 3s ease-in-out infinite;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.ts-core:hover{transform:translate(-50%,-50%) scale(1.12);box-shadow:0 0 48px rgba(201,168,76,.45)}
+.ts-core span{font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;color:var(--gold2);line-height:1}
+@keyframes ts-pulse{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.2),0 0 40px rgba(201,168,76,.08)}50%{box-shadow:0 0 40px rgba(201,168,76,.4),0 0 80px rgba(201,168,76,.16)}}
+.ts-content .ttl{margin-bottom:12px}
+.ts-content .sub{margin-bottom:28px;max-width:440px}
+.ts-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.ts-pills{display:flex;flex-wrap:wrap;gap:7px}
+.ts-pill{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);color:rgba(201,168,76,.85);font-family:'Cairo',sans-serif;font-size:.75rem;font-weight:600;padding:5px 14px;border-radius:100px;cursor:pointer;transition:all .2s cubic-bezier(.34,1.56,.64,1);display:inline-block}
+.ts-pill:hover{background:rgba(201,168,76,.18);border-color:rgba(201,168,76,.5);transform:translateY(-2px) scale(1.04)}
+
+/* bg expand ripple */
+@keyframes ts-ripple{0%{transform:translate(-50%,-50%) scale(1);opacity:.5}100%{transform:translate(-50%,-50%) scale(5);opacity:0}}
+.ts-ripple-el{position:absolute;top:50%;left:50%;width:82px;height:82px;border-radius:50%;border:1px solid rgba(201,168,76,.3);animation:ts-ripple 3s ease-out infinite;pointer-events:none;z-index:1}
+.ts-ripple-el:nth-child(2){animation-delay:1s}
+.ts-ripple-el:nth-child(3){animation-delay:2s}
 
 /* ── CHATBOT WIDGET ── */
 #chat-bubble{position:fixed;bottom:28px;right:28px;z-index:400;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
 .chat-toggle{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 24px rgba(201,168,76,.4);transition:transform .2s,box-shadow .2s;position:relative}
 .chat-toggle:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(201,168,76,.6)}
+.chat-toggle::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--gold);animation:chat-ripple 2.4s ease-out infinite;z-index:-1}
+@keyframes chat-ripple{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.2);opacity:0}}
 .chat-notif{position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:#ef4444;border:2px solid var(--bg);font-size:.6rem;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center}
 .chat-window{width:340px;background:var(--card2);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 8px 48px rgba(0,0,0,.5)}
 .chat-window.open{display:flex}
@@ -291,15 +338,13 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 .chat-close-btn:hover{color:var(--text)}
 .chat-messages{flex:1;padding:16px;display:flex;flex-direction:column;gap:10px;max-height:300px;overflow-y:auto}
 .chat-messages::-webkit-scrollbar{width:4px}
-.chat-messages::-webkit-scrollbar-track{background:transparent}
 .chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 .msg{max-width:82%;padding:10px 14px;border-radius:12px;font-size:.83rem;line-height:1.6;direction:rtl}
 .msg.bot{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.15);color:var(--text);align-self:flex-start;border-radius:12px 12px 12px 4px}
 .msg.user{background:var(--gold);color:#0a0d15;align-self:flex-end;font-weight:600;border-radius:12px 12px 4px 12px}
 .msg.typing{display:flex;align-items:center;gap:4px;padding:12px 16px}
 .typing-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:tdot 1.2s ease-in-out infinite}
-.typing-dot:nth-child(2){animation-delay:.2s}
-.typing-dot:nth-child(3){animation-delay:.4s}
+.typing-dot:nth-child(2){animation-delay:.2s}.typing-dot:nth-child(3){animation-delay:.4s}
 @keyframes tdot{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
 .chat-quick{padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid var(--border)}
 .quick-btn{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:100px;padding:5px 12px;font-family:'Cairo',sans-serif;font-size:.72rem;font-weight:600;color:var(--gold2);cursor:pointer;transition:all .2s;white-space:nowrap}
@@ -310,161 +355,153 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 .chat-send{width:34px;height:34px;border-radius:8px;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#0a0d15;transition:opacity .2s}
 .chat-send:hover{opacity:.85}
 
+/* ── MOBILE ── */
 @media(max-width:900px){
   nav{padding:0 20px}.nav-links{display:none}
   .sec,.sec-full-inner{padding:64px 20px}
-  .svc-grid{grid-template-columns:1fr}
-  .pkg-grid{grid-template-columns:1fr}
-  .sector-grid{grid-template-columns:repeat(2,1fr)}
-  .process-steps{grid-template-columns:1fr 1fr}
-  .why-grid{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .cta-strip{flex-direction:column;padding:36px 24px}
-  .cta-btns{align-items:flex-start;width:100%}
-  .footer-top{grid-template-columns:1fr 1fr}
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .svc-grid{grid-template-columns:1fr}.pkg-grid{grid-template-columns:1fr}
+  .sector-grid{grid-template-columns:repeat(2,1fr)}.process-steps{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}
+  .cta-strip{flex-direction:column;padding:36px 24px}.cta-btns{align-items:flex-start;width:100%}
+  .footer-top{grid-template-columns:1fr 1fr}.stats-inner{grid-template-columns:repeat(2,1fr)}
   .stat{border-left:none;border-bottom:1px solid var(--border)}
-  .stories-grid{grid-template-columns:1fr}
-  .lead-box{grid-template-columns:1fr;padding:36px 24px}
-  .security-grid{grid-template-columns:1fr}
-  .chat-window{width:calc(100vw - 56px)}
-  .modal{padding:32px 24px}
+  .stories-grid{grid-template-columns:1fr}.lead-box{grid-template-columns:1fr;padding:36px 24px}
+  .security-grid{grid-template-columns:1fr}.chat-window{width:calc(100vw - 56px)}.modal{padding:32px 24px}
+  .talk-suraya-inner{grid-template-columns:1fr;text-align:center;gap:40px}
+  .ts-visual{margin:0 auto}.ts-content{display:flex;flex-direction:column;align-items:center}
+  .ts-btns,.ts-pills{justify-content:center}
 }
 
-/* ═══════════════════════════════════════
-   MOTION ADDITIONS — injected on top
-   No layout/color changes, pure animation
-═══════════════════════════════════════ */
-
-/* Scroll-reveal base state */
-.sr {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+/* ════════════════════════════════════════
+   VOICE OVERLAY — embedded inline
+════════════════════════════════════════ */
+#voice-overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:#060810;
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .4s;
+  overflow:hidden;
 }
-.sr.sr-on { opacity: 1; transform: translateY(0); }
-
-/* Stagger delays for children */
-.sr-stagger > *:nth-child(1){transition-delay:.05s}
-.sr-stagger > *:nth-child(2){transition-delay:.13s}
-.sr-stagger > *:nth-child(3){transition-delay:.21s}
-.sr-stagger > *:nth-child(4){transition-delay:.29s}
-.sr-stagger > *:nth-child(5){transition-delay:.37s}
-.sr-stagger > *:nth-child(6){transition-delay:.45s}
-.sr-stagger > *:nth-child(7){transition-delay:.53s}
-.sr-stagger > *:nth-child(8){transition-delay:.61s}
-.sr-stagger > *:nth-child(9){transition-delay:.69s}
-.sr-stagger > *:nth-child(10){transition-delay:.77s}
-.sr-stagger > *:nth-child(11){transition-delay:.85s}
-.sr-stagger > *:nth-child(12){transition-delay:.93s}
-.sr-stagger > *:nth-child(13){transition-delay:1.01s}
-.sr-stagger > *:nth-child(14){transition-delay:1.09s}
-.sr-stagger > *:nth-child(15){transition-delay:1.17s}
-.sr-stagger > *:nth-child(16){transition-delay:1.25s}
-.sr-stagger > *:nth-child(17){transition-delay:1.33s}
-.sr-stagger > *:nth-child(18){transition-delay:1.41s}
-.sr-stagger > *:nth-child(19){transition-delay:1.49s}
-
-/* Tags stagger */
-.tag, .tech-pill {
-  opacity: 0;
-  transform: scale(.82) translateY(6px);
-  transition: opacity .4s, transform .4s cubic-bezier(.34,1.56,.64,1);
+#voice-overlay.v-open{display:flex}
+#voice-overlay.v-visible{opacity:1}
+#vo-canvas{position:absolute;inset:0;pointer-events:none;z-index:0}
+.vo-topbar{
+  position:absolute;top:0;left:0;right:0;z-index:10;height:56px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;
+  background:rgba(6,8,16,.9);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(201,168,76,.15);
 }
-.tags-on .tag, .tags-on .tech-pill { opacity: 1; transform: scale(1) translateY(0); }
-
-/* Individual tag delays */
-.tag:nth-child(1),.tech-pill:nth-child(1){transition-delay:.04s}
-.tag:nth-child(2),.tech-pill:nth-child(2){transition-delay:.1s}
-.tag:nth-child(3),.tech-pill:nth-child(3){transition-delay:.16s}
-.tag:nth-child(4),.tech-pill:nth-child(4){transition-delay:.22s}
-.tag:nth-child(5),.tech-pill:nth-child(5){transition-delay:.28s}
-.tag:nth-child(6),.tech-pill:nth-child(6){transition-delay:.34s}
-.tag:nth-child(7),.tech-pill:nth-child(7){transition-delay:.40s}
-.tag:nth-child(8),.tech-pill:nth-child(8){transition-delay:.46s}
-
-/* Tilt cards */
-.svc, .pkg, .story-card, .why-card, .sec-item {
-  transition: background .25s, border-color .2s, transform .25s cubic-bezier(.25,.46,.45,.94), box-shadow .25s;
-  will-change: transform;
+.vo-logo{display:flex;align-items:center;gap:9px;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.1em}
+.vo-logo .vs{color:#fff}.vo-logo .vai{color:#e8c96d}
+.vo-back{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);color:#4a5470;padding:7px 16px;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+.vo-back:hover{border-color:rgba(201,168,76,.5);color:#e8c96d}
+/* orb system */
+.vo-orb-wrap{position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center;margin-bottom:36px;flex-shrink:0;z-index:5}
+.vo-ring{position:absolute;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid rgba(201,168,76,.15);animation:vo-spin linear infinite}
+.vo-ring::before{content:'';position:absolute;border-radius:50%;top:-4px;left:50%;margin-left:-4px;background:#c9a84c;box-shadow:0 0 10px #c9a84c,0 0 20px #c9a84c;transition:all .4s}
+.vo-r1{width:280px;height:280px;animation-duration:18s}.vo-r1::before{width:8px;height:8px;top:-4px;margin-left:-4px}
+.vo-r2{width:220px;height:220px;animation-duration:12s;animation-direction:reverse}.vo-r2::before{width:6px;height:6px;top:-3px;margin-left:-3px;background:#e8c96d;box-shadow:0 0 8px #e8c96d}
+.vo-r3{width:164px;height:164px;animation-duration:8s}.vo-r3::before{width:5px;height:5px;top:-2.5px;margin-left:-2.5px;background:#4ade80;box-shadow:0 0 8px #4ade80}
+.vo-r4{width:118px;height:118px;animation-duration:5s;animation-direction:reverse}.vo-r4::before{width:4px;height:4px;top:-2px;margin-left:-2px;background:rgba(201,168,76,.6)}
+@keyframes vo-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.vo-core{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:88px;height:88px;border-radius:50%;z-index:5;cursor:pointer;
+  background:radial-gradient(circle at 38% 38%,rgba(201,168,76,.35),rgba(201,168,76,.06) 55%,transparent);
+  border:1.5px solid rgba(201,168,76,.45);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  animation:vo-idle 3.5s ease-in-out infinite;
 }
-
-/* Magnetic buttons */
-.btn-wa, .nav-wa, .pkg-cta, .lead-submit {
-  transition: transform .25s cubic-bezier(.25,.46,.45,.94), box-shadow .25s, opacity .2s, border-color .2s, background .2s, color .2s;
-  will-change: transform;
-}
-
-/* Particle canvas */
-#hero-particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Counter animation */
-.stat-n { transition: color .3s; }
-
-/* Hero grid parallax */
-.hero-grid { will-change: transform; }
-
-/* Floating logo hex */
-.logo-hex svg { transition: transform .3s ease; }
-.logo:hover .logo-hex svg { transform: rotate(15deg) scale(1.1); }
-
-/* Nav scroll shrink */
-nav { transition: height .3s, background .3s, box-shadow .3s; }
-nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
-
-/* Ripple on chat toggle */
-@keyframes ripple-out {
-  0% { transform: scale(1); opacity: .6; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-.chat-toggle::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: var(--gold);
-  animation: ripple-out 2.4s ease-out infinite;
-  z-index: -1;
-}
-
-/* Step number count-up glow */
-@keyframes step-glow {
-  0%, 100% { color: rgba(201,168,76,.12); }
-  50% { color: rgba(201,168,76,.28); }
-}
-.step-n { animation: step-glow 3s ease-in-out infinite; }
-
-/* Smooth stat bar entrance */
-.stat { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
-.stat.sr-on { opacity: 1; transform: translateY(0); }
-.stat:nth-child(1){transition-delay:.0s}
-.stat:nth-child(2){transition-delay:.1s}
-.stat:nth-child(3){transition-delay:.2s}
-.stat:nth-child(4){transition-delay:.3s}
-
-/* Sector hover bounce */
-.sector { transition: background .2s, transform .2s cubic-bezier(.34,1.56,.64,1); }
-.sector:hover { transform: translateY(-4px); }
-
-/* Step hover lift */
-.step { transition: background .2s, transform .2s cubic-bezier(.34,1.4,.64,1); }
-.step:hover { transform: translateY(-3px); }
-
-/* Contact opt slide */
-.contact-opt { transition: background .2s, border-color .2s, transform .25s cubic-bezier(.25,.46,.45,.94); }
-.contact-opt:hover { transform: translateX(-4px); }
+.vo-core:hover{transform:translate(-50%,-50%) scale(1.08)}
+.vo-core-s{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:#e8c96d;transition:opacity .3s}
+.vo-core-mic{position:absolute;opacity:0;font-size:1.8rem;transition:opacity .3s}
+@keyframes vo-idle{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.2),0 0 40px rgba(201,168,76,.08)}50%{box-shadow:0 0 40px rgba(201,168,76,.38),0 0 80px rgba(201,168,76,.15)}}
+/* listening */
+#voice-overlay.vo-listening .vo-core{border-color:#4ade80;background:radial-gradient(circle at 38% 38%,rgba(74,222,128,.32),rgba(74,222,128,.06) 55%,transparent);animation:vo-listen .55s ease-in-out infinite alternate}
+#voice-overlay.vo-listening .vo-core-s{opacity:0}
+#voice-overlay.vo-listening .vo-core-mic{opacity:1}
+#voice-overlay.vo-listening .vo-r1{border-color:rgba(74,222,128,.3);animation-duration:5s}
+#voice-overlay.vo-listening .vo-r2{border-color:rgba(74,222,128,.22);animation-duration:3.5s}
+#voice-overlay.vo-listening .vo-r3{border-color:rgba(74,222,128,.15);animation-duration:2s}
+#voice-overlay.vo-listening .vo-r4{animation-duration:1.2s}
+@keyframes vo-listen{from{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 24px rgba(74,222,128,.25)}to{transform:translate(-50%,-50%) scale(1.14);box-shadow:0 0 64px rgba(74,222,128,.55)}}
+/* thinking */
+#voice-overlay.vo-thinking .vo-core{border-color:rgba(201,168,76,.8);animation:vo-think 1.1s ease-in-out infinite}
+@keyframes vo-think{0%,100%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 30px rgba(201,168,76,.3)}40%{transform:translate(-50%,-50%) scale(1.06);box-shadow:0 0 55px rgba(201,168,76,.55)}70%{transform:translate(-50%,-50%) scale(.96);box-shadow:0 0 18px rgba(201,168,76,.18)}}
+/* speaking */
+#voice-overlay.vo-speaking .vo-core{border-color:#e8c96d;animation:vo-speak .7s ease-in-out infinite alternate}
+#voice-overlay.vo-speaking .vo-r1{animation-duration:4s}
+#voice-overlay.vo-speaking .vo-r2{animation-duration:2.8s}
+#voice-overlay.vo-speaking .vo-r3{animation-duration:1.8s}
+#voice-overlay.vo-speaking .vo-r4{animation-duration:1.1s}
+@keyframes vo-speak{from{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 30px rgba(201,168,76,.3)}to{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 70px rgba(201,168,76,.6),0 0 120px rgba(201,168,76,.18)}}
+/* visualizer */
+.vo-viz{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:3px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:4}
+#voice-overlay.vo-listening .vo-viz{opacity:1}
+.vo-vbar{width:4px;background:#4ade80;border-radius:4px;animation:vo-vb .5s ease-in-out infinite alternate}
+.vo-vbar:nth-child(1){height:10px;animation-delay:0s}.vo-vbar:nth-child(2){height:18px;animation-delay:.07s}
+.vo-vbar:nth-child(3){height:30px;animation-delay:.14s}.vo-vbar:nth-child(4){height:44px;animation-delay:.21s}
+.vo-vbar:nth-child(5){height:56px;animation-delay:.28s}.vo-vbar:nth-child(6){height:64px;animation-delay:.35s}
+.vo-vbar:nth-child(7){height:56px;animation-delay:.28s}.vo-vbar:nth-child(8){height:44px;animation-delay:.21s}
+.vo-vbar:nth-child(9){height:30px;animation-delay:.14s}.vo-vbar:nth-child(10){height:18px;animation-delay:.07s}
+.vo-vbar:nth-child(11){height:10px;animation-delay:0s}
+@keyframes vo-vb{from{transform:scaleY(.3);opacity:.4}to{transform:scaleY(1);opacity:1}}
+/* speak bars */
+.vo-sbars{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:5px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:4}
+#voice-overlay.vo-speaking .vo-sbars{opacity:1}
+.vo-sb{width:5px;border-radius:4px;background:#e8c96d;animation:vo-sb .9s ease-in-out infinite}
+.vo-sb:nth-child(1){height:8px;animation-delay:0s}.vo-sb:nth-child(2){height:18px;animation-delay:.12s}
+.vo-sb:nth-child(3){height:30px;animation-delay:.24s}.vo-sb:nth-child(4){height:42px;animation-delay:.36s}
+.vo-sb:nth-child(5){height:50px;animation-delay:.48s}.vo-sb:nth-child(6){height:42px;animation-delay:.36s}
+.vo-sb:nth-child(7){height:30px;animation-delay:.24s}.vo-sb:nth-child(8){height:18px;animation-delay:.12s}
+.vo-sb:nth-child(9){height:8px;animation-delay:0s}
+@keyframes vo-sb{0%,100%{transform:scaleY(.35);opacity:.5}50%{transform:scaleY(1);opacity:1}}
+/* status */
+.vo-status{font-family:'Cairo',sans-serif;font-size:1rem;font-weight:600;color:#4a5470;margin-bottom:24px;height:24px;transition:color .3s;text-align:center;z-index:5;flex-shrink:0}
+#voice-overlay.vo-listening .vo-status{color:#4ade80}
+#voice-overlay.vo-thinking  .vo-status{color:#c9a84c}
+#voice-overlay.vo-speaking  .vo-status{color:#e8c96d}
+/* transcript */
+.vo-transcript{width:100%;max-width:600px;max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:0 20px;margin-bottom:20px;z-index:5;scrollbar-width:thin;scrollbar-color:rgba(201,168,76,.2) transparent;flex-shrink:0}
+.vo-row{display:flex;gap:10px;animation:vo-in .4s cubic-bezier(.22,1,.36,1) both}
+.vo-row.vo-user{flex-direction:row-reverse}
+@keyframes vo-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.vo-av{width:28px;height:28px;border-radius:50%;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.vo-av.vo-bot{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);color:#e8c96d;font-family:'Syne',sans-serif}
+.vo-av.vo-user{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#4a5470}
+.vo-bub{max-width:75%;padding:9px 15px;font-size:.87rem;line-height:1.7}
+.vo-bub.vo-bot{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);color:#e8eaf6;border-radius:4px 16px 16px 16px}
+.vo-bub.vo-user{background:rgba(201,168,76,.16);border:1px solid rgba(201,168,76,.28);color:#e8eaf6;font-weight:600;border-radius:16px 4px 16px 16px}
+.vo-typing{display:flex;align-items:center;gap:4px;padding:10px 16px}
+.vo-tdot{width:6px;height:6px;border-radius:50%;background:#c9a84c;animation:vo-td 1.2s ease-in-out infinite}
+.vo-tdot:nth-child(2){animation-delay:.2s}.vo-tdot:nth-child(3){animation-delay:.4s}
+@keyframes vo-td{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+/* mic button */
+.vo-controls{display:flex;align-items:center;gap:16px;z-index:5;flex-shrink:0;margin-bottom:16px}
+.vo-mic{width:74px;height:74px;border-radius:50%;border:none;background:#c9a84c;color:#060810;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.6rem;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 0 32px rgba(201,168,76,.4);position:relative;flex-shrink:0}
+.vo-mic::after{content:'';position:absolute;inset:0;border-radius:50%;background:#c9a84c;animation:vo-mic-r 2.5s ease-out infinite;z-index:-1}
+@keyframes vo-mic-r{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.2);opacity:0}}
+.vo-mic:hover{transform:scale(1.1);box-shadow:0 0 52px rgba(201,168,76,.65)}
+.vo-mic:active{transform:scale(.95)}
+.vo-mic.vo-rec{background:#ef4444;box-shadow:0 0 40px rgba(239,68,68,.5);animation:vo-rec-p .7s ease-in-out infinite alternate}
+.vo-mic.vo-rec::after{background:#ef4444}
+@keyframes vo-rec-p{from{box-shadow:0 0 30px rgba(239,68,68,.4)}to{box-shadow:0 0 60px rgba(239,68,68,.8)}}
+.vo-side{width:46px;height:46px;border-radius:50%;border:1px solid rgba(201,168,76,.15);background:rgba(201,168,76,.06);color:#4a5470;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all .2s}
+.vo-side:hover{border-color:rgba(201,168,76,.4);color:#e8c96d;background:rgba(201,168,76,.12)}
+.vo-hint{font-size:.75rem;color:#4a5470;text-align:center;z-index:5;animation:vo-hint-b 3s ease-in-out infinite}
+@keyframes vo-hint-b{0%,100%{opacity:.4}50%{opacity:.9}}
+/* wa float */
+.vo-wa{display:none;position:absolute;bottom:28px;right:28px;align-items:center;gap:8px;background:#25d366;color:#fff;padding:11px 20px;border-radius:100px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.83rem;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,.35);transition:transform .2s,box-shadow .2s;z-index:10;animation:vo-wa-up .5s cubic-bezier(.34,1.56,.64,1) both}
+.vo-wa:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,.55)}
+@keyframes vo-wa-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<!-- ── SERVICE MODAL ── -->
+<!-- ── MODAL ── -->
 <div class="modal-overlay" id="svc-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -472,24 +509,15 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
     <div class="modal-price-badge" id="m-price">من 500 ريال</div>
     <h2 id="m-title">شات بوت ذكي</h2>
     <p class="modal-desc" id="m-desc"></p>
-    <div class="modal-section">
-      <h4>ما ستحصل عليه</h4>
-      <ul class="modal-list" id="m-features"></ul>
-    </div>
-    <div class="modal-section">
-      <h4>التقنيات المستخدمة</h4>
-      <div class="modal-tech" id="m-tech"></div>
-    </div>
-    <div class="modal-section">
-      <h4>قصة نجاح</h4>
-      <p style="font-size:.85rem;color:var(--muted);line-height:1.8;border-right:2px solid var(--gold);padding-right:14px;font-style:italic" id="m-case"></p>
-    </div>
+    <div class="modal-section"><h4>ما ستحصل عليه</h4><ul class="modal-list" id="m-features"></ul></div>
+    <div class="modal-section"><h4>التقنيات المستخدمة</h4><div class="modal-tech" id="m-tech"></div></div>
+    <div class="modal-section"><h4>قصة نجاح</h4><p style="font-size:.85rem;color:var(--muted);line-height:1.8;border-right:2px solid var(--gold);padding-right:14px;font-style:italic" id="m-case"></p></div>
     <a href="https://wa.me/966564124426" class="btn-wa" target="_blank" style="width:100%;justify-content:center;margin-top:8px">💬 ابدأ بهذه الخدمة</a>
   </div>
 </div>
 
 <!-- ── NAV ── -->
-<nav>
+<nav id="main-nav">
   <a href="#home" class="logo">
     <div class="logo-hex">
       <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
@@ -498,10 +526,7 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
         <text x="18" y="23" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#e8c96d">S</text>
       </svg>
     </div>
-    <div class="logo-text">
-      <span class="suraya">SURAYA</span>
-      <span class="ai">AI</span>
-    </div>
+    <div class="logo-text"><span class="suraya">SURAYA</span><span class="ai">AI</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="#services">الخدمات</a></li>
@@ -510,6 +535,8 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
     <li><a href="#sectors">القطاعات</a></li>
     <li><a href="#process">كيف نعمل</a></li>
     <li><a href="#security">الأمان</a></li>
+    <li><a href="#talk-suraya" class="nav-talk-btn" style="display:flex;align-items:center;gap:7px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold2);padding:8px 18px;border-radius:8px;font-weight:700;font-size:.85rem;transition:all .2s">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:blink 2s ease infinite;flex-shrink:0"></span>تحدث مع سريا</a></li>
     <li><a href="#contact" class="nav-wa">
       <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#fff;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.563 4.14 1.547 5.877L.057 23.943l6.203-1.488A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.032-1.388l-.361-.214-3.681.883.933-3.582-.236-.375A9.818 9.818 0 012.182 12c0-5.419 4.399-9.818 9.818-9.818 5.42 0 9.818 4.399 9.818 9.818 0 5.419-4.398 9.818-9.818 9.818z"/></svg>
       واتساب
@@ -521,10 +548,7 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
 <section class="hero" id="home">
   <canvas id="hero-particles"></canvas>
   <div class="hero-grid"></div>
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
-
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
   <div class="badge"><span class="bdot"></span>SURAYA AI · حلول ذكاء اصطناعي</div>
   <h1>حوّل أعمالك<br><span class="grad">بالذكاء الاصطناعي</span></h1>
   <p class="hero-sub">حلول ذكاء اصطناعي تُوفّر وقتك وتزيد إنتاجيتك —<br>من الفكرة إلى التنفيذ في أسرع وقت</p>
@@ -533,6 +557,7 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
       <svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.563 4.14 1.547 5.877L.057 23.943l6.203-1.488A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.032-1.388l-.361-.214-3.681.883.933-3.582-.236-.375A9.818 9.818 0 012.182 12c0-5.419 4.399-9.818 9.818-9.818 5.42 0 9.818 4.399 9.818 9.818 0 5.419-4.398 9.818-9.818 9.818z"/></svg>
       ابدأ مجاناً — واتساب
     </a>
+    <a href="#talk-suraya" class="btn-gold">✨ تحدث مع سريا</a>
     <a href="#services" class="btn-out">اكتشف الخدمات ↓</a>
   </div>
 </section>
@@ -552,7 +577,6 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
   <div class="lbl sr">خدماتنا</div>
   <div class="ttl sr">كل ما تحتاجه من <span class="grad">ذكاء اصطناعي</span></div>
   <div class="sub sr">خدمات ذكاء اصطناعي جاهزة للتنفيذ الفوري لأي نوع من الأعمال — اختر ما يناسبك</div>
-
   <div class="filter-row">
     <button class="filter-btn active" data-filter="all">الكل</button>
     <button class="filter-btn" data-filter="chatbot">المحادثة والأتمتة</button>
@@ -560,141 +584,26 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
     <button class="filter-btn" data-filter="content">المحتوى والتسويق</button>
     <button class="filter-btn" data-filter="ops">العمليات الداخلية</button>
   </div>
-
-  <div class="svc-grid sr-stagger">
-    <div class="svc sr" data-cat="chatbot" onclick="openModal('chatbot1')">
-      <div class="svc-head"><div class="svc-ico">🤖</div><span class="svc-price">من 500 ريال</span></div>
-      <h3>شات بوت ذكي لموقعك</h3>
-      <p>روبوت محادثة يرد على عملائك 24/7 باللغة العربية والإنجليزية ويتعلم من محتوى شركتك</p>
-      <div class="svc-tags"><span class="tag">واتساب</span><span class="tag">موقع إلكتروني</span><span class="tag">عربي</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="chatbot" onclick="openModal('chatbot2')">
-      <div class="svc-head"><div class="svc-ico">📱</div><span class="svc-price">من 800 ريال</span></div>
-      <h3>أتمتة واتساب بالذكاء الاصطناعي</h3>
-      <p>نربط واتساب بالذكاء الاصطناعي فيرد على عملائك تلقائياً، يحجز مواعيد، ويرسل تذكيرات</p>
-      <div class="svc-tags"><span class="tag">واتساب API</span><span class="tag">أتمتة</span><span class="tag">24/7</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="chatbot" onclick="openModal('appt')">
-      <div class="svc-head"><div class="svc-ico">🗓️</div><span class="svc-price">من 700 ريال</span></div>
-      <h3>نظام حجز مواعيد ذكي</h3>
-      <p>نظام يحجز مواعيد العملاء تلقائياً ويرسل تذكيرات ويدير الجدول عبر واتساب أو الموقع</p>
-      <div class="svc-tags"><span class="tag">حجز</span><span class="tag">تذكير</span><span class="tag">تلقائي</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="data" onclick="openModal('docs')">
-      <div class="svc-head"><div class="svc-ico">📄</div><span class="svc-price">من 300 ريال</span></div>
-      <h3>تلخيص وتحليل المستندات</h3>
-      <p>ارفع أي مستند PDF أو Word ونحلله لك في ثوانٍ — عقود، تقارير، بيانات مالية</p>
-      <div class="svc-tags"><span class="tag">PDF</span><span class="tag">تحليل</span><span class="tag">سريع</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="data" onclick="openModal('data')">
-      <div class="svc-head"><div class="svc-ico">📊</div><span class="svc-price">من 600 ريال</span></div>
-      <h3>تحليل البيانات وإنتاج تقارير</h3>
-      <p>ارفع بياناتك Excel أو CSV ونأخذ منها تقارير وإحصاءات واضحة ورسوم بيانية</p>
-      <div class="svc-tags"><span class="tag">Excel</span><span class="tag">تقارير</span><span class="tag">رسوم بيانية</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="data" onclick="openModal('sentiment')">
-      <div class="svc-head"><div class="svc-ico">📈</div><span class="svc-price">من 700 ريال</span></div>
-      <h3>تحليل مشاعر العملاء</h3>
-      <p>نحلل تقييمات ومراجعات عملائك لتعرف ما يحبونه وما يزعجهم بدقة</p>
-      <div class="svc-tags"><span class="tag">مشاعر</span><span class="tag">تقييمات</span><span class="tag">تحسين</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="content" onclick="openModal('content')">
-      <div class="svc-head"><div class="svc-ico">✍️</div><span class="svc-price">من 150 ريال</span></div>
-      <h3>كتابة محتوى تسويقي بالذكاء الاصطناعي</h3>
-      <p>كتابة منشورات سوشيال ميديا، إعلانات، بريد إلكتروني بأسلوب شركتك</p>
-      <div class="svc-tags"><span class="tag">سوشيال</span><span class="tag">إعلانات</span><span class="tag">SEO</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="content" onclick="openModal('translate')">
-      <div class="svc-head"><div class="svc-ico">🌐</div><span class="svc-price">من 200 ريال</span></div>
-      <h3>ترجمة ذكية عربي ↔ إنجليزي</h3>
-      <p>ترجمة احترافية تراعي السياق الثقافي للمستندات والمواقع والتسويق</p>
-      <div class="svc-tags"><span class="tag">عربي</span><span class="tag">إنجليزي</span><span class="tag">سياق ثقافي</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="content" onclick="openModal('media')">
-      <div class="svc-head"><div class="svc-ico">🖼️</div><span class="svc-price">من 300 ريال</span></div>
-      <h3>توليد صور وفيديوهات بالذكاء الاصطناعي</h3>
-      <p>صور تسويقية، لوغو مفاهيمي، فيديوهات قصيرة لمنصاتك الاجتماعية</p>
-      <div class="svc-tags"><span class="tag">تصميم</span><span class="tag">فيديو</span><span class="tag">سوشيال</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="ops" onclick="openModal('email')">
-      <div class="svc-head"><div class="svc-ico">📧</div><span class="svc-price">من 400 ريال</span></div>
-      <h3>أتمتة البريد الإلكتروني</h3>
-      <p>ردود تلقائية ذكية على بريدك الإلكتروني، تصنيف الرسائل، وإرسال متابعات احترافية</p>
-      <div class="svc-tags"><span class="tag">Gmail</span><span class="tag">Outlook</span><span class="tag">أتمتة</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="ops" onclick="openModal('search')">
-      <div class="svc-head"><div class="svc-ico">🔍</div><span class="svc-price">من 500 ريال</span></div>
-      <h3>محرك بحث داخلي للشركة</h3>
-      <p>ابحث في كل وثائق شركتك بلغة طبيعية — كأنك تسأل موظفاً خبيراً</p>
-      <div class="svc-tags"><span class="tag">بحث ذكي</span><span class="tag">داخلي</span><span class="tag">سريع</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="ops" onclick="openModal('voice')">
-      <div class="svc-head"><div class="svc-ico">🎙️</div><span class="svc-price">من 900 ريال</span></div>
-      <h3>تحويل الصوت إلى نص وتحليله</h3>
-      <p>نحول اجتماعاتك ومقابلاتك لنصوص مرتبة مع ملخص وأبرز النقاط</p>
-      <div class="svc-tags"><span class="tag">Whisper AI</span><span class="tag">اجتماعات</span><span class="tag">ملخص</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="chatbot" onclick="openModal('sales')">
-      <div class="svc-head"><div class="svc-ico">💬</div><span class="svc-price">من 1,200 ريال</span></div>
-      <h3>وكيل ذكاء اصطناعي للمبيعات</h3>
-      <p>وكيل AI يتحدث مع عملائك المحتملين، يجيب على أسئلتهم، ويحول الاهتمام لمبيعات</p>
-      <div class="svc-tags"><span class="tag">مبيعات</span><span class="tag">تحويل</span><span class="tag">ذكي</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="ops" onclick="openModal('news')">
-      <div class="svc-head"><div class="svc-ico">📰</div><span class="svc-price">من 250 ريال</span></div>
-      <h3>ملخص يومي ذكي للأخبار والمجال</h3>
-      <p>تصلك كل يوم ملخص بأهم أخبار مجالك، منافسيك، والسوق — مخصص لك</p>
-      <div class="svc-tags"><span class="tag">أخبار</span><span class="tag">يومي</span><span class="tag">مخصص</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="data" onclick="openModal('ecom')">
-      <div class="svc-head"><div class="svc-ico">🛒</div><span class="svc-price">من 800 ريال</span></div>
-      <h3>توصيات ذكية لمتجرك</h3>
-      <p>نظام توصية بالمنتجات مبني على ذكاء اصطناعي يزيد معدل الشراء ومتوسط الطلب</p>
-      <div class="svc-tags"><span class="tag">e-Commerce</span><span class="tag">توصيات</span><span class="tag">مبيعات</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="chatbot" onclick="openModal('reception')">
-      <div class="svc-head"><div class="svc-ico">🤝</div><span class="svc-price">من 600 ريال</span></div>
-      <h3>موظف استقبال افتراضي</h3>
-      <p>بدّل موظف الاستقبال بذكاء اصطناعي يرد بالعربية ويدير الزيارات والأسئلة 24 ساعة</p>
-      <div class="svc-tags"><span class="tag">استقبال</span><span class="tag">اتصال</span><span class="tag">24/7</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="ops" onclick="openModal('hr')">
-      <div class="svc-head"><div class="svc-ico">📋</div><span class="svc-price">من 350 ريال</span></div>
-      <h3>توليد تقارير HR والموظفين</h3>
-      <p>تقارير أداء وحضور وإجازات ومهام تلقائياً من بيانات شركتك</p>
-      <div class="svc-tags"><span class="tag">HR</span><span class="tag">تقارير</span><span class="tag">أداء</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="ops" onclick="openModal('automate')">
-      <div class="svc-head"><div class="svc-ico">⚡</div><span class="svc-price">من 500 ريال</span></div>
-      <h3>أتمتة المهام المتكررة</h3>
-      <p>نحول أي عملية يدوية متكررة في شركتك لعملية تلقائية توفر وقتاً وجهداً</p>
-      <div class="svc-tags"><span class="tag">أتمتة</span><span class="tag">n8n</span><span class="tag">توفير وقت</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
-    <div class="svc sr" data-cat="data" onclick="openModal('consult')">
-      <div class="svc-head"><div class="svc-ico">🎓</div><span class="svc-price">من 400 ريال</span></div>
-      <h3>استشارة AI لعملك</h3>
-      <p>جلسة استشارية لتحديد أفضل حلول الذكاء الاصطناعي لشركتك وخارطة طريق للتطبيق</p>
-      <div class="svc-tags"><span class="tag">استشارة</span><span class="tag">خارطة طريق</span></div>
-      <div class="svc-more">اعرف أكثر ←</div>
-    </div>
+  <div class="svc-grid">
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('chatbot1')"><div class="svc-head"><div class="svc-ico">🤖</div><span class="svc-price">من 500 ريال</span></div><h3>شات بوت ذكي لموقعك</h3><p>روبوت محادثة يرد على عملائك 24/7 باللغة العربية والإنجليزية ويتعلم من محتوى شركتك</p><div class="svc-tags"><span class="tag">واتساب</span><span class="tag">موقع إلكتروني</span><span class="tag">عربي</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('chatbot2')"><div class="svc-head"><div class="svc-ico">📱</div><span class="svc-price">من 800 ريال</span></div><h3>أتمتة واتساب بالذكاء الاصطناعي</h3><p>نربط واتساب بالذكاء الاصطناعي فيرد على عملائك تلقائياً، يحجز مواعيد، ويرسل تذكيرات</p><div class="svc-tags"><span class="tag">واتساب API</span><span class="tag">أتمتة</span><span class="tag">24/7</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('appt')"><div class="svc-head"><div class="svc-ico">🗓️</div><span class="svc-price">من 700 ريال</span></div><h3>نظام حجز مواعيد ذكي</h3><p>نظام يحجز مواعيد العملاء تلقائياً ويرسل تذكيرات ويدير الجدول عبر واتساب أو الموقع</p><div class="svc-tags"><span class="tag">حجز</span><span class="tag">تذكير</span><span class="tag">تلقائي</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="data" onclick="openModal('docs')"><div class="svc-head"><div class="svc-ico">📄</div><span class="svc-price">من 300 ريال</span></div><h3>تلخيص وتحليل المستندات</h3><p>ارفع أي مستند PDF أو Word ونحلله لك في ثوانٍ — عقود، تقارير، بيانات مالية</p><div class="svc-tags"><span class="tag">PDF</span><span class="tag">تحليل</span><span class="tag">سريع</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="data" onclick="openModal('data')"><div class="svc-head"><div class="svc-ico">📊</div><span class="svc-price">من 600 ريال</span></div><h3>تحليل البيانات وإنتاج تقارير</h3><p>ارفع بياناتك Excel أو CSV ونأخذ منها تقارير وإحصاءات واضحة ورسوم بيانية</p><div class="svc-tags"><span class="tag">Excel</span><span class="tag">تقارير</span><span class="tag">رسوم بيانية</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="data" onclick="openModal('sentiment')"><div class="svc-head"><div class="svc-ico">📈</div><span class="svc-price">من 700 ريال</span></div><h3>تحليل مشاعر العملاء</h3><p>نحلل تقييمات ومراجعات عملائك لتعرف ما يحبونه وما يزعجهم بدقة</p><div class="svc-tags"><span class="tag">مشاعر</span><span class="tag">تقييمات</span><span class="tag">تحسين</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="content" onclick="openModal('content')"><div class="svc-head"><div class="svc-ico">✍️</div><span class="svc-price">من 150 ريال</span></div><h3>كتابة محتوى تسويقي بالذكاء الاصطناعي</h3><p>كتابة منشورات سوشيال ميديا، إعلانات، بريد إلكتروني بأسلوب شركتك</p><div class="svc-tags"><span class="tag">سوشيال</span><span class="tag">إعلانات</span><span class="tag">SEO</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="content" onclick="openModal('translate')"><div class="svc-head"><div class="svc-ico">🌐</div><span class="svc-price">من 200 ريال</span></div><h3>ترجمة ذكية عربي ↔ إنجليزي</h3><p>ترجمة احترافية تراعي السياق الثقافي للمستندات والمواقع والتسويق</p><div class="svc-tags"><span class="tag">عربي</span><span class="tag">إنجليزي</span><span class="tag">سياق ثقافي</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="content" onclick="openModal('media')"><div class="svc-head"><div class="svc-ico">🖼️</div><span class="svc-price">من 300 ريال</span></div><h3>توليد صور وفيديوهات بالذكاء الاصطناعي</h3><p>صور تسويقية، لوغو مفاهيمي، فيديوهات قصيرة لمنصاتك الاجتماعية</p><div class="svc-tags"><span class="tag">تصميم</span><span class="tag">فيديو</span><span class="tag">سوشيال</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="ops" onclick="openModal('email')"><div class="svc-head"><div class="svc-ico">📧</div><span class="svc-price">من 400 ريال</span></div><h3>أتمتة البريد الإلكتروني</h3><p>ردود تلقائية ذكية على بريدك الإلكتروني، تصنيف الرسائل، وإرسال متابعات احترافية</p><div class="svc-tags"><span class="tag">Gmail</span><span class="tag">Outlook</span><span class="tag">أتمتة</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="ops" onclick="openModal('search')"><div class="svc-head"><div class="svc-ico">🔍</div><span class="svc-price">من 500 ريال</span></div><h3>محرك بحث داخلي للشركة</h3><p>ابحث في كل وثائق شركتك بلغة طبيعية — كأنك تسأل موظفاً خبيراً</p><div class="svc-tags"><span class="tag">بحث ذكي</span><span class="tag">داخلي</span><span class="tag">سريع</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="ops" onclick="openModal('voice')"><div class="svc-head"><div class="svc-ico">🎙️</div><span class="svc-price">من 900 ريال</span></div><h3>تحويل الصوت إلى نص وتحليله</h3><p>نحول اجتماعاتك ومقابلاتك لنصوص مرتبة مع ملخص وأبرز النقاط</p><div class="svc-tags"><span class="tag">Whisper AI</span><span class="tag">اجتماعات</span><span class="tag">ملخص</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('sales')"><div class="svc-head"><div class="svc-ico">💬</div><span class="svc-price">من 1,200 ريال</span></div><h3>وكيل ذكاء اصطناعي للمبيعات</h3><p>وكيل AI يتحدث مع عملائك المحتملين، يجيب على أسئلتهم، ويحول الاهتمام لمبيعات</p><div class="svc-tags"><span class="tag">مبيعات</span><span class="tag">تحويل</span><span class="tag">ذكي</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="ops" onclick="openModal('news')"><div class="svc-head"><div class="svc-ico">📰</div><span class="svc-price">من 250 ريال</span></div><h3>ملخص يومي ذكي للأخبار والمجال</h3><p>تصلك كل يوم ملخص بأهم أخبار مجالك، منافسيك، والسوق — مخصص لك</p><div class="svc-tags"><span class="tag">أخبار</span><span class="tag">يومي</span><span class="tag">مخصص</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="data" onclick="openModal('ecom')"><div class="svc-head"><div class="svc-ico">🛒</div><span class="svc-price">من 800 ريال</span></div><h3>توصيات ذكية لمتجرك</h3><p>نظام توصية بالمنتجات مبني على ذكاء اصطناعي يزيد معدل الشراء ومتوسط الطلب</p><div class="svc-tags"><span class="tag">e-Commerce</span><span class="tag">توصيات</span><span class="tag">مبيعات</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('reception')"><div class="svc-head"><div class="svc-ico">🤝</div><span class="svc-price">من 600 ريال</span></div><h3>موظف استقبال افتراضي</h3><p>بدّل موظف الاستقبال بذكاء اصطناعي يرد بالعربية ويدير الزيارات والأسئلة 24 ساعة</p><div class="svc-tags"><span class="tag">استقبال</span><span class="tag">اتصال</span><span class="tag">24/7</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="ops" onclick="openModal('hr')"><div class="svc-head"><div class="svc-ico">📋</div><span class="svc-price">من 350 ريال</span></div><h3>توليد تقارير HR والموظفين</h3><p>تقارير أداء وحضور وإجازات ومهام تلقائياً من بيانات شركتك</p><div class="svc-tags"><span class="tag">HR</span><span class="tag">تقارير</span><span class="tag">أداء</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="ops" onclick="openModal('automate')"><div class="svc-head"><div class="svc-ico">⚡</div><span class="svc-price">من 500 ريال</span></div><h3>أتمتة المهام المتكررة</h3><p>نحول أي عملية يدوية متكررة في شركتك لعملية تلقائية توفر وقتاً وجهداً</p><div class="svc-tags"><span class="tag">أتمتة</span><span class="tag">n8n</span><span class="tag">توفير وقت</span></div><div class="svc-more">اعرف أكثر ←</div></div>
+    <div class="svc sr" data-cat="data" onclick="openModal('consult')"><div class="svc-head"><div class="svc-ico">🎓</div><span class="svc-price">من 400 ريال</span></div><h3>استشارة AI لعملك</h3><p>جلسة استشارية لتحديد أفضل حلول الذكاء الاصطناعي لشركتك وخارطة طريق للتطبيق</p><div class="svc-tags"><span class="tag">استشارة</span><span class="tag">خارطة طريق</span></div><div class="svc-more">اعرف أكثر ←</div></div>
   </div>
 </section>
 
@@ -704,55 +613,10 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
     <div class="lbl sr">الباقات</div>
     <div class="ttl sr">باقات جاهزة لكل <span class="grad">قطاع</span></div>
     <div class="sub sr">اخترنا أكثر الخدمات طلباً وجمعناها في باقات واضحة السعر</div>
-
     <div class="pkg-grid">
-      <div class="pkg sr">
-        <div class="pkg-ico">🏪</div>
-        <div class="pkg-type">STARTER PACKAGE</div>
-        <h3>باقة المتجر والمطعم</h3>
-        <div class="pkg-price"><span class="num">1,499</span><span class="cur">ريال سعودي</span></div>
-        <div class="pkg-period">شهر واحد — إعداد + دعم</div>
-        <ul class="pkg-features">
-          <li>شات بوت واتساب ذكي يرد على العملاء</li>
-          <li>نظام حجز مواعيد أو طلبات تلقائي</li>
-          <li>ردود تلقائية على الأسئلة المتكررة</li>
-          <li>تقرير شهري بأداء النظام</li>
-          <li>دعم فني 30 يوم</li>
-        </ul>
-        <a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a>
-      </div>
-      <div class="pkg featured sr">
-        <div class="pkg-badge">الأكثر طلباً</div>
-        <div class="pkg-ico">🏢</div>
-        <div class="pkg-type">BUSINESS PACKAGE</div>
-        <h3>باقة الشركات الصغيرة</h3>
-        <div class="pkg-price"><span class="num">3,499</span><span class="cur">ريال سعودي</span></div>
-        <div class="pkg-period">إعداد كامل — شامل كل شيء</div>
-        <ul class="pkg-features">
-          <li>شات بوت ذكي للموقع + واتساب</li>
-          <li>قاعدة معرفة داخلية (RAG) للموظفين</li>
-          <li>أتمتة البريد الإلكتروني والمهام</li>
-          <li>تحليل بيانات شهري مع تقرير</li>
-          <li>محتوى سوشيال ميديا أسبوعي (4 منشورات)</li>
-          <li>دعم فني 3 أشهر</li>
-        </ul>
-        <a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a>
-      </div>
-      <div class="pkg sr">
-        <div class="pkg-ico">🏥</div>
-        <div class="pkg-type">CLINIC PACKAGE</div>
-        <h3>باقة العيادات والمراكز</h3>
-        <div class="pkg-price"><span class="num">2,299</span><span class="cur">ريال سعودي</span></div>
-        <div class="pkg-period">إعداد كامل — إعداد + دعم</div>
-        <ul class="pkg-features">
-          <li>نظام حجز مواعيد ذكي عبر واتساب</li>
-          <li>تذكيرات تلقائية للمرضى قبل الموعد</li>
-          <li>شات بوت يجيب على أسئلة المرضى</li>
-          <li>تلخيص ملفات المرضى بالذكاء الاصطناعي</li>
-          <li>دعم فني 3 أشهر</li>
-        </ul>
-        <a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a>
-      </div>
+      <div class="pkg sr"><div class="pkg-ico">🏪</div><div class="pkg-type">STARTER PACKAGE</div><h3>باقة المتجر والمطعم</h3><div class="pkg-price"><span class="num">1,499</span><span class="cur">ريال سعودي</span></div><div class="pkg-period">شهر واحد — إعداد + دعم</div><ul class="pkg-features"><li>شات بوت واتساب ذكي يرد على العملاء</li><li>نظام حجز مواعيد أو طلبات تلقائي</li><li>ردود تلقائية على الأسئلة المتكررة</li><li>تقرير شهري بأداء النظام</li><li>دعم فني 30 يوم</li></ul><a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a></div>
+      <div class="pkg featured sr"><div class="pkg-badge">الأكثر طلباً</div><div class="pkg-ico">🏢</div><div class="pkg-type">BUSINESS PACKAGE</div><h3>باقة الشركات الصغيرة</h3><div class="pkg-price"><span class="num">3,499</span><span class="cur">ريال سعودي</span></div><div class="pkg-period">إعداد كامل — شامل كل شيء</div><ul class="pkg-features"><li>شات بوت ذكي للموقع + واتساب</li><li>قاعدة معرفة داخلية (RAG) للموظفين</li><li>أتمتة البريد الإلكتروني والمهام</li><li>تحليل بيانات شهري مع تقرير</li><li>محتوى سوشيال ميديا أسبوعي (4 منشورات)</li><li>دعم فني 3 أشهر</li></ul><a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a></div>
+      <div class="pkg sr"><div class="pkg-ico">🏥</div><div class="pkg-type">CLINIC PACKAGE</div><h3>باقة العيادات والمراكز</h3><div class="pkg-price"><span class="num">2,299</span><span class="cur">ريال سعودي</span></div><div class="pkg-period">إعداد كامل — إعداد + دعم</div><ul class="pkg-features"><li>نظام حجز مواعيد ذكي عبر واتساب</li><li>تذكيرات تلقائية للمرضى قبل الموعد</li><li>شات بوت يجيب على أسئلة المرضى</li><li>تلخيص ملفات المرضى بالذكاء الاصطناعي</li><li>دعم فني 3 أشهر</li></ul><a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a></div>
     </div>
   </div>
 </div>
@@ -762,7 +626,6 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
   <div class="lbl sr">القطاعات</div>
   <div class="ttl sr">نخدم كل <span class="grad">القطاعات</span></div>
   <div class="sub sr">خبرة عميقة في القطاعات الأكثر حاجة للذكاء الاصطناعي</div>
-
   <div class="sector-grid">
     <div class="sector sr"><div class="sector-ico">🏥</div><div class="sector-name">الصحة والعيادات</div><div class="sector-sub">حجز مواعيد، ملخصات طبية، دعم المرضى</div></div>
     <div class="sector sr"><div class="sector-ico">🛒</div><div class="sector-name">التجارة الإلكترونية</div><div class="sector-sub">توصيات، خدمة عملاء، تحليل مبيعات</div></div>
@@ -783,31 +646,11 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
     <div class="lbl sr">كيف نعمل</div>
     <div class="ttl sr">من الفكرة إلى <span class="grad">التنفيذ</span></div>
     <div class="sub sr">عملية واضحة وسريعة للحصول على نتائج حقيقية</div>
-
     <div class="process-steps">
-      <div class="step sr">
-        <span class="step-arrow">←</span>
-        <div class="step-n">01</div>
-        <h4>استشارة مجانية</h4>
-        <p>نفهم احتياجات شركتك ونحدد أفضل حل ذكاء اصطناعي يناسبك</p>
-      </div>
-      <div class="step sr">
-        <span class="step-arrow">←</span>
-        <div class="step-n">02</div>
-        <h4>عرض سعر واضح</h4>
-        <p>نقدم عرضاً مفصلاً بالتكلفة والوقت وكل ما ستحصل عليه بدون مفاجآت</p>
-      </div>
-      <div class="step sr">
-        <span class="step-arrow">←</span>
-        <div class="step-n">03</div>
-        <h4>تطوير وتسليم</h4>
-        <p>نبني الحل في 48 ساعة إلى أسبوعين حسب تعقيده — ونسلمه مع شرح كامل وتدريب</p>
-      </div>
-      <div class="step sr">
-        <div class="step-n">04</div>
-        <h4>دعم ومتابعة</h4>
-        <p>ندعمك بعد التسليم ونتأكد إن كل شيء يعمل كما توقعت</p>
-      </div>
+      <div class="step sr"><span class="step-arrow">←</span><div class="step-n">01</div><h4>استشارة مجانية</h4><p>نفهم احتياجات شركتك ونحدد أفضل حل ذكاء اصطناعي يناسبك</p></div>
+      <div class="step sr"><span class="step-arrow">←</span><div class="step-n">02</div><h4>عرض سعر واضح</h4><p>نقدم عرضاً مفصلاً بالتكلفة والوقت وكل ما ستحصل عليه بدون مفاجآت</p></div>
+      <div class="step sr"><span class="step-arrow">←</span><div class="step-n">03</div><h4>تطوير وتسليم</h4><p>نبني الحل في 48 ساعة إلى أسبوعين حسب تعقيده — ونسلمه مع شرح كامل وتدريب</p></div>
+      <div class="step sr"><div class="step-n">04</div><h4>دعم ومتابعة</h4><p>ندعمك بعد التسليم ونتأكد إن كل شيء يعمل كما توقعت</p></div>
     </div>
   </div>
 </div>
@@ -817,115 +660,33 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
   <div class="lbl sr">لماذا سريا AI</div>
   <div class="ttl sr">ما يميزنا <span class="grad">عن غيرنا</span></div>
   <div class="sub sr">نتحدث بالنتائج والأرقام لا بالوعود الفارغة</div>
-
   <div class="why-grid">
-    <div class="why-card sr">
-      <div class="why-ico">⚡</div>
-      <div>
-        <h4>تسليم خلال 48 ساعة</h4>
-        <p>معظم مشاريعنا تُسلَّم في يومين — سرعة بدون تنازل عن الجودة</p>
-      </div>
-    </div>
-    <div class="why-card sr">
-      <div class="why-ico">🔒</div>
-      <div>
-        <h4>بياناتك آمنة 100%</h4>
-        <p>نبني حلول تعمل داخل بيئتك ولا تخرج بياناتك لأي طرف ثالث</p>
-      </div>
-    </div>
-    <div class="why-card sr">
-      <div class="why-ico">🌐</div>
-      <div>
-        <h4>ذكاء اصطناعي عربي متقدم</h4>
-        <p>متخصصون في معالجة اللغة العربية بدقة عالية وفهم السياق الثقافي</p>
-      </div>
-    </div>
-    <div class="why-card sr">
-      <div class="why-ico">💎</div>
-      <div>
-        <h4>أسعار شفافة ومنطقية</h4>
-        <p>لا عروض مخفية — سعر واضح من البداية ونتيجة مضمونة</p>
-      </div>
-    </div>
+    <div class="why-card sr"><div class="why-ico">⚡</div><div><h4>تسليم خلال 48 ساعة</h4><p>معظم مشاريعنا تُسلَّم في يومين — سرعة بدون تنازل عن الجودة</p></div></div>
+    <div class="why-card sr"><div class="why-ico">🔒</div><div><h4>بياناتك آمنة 100%</h4><p>نبني حلول تعمل داخل بيئتك ولا تخرج بياناتك لأي طرف ثالث</p></div></div>
+    <div class="why-card sr"><div class="why-ico">🌐</div><div><h4>ذكاء اصطناعي عربي متقدم</h4><p>متخصصون في معالجة اللغة العربية بدقة عالية وفهم السياق الثقافي</p></div></div>
+    <div class="why-card sr"><div class="why-ico">💎</div><div><h4>أسعار شفافة ومنطقية</h4><p>لا عروض مخفية — سعر واضح من البداية ونتيجة مضمونة</p></div></div>
   </div>
 </section>
 
-<!-- ── CUSTOM PROJECT STRIP ── -->
+<!-- ── CUSTOM CTA ── -->
 <div class="sec-full">
   <div class="sec-full-inner">
     <div class="cta-strip sr">
-      <div class="cta-text">
-        <h3>لديك فكرة أو مشروع مختلف؟</h3>
-        <p>لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة مهما كانت</p>
-      </div>
-      <div class="cta-btns">
-        <a href="https://wa.me/966564124426" class="btn-wa" target="_blank">💬 ناقشنا فكرتك</a>
-        <a href="mailto:info@suraya.ai" class="btn-out">📧 راسلنا بالإيميل</a>
-      </div>
+      <div class="cta-text"><h3>لديك فكرة أو مشروع مختلف؟</h3><p>لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة مهما كانت</p></div>
+      <div class="cta-btns"><a href="https://wa.me/966564124426" class="btn-wa" target="_blank">💬 ناقشنا فكرتك</a><a href="/cdn-cgi/l/email-protection#244d4a424b64575156455d450a454d" class="btn-out">📧 راسلنا بالإيميل</a></div>
     </div>
   </div>
 </div>
 
-<!-- ── SUCCESS STORIES ── -->
+<!-- ── STORIES ── -->
 <section class="sec" id="stories">
   <div class="lbl sr">قصص نجاح</div>
   <div class="ttl sr">نتائج حقيقية لعملاء <span class="grad">حقيقيين</span></div>
   <div class="sub sr">قبل وبعد — كيف غيّر الذكاء الاصطناعي أعمال عملائنا</div>
-
   <div class="stories-grid">
-    <div class="story-card sr">
-      <div class="story-sector">🏥 قطاع الصحة</div>
-      <h3>عيادة طب أسنان في الرياض وفّرت 80% من وقت الاستقبال</h3>
-      <div class="story-results">
-        <div class="story-result"><div class="num">80%</div><div class="lbl2">توفير وقت موظفين</div></div>
-        <div class="story-result"><div class="num">3×</div><div class="lbl2">زيادة الحجوزات</div></div>
-        <div class="story-result"><div class="num">48H</div><div class="lbl2">وقت التنفيذ</div></div>
-      </div>
-      <p class="story-quote">كان الاستقبال يتلقى 200+ مكالمة يومياً للحجز. الآن 90% منها تتم عبر واتساب الذكي بدون أي تدخل بشري.</p>
-      <div class="story-author">
-        <div class="story-avatar">ع</div>
-        <div class="story-author-info">
-          <div class="name">د. عبدالرحمن السالم</div>
-          <div class="role">مدير العيادة</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="story-card sr">
-      <div class="story-sector">🛒 التجارة الإلكترونية</div>
-      <h3>متجر إلكتروني للعبايات رفع معدل التحويل بـ 40%</h3>
-      <div class="story-results">
-        <div class="story-result"><div class="num">40%</div><div class="lbl2">زيادة المبيعات</div></div>
-        <div class="story-result"><div class="num">24/7</div><div class="lbl2">دعم العملاء</div></div>
-        <div class="story-result"><div class="num">60%</div><div class="lbl2">تقليل الاستفسارات</div></div>
-      </div>
-      <p class="story-quote">الشات بوت يرد على أسئلة المقاسات والشحن فوراً. العملاء يشترون بثقة أكبر وفريقي يتفرغ للأمور المهمة.</p>
-      <div class="story-author">
-        <div class="story-avatar">ن</div>
-        <div class="story-author-info">
-          <div class="name">نورة الزهراني</div>
-          <div class="role">مؤسسة المتجر</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="story-card sr">
-      <div class="story-sector">⚖️ القانون والمحاماة</div>
-      <h3>مكتب محاماة في جدة يحلل العقود في دقائق بدل ساعات</h3>
-      <div class="story-results">
-        <div class="story-result"><div class="num">95%</div><div class="lbl2">تقليل وقت المراجعة</div></div>
-        <div class="story-result"><div class="num">2×</div><div class="lbl2">طاقة استيعابية</div></div>
-        <div class="story-result"><div class="num">0</div><div class="lbl2">أخطاء فائتة</div></div>
-      </div>
-      <p class="story-quote">العقد الذي كان يأخذ 4 ساعات للمراجعة صار يأخذ 8 دقائق مع ملخص كامل بالنقاط المهمة والمخاطر.</p>
-      <div class="story-author">
-        <div class="story-avatar">خ</div>
-        <div class="story-author-info">
-          <div class="name">المحامي خالد الحربي</div>
-          <div class="role">شريك إداري</div>
-        </div>
-      </div>
-    </div>
+    <div class="story-card sr"><div class="story-sector">🏥 قطاع الصحة</div><h3>عيادة طب أسنان في الرياض وفّرت 80% من وقت الاستقبال</h3><div class="story-results"><div class="story-result"><div class="num">80%</div><div class="lbl2">توفير وقت موظفين</div></div><div class="story-result"><div class="num">3×</div><div class="lbl2">زيادة الحجوزات</div></div><div class="story-result"><div class="num">48H</div><div class="lbl2">وقت التنفيذ</div></div></div><p class="story-quote">كان الاستقبال يتلقى 200+ مكالمة يومياً للحجز. الآن 90% منها تتم عبر واتساب الذكي بدون أي تدخل بشري.</p><div class="story-author"><div class="story-avatar">ع</div><div class="story-author-info"><div class="name">د. عبدالرحمن السالم</div><div class="role">مدير العيادة</div></div></div></div>
+    <div class="story-card sr"><div class="story-sector">🛒 التجارة الإلكترونية</div><h3>متجر إلكتروني للعبايات رفع معدل التحويل بـ 40%</h3><div class="story-results"><div class="story-result"><div class="num">40%</div><div class="lbl2">زيادة المبيعات</div></div><div class="story-result"><div class="num">24/7</div><div class="lbl2">دعم العملاء</div></div><div class="story-result"><div class="num">60%</div><div class="lbl2">تقليل الاستفسارات</div></div></div><p class="story-quote">الشات بوت يرد على أسئلة المقاسات والشحن فوراً. العملاء يشترون بثقة أكبر وفريقي يتفرغ للأمور المهمة.</p><div class="story-author"><div class="story-avatar">ن</div><div class="story-author-info"><div class="name">نورة الزهراني</div><div class="role">مؤسسة المتجر</div></div></div></div>
+    <div class="story-card sr"><div class="story-sector">⚖️ القانون والمحاماة</div><h3>مكتب محاماة في جدة يحلل العقود في دقائق بدل ساعات</h3><div class="story-results"><div class="story-result"><div class="num">95%</div><div class="lbl2">تقليل وقت المراجعة</div></div><div class="story-result"><div class="num">2×</div><div class="lbl2">طاقة استيعابية</div></div><div class="story-result"><div class="num">0</div><div class="lbl2">أخطاء فائتة</div></div></div><p class="story-quote">العقد الذي كان يأخذ 4 ساعات للمراجعة صار يأخذ 8 دقائق مع ملخص كامل بالنقاط المهمة والمخاطر.</p><div class="story-author"><div class="story-avatar">خ</div><div class="story-author-info"><div class="name">المحامي خالد الحربي</div><div class="role">شريك إداري</div></div></div></div>
   </div>
 </section>
 
@@ -937,12 +698,7 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
         <div class="lbl">مجاناً</div>
         <div class="lead-title">قائمة جاهزية الذكاء الاصطناعي<br><span class="grad">للشركات السعودية</span></div>
         <p class="lead-sub">اكتشف مدى استعداد شركتك لتطبيق الذكاء الاصطناعي — 20 سؤالاً عملياً مع خارطة طريق مخصصة لمجالك</p>
-        <ul class="lead-checklist">
-          <li>تحديد أعلى فرص ROI في شركتك</li>
-          <li>تقييم جاهزية بياناتك للذكاء الاصطناعي</li>
-          <li>خارطة طريق 90 يوم للتطبيق الفعلي</li>
-          <li>قائمة بأفضل الأدوات لكل قطاع</li>
-        </ul>
+        <ul class="lead-checklist"><li>تحديد أعلى فرص ROI في شركتك</li><li>تقييم جاهزية بياناتك للذكاء الاصطناعي</li><li>خارطة طريق 90 يوم للتطبيق الفعلي</li><li>قائمة بأفضل الأدوات لكل قطاع</li></ul>
       </div>
       <div>
         <div class="lead-form" id="lead-form">
@@ -953,8 +709,7 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
           <p class="lead-note">🔒 بياناتك آمنة — لن نرسل لك spam أبداً</p>
         </div>
         <div class="lead-success" id="lead-success">
-          <div class="check">✅</div>
-          <h3>تم الإرسال بنجاح!</h3>
+          <div class="check">✅</div><h3>تم الإرسال بنجاح!</h3>
           <p>سيصلك البريد خلال دقائق على الإيميل الذي أدخلته.<br>تواصل معنا على واتساب لمناقشة نتائجك مباشرة.</p>
           <a href="https://wa.me/966564124426" class="btn-wa" target="_blank" style="margin-top:16px;justify-content:center">💬 ناقش نتائجك معنا</a>
         </div>
@@ -963,32 +718,18 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
   </div>
 </div>
 
-<!-- ── SECURITY SECTION ── -->
+<!-- ── SECURITY ── -->
 <section class="sec" id="security">
   <div class="lbl sr">الأمان والخصوصية</div>
   <div class="ttl sr">بياناتك محمية <span class="grad">100%</span></div>
   <div class="sub sr">نبني حلولاً تحترم خصوصية بيانات شركتك وعملائك — بدون تنازلات</div>
-
   <div class="security-grid">
-    <div class="sec-item sr">
-      <div class="sec-item-ico">🔒</div>
-      <h4>بياناتك لا تغادر بيئتك</h4>
-      <p>نبني الحلول لتعمل داخل خوادمك أو بيئتك السحابية الخاصة — بياناتك لا تُشارك مع أي طرف ثالث تحت أي ظرف</p>
-    </div>
-    <div class="sec-item sr">
-      <div class="sec-item-ico">🛡️</div>
-      <h4>تشفير كامل للبيانات</h4>
-      <p>كل البيانات مشفرة أثناء النقل وعند التخزين باستخدام معايير AES-256. لا أحد يستطيع الوصول إليها غيرك</p>
-    </div>
-    <div class="sec-item sr">
-      <div class="sec-item-ico">📋</div>
-      <h4>توافق مع اللوائح السعودية</h4>
-      <p>حلولنا متوافقة مع نظام حماية البيانات الشخصية السعودي (PDPL) ومتطلبات هيئة الاتصالات والفضاء والتقنية</p>
-    </div>
+    <div class="sec-item sr"><div class="sec-item-ico">🔒</div><h4>بياناتك لا تغادر بيئتك</h4><p>نبني الحلول لتعمل داخل خوادمك أو بيئتك السحابية الخاصة — بياناتك لا تُشارك مع أي طرف ثالث تحت أي ظرف</p></div>
+    <div class="sec-item sr"><div class="sec-item-ico">🛡️</div><h4>تشفير كامل للبيانات</h4><p>كل البيانات مشفرة أثناء النقل وعند التخزين باستخدام معايير AES-256. لا أحد يستطيع الوصول إليها غيرك</p></div>
+    <div class="sec-item sr"><div class="sec-item-ico">📋</div><h4>توافق مع اللوائح السعودية</h4><p>حلولنا متوافقة مع نظام حماية البيانات الشخصية السعودي (PDPL) ومتطلبات هيئة الاتصالات والفضاء والتقنية</p></div>
   </div>
-
   <div class="lbl" style="margin-bottom:16px">التقنيات والنماذج المستخدمة</div>
-  <div class="tech-stack-row">
+  <div class="tech-stack-row" id="tech-row">
     <div class="tech-pill"><span>🤖</span> GPT-4o / Claude 3.5</div>
     <div class="tech-pill"><span>🦙</span> Llama 3 (محلي)</div>
     <div class="tech-pill"><span>🔍</span> RAG + Vector DB</div>
@@ -1000,40 +741,70 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════════
+  ✨ TALK TO SURAYA SECTION
+══════════════════════════════════════════════ -->
+<div class="sec-full" id="talk-suraya">
+  <div class="sec-full-inner">
+    <div class="talk-suraya-inner">
+
+      <!-- Visual: orbiting rings -->
+      <div class="ts-visual sr">
+        <canvas id="ts-mini-canvas"></canvas>
+        <!-- ripple rings behind core -->
+        <div class="ts-ripple-el"></div>
+        <div class="ts-ripple-el"></div>
+        <div class="ts-ripple-el"></div>
+        <!-- spinning rings -->
+        <div class="ts-ring ts-ring-1"></div>
+        <div class="ts-ring ts-ring-2"></div>
+        <div class="ts-ring ts-ring-3"></div>
+        <!-- center clickable core -->
+        <div class="ts-core" id="ts-core-btn" onclick="openVoiceSuraya('')">
+          <span>S</span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="ts-content sr">
+        <div class="lbl">جرّبها الآن · مجاناً</div>
+        <h2 class="ttl">تحدث مع <span class="grad">سريا</span> مباشرة</h2>
+        <p class="sub" style="margin-bottom:28px;max-width:440px">اسأل سريا عن أي شيء — خدماتنا، الأسعار، وقت التسليم، أو ابدأ مشروعك الآن. مساعدنا الذكي متاح 24/7 ويفهم احتياجك.</p>
+        <div class="ts-btns">
+          <button class="btn-gold" onclick="openVoiceSuraya('')" style="border:none;cursor:pointer">
+            <svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:#0a0d15;flex-shrink:0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            ابدأ المحادثة الآن
+          </button>
+          <a href="https://wa.me/966564124426" class="btn-wa" target="_blank">💬 أو على واتساب</a>
+        </div>
+        <div class="ts-pills">
+          <span class="ts-pill" onclick="openVoiceSuraya('ما هي خدماتكم الرئيسية؟')">ما خدماتكم؟</span>
+          <span class="ts-pill" onclick="openVoiceSuraya('كم تكلف باقاتكم؟')">الأسعار</span>
+          <span class="ts-pill" onclick="openVoiceSuraya('أريد شات بوت لموقعي')">شات بوت</span>
+          <span class="ts-pill" onclick="openVoiceSuraya('أتمتة واتساب')">واتساب AI</span>
+          <span class="ts-pill" onclick="openVoiceSuraya('كم وقت التسليم؟')">وقت التسليم</span>
+          <span class="ts-pill" onclick="openVoiceSuraya('أريد استشارة مجانية')">استشارة مجانية</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- ── CONTACT ── -->
 <section class="sec" id="contact">
   <div class="lbl sr">تواصل معنا</div>
   <div class="ttl sr">تواصل معنا مجاناً <span class="grad">الآن</span></div>
   <div class="sub sr">استشارة مجانية — عرض سعر خلال 24 ساعة — تسليم خلال 48 ساعة</div>
-
   <div class="contact-grid">
     <div class="contact-options">
-      <a href="https://wa.me/966564124426" class="contact-opt sr" target="_blank">
-        <div class="contact-opt-ico wa">💬</div>
-        <div>
-          <h4>واتساب</h4>
-          <p>تواصل فوري — نرد خلال دقائق</p>
-        </div>
-        <span class="arr">←</span>
-      </a>
-      <a href="mailto:info@suraya.ai" class="contact-opt sr">
-        <div class="contact-opt-ico em">📧</div>
-        <div>
-          <h4>البريد الإلكتروني</h4>
-          <p>info@suraya.ai</p>
-        </div>
-        <span class="arr">←</span>
-      </a>
+      <a href="https://wa.me/966564124426" class="contact-opt sr" target="_blank"><div class="contact-opt-ico wa">💬</div><div><h4>واتساب</h4><p>تواصل فوري — نرد خلال دقائق</p></div><span class="arr">←</span></a>
+      <a href="/cdn-cgi/l/email-protection#ff96919990bf8c8a8d9e869ed19e96" class="contact-opt sr"><div class="contact-opt-ico em">📧</div><div><h4>البريد الإلكتروني</h4><p><span class="__cf_email__" data-cfemail="6b02050d042b181e190a120a450a02">[email&#160;protected]</span></p></div><span class="arr">←</span></a>
     </div>
     <div class="custom-card sr">
       <h3>لديك مشروع أو فكرة خاصة؟</h3>
       <p>لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة</p>
-      <ul class="custom-points">
-        <li>نستمع لفكرتك بدون التزام</li>
-        <li>نقترح الحل الأمثل لها</li>
-        <li>عرض سعر واضح خلال 24 ساعة</li>
-        <li>نبنيها ونسلمها في أسرع وقت</li>
-      </ul>
+      <ul class="custom-points"><li>نستمع لفكرتك بدون التزام</li><li>نقترح الحل الأمثل لها</li><li>عرض سعر واضح خلال 24 ساعة</li><li>نبنيها ونسلمها في أسرع وقت</li></ul>
       <a href="https://wa.me/966564124426" class="btn-wa" target="_blank" style="width:100%;justify-content:center">💬 ابدأ المحادثة</a>
     </div>
   </div>
@@ -1044,31 +815,18 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
   <div class="footer-top">
     <div>
       <a href="#home" class="logo" style="margin-bottom:0">
-        <div class="logo-hex">
-          <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="18,2 34,18 18,34 2,18" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-            <polygon points="18,5 31,18 18,31 5,18" fill="#c9a84c" opacity="0.15"/>
-            <text x="18" y="23" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#e8c96d">S</text>
-          </svg>
-        </div>
+        <div class="logo-hex"><svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><polygon points="18,2 34,18 18,34 2,18" fill="none" stroke="#c9a84c" stroke-width="1.5"/><polygon points="18,5 31,18 18,31 5,18" fill="#c9a84c" opacity="0.15"/><text x="18" y="23" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#e8c96d">S</text></svg></div>
         <div class="logo-text"><span class="suraya">SURAYA</span><span class="ai">AI</span></div>
       </a>
       <p class="footer-brand-txt">شركة ذكاء اصطناعي متخصصة في بناء حلول عربية جاهزة للتنفيذ — من الفكرة إلى النتيجة في أسرع وقت.</p>
     </div>
     <div class="footer-col">
       <h5>الخدمات</h5>
-      <a href="#services">شات بوت ذكي</a>
-      <a href="#services">أتمتة واتساب</a>
-      <a href="#services">تحليل البيانات</a>
-      <a href="#services">محتوى تسويقي</a>
-      <a href="#services">وكيل مبيعات AI</a>
+      <a href="#services">شات بوت ذكي</a><a href="#services">أتمتة واتساب</a><a href="#services">تحليل البيانات</a><a href="#services">محتوى تسويقي</a><a href="#services">وكيل مبيعات AI</a>
     </div>
     <div class="footer-col">
       <h5>الشركة</h5>
-      <a href="#packages">الباقات</a>
-      <a href="#sectors">القطاعات</a>
-      <a href="#process">كيف نعمل</a>
-      <a href="#contact">تواصل معنا</a>
+      <a href="#packages">الباقات</a><a href="#sectors">القطاعات</a><a href="#process">كيف نعمل</a><a href="#talk-suraya">تحدث مع سريا</a><a href="#contact">تواصل معنا</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1077,343 +835,982 @@ nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
   </div>
 </footer>
 
-<!-- ── SURAYA ASSISTANT CHATBOT ── -->
+<!-- ══════════════════════════════════════════════
+  TALK TO SURAYA — FULLSCREEN OVERLAY
+══════════════════════════════════════════════ -->
+<div id="ts-overlay" style="position:fixed;inset:0;background:#060810;z-index:1000;display:none;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .4s">
+
+  <!-- overlay canvas for orbiting particles -->
+  <canvas id="ts-overlay-canvas" style="position:absolute;inset:0;pointer-events:none;z-index:0"></canvas>
+
+  <!-- bg expand circles -->
+  <div style="position:absolute;top:50%;left:50%;width:100px;height:100px;border-radius:50%;border:1px solid rgba(201,168,76,.08);animation:ts-ripple 4s ease-out infinite;transform:translate(-50%,-50%)"></div>
+  <div style="position:absolute;top:50%;left:50%;width:100px;height:100px;border-radius:50%;border:1px solid rgba(201,168,76,.06);animation:ts-ripple 4s ease-out 1.3s infinite;transform:translate(-50%,-50%)"></div>
+  <div style="position:absolute;top:50%;left:50%;width:100px;height:100px;border-radius:50%;border:1px solid rgba(201,168,76,.04);animation:ts-ripple 4s ease-out 2.6s infinite;transform:translate(-50%,-50%)"></div>
+
+  <!-- top bar -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:10;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(6,8,16,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.12)">
+    <div style="display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.1em">
+      <svg viewBox="0 0 36 36" style="width:26px;height:26px"><polygon points="18,2 34,18 18,34 2,18" fill="none" stroke="#c9a84c" stroke-width="1.5"/><polygon points="18,5 31,18 18,31 5,18" fill="#c9a84c" opacity="0.15"/><text x="18" y="23" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#e8c96d">S</text></svg>
+      <span style="color:#fff">SURAYA</span><span style="color:#e8c96d">AI</span>
+    </div>
+    <button onclick="closeTalkSuraya()" style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);color:#e8eaf6;padding:7px 18px;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='rgba(201,168,76,.5)'" onmouseout="this.style.borderColor='rgba(201,168,76,.2)'">← العودة للموقع</button>
+  </div>
+
+  <!-- IDLE STATE -->
+  <div id="ts-idle" style="position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;text-align:center;padding:80px 24px 40px;transition:opacity .4s,transform .4s">
+    <!-- big orb -->
+    <div style="position:relative;width:220px;height:220px;margin-bottom:36px;cursor:pointer" onclick="tsStartChat()">
+      <div class="ts-ring ts-ring-1" style="position:absolute"></div>
+      <div class="ts-ring ts-ring-2" style="position:absolute"></div>
+      <div class="ts-ring ts-ring-3" style="position:absolute"></div>
+      <div id="ts-big-core" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(201,168,76,.35),rgba(201,168,76,.06) 60%,transparent);border:1.5px solid rgba(201,168,76,.45);display:flex;align-items:center;justify-content:center;animation:ts-pulse 3s ease-in-out infinite;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:#e8c96d">S</div>
+    </div>
+    <h1 style="font-family:'Cairo',sans-serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.1">تحدث مع <span class="grad">سريا</span></h1>
+    <p style="font-size:.95rem;color:#5a6480;max-width:380px;line-height:1.9;margin-bottom:32px">مساعدك الذكي لكل ما يخص أعمالك — اسألني عن خدماتنا، الأسعار، أو ابدأ مشروعك الآن</p>
+    <button onclick="tsStartChat()" style="display:inline-flex;align-items:center;gap:10px;background:#c9a84c;color:#060810;border:none;padding:15px 36px;border-radius:100px;font-family:'Cairo',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 0 32px rgba(201,168,76,.3)" onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 8px 40px rgba(201,168,76,.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 0 32px rgba(201,168,76,.3)'">
+      <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#060810"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      ابدأ المحادثة
+    </button>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px">
+      <span class="ts-pill" onclick="tsStartChat('ما هي خدماتكم الرئيسية؟')">ما خدماتكم؟</span>
+      <span class="ts-pill" onclick="tsStartChat('كم تكلف باقاتكم؟')">الأسعار</span>
+      <span class="ts-pill" onclick="tsStartChat('أريد شات بوت لموقعي')">شات بوت</span>
+      <span class="ts-pill" onclick="tsStartChat('أتمتة واتساب')">واتساب AI</span>
+      <span class="ts-pill" onclick="tsStartChat('كم وقت التسليم؟')">وقت التسليم</span>
+    </div>
+  </div>
+
+  <!-- CHAT STATE -->
+  <div id="ts-chat" style="position:relative;z-index:5;display:none;flex-direction:column;width:100%;max-width:740px;height:calc(100vh - 56px);padding:20px 20px 0;margin-top:56px;opacity:0;transition:opacity .4s">
+    <!-- mini orb header -->
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-shrink:0">
+      <div style="position:relative;width:50px;height:50px;flex-shrink:0">
+        <div class="ts-ring" style="position:absolute;width:50px;height:50px;animation-duration:8s"></div>
+        <div id="ts-mini-core" style="position:absolute;inset:8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(201,168,76,.4),rgba(201,168,76,.08));border:1px solid rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.8rem;color:#e8c96d;animation:ts-pulse 3s ease-in-out infinite">S</div>
+      </div>
+      <div>
+        <div style="font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;color:#fff">سريا المساعد</div>
+        <div style="font-size:.72rem;color:#4ade80;display:flex;align-items:center;gap:5px">
+          <span id="ts-status-dot" style="width:6px;height:6px;border-radius:50%;background:#4ade80;animation:blink 2s ease infinite;display:inline-block"></span>
+          <span id="ts-status-txt">متاح الآن</span>
+          <div id="ts-wave" style="display:none;align-items:center;gap:3px;height:16px">
+            <div style="width:3px;background:#4ade80;border-radius:2px;animation:wave 1s ease-in-out infinite;height:5px"></div>
+            <div style="width:3px;background:#4ade80;border-radius:2px;animation:wave 1s .1s ease-in-out infinite;height:12px"></div>
+            <div style="width:3px;background:#4ade80;border-radius:2px;animation:wave 1s .2s ease-in-out infinite;height:16px"></div>
+            <div style="width:3px;background:#4ade80;border-radius:2px;animation:wave 1s .3s ease-in-out infinite;height:12px"></div>
+            <div style="width:3px;background:#4ade80;border-radius:2px;animation:wave 1s .4s ease-in-out infinite;height:5px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    @keyframes wave{0%,100%{transform:scaleY(.5);opacity:.5}50%{transform:scaleY(1);opacity:1}}
+
+    <!-- quick pills -->
+    <div id="ts-quick-pills" style="display:flex;flex-wrap:wrap;gap:7px;padding-bottom:12px;flex-shrink:0">
+      <span class="ts-pill" onclick="tsSendQuick('ما هي خدماتكم الرئيسية؟')">خدماتكم؟</span>
+      <span class="ts-pill" onclick="tsSendQuick('كم تكلف باقاتكم؟')">الأسعار</span>
+      <span class="ts-pill" onclick="tsSendQuick('كم وقت التسليم؟')">وقت التسليم</span>
+      <span class="ts-pill" onclick="tsSendQuick('أريد استشارة مجانية')">استشارة مجانية</span>
+      <span class="ts-pill" onclick="tsSendQuick('كيف أبدأ معكم؟')">كيف أبدأ؟</span>
+    </div>
+
+    <!-- messages -->
+    <div id="ts-msgs" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:16px;padding-bottom:20px;scrollbar-width:thin;scrollbar-color:rgba(201,168,76,.2) transparent"></div>
+
+    <!-- input -->
+    <div style="flex-shrink:0;padding:14px 0 18px;display:flex;gap:10px;align-items:flex-end;border-top:1px solid rgba(201,168,76,.1)">
+      <textarea id="ts-input" placeholder="اكتب سؤالك هنا..." rows="1" onkeydown="tsHandleKey(event)" oninput="tsAutoResize(this)" style="flex:1;background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:13px 18px;color:#e8eaf6;font-family:'Cairo',sans-serif;font-size:.9rem;outline:none;resize:none;min-height:50px;max-height:130px;direction:rtl;transition:border-color .2s;line-height:1.6"></textarea>
+      <button onclick="tsSend()" style="width:50px;height:50px;border-radius:14px;background:#c9a84c;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;box-shadow:0 0 20px rgba(201,168,76,.3);flex-shrink:0" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform=''">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#060810"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT WIDGET (original) -->
 <div id="chat-bubble">
   <div class="chat-window" id="chat-window">
-    <div class="chat-header">
-      <div class="chat-avatar">S</div>
-      <div class="chat-header-info">
-        <div class="chat-name">سريا المساعد</div>
-        <div class="chat-status">متاح الآن</div>
-      </div>
-      <button class="chat-close-btn" onclick="toggleChat()">✕</button>
-    </div>
-    <div class="chat-messages" id="chat-msgs">
-      <div class="msg bot">أهلاً! أنا سريا المساعد 👋<br>كيف يمكنني مساعدتك اليوم؟</div>
-    </div>
+    <div class="chat-header"><div class="chat-avatar">S</div><div class="chat-header-info"><div class="chat-name">سريا المساعد</div><div class="chat-status">متاح الآن</div></div><button class="chat-close-btn" onclick="toggleChat()">✕</button></div>
+    <div class="chat-messages" id="chat-msgs"><div class="msg bot">أهلاً! أنا سريا المساعد 👋<br>كيف يمكنني مساعدتك اليوم؟</div></div>
     <div class="chat-quick" id="chat-quick">
       <button class="quick-btn" onclick="quickMsg('ما هي خدماتكم؟')">خدماتكم؟</button>
       <button class="quick-btn" onclick="quickMsg('كم تكلف الباقات؟')">الأسعار؟</button>
       <button class="quick-btn" onclick="quickMsg('كم وقت التسليم؟')">وقت التسليم؟</button>
       <button class="quick-btn" onclick="quickMsg('أريد استشارة مجانية')">استشارة مجانية</button>
     </div>
-    <div class="chat-input-row">
-      <input class="chat-input" id="chat-in" placeholder="اكتب رسالتك..." onkeydown="if(event.key==='Enter')sendChat()">
-      <button class="chat-send" onclick="sendChat()">←</button>
-    </div>
+    <div class="chat-input-row"><input class="chat-input" id="chat-in" placeholder="اكتب رسالتك..." onkeydown="if(event.key==='Enter')sendChat()"><button class="chat-send" onclick="sendChat()">←</button></div>
   </div>
-  <button class="chat-toggle" onclick="toggleChat()">
-    <span id="chat-icon">💬</span>
-    <span class="chat-notif" id="chat-notif">1</span>
-  </button>
+  <button class="chat-toggle" onclick="toggleChat()"><span id="chat-icon">💬</span><span class="chat-notif" id="chat-notif">1</span></button>
 </div>
 
-<script>
-// ── BACK TO TOP ──
-const btt = document.getElementById('btt');
-window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ══════════════════════════════════════
+   SURAYA AI — Full Site JS
+══════════════════════════════════════ */
 
-// ── SERVICE FILTER ──
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const f = btn.dataset.filter;
-    document.querySelectorAll('.svc').forEach(svc => {
-      svc.setAttribute('data-hidden', f !== 'all' && svc.dataset.cat !== f);
-    });
+// ── BACK TO TOP ──
+// Force hero elements visible immediately on load
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.badge,.hero h1,.hero-sub,.hero-btns').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
   });
 });
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400), {passive:true});
 
-// ── MODAL DATA ──
-const modalData = {
-  chatbot1:{ico:'🤖',price:'من 500 ريال',title:'شات بوت ذكي لموقعك',desc:'روبوت محادثة مدرّب على بيانات شركتك يرد على عملائك 24/7 بعربية دقيقة وإنجليزية — يفهم أسئلة العملاء ويجيب بدقة.',features:['تدريب على محتوى موقعك وكتالوج منتجاتك','ردود باللغتين العربية والإنجليزية','تكامل مع الموقع والواتساب','لوحة تحكم لمراجعة المحادثات','تحديثات تلقائية عند تغيير المحتوى'],tech:['GPT-4o','RAG','Arabic NLP','WhatsApp API','React'],caseStudy:'عميل في التجارة الإلكترونية: انخفضت استفسارات الدعم بـ 65% وارتفع معدل الشراء بـ 28% في الشهر الأول.'},
-  chatbot2:{ico:'📱',price:'من 800 ريال',title:'أتمتة واتساب بالذكاء الاصطناعي',desc:'نربط رقم واتساب شركتك بنموذج ذكاء اصطناعي متقدم — يرد على العملاء، يحجز المواعيد، ويرسل التذكيرات تلقائياً.',features:['ربط واتساب Business API الرسمي','ردود ذكية على الأسئلة الشائعة','حجز مواعيد وتأكيد تلقائي','إرسال تذكيرات وعروض مخصصة','تقارير أسبوعية بأداء الحملات'],tech:['WhatsApp Cloud API','GPT-4o','n8n','Python'],caseStudy:'عيادة طب أسنان: انخفضت المكالمات الواردة 80% ووفّر الفريق 6 ساعات يومياً.'},
-  appt:{ico:'🗓️',price:'من 700 ريال',title:'نظام حجز مواعيد ذكي',desc:'نظام متكامل يستقبل طلبات الحجز عبر واتساب أو الموقع، يتحقق من الجدول، ويؤكد الموعد فوراً بدون تدخل بشري.',features:['حجز وإلغاء وإعادة جدولة تلقائي','تذكيرات قبل الموعد بـ 24 و 2 ساعة','تكامل مع Google Calendar','قائمة انتظار ذكية','تقارير بمعدلات الحضور'],tech:['WhatsApp API','Google Calendar API','n8n','Python'],caseStudy:'مركز تجميل: تقليص معدل الغياب من 25% إلى 6% بعد تفعيل التذكيرات الذكية.'},
-  docs:{ico:'📄',price:'من 300 ريال',title:'تلخيص وتحليل المستندات',desc:'ارفع عقداً أو تقريراً وفي ثوانٍ تحصل على ملخص دقيق وأبرز النقاط والتحذيرات.',features:['دعم PDF وWord وExcel','استخراج البنود والشروط من العقود','تلخيص التقارير المالية','كشف النقاط الحرجة والمخاطر','إخراج منظّم جاهز للاستخدام'],tech:['GPT-4o','LlamaIndex','PyMuPDF','Arabic NLP'],caseStudy:'مكتب محاماة: وفّر 95% من وقت مراجعة العقود — من 4 ساعات لـ 8 دقائق.'},
-  data:{ico:'📊',price:'من 600 ريال',title:'تحليل البيانات وإنتاج تقارير',desc:'ارفع ملف Excel أو CSV وسيحلل الذكاء الاصطناعي البيانات ويولّد تقارير بصرية وإحصاءات مفيدة.',features:['قراءة Excel وCSV وJSON','رسوم بيانية تلقائية','تحليل الاتجاهات والشذوذات','توصيات قابلة للتنفيذ','تقارير PDF جاهزة للعرض'],tech:['Python','Pandas','Plotly','GPT-4o','FastAPI'],caseStudy:'شركة توزيع: اكتشفت أن 20% من العملاء يولّدون 80% من الربح.'},
-  sentiment:{ico:'📈',price:'من 700 ريال',title:'تحليل مشاعر العملاء',desc:'نجمع ونحلل كل تقييمات ومراجعات عملائك لتفهم رأيهم الحقيقي.',features:['جمع تلقائي من منصات التقييم','تصنيف المشاعر (إيجابي/سلبي/محايد)','كشف المواضيع الأكثر ذكراً','تنبيهات عند التقييمات السلبية','تقارير أسبوعية وشهرية'],tech:['Arabic NLP','GPT-4o','Python','Scrapy'],caseStudy:'سلسلة مطاعم: ارتفع التقييم من 3.8 لـ 4.6 بعد اكتشاف شكاوى الانتظار ومعالجتها.'},
-  content:{ico:'✍️',price:'من 150 ريال',title:'كتابة محتوى تسويقي',desc:'ذكاء اصطناعي يتعلم أسلوب شركتك ويكتب المنشورات والإعلانات بصوت علامتك التجارية.',features:['منشورات سوشيال ميديا يومية','كتابة إعلانات Google وMeta','مقالات SEO بالعربية','سكريبت فيديوهات وريلز','بريد إلكتروني تسويقي'],tech:['GPT-4o','Claude 3.5','Arabic NLP'],caseStudy:'علامة تجارية: ارتفع التفاعل 3× ووفّر الفريق 20 ساعة أسبوعياً.'},
-  translate:{ico:'🌐',price:'من 200 ريال',title:'ترجمة ذكية عربي ↔ إنجليزي',desc:'ترجمة تراعي السياق والمصطلحات التقنية والثقافية.',features:['ترجمة مستندات كاملة','حفظ مصطلحات شركتك','ترجمة للهجات خليجية','فحص الجودة تلقائي','دعم أكثر من 20 لغة'],tech:['GPT-4o','DeepL API','Arabic NLP'],caseStudy:'شركة تقنية: ترجمة 200 صفحة وثائق في 30 دقيقة بدقة 99%.'},
-  media:{ico:'🖼️',price:'من 300 ريال',title:'توليد صور وفيديوهات',desc:'صور تسويقية احترافية وفيديوهات قصيرة للسوشيال ميديا بالذكاء الاصطناعي.',features:['صور منتجات بخلفيات احترافية','لوغو مفاهيمي مقترح','ريلز وفيديوهات قصيرة','بنرات إعلانية متعددة الأحجام','تعديل وتحسين الصور'],tech:['DALL-E 3','Midjourney','Runway ML'],caseStudy:'متجر أزياء: وفّر 15,000 ريال شهرياً على التصوير الاحترافي.'},
-  email:{ico:'📧',price:'من 400 ريال',title:'أتمتة البريد الإلكتروني',desc:'نربط صندوق بريدك بنموذج ذكاء اصطناعي يصنّف الرسائل ويرد تلقائياً.',features:['تصنيف تلقائي للرسائل','ردود ذكية على الأسئلة الشائعة','متابعة تلقائية للعملاء','تكامل Gmail وOutlook','تقارير بأوقات الاستجابة'],tech:['Gmail API','Outlook API','GPT-4o','n8n'],caseStudy:'شركة خدمات: تقليص وقت الرد من 4 ساعات لـ 8 دقائق.'},
-  search:{ico:'🔍',price:'من 500 ريال',title:'محرك بحث داخلي',desc:'اسأل بالعربية عن أي شيء في وثائق شركتك وستجد الإجابة فوراً.',features:['فهرسة كل وثائق الشركة','بحث بلغة طبيعية بالعربية','استشهاد بالمصدر الأصلي','صلاحيات وصول حسب الدور','تحديث تلقائي عند إضافة وثائق'],tech:['RAG','Pinecone','LlamaIndex','GPT-4o'],caseStudy:'شركة مقاولات: وفّر الموظفون 45 دقيقة يومياً في البحث عن المعلومات.'},
-  voice:{ico:'🎙️',price:'من 900 ريال',title:'تحويل الصوت إلى نص',desc:'سجّل اجتماعاتك ومقابلاتك وستصلك نصوص مرتبة مع ملخص تنفيذي وأبرز القرارات.',features:['دقة تجاوز 97% بالعربية','تمييز أصوات المتحدثين','ملخص تنفيذي تلقائي','استخراج القرارات والمهام','تصدير Word وPDF'],tech:['Whisper AI','GPT-4o','Arabic ASR'],caseStudy:'مجموعة استثمارية: توثيق 50 اجتماع شهرياً بدقة كاملة بدون كاتب محاضر.'},
-  sales:{ico:'💬',price:'من 1,200 ريال',title:'وكيل مبيعات بالذكاء الاصطناعي',desc:'وكيل AI يتحدث مع العملاء المحتملين ويقنعهم بالخطوة التالية.',features:['محادثات مخصصة حسب ملف العميل','تأهيل العملاء تلقائياً','جدولة مكالمات مع المبيعات','تتبع مسار المبيعات','تقارير بمعدلات التحويل'],tech:['GPT-4o','CRM Integration','WhatsApp API','n8n'],caseStudy:'شركة عقارات: زيادة تحويل الاستفسارات إلى مواعيد بـ 55%.'},
-  news:{ico:'📰',price:'من 250 ريال',title:'ملخص يومي للأخبار',desc:'كل صباح تصلك رسالة مخصصة بأهم أخبار مجالك ومنافسيك والسوق السعودي.',features:['رصد مئات المصادر العربية','تصفية بكلمات مخصصة','ملخص بأهم 5 أخبار','تحليل تأثير الأخبار','تسليم واتساب أو إيميل'],tech:['News APIs','GPT-4o','Python','n8n'],caseStudy:'مستثمر: يوفر ساعتين يومياً في متابعة الأخبار.'},
-  ecom:{ico:'🛒',price:'من 800 ريال',title:'توصيات ذكية للمتجر',desc:'نظام يحلل سلوك كل زائر ويعرض له المنتجات الأنسب في اللحظة المناسبة.',features:['تحليل سلوك التصفح والشراء','توصيات في صفحة المنتج والسلة','إيميلات تذكير بالمنتجات','تقارير بمعدل الشراء','اختبار A/B للتوصيات'],tech:['Recommendation AI','Python','Shopify API'],caseStudy:'متجر إلكتروني: ارتفع متوسط قيمة الطلب 35% بعد التفعيل.'},
-  reception:{ico:'🤝',price:'من 600 ريال',title:'موظف استقبال افتراضي',desc:'ذكاء اصطناعي يستقبل العملاء ويوجههم 24 ساعة بدون راتب.',features:['رد فوري على كل استفسار','توجيه للقسم المناسب','جمع بيانات الزوار','تسجيل الطلبات والشكاوى','تقارير بأكثر الأسئلة تكراراً'],tech:['GPT-4o','WhatsApp API','Arabic NLP'],caseStudy:'شركة خدمات: استيعاب 500+ استفسار يومي بدون موظفين إضافيين.'},
-  hr:{ico:'📋',price:'من 350 ريال',title:'تقارير HR والموظفين',desc:'نحوّل بيانات الحضور والأداء إلى تقارير واضحة تساعد في اتخاذ قرارات أفضل.',features:['تقارير حضور وانصراف تلقائية','تحليل أداء الموظفين','إدارة الإجازات','تنبيهات عند الغياب المتكرر','تصدير Excel وPDF'],tech:['Python','Pandas','PowerBI','Excel API'],caseStudy:'شركة 150 موظف: تقليص وقت إعداد تقارير HR من يومين لـ 20 دقيقة.'},
-  automate:{ico:'⚡',price:'من 500 ريال',title:'أتمتة المهام المتكررة',desc:'نحدد المهام اليدوية ونحوّلها لعمليات تلقائية بدون تدخل بشري.',features:['تحليل العمليات وتحديد فرص الأتمتة','بناء workflows تلقائية','تكامل مع ERP وCRM','مراقبة وتنبيهات عند الأخطاء','توثيق كامل للعمليات'],tech:['n8n','Zapier','Python','Make.com'],caseStudy:'شركة مقاولات: توفير 120 ساعة شهرياً بأتمتة 8 عمليات.'},
-  consult:{ico:'🎓',price:'من 400 ريال',title:'استشارة AI لعملك',desc:'جلسة مع خبراء سريا AI لتحليل شركتك وتحديد أعلى فرص ROI.',features:['جلسة تشخيص لعمليات شركتك','تحديد 3-5 فرص AI بأعلى عائد','خارطة طريق 90 يوم','تقييم التقنيات المناسبة','عرض سعر مفصل للتنفيذ'],tech:['مخصص لكل عميل'],caseStudy:'مجموعة طبية: حددنا 6 فرص AI وفّرت 450,000 ريال سنوياً بعد التطبيق.'}
-};
+// ── NAV SHRINK ──
+window.addEventListener('scroll', () => document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60), {passive:true});
 
-function openModal(id){
-  const d = modalData[id]; if(!d) return;
-  document.getElementById('m-ico').textContent = d.ico;
-  document.getElementById('m-price').textContent = d.price;
-  document.getElementById('m-title').textContent = d.title;
-  document.getElementById('m-desc').textContent = d.desc;
-  document.getElementById('m-features').innerHTML = d.features.map(f=>`<li>${f}</li>`).join('');
-  document.getElementById('m-tech').innerHTML = d.tech.map(t=>`<span>${t}</span>`).join('');
-  document.getElementById('m-case').textContent = d.caseStudy;
-  document.getElementById('svc-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(){
-  document.getElementById('svc-modal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('svc-modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+// ── SCROLL REVEAL ──
+const srObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('sr-on'); srObs.unobserve(e.target); }});
+}, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.sr').forEach(el => srObs.observe(el));
+// Safety fallback - show all in 1s
+setTimeout(()=>{document.querySelectorAll('.sr:not(.sr-on)').forEach(el=>el.classList.add('sr-on'));},1000);
+setTimeout(()=>{document.querySelectorAll('.sr:not(.sr-on)').forEach(el=>el.classList.add('sr-on'));},1200);
 
-// ── LEAD MAGNET ──
-function submitLead(){
-  const name = document.getElementById('lead-name').value.trim();
-  const email = document.getElementById('lead-email').value.trim();
-  if(!name || !email){ alert('يرجى إدخال الاسم والبريد الإلكتروني'); return; }
-  document.getElementById('lead-form').style.display = 'none';
-  document.getElementById('lead-success').style.display = 'block';
-}
+// tags stagger
+const tagObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('tags-on'); tagObs.unobserve(e.target); }});
+}, {threshold:.2});
+document.querySelectorAll('.svc-tags, #tech-row').forEach(el => tagObs.observe(el));
 
-// ── CHATBOT ──
-let chatOpen = false;
-const responses = {
-  services:'نقدم 19+ خدمة ذكاء اصطناعي 🤖\nأبرزها: الشات بوت الذكي، أتمتة واتساب، تحليل البيانات، المحتوى التسويقي، وكيل المبيعات AI.\n\nاضغط على "الخدمات" في القائمة لترى كل خدمة مع سعرها!',
-  price:'أسعارنا تبدأ من 150 ريال 💰\n\nباقات جاهزة:\n• باقة المتجر: 1,499 ريال/شهر\n• باقة الشركات: 3,499 ريال\n• باقة العيادات: 2,299 ريال\n\nكل الأسعار واضحة — بدون مفاجآت!',
-  time:'معظم المشاريع تُسلَّم خلال 48 ساعة ⚡\nالمشاريع الكبيرة من 3-14 يوم.\n\nنسلّم مع شرح كامل وتدريب لفريقك 🎓',
-  consult:'يسعدنا! الاستشارة مجانية تماماً ✅\n\nتواصل مع فريقنا على واتساب وسيرد خلال دقائق 👇',
-  security:'بياناتك آمنة 100% 🔒\n\nنبني الحلول داخل بيئتك — لا تغادر بياناتك خوادمك. كل شيء مشفر بمعيار AES-256 ومتوافق مع PDPL السعودي.',
-  default:'شكراً على سؤالك! 😊\nللإجابة بدقة، تواصل مع فريقنا مباشرة على واتساب وسيردون خلال دقائق.'
-};
-function getReply(msg){
-  if(/خدم|ماذا تقدم|ايش عندكم/.test(msg)) return responses.services;
-  if(/سعر|كم|تكلف|باق|ثمن/.test(msg)) return responses.price;
-  if(/وقت|تسليم|كم يوم|متى/.test(msg)) return responses.time;
-  if(/استشار|مجاني|تواصل|ابدأ/.test(msg)) return responses.consult;
-  if(/امان|بيانات|خصوصية|امن/.test(msg)) return responses.security;
-  return responses.default;
-}
-function toggleChat(){
-  chatOpen = !chatOpen;
-  document.getElementById('chat-window').classList.toggle('open', chatOpen);
-  document.getElementById('chat-notif').style.display = chatOpen ? 'none' : 'flex';
-  document.getElementById('chat-icon').textContent = chatOpen ? '✕' : '💬';
-}
-function addMsg(text, who){
-  const msgs = document.getElementById('chat-msgs');
-  const div = document.createElement('div');
-  div.className = `msg ${who}`;
-  div.innerHTML = text.replace(/\n/g,'<br>');
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-  return div;
-}
-function sendChat(){
-  const input = document.getElementById('chat-in');
-  const msg = input.value.trim(); if(!msg) return;
-  addMsg(msg, 'user');
-  input.value = '';
-  document.getElementById('chat-quick').style.display = 'none';
-  const msgs = document.getElementById('chat-msgs');
-  const t = document.createElement('div');
-  t.className = 'msg bot typing';
-  t.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
-  msgs.appendChild(t); msgs.scrollTop = msgs.scrollHeight;
-  setTimeout(() => {
-    t.remove();
-    const reply = getReply(msg);
-    addMsg(reply, 'bot');
-    if(reply.includes('واتساب')){
-      const wa = document.createElement('a');
-      wa.href = 'https://wa.me/966564124426'; wa.target = '_blank';
-      wa.className = 'btn-wa';
-      wa.style.cssText = 'margin:6px 0 0;font-size:.8rem;padding:9px 16px;justify-content:center';
-      wa.innerHTML = '💬 تحدث معنا على واتساب';
-      msgs.appendChild(wa);
-    }
-    msgs.scrollTop = 9999;
-  }, 900 + Math.random()*500);
-}
-function quickMsg(msg){
-  if(!chatOpen) toggleChat();
-  setTimeout(() => { document.getElementById('chat-in').value = msg; sendChat(); }, 150);
-}
+// stats counter
+const ctrObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target, end = +el.dataset.target, suf = el.dataset.suffix||'';
+    let cur = 0;
+    const step = () => { cur += Math.ceil((end-cur)/7); el.textContent = (cur>=end?end:cur)+suf; if(cur<end) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+    ctrObs.unobserve(e.target);
+  });
+}, {threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el => ctrObs.observe(el));
 
-/* ═══════════════════════════════════════════
-   MOTION SYSTEM — injected, no layout change
-═══════════════════════════════════════════ */
-
-// 1. PARTICLE BACKGROUND in hero
+// ── HERO PARTICLES ──
 (function(){
   const canvas = document.getElementById('hero-particles');
-  const hero   = document.getElementById('home');
-  if(!canvas || !hero) return;
+  const hero = document.getElementById('home');
   const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
-
-  function resize(){
-    W = canvas.width  = hero.offsetWidth;
-    H = canvas.height = hero.offsetHeight;
-  }
-  resize();
-  new ResizeObserver(resize).observe(hero);
-
-  function mkParticle(){
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 1.6 + 0.3,
-      vx:(Math.random() - 0.5) * 0.3,
-      vy:-Math.random() * 0.4 - 0.08,
-      alpha: Math.random() * 0.55 + 0.1
-    };
-  }
-  for(let i = 0; i < 70; i++) particles.push(mkParticle());
-
+  let W, H, pts = [];
+  function resize(){ W = canvas.width = hero.offsetWidth; H = canvas.height = hero.offsetHeight; }
+  resize(); new ResizeObserver(resize).observe(hero);
+  const mk = () => ({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,vx:(Math.random()-.5)*.3,vy:-Math.random()*.4-.08,a:Math.random()*.5+.1});
+  for(let i=0;i<65;i++) pts.push(mk());
   function tick(){
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if(p.y < -4) Object.assign(p, mkParticle(), { y: H + 4 });
-      if(p.x < -4) p.x = W + 4;
-      if(p.x > W + 4) p.x = -4;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(201,168,76,${p.alpha})`;
-      ctx.fill();
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p => {
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.y<-4) Object.assign(p,mk(),{y:H+4});
+      if(p.x<-4) p.x=W+4; if(p.x>W+4) p.x=-4;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(201,168,76,${p.a})`; ctx.fill();
     });
     requestAnimationFrame(tick);
   }
   tick();
 })();
 
-// 2. SCROLL REVEAL with IntersectionObserver
-(function(){
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        e.target.classList.add('sr-on');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+// ── HERO GRID PARALLAX ──
+window.addEventListener('scroll', () => {
+  const g = document.querySelector('.hero-grid');
+  if(g) g.style.transform = `translateY(${window.scrollY*.18}px)`;
+}, {passive:true});
 
-  document.querySelectorAll('.sr').forEach(el => io.observe(el));
-})();
-
-// 3. ANIMATED COUNTERS in stats bar
-(function(){
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(!e.isIntersecting) return;
-      const el     = e.target;
-      const target = +el.dataset.target;
-      const suffix = el.dataset.suffix || '';
-      let cur = 0;
-      const step = () => {
-        cur += Math.ceil((target - cur) / 7);
-        el.textContent = (cur >= target ? target : cur) + suffix;
-        if(cur < target) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-      io.unobserve(e.target);
-    });
-  }, { threshold: 0.6 });
-
-  document.querySelectorAll('[data-target]').forEach(el => io.observe(el));
-})();
-
-// 4. TAG / TECH-PILL stagger entrance
-(function(){
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(!e.isIntersecting) return;
-      e.target.classList.add('tags-on');
-      io.unobserve(e.target);
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.svc-tags, .tech-stack-row').forEach(el => io.observe(el));
-})();
-
-// 5. 3D TILT on service cards, packages, story cards
-document.querySelectorAll('.svc, .pkg, .story-card, .why-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const { left, top, width, height } = card.getBoundingClientRect();
-    const rx = ((e.clientY - top)  / height - 0.5) * -10;
-    const ry = ((e.clientX - left) / width  - 0.5) *  10;
-    card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
-});
-
-// 6. MAGNETIC effect on CTA buttons
-document.querySelectorAll('.btn-wa, .nav-wa, .btn-gold, .lead-submit').forEach(btn => {
-  btn.addEventListener('mousemove', e => {
-    const r  = btn.getBoundingClientRect();
-    const dx = (e.clientX - r.left - r.width  / 2) * 0.28;
-    const dy = (e.clientY - r.top  - r.height / 2) * 0.28;
-    btn.style.transform = `translate(${dx}px, ${dy}px)`;
-  });
-  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-});
-
-// 7. NAV SHRINK on scroll
-(function(){
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-})();
-
-// 8. HERO GRID subtle parallax
-(function(){
-  const grid = document.querySelector('.hero-grid');
-  if(!grid) return;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY * 0.18;
-    grid.style.transform = `translateY(${y}px)`;
-  }, { passive: true });
-})();
-
-// 9. CURSOR SPOTLIGHT in hero
+// ── HERO SPOTLIGHT ──
 (function(){
   const hero = document.getElementById('home');
-  if(!hero) return;
-  let spotlight = document.createElement('div');
-  spotlight.style.cssText = `
-    position:absolute;width:400px;height:400px;border-radius:50%;
-    background:radial-gradient(circle,rgba(201,168,76,.07),transparent 70%);
-    pointer-events:none;z-index:1;transform:translate(-50%,-50%);
-    transition:left .12s ease,top .12s ease;left:-999px;top:-999px;
-  `;
-  hero.appendChild(spotlight);
-  hero.addEventListener('mousemove', e => {
-    const r = hero.getBoundingClientRect();
-    spotlight.style.left = (e.clientX - r.left) + 'px';
-    spotlight.style.top  = (e.clientY - r.top)  + 'px';
-  });
-  hero.addEventListener('mouseleave', () => {
-    spotlight.style.left = '-999px';
-    spotlight.style.top  = '-999px';
-  });
+  const sp = document.createElement('div');
+  sp.style.cssText='position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.07),transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:left .1s,top .1s;left:-999px;top:-999px;';
+  hero.appendChild(sp);
+  hero.addEventListener('mousemove', e => { const r=hero.getBoundingClientRect(); sp.style.left=(e.clientX-r.left)+'px'; sp.style.top=(e.clientY-r.top)+'px'; });
+  hero.addEventListener('mouseleave', () => { sp.style.left='-999px'; sp.style.top='-999px'; });
 })();
 
-// 10. SECTOR icon bounce on hover (CSS handles it, JS adds class for accessibility)
-document.querySelectorAll('.sector').forEach(s => {
-  s.addEventListener('mouseenter', () => {
-    const ico = s.querySelector('.sector-ico');
-    ico.style.transform = 'scale(1.25) translateY(-4px)';
-    ico.style.transition = 'transform .3s cubic-bezier(.34,1.56,.64,1)';
+// ── 3D TILT ──
+document.querySelectorAll('.svc,.pkg,.story-card,.why-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const rx = ((e.clientY-r.top)/r.height-.5)*-10;
+    const ry = ((e.clientX-r.left)/r.width-.5)*10;
+    card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
   });
-  s.addEventListener('mouseleave', () => {
-    s.querySelector('.sector-ico').style.transform = '';
+  card.addEventListener('mouseleave', () => card.style.transform = '');
+});
+
+// ── MAGNETIC BUTTONS ──
+document.querySelectorAll('.btn-wa,.nav-wa,.btn-gold').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const dx=(e.clientX-r.left-r.width/2)*.28, dy=(e.clientY-r.top-r.height/2)*.28;
+    btn.style.transform = `translate(${dx}px,${dy}px)`;
+  });
+  btn.addEventListener('mouseleave', () => btn.style.transform='');
+});
+
+// ── MINI TS CANVAS (section visual) ──
+(function(){
+  const canvas = document.getElementById('ts-mini-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const S = 220; canvas.width = S; canvas.height = S;
+  const cx = S/2, cy = S/2;
+  const orbits = [
+    {r:107,count:22,speed:.0005,color:[201,168,76],alpha:.4,size:1.4},
+    {r:82, count:16,speed:-.0007,color:[201,168,76],alpha:.28,size:1.0},
+    {r:59, count:10,speed:.001, color:[74,222,128], alpha:.32,size:.8},
+  ];
+  orbits.forEach(o => { o.pts = Array.from({length:o.count},(_,i)=>({ao:(i/o.count)*Math.PI*2,sv:Math.random()*.4+.8})); });
+  let t=0;
+  function tick(){
+    ctx.clearRect(0,0,S,S);
+    orbits.forEach(o => {
+      o.pts.forEach(p => {
+        const angle = p.ao + t*o.speed*Math.PI*2*1000;
+        const x = cx+Math.cos(angle)*o.r, y = cy+Math.sin(angle)*o.r;
+        ctx.beginPath(); ctx.arc(x,y,o.size*p.sv,0,Math.PI*2);
+        ctx.fillStyle=`rgba(${o.color[0]},${o.color[1]},${o.color[2]},${o.alpha})`; ctx.fill();
+      });
+    });
+    t+=16; requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+// ══════════════════════════════════════
+// TALK TO SURAYA FULLSCREEN
+// ══════════════════════════════════════
+
+const TS_SYSTEM = `أنت سريا، المساعد الذكي لشركة SURAYA AI المتخصصة في حلول الذكاء الاصطناعي للشركات السعودية والعربية.
+
+مهمتك: مساعدة العملاء المحتملين وفهم احتياجاتهم وتوجيههم نحو الخدمة المناسبة.
+
+خدماتنا: شات بوت (500 ريال)، أتمتة واتساب (800 ريال)، حجز مواعيد (700 ريال)، تحليل مستندات (300 ريال)، تحليل بيانات (600 ريال)، تحليل مشاعر (700 ريال)، محتوى تسويقي (150 ريال)، ترجمة (200 ريال)، صور وفيديو (300 ريال)، أتمتة إيميل (400 ريال)، بحث داخلي (500 ريال)، صوت لنص (900 ريال)، وكيل مبيعات (1200 ريال)، ملخص أخبار (250 ريال)، توصيات متجر (800 ريال)، استقبال افتراضي (600 ريال)، تقارير HR (350 ريال)، أتمتة مهام (500 ريال)، استشارة (400 ريال).
+
+باقات: المتجر/المطعم 1499 ريال، الشركات الصغيرة 3499 ريال (الأكثر طلباً)، العيادات 2299 ريال.
+التسليم: 48 ساعة لمعظم المشاريع. الاستشارة الأولى مجانية.
+واتساب: +966564124426 | إيميل: info@suraya.ai
+
+أسلوبك: ودي ومهني بالعربية، ردود قصيرة (3-5 جمل)، بدون markdown، أضف إيموجي مناسباً.`;
+
+let tsHistory = [];
+let tsThinking = false;
+let tsOverlayCanvas, tsOverlayCtx, tsCanvasRunning = false;
+
+function openTalkSuraya(initialMsg) {
+  const ov = document.getElementById('ts-overlay');
+  ov.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => { ov.style.opacity = '1'; });
+  startTsCanvas();
+  if(initialMsg) setTimeout(() => tsStartChat(initialMsg), 300);
+}
+
+function closeTalkSuraya() {
+  const ov = document.getElementById('ts-overlay');
+  ov.style.opacity = '0';
+  setTimeout(() => { ov.style.display = 'none'; document.body.style.overflow = ''; }, 400);
+}
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && document.getElementById('ts-overlay').style.display === 'flex') closeTalkSuraya(); });
+
+function tsStartChat(initialMsg) {
+  const idle = document.getElementById('ts-idle');
+  const chat = document.getElementById('ts-chat');
+  idle.style.opacity = '0'; idle.style.transform = 'scale(.92)';
+  setTimeout(() => {
+    idle.style.display = 'none';
+    chat.style.display = 'flex';
+    requestAnimationFrame(() => chat.style.opacity = '1');
+    if(!tsHistory.length) {
+      tsAddMsg('bot', 'أهلاً وسهلاً! 👋\nأنا سريا، مساعدك الذكي من SURAYA AI.\nكيف يمكنني مساعدتك اليوم؟');
+      tsHistory.push({role:'assistant', content:'أهلاً وسهلاً! 👋 أنا سريا. كيف يمكنني مساعدتك؟'});
+    }
+    if(initialMsg) setTimeout(() => tsSend(initialMsg), 350);
+    else setTimeout(() => document.getElementById('ts-input').focus(), 500);
+  }, 380);
+}
+
+function tsSendQuick(msg) { document.getElementById('ts-input').value = msg; tsSend(); }
+
+function tsAddMsg(who, text) {
+  const msgs = document.getElementById('ts-msgs');
+  document.getElementById('ts-quick-pills').style.display = 'none';
+  const row = document.createElement('div');
+  row.style.cssText = `display:flex;gap:12px;${who==='user'?'flex-direction:row-reverse;':''}animation:tsMsg .4s cubic-bezier(.22,1,.36,1) both`;
+  const av = document.createElement('div');
+  av.style.cssText = `width:34px;height:34px;border-radius:50%;${who==='user'?'background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#e8eaf6;':'background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);color:#e8c96d;'}display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'Syne',sans-serif`;
+  av.textContent = who==='user'?'أنت':'S';
+  const bub = document.createElement('div');
+  bub.style.cssText = `max-width:72%;padding:13px 18px;border-radius:${who==='user'?'18px 4px 18px 18px':'4px 18px 18px 18px'};font-size:.9rem;line-height:1.75;${who==='user'?'background:#c9a84c;color:#060810;font-weight:600;':'background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.18);color:#e8eaf6;'}`;
+  bub.innerHTML = text.replace(/\n/g,'<br>');
+  row.appendChild(av); row.appendChild(bub);
+  msgs.appendChild(row);
+  msgs.scrollTo({top:msgs.scrollHeight, behavior:'smooth'});
+  return bub;
+}
+
+function tsShowTyping() {
+  const msgs = document.getElementById('ts-msgs');
+  const row = document.createElement('div');
+  row.id = 'ts-typing'; row.style.cssText='display:flex;gap:12px';
+  const av = document.createElement('div');
+  av.style.cssText='width:34px;height:34px;border-radius:50%;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);color:#e8c96d;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:2px;font-family:Syne,sans-serif';
+  av.textContent='S';
+  const bub = document.createElement('div');
+  bub.style.cssText='padding:14px 20px;border-radius:4px 18px 18px 18px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.18);display:flex;align-items:center;gap:5px';
+  bub.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  row.appendChild(av); row.appendChild(bub);
+  msgs.appendChild(row);
+  msgs.scrollTo({top:msgs.scrollHeight, behavior:'smooth'});
+}
+
+function tsHideTyping() { const t=document.getElementById('ts-typing'); if(t) t.remove(); }
+
+function tsSetState(state) {
+  const core = document.getElementById('ts-mini-core');
+  const txt = document.getElementById('ts-status-txt');
+  const wave = document.getElementById('ts-wave');
+  const dot = document.getElementById('ts-status-dot');
+  core.style.animation = '';
+  wave.style.display = 'none';
+  if(state==='idle') { txt.textContent='متاح الآن'; dot.style.background='#4ade80'; core.style.animation='ts-pulse 3s ease-in-out infinite'; }
+  else if(state==='thinking') { txt.textContent='يفكر...'; dot.style.background='#c9a84c'; }
+  else if(state==='speaking') { txt.textContent=''; wave.style.display='flex'; dot.style.background='#4ade80'; }
+}
+
+async function tsSend(overrideMsg) {
+  if(tsThinking) return;
+  const input = document.getElementById('ts-input');
+  const text = (overrideMsg || input.value).trim();
+  if(!text) return;
+  input.value=''; tsAutoResize(input);
+  tsAddMsg('user', text);
+  tsHistory.push({role:'user', content:text});
+  tsThinking = true; tsSetState('thinking'); tsShowTyping();
+
+  // Smart local replies (no API key needed)
+  await new Promise(r => setTimeout(r, 600 + Math.random()*800));
+  const reply = tsGetReply(text);
+  tsHideTyping();
+  tsHistory.push({role:'assistant', content:reply});
+  tsSetState('speaking');
+  tsAddMsg('bot', reply);
+  if(reply.includes('واتساب') || tsHistory.length > 8) setTimeout(tsAppendWa, 600);
+  setTimeout(() => tsSetState('idle'), 2000);
+  tsThinking = false;
+}
+
+function tsGetReply(msg){
+  const m = msg.toLowerCase();
+  if(/أهل|هلا|مرحب|السلام|كيف/.test(m)) return 'أهلاً! يسعدني مساعدتك 😊 اسألني عن أي خدمة من خدماتنا أو الأسعار.';
+  if(/شات.?بوت|روبوت|chatbot/.test(m)) return 'الشات بوت الذكي يبدأ من 500 ريال ويُسلَّم 48 ساعة، يرد على عملائك 24/7 بالعربية والإنجليزية 🤖';
+  if(/واتساب|whatsapp/.test(m)) return 'أتمتة واتساب من 800 ريال 📱 نربط رقمك بذكاء اصطناعي يرد تلقائياً ويحجز المواعيد.';
+  if(/حجز|موعد|تذكير/.test(m)) return 'نظام الحجز الذكي من 700 ريال 🗓️ يرسل تذكيرات تلقائية ويدير جدول مواعيدك بالكامل.';
+  if(/مستند|عقد|pdf|تلخيص/.test(m)) return 'تحليل المستندات من 300 ريال 📄 ارفع أي عقد وستحصل على ملخص دقيق في ثوانٍ.';
+  if(/بيانات|اكسل|excel|تقرير/.test(m)) return 'تحليل البيانات من 600 ريال 📊 ارفع Excel وستحصل على تقارير ورسوم بيانية احترافية.';
+  if(/محتوى|منشور|سوشيال|تسويق/.test(m)) return 'المحتوى التسويقي من 150 ريال فقط ✍️ نكتب منشوراتك اليومية بأسلوب علامتك التجارية.';
+  if(/مبيعات|بيع/.test(m)) return 'وكيل المبيعات الذكي من 1200 ريال 💬 يتحدث مع عملائك المحتملين ويحوّل الاهتمام لمبيعات.';
+  if(/سعر|كم|تكلف|باقة/.test(m)) return 'أسعارنا من 150 ريال 💰 باقة المتجر 1499، الشركات 3499 (الأكثر طلباً)، العيادات 2299 ريال.';
+  if(/وقت|تسليم|متى|كم يوم/.test(m)) return 'معظم مشاريعنا تُسلَّم خلال 48 ساعة ⚡ المشاريع الكبيرة من 3 إلى 7 أيام.';
+  if(/أمان|بيانات|خصوصية/.test(m)) return 'بياناتك آمنة 100٪ 🔒 نبني الحلول داخل خوادمك ولا تخرج بياناتك لأي طرف ثالث.';
+  if(/استشار|مجاني|ابدأ|كيف/.test(m)) return 'الاستشارة الأولى مجانية ✅ تواصل على واتساب وسنرد خلال دقائق 👇';
+  if(/خدمات|خدمة|ماذا|ايش/.test(m)) return 'نقدم 19 خدمة ذكاء اصطناعي 🤖 شات بوت، أتمتة واتساب، تحليل بيانات، محتوى تسويقي، وكيل مبيعات وأكثر!';
+  if(/عيادة|طبي|صحة/.test(m)) return 'باقة العيادات بـ 2299 ريال 🏥 تشمل حجز مواعيد ذكي وتذكيرات للمرضى وشات بوت طبي.';
+  if(/متجر|تجارة|منتج/.test(m)) return 'باقة المتجر بـ 1499 ريال 🏪 تشمل شات بوت واتساب ونظام طلبات تلقائي.';
+  const def = ['سؤال ممتاز! تواصل على واتساب وسيجيبك أحد خبرائنا بالتفصيل 👇','يسعدني مساعدتك 😊 تواصل معنا على واتساب للحصول على عرض مخصص لاحتياجاتك.'];
+  return def[Math.floor(Math.random()*def.length)];
+}
+
+
+function tsAppendWa() {
+  const msgs = document.getElementById('ts-msgs');
+  if(document.getElementById('ts-wa-cta')) return;
+  const div = document.createElement('div');
+  div.id='ts-wa-cta'; div.style.cssText='display:flex;justify-content:flex-start;padding-right:46px;margin-top:4px';
+  div.innerHTML=`<a href="https://wa.me/966564124426" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:10px 22px;border-radius:100px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.82rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.25);transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(37,211,102,.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(37,211,102,.25)'">💬 تحدث معنا على واتساب</a>`;
+  msgs.appendChild(div);
+  msgs.scrollTo({top:msgs.scrollHeight, behavior:'smooth'});
+}
+
+function tsHandleKey(e) { if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();tsSend();} }
+function tsAutoResize(el) { el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,130)+'px'; }
+
+// ── OVERLAY CANVAS (orbiting particles) ──
+function startTsCanvas() {
+  if(tsCanvasRunning) return;
+  tsCanvasRunning = true;
+  const canvas = document.getElementById('ts-overlay-canvas');
+  tsOverlayCtx = canvas.getContext('2d');
+  let W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const orbits = [
+    {r:()=>Math.min(W,H)*.36, count:26, speed:.00028, off:0,     a:.38, sz:1.4, c:[201,168,76]},
+    {r:()=>Math.min(W,H)*.50, count:38, speed:.00019, off:.7,    a:.24, sz:1.1, c:[201,168,76]},
+    {r:()=>Math.min(W,H)*.66, count:52, speed:.00013, off:1.4,   a:.15, sz:.8,  c:[74,222,128]},
+    {r:()=>Math.min(W,H)*.82, count:68, speed:.00009, off:2.3,   a:.09, sz:.6,  c:[201,168,76]},
+  ];
+  orbits.forEach(o => { o.pts = Array.from({length:o.count},(_,i)=>({ao:(i/o.count)*Math.PI*2,sv:Math.random()*.5+.75})); });
+  const floaters = Array.from({length:55},()=>({x:Math.random()*1400,y:Math.random()*900,vx:(Math.random()-.5)*.22,vy:-Math.random()*.28-.05,r:Math.random()*1.2+.3,a:Math.random()*.28+.05}));
+  let t=0;
+  function tick() {
+    if(!document.getElementById('ts-overlay') || document.getElementById('ts-overlay').style.display==='none') { tsCanvasRunning=false; return; }
+    tsOverlayCtx.clearRect(0,0,W,H);
+    const cx=W/2, cy=H/2;
+    orbits.forEach(o => {
+      const r = o.r();
+      tsOverlayCtx.beginPath(); tsOverlayCtx.arc(cx,cy,r,0,Math.PI*2);
+      tsOverlayCtx.strokeStyle='rgba(201,168,76,.035)'; tsOverlayCtx.lineWidth=.5; tsOverlayCtx.stroke();
+      o.pts.forEach(p => {
+        const angle = p.ao+t*o.speed*Math.PI*2*1000+o.off;
+        const x=cx+Math.cos(angle)*r, y=cy+Math.sin(angle)*r;
+        const sz=o.sz*p.sv;
+        tsOverlayCtx.beginPath(); tsOverlayCtx.arc(x,y,sz,0,Math.PI*2);
+        tsOverlayCtx.fillStyle=`rgba(${o.c[0]},${o.c[1]},${o.c[2]},${o.a})`; tsOverlayCtx.fill();
+        if(sz>1.2){ tsOverlayCtx.beginPath(); tsOverlayCtx.arc(x,y,sz*2.5,0,Math.PI*2); tsOverlayCtx.fillStyle=`rgba(${o.c[0]},${o.c[1]},${o.c[2]},${o.a*.2})`; tsOverlayCtx.fill(); }
+      });
+    });
+    floaters.forEach(p => {
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.y<-5){p.y=H+5;p.x=Math.random()*W;} if(p.x<-5)p.x=W+5; if(p.x>W+5)p.x=-5;
+      tsOverlayCtx.beginPath(); tsOverlayCtx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      tsOverlayCtx.fillStyle=`rgba(201,168,76,${p.a})`; tsOverlayCtx.fill();
+    });
+    t+=16; requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+// add tsMsg keyframe dynamically
+const tsStyle = document.createElement('style');
+tsStyle.textContent='@keyframes tsMsg{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}} @keyframes wave{0%,100%{transform:scaleY(.5);opacity:.5}50%{transform:scaleY(1);opacity:1}}';
+document.head.appendChild(tsStyle);
+
+// ══════════════════════════════════════
+// ORIGINAL CHATBOT WIDGET (unchanged)
+// ══════════════════════════════════════
+const modalData = {
+  chatbot1:{ico:'🤖',price:'من 500 ريال',title:'شات بوت ذكي لموقعك',desc:'روبوت محادثة مدرّب على بيانات شركتك يرد على عملائك 24/7 بعربية دقيقة وإنجليزية.',features:['تدريب على محتوى موقعك وكتالوج منتجاتك','ردود باللغتين العربية والإنجليزية','تكامل مع الموقع والواتساب','لوحة تحكم لمراجعة المحادثات','تحديثات تلقائية عند تغيير المحتوى'],tech:['GPT-4o','RAG','Arabic NLP','WhatsApp API','React'],caseStudy:'عميل في التجارة الإلكترونية: انخفضت استفسارات الدعم بـ 65% وارتفع معدل الشراء بـ 28% في الشهر الأول.'},
+  chatbot2:{ico:'📱',price:'من 800 ريال',title:'أتمتة واتساب بالذكاء الاصطناعي',desc:'نربط رقم واتساب شركتك بنموذج ذكاء اصطناعي متقدم.',features:['ربط واتساب Business API الرسمي','ردود ذكية على الأسئلة الشائعة','حجز مواعيد وتأكيد تلقائي','إرسال تذكيرات وعروض مخصصة','تقارير أسبوعية بأداء الحملات'],tech:['WhatsApp Cloud API','GPT-4o','n8n','Python'],caseStudy:'عيادة طب أسنان: انخفضت المكالمات الواردة 80%.'},
+  appt:{ico:'🗓️',price:'من 700 ريال',title:'نظام حجز مواعيد ذكي',desc:'نظام متكامل يستقبل طلبات الحجز ويؤكد الموعد فوراً.',features:['حجز وإلغاء وإعادة جدولة تلقائي','تذكيرات قبل الموعد','تكامل مع Google Calendar','قائمة انتظار ذكية','تقارير بمعدلات الحضور'],tech:['WhatsApp API','Google Calendar API','n8n','Python'],caseStudy:'مركز تجميل: تقليص معدل الغياب من 25% إلى 6%.'},
+  docs:{ico:'📄',price:'من 300 ريال',title:'تلخيص وتحليل المستندات',desc:'ارفع عقداً أو تقريراً وتحصل على ملخص دقيق في ثوانٍ.',features:['دعم PDF وWord وExcel','استخراج البنود من العقود','تلخيص التقارير المالية','كشف النقاط الحرجة','إخراج منظّم جاهز للاستخدام'],tech:['GPT-4o','LlamaIndex','PyMuPDF','Arabic NLP'],caseStudy:'مكتب محاماة: 95% توفير في وقت مراجعة العقود.'},
+  data:{ico:'📊',price:'من 600 ريال',title:'تحليل البيانات وإنتاج تقارير',desc:'ارفع Excel أو CSV وستحصل على تقارير بصرية وإحصاءات.',features:['قراءة Excel وCSV وJSON','رسوم بيانية تلقائية','تحليل الاتجاهات','توصيات قابلة للتنفيذ','تقارير PDF جاهزة'],tech:['Python','Pandas','Plotly','GPT-4o','FastAPI'],caseStudy:'شركة توزيع: 20% من العملاء يولّدون 80% من الربح.'},
+  sentiment:{ico:'📈',price:'من 700 ريال',title:'تحليل مشاعر العملاء',desc:'نحلل تقييمات عملائك لتفهم رأيهم الحقيقي.',features:['جمع تلقائي من منصات التقييم','تصنيف المشاعر','كشف المواضيع الأكثر ذكراً','تنبيهات عند التقييمات السلبية','تقارير أسبوعية وشهرية'],tech:['Arabic NLP','GPT-4o','Python','Scrapy'],caseStudy:'سلسلة مطاعم: ارتفع التقييم من 3.8 لـ 4.6.'},
+  content:{ico:'✍️',price:'من 150 ريال',title:'كتابة محتوى تسويقي',desc:'ذكاء اصطناعي يتعلم أسلوب شركتك ويكتب المنشورات.',features:['منشورات سوشيال ميديا يومية','إعلانات Google وMeta','مقالات SEO','سكريبت فيديوهات','بريد إلكتروني تسويقي'],tech:['GPT-4o','Claude 3.5','Arabic NLP'],caseStudy:'علامة تجارية: ارتفع التفاعل 3× وتوفير 20 ساعة أسبوعياً.'},
+  translate:{ico:'🌐',price:'من 200 ريال',title:'ترجمة ذكية',desc:'ترجمة تراعي السياق الثقافي.',features:['ترجمة مستندات كاملة','حفظ مصطلحات شركتك','ترجمة للهجات خليجية','فحص الجودة تلقائي','دعم 20+ لغة'],tech:['GPT-4o','DeepL API','Arabic NLP'],caseStudy:'شركة تقنية: 200 صفحة وثائق في 30 دقيقة بدقة 99%.'},
+  media:{ico:'🖼️',price:'من 300 ريال',title:'توليد صور وفيديوهات',desc:'صور تسويقية وفيديوهات قصيرة للسوشيال.',features:['صور منتجات احترافية','لوغو مفاهيمي','ريلز وفيديوهات قصيرة','بنرات إعلانية','تعديل الصور'],tech:['DALL-E 3','Midjourney','Runway ML'],caseStudy:'متجر أزياء: توفير 15,000 ريال شهرياً على التصوير.'},
+  email:{ico:'📧',price:'من 400 ريال',title:'أتمتة البريد الإلكتروني',desc:'ذكاء اصطناعي يصنّف الرسائل ويرد تلقائياً.',features:['تصنيف تلقائي','ردود ذكية','متابعة تلقائية','تكامل Gmail وOutlook','تقارير الاستجابة'],tech:['Gmail API','Outlook API','GPT-4o','n8n'],caseStudy:'شركة خدمات: من 4 ساعات لـ 8 دقائق وقت رد.'},
+  search:{ico:'🔍',price:'من 500 ريال',title:'محرك بحث داخلي',desc:'ابحث في وثائق شركتك بلغة طبيعية.',features:['فهرسة الوثائق','بحث بالعربية','استشهاد بالمصدر','صلاحيات حسب الدور','تحديث تلقائي'],tech:['RAG','Pinecone','LlamaIndex','GPT-4o'],caseStudy:'شركة مقاولات: توفير 45 دقيقة يومياً.'},
+  voice:{ico:'🎙️',price:'من 900 ريال',title:'تحويل الصوت إلى نص',desc:'سجّل اجتماعاتك واحصل على نصوص مرتبة.',features:['دقة 97%+ بالعربية','تمييز أصوات المتحدثين','ملخص تنفيذي','استخراج القرارات','تصدير Word وPDF'],tech:['Whisper AI','GPT-4o','Arabic ASR'],caseStudy:'مجموعة استثمارية: 50 اجتماع شهرياً بدقة كاملة.'},
+  sales:{ico:'💬',price:'من 1,200 ريال',title:'وكيل مبيعات AI',desc:'وكيل يتحدث مع العملاء المحتملين.',features:['محادثات مخصصة','تأهيل تلقائي','جدولة مكالمات','تتبع مسار المبيعات','تقارير التحويل'],tech:['GPT-4o','CRM Integration','WhatsApp API','n8n'],caseStudy:'شركة عقارات: زيادة تحويل الاستفسارات بـ 55%.'},
+  news:{ico:'📰',price:'من 250 ريال',title:'ملخص يومي للأخبار',desc:'أهم أخبار مجالك كل صباح.',features:['رصد مئات المصادر','تصفية مخصصة','ملخص أهم 5 أخبار','تحليل التأثير','تسليم واتساب أو إيميل'],tech:['News APIs','GPT-4o','Python','n8n'],caseStudy:'مستثمر: توفير ساعتين يومياً.'},
+  ecom:{ico:'🛒',price:'من 800 ريال',title:'توصيات ذكية للمتجر',desc:'توصيات مخصصة تزيد معدل الشراء.',features:['تحليل سلوك الشراء','توصيات في الصفحة والسلة','إيميلات تذكير','تقارير الأداء','اختبار A/B'],tech:['Recommendation AI','Python','Shopify API'],caseStudy:'متجر إلكتروني: ارتفع متوسط الطلب 35%.'},
+  reception:{ico:'🤝',price:'من 600 ريال',title:'موظف استقبال افتراضي',desc:'ذكاء اصطناعي يستقبل العملاء 24/7.',features:['رد فوري','توجيه للقسم','جمع بيانات الزوار','تسجيل الشكاوى','تقارير الأسئلة'],tech:['GPT-4o','WhatsApp API','Arabic NLP'],caseStudy:'شركة خدمات: 500+ استفسار يومي بدون موظفين.'},
+  hr:{ico:'📋',price:'من 350 ريال',title:'تقارير HR',desc:'تقارير أداء وحضور تلقائياً.',features:['تقارير الحضور','تحليل الأداء','إدارة الإجازات','تنبيهات الغياب','تصدير Excel وPDF'],tech:['Python','Pandas','PowerBI','Excel API'],caseStudy:'شركة 150 موظف: من يومين لـ 20 دقيقة لإعداد التقارير.'},
+  automate:{ico:'⚡',price:'من 500 ريال',title:'أتمتة المهام المتكررة',desc:'نحوّل عملياتك اليدوية لعمليات تلقائية.',features:['تحليل فرص الأتمتة','بناء workflows','تكامل ERP وCRM','مراقبة وتنبيهات','توثيق العمليات'],tech:['n8n','Zapier','Python','Make.com'],caseStudy:'شركة مقاولات: 120 ساعة شهرياً توفيراً.'},
+  consult:{ico:'🎓',price:'من 400 ريال',title:'استشارة AI',desc:'جلسة لتحديد أعلى فرص ROI.',features:['جلسة تشخيص','تحديد 3-5 فرص AI','خارطة طريق 90 يوم','تقييم التقنيات','عرض سعر مفصل'],tech:['مخصص لكل عميل'],caseStudy:'مجموعة طبية: 6 فرص AI وفّرت 450,000 ريال سنوياً.'}
+};
+
+function openModal(id){
+  const d=modalData[id]; if(!d) return;
+  document.getElementById('m-ico').textContent=d.ico;
+  document.getElementById('m-price').textContent=d.price;
+  document.getElementById('m-title').textContent=d.title;
+  document.getElementById('m-desc').textContent=d.desc;
+  document.getElementById('m-features').innerHTML=d.features.map(f=>`<li>${f}</li>`).join('');
+  document.getElementById('m-tech').innerHTML=d.tech.map(t=>`<span>${t}</span>`).join('');
+  document.getElementById('m-case').textContent=d.caseStudy;
+  document.getElementById('svc-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('svc-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('svc-modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();}});
+
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.svc').forEach(svc=>svc.setAttribute('data-hidden',f!=='all'&&svc.dataset.cat!==f));
   });
 });
+
+function submitLead(){
+  const name=document.getElementById('lead-name').value.trim();
+  const email=document.getElementById('lead-email').value.trim();
+  if(!name||!email){alert('يرجى إدخال الاسم والبريد الإلكتروني');return;}
+  document.getElementById('lead-form').style.display='none';
+  document.getElementById('lead-success').style.display='block';
+}
+
+let chatOpen=false;
+const responses={
+  services:'نقدم 19+ خدمة ذكاء اصطناعي 🤖\nأبرزها: شات بوت، أتمتة واتساب، تحليل البيانات، محتوى تسويقي، وكيل مبيعات AI.',
+  price:'أسعارنا تبدأ من 150 ريال 💰\nباقة المتجر: 1,499 | الشركات: 3,499 | العيادات: 2,299 ريال',
+  time:'معظم المشاريع تُسلَّم خلال 48 ساعة ⚡',
+  consult:'الاستشارة مجانية تماماً ✅\nتواصل على واتساب وسيرد فريقنا خلال دقائق 👇',
+  security:'بياناتك آمنة 100% 🔒\nنبني الحلول داخل بيئتك — مشفر بمعيار AES-256.',
+  default:'شكراً على سؤالك! 😊\nتواصل معنا على واتساب للإجابة بدقة.'
+};
+function getReply(msg){
+  if(/خدم/.test(msg)) return responses.services;
+  if(/سعر|كم|تكلف|باق/.test(msg)) return responses.price;
+  if(/وقت|تسليم/.test(msg)) return responses.time;
+  if(/استشار|مجان/.test(msg)) return responses.consult;
+  if(/امان|بيانات/.test(msg)) return responses.security;
+  return responses.default;
+}
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chat-window').classList.toggle('open',chatOpen);
+  document.getElementById('chat-notif').style.display=chatOpen?'none':'flex';
+  document.getElementById('chat-icon').textContent=chatOpen?'✕':'💬';
+}
+function addMsg(text,who){
+  const msgs=document.getElementById('chat-msgs');
+  const div=document.createElement('div');
+  div.className=`msg ${who}`;
+  div.innerHTML=text.replace(/\n/g,'<br>');
+  msgs.appendChild(div); msgs.scrollTop=msgs.scrollHeight;
+  return div;
+}
+function sendChat(){
+  const input=document.getElementById('chat-in');
+  const msg=input.value.trim(); if(!msg) return;
+  addMsg(msg,'user'); input.value='';
+  document.getElementById('chat-quick').style.display='none';
+  const msgs=document.getElementById('chat-msgs');
+  const t=document.createElement('div');
+  t.className='msg bot typing';
+  t.innerHTML='<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{
+    t.remove();
+    const reply=getReply(msg);
+    addMsg(reply,'bot');
+    if(reply.includes('واتساب')){
+      const wa=document.createElement('a');
+      wa.href='https://wa.me/966564124426'; wa.target='_blank'; wa.className='btn-wa';
+      wa.style.cssText='margin:6px 0 0;font-size:.8rem;padding:9px 16px;justify-content:center';
+      wa.innerHTML='💬 تحدث معنا على واتساب';
+      msgs.appendChild(wa);
+    }
+    msgs.scrollTop=9999;
+  },900+Math.random()*500);
+}
+function quickMsg(msg){
+  if(!chatOpen) toggleChat();
+  setTimeout(()=>{document.getElementById('chat-in').value=msg;sendChat();},150);
+}
 </script>
+
+<!-- VOICE OVERLAY HTML -->
+<div id="voice-overlay" style="position:fixed;inset:0;z-index:2000;background:#060810;display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;opacity:0;transition:opacity .4s">
+  <canvas id="vo-canvas" style="position:absolute;inset:0;pointer-events:none;z-index:0"></canvas>
+
+  <!-- top bar -->
+  <div style="position:absolute;top:0;left:0;right:0;z-index:10;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(6,8,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.15)">
+    <div style="display:flex;align-items:center;gap:9px;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.1em">
+      <svg viewBox="0 0 36 36" style="width:26px;height:26px"><polygon points="18,2 34,18 18,34 2,18" fill="none" stroke="#c9a84c" stroke-width="1.5"/><polygon points="18,5 31,18 18,31 5,18" fill="#c9a84c" opacity="0.15"/><text x="18" y="23" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#e8c96d">S</text></svg>
+      <span style="color:#fff">SURAYA</span><span style="color:#e8c96d">&nbsp;AI</span>
+    </div>
+    <button id="vo-back-btn" onclick="if(typeof closeVoiceSuraya==='function')closeVoiceSuraya();" style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);color:#8892b0;padding:7px 16px;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer">← العودة للموقع</button>
+  </div>
+
+  <!-- orb system -->
+  <div id="vo-orb" style="position:relative;width:260px;height:260px;display:flex;align-items:center;justify-content:center;margin-top:72px;margin-bottom:28px;flex-shrink:0;z-index:5">
+    <div id="vo-r1" style="position:absolute;width:260px;height:260px;border-radius:50%;border:1px solid rgba(201,168,76,.2);top:50%;left:50%;animation:vos 18s linear infinite"></div>
+    <div id="vo-r2" style="position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(201,168,76,.15);top:50%;left:50%;animation:vos 12s linear reverse infinite"></div>
+    <div id="vo-r3" style="position:absolute;width:150px;height:150px;border-radius:50%;border:1px solid rgba(74,222,128,.15);top:50%;left:50%;animation:vos 8s linear infinite"></div>
+    <div id="vo-r4" style="position:absolute;width:108px;height:108px;border-radius:50%;border:1px solid rgba(201,168,76,.1);top:50%;left:50%;animation:vos 5s linear reverse infinite"></div>
+    <!-- visualizer bars (shown while listening) -->
+    <div id="vo-viz" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:none;align-items:center;gap:3px;z-index:4">
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:10px;animation:vovb .5s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:18px;animation:vovb .5s .07s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:30px;animation:vovb .5s .14s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:44px;animation:vovb .5s .21s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:56px;animation:vovb .5s .28s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:64px;animation:vovb .5s .35s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:56px;animation:vovb .5s .28s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:44px;animation:vovb .5s .21s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:30px;animation:vovb .5s .14s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:18px;animation:vovb .5s .07s ease-in-out infinite alternate"></div>
+      <div class="vo-vb" style="width:4px;background:#4ade80;border-radius:4px;height:10px;animation:vovb .5s ease-in-out infinite alternate"></div>
+    </div>
+    <!-- speaking bars -->
+    <div id="vo-spk" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:none;align-items:center;gap:5px;z-index:4">
+      <div style="width:5px;height:8px; background:#e8c96d;border-radius:4px;animation:vosb .9s ease-in-out infinite"></div>
+      <div style="width:5px;height:18px;background:#e8c96d;border-radius:4px;animation:vosb .9s .12s ease-in-out infinite"></div>
+      <div style="width:5px;height:30px;background:#e8c96d;border-radius:4px;animation:vosb .9s .24s ease-in-out infinite"></div>
+      <div style="width:5px;height:42px;background:#e8c96d;border-radius:4px;animation:vosb .9s .36s ease-in-out infinite"></div>
+      <div style="width:5px;height:50px;background:#e8c96d;border-radius:4px;animation:vosb .9s .48s ease-in-out infinite"></div>
+      <div style="width:5px;height:42px;background:#e8c96d;border-radius:4px;animation:vosb .9s .36s ease-in-out infinite"></div>
+      <div style="width:5px;height:30px;background:#e8c96d;border-radius:4px;animation:vosb .9s .24s ease-in-out infinite"></div>
+      <div style="width:5px;height:18px;background:#e8c96d;border-radius:4px;animation:vosb .9s .12s ease-in-out infinite"></div>
+      <div style="width:5px;height:8px; background:#e8c96d;border-radius:4px;animation:vosb .9s ease-in-out infinite"></div>
+    </div>
+    <!-- core -->
+    <div id="vo-core" onclick="window.voToggle&&window.voToggle()" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:86px;height:86px;border-radius:50%;background:radial-gradient(circle at 38% 38%,rgba(201,168,76,.35),rgba(201,168,76,.06) 55%,transparent);border:1.5px solid rgba(201,168,76,.45);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;animation:vopulse 3.5s ease-in-out infinite;transition:transform .3s cubic-bezier(.34,1.56,.64,1)">
+      <span id="vo-s-letter" style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:#e8c96d;transition:opacity .3s">S</span>
+      <span id="vo-s-mic" style="position:absolute;opacity:0;font-size:1.8rem;transition:opacity .3s">🎤</span>
+    </div>
+  </div>
+
+  <!-- status -->
+  <div id="vo-status" style="font-family:'Cairo',sans-serif;font-size:1rem;font-weight:600;color:#4a5470;margin-bottom:16px;text-align:center;z-index:5;transition:color .3s;flex-shrink:0">اضغط وتحدث مع سريا</div>
+
+  <!-- transcript -->
+  <div id="vo-tx" style="width:100%;max-width:600px;max-height:180px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:0 20px;margin-bottom:16px;z-index:5;flex-shrink:0"></div>
+
+  <!-- controls -->
+  <div style="display:flex;align-items:center;gap:16px;z-index:5;flex-shrink:0;margin-bottom:12px">
+    <button id="vo-voice-btn" title="تغيير الصوت" onclick="if(typeof voCycleVoice==='function')voCycleVoice();" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.07);color:#8892b0;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all .2s">🔊</button>
+    <button id="vo-mic-btn" onclick="window.voToggle&&window.voToggle()" style="width:72px;height:72px;border-radius:50%;border:none;background:#c9a84c;color:#060810;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.5rem;box-shadow:0 0 32px rgba(201,168,76,.4);transition:transform .2s,box-shadow .2s;position:relative">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1 1.93c-3.94-.49-7-3.85-7-7.93h2c0 3.31 2.69 6 6 6s6-2.69 6-6h2c0 4.08-3.06 7.44-7 7.93V19h3v2H9v-2h3v-3.07z"/></svg>
+    </button>
+    <button id="vo-clear-btn" title="مسح" onclick="var tx=document.getElementById('vo-tx');if(tx)tx.innerHTML='';window.speechSynthesis.cancel();" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.07);color:#8892b0;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all .2s">🗑️</button>
+  </div>
+
+  <div style="font-size:.75rem;color:#4a5470;text-align:center;z-index:5">Space = ميكروفون &nbsp;·&nbsp; Escape = إغلاق</div>
+
+  <a href="https://wa.me/966564124426" id="vo-wa-link" target="_blank" style="display:none;position:absolute;bottom:28px;right:28px;align-items:center;gap:8px;background:#25d366;color:#fff;padding:11px 20px;border-radius:100px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.83rem;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,.35)">💬 تحدث معنا على واتساب</a>
+</div>
+
+<style>
+@keyframes vos    {to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes vopulse{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.2),0 0 40px rgba(201,168,76,.08)}50%{box-shadow:0 0 40px rgba(201,168,76,.38),0 0 80px rgba(201,168,76,.15)}}
+@keyframes vovb   {from{transform:scaleY(.25);opacity:.35}to{transform:scaleY(1);opacity:1}}
+@keyframes vosb   {0%,100%{transform:scaleY(.3);opacity:.45}50%{transform:scaleY(1);opacity:1}}
+@keyframes vo-idle-ring{to{transform:translate(-50%,-50%) rotate(360deg)}}
+</style>
+
+<script>
+/* ══════════════════════════════════════════
+   SURAYA AI VOICE ENGINE v3
+   Real Claude API + Saudi dialect
+══════════════════════════════════════════ */
+
+/* ── SYSTEM PROMPT ── */
+var SURAYA_SYSTEM = `أنت سريا، مساعدة ذكية صوتية لشركة SURAYA AI.
+
+تتحدثين باللهجة السعودية العامية، بأسلوب ودي وطبيعي تماماً مثل محادثة بشرية.
+
+قاعدة المعرفة — خدمات SURAYA AI:
+• شات بوت ذكي لموقعك — من 500 ريال — تسليم 48 ساعة
+• أتمتة واتساب بالذكاء الاصطناعي — من 800 ريال
+• نظام حجز مواعيد ذكي — من 700 ريال
+• تلخيص وتحليل المستندات — من 300 ريال
+• تحليل البيانات وتقارير — من 600 ريال
+• تحليل مشاعر العملاء — من 700 ريال
+• كتابة محتوى تسويقي — من 150 ريال
+• ترجمة ذكية عربي/إنجليزي — من 200 ريال
+• توليد صور وفيديو — من 300 ريال
+• أتمتة البريد الإلكتروني — من 400 ريال
+• محرك بحث داخلي — من 500 ريال
+• تحويل صوت لنص — من 900 ريال
+• وكيل مبيعات AI — من 1200 ريال
+• ملخص يومي للأخبار — من 250 ريال
+• توصيات ذكية للمتجر — من 800 ريال
+• موظف استقبال افتراضي — من 600 ريال
+• تقارير HR — من 350 ريال
+• أتمتة المهام المتكررة — من 500 ريال
+• استشارة AI لعملك — من 400 ريال
+
+الباقات الجاهزة:
+• باقة المتجر والمطعم: 1,499 ريال/شهر
+• باقة الشركات الصغيرة: 3,499 ريال (الأكثر طلباً)
+• باقة العيادات والمراكز: 2,299 ريال
+
+معلومات عامة:
+• التسليم: 48 ساعة لمعظم المشاريع
+• الدعم عربي 100%
+• البيانات آمنة ولا تغادر بيئة العميل
+• الاستشارة الأولى مجانية
+• واتساب: 966564124426+
+• إيميل: info@suraya.ai
+
+سير المحادثة:
+1. رحّبي بالعميل: "هلا والله! كيف أقدر أساعدك اليوم؟"
+2. افهمي احتياجه واسألي أسئلة توضيحية إذا لزم
+3. أجيبي من قاعدة المعرفة بدقة
+4. إذا احتاج متابعة من الفريق، اعرضي إرسال طلبه
+5. اجمعي: الاسم + رقم الجوال أو الإيميل
+6. أكّدي المعلومات قبل الإرسال
+7. أغلقي بـ: "تم 👍 الفريق بيتواصل معك قريب إن شاء الله"
+
+قواعد مهمة:
+- لا تخترعي معلومات غير موجودة في قاعدة المعرفة
+- الردود قصيرة (جملة أو جملتين) مناسبة للصوت
+- لا نقاط ولا قوائم — كلام طبيعي فقط
+- اللهجة سعودية عامية دافئة
+- إذا ما عرفتِ الجواب: "ما عندي هذي المعلومة، بس أقدر أوصل سؤالك للفريق"`;
+
+/* ── STATE ── */
+var _S='idle',_H=[],_mc=0,_rec=null,_vv=[],_sv=null,_vi=0;
+var _SS=window.speechSynthesis;
+var _leadData={name:'',contact:''};
+var _collectingLead=false;
+
+function _E(id){return document.getElementById(id);}
+
+/* ── UI STATE ── */
+function _setState(s){
+  _S=s;
+  var labels={idle:'اضغط على الكرة أو الزر للبدء',listening:'🎤 أسمعك... تحدث الآن',thinking:'💭 سريا تفكر...',speaking:'🔊 سريا تتحدث...'};
+  var colors={idle:'#5a6480',listening:'#4ade80',thinking:'#c9a84c',speaking:'#e8c96d'};
+  var st=_E('vo-status');
+  if(st){st.textContent=labels[s]||'';st.style.color=colors[s]||'#5a6480';}
+  var mic=_E('vo-mic-btn');
+  if(mic){mic.style.background=s==='listening'?'#ef4444':'#c9a84c';mic.style.boxShadow=s==='listening'?'0 0 40px rgba(239,68,68,.5)':'0 0 30px rgba(201,168,76,.4)';}
+  var core=_E('vo-core');
+  if(core){core.className='core-btn'+(s!=='idle'?' '+s:'');core.innerHTML=s==='listening'?'⏹':'🎤';}
+  var viz=_E('vo-viz');if(viz)viz.className='viz-bars'+(s==='listening'?' show':'');
+  var spk=_E('vo-spk');if(spk)spk.className='spk-bars'+(s==='speaking'?' show':'');
+}
+
+/* ── TRANSCRIPT ── */
+function _addMsg(who,text,typing){
+  var tx=_E('vo-tx');if(!tx)return;
+  var row=document.createElement('div');
+  row.style.cssText='display:flex;gap:10px;animation:fadein .4s ease both;';
+  if(who==='user')row.style.flexDirection='row-reverse';
+  if(typing)row.id='vo-typing-row';
+  var av=document.createElement('div');
+  av.style.cssText='width:30px;height:30px;border-radius:50%;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;'+(who==='bot'?'background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:#e8c96d;font-family:Syne,sans-serif;':'background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#8892b0;');
+  av.textContent=who==='bot'?'S':'أنت';
+  var bub=document.createElement('div');
+  bub.style.cssText='max-width:74%;padding:10px 15px;font-size:.88rem;line-height:1.75;'+(who==='bot'?'background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.18);color:#e8eaf6;border-radius:4px 14px 14px 14px;':'background:rgba(201,168,76,.16);border:1px solid rgba(201,168,76,.28);color:#e8eaf6;font-weight:600;border-radius:14px 4px 14px 14px;');
+  if(typing){bub.innerHTML='<span style="display:flex;gap:5px;align-items:center"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>';}
+  else{bub.textContent=text;}
+  row.appendChild(av);row.appendChild(bub);tx.appendChild(row);tx.scrollTop=tx.scrollHeight;
+}
+function _rmTyping(){var t=_E('vo-typing-row');if(t)t.remove();}
+
+/* ── VOICES ── */
+function _loadV(){
+  var all=_SS.getVoices();
+  _vv=all.filter(function(v){return v.lang.indexOf('ar')===0;});
+  if(!_vv.length)_vv=all.filter(function(v){return v.lang.indexOf('en')===0;});
+  if(!_vv.length)_vv=all.slice(0,10);
+  var p=_vv.find(function(v){return /Maged|Tarik|Laila|Majed|ar-SA/i.test(v.name);});
+  _sv=p||_vv[0]||null;
+}
+_SS.onvoiceschanged=_loadV;
+_loadV();setTimeout(_loadV,400);setTimeout(_loadV,1200);
+
+function _cycleVoice(){
+  _loadV();if(!_vv.length)return;
+  _vi=(_vi+1)%_vv.length;_sv=_vv[_vi];
+  var u=new SpeechSynthesisUtterance('هلا والله');u.voice=_sv;u.lang='ar-SA';u.rate=.95;
+  _SS.cancel();_SS.speak(u);
+  var st=_E('vo-status');if(st)st.textContent='🔊 '+_sv.name.replace(/\s*\(.*\)/,'');
+  setTimeout(function(){if(_S==='idle')_setState('idle');},2500);
+}
+
+/* ── TTS ── */
+function _speak(text,cb){
+  _SS.cancel();_setState('speaking');
+  var u=new SpeechSynthesisUtterance(text);
+  if(_sv)u.voice=_sv;
+  u.lang='ar-SA';u.rate=0.9;u.pitch=1.1;u.volume=1;
+  var tm=setTimeout(function(){_setState('idle');if(cb)cb();},text.length*160+4000);
+  u.onend=function(){clearTimeout(tm);_setState('idle');if(cb)cb();};
+  u.onerror=function(){clearTimeout(tm);_setState('idle');if(cb)cb();};
+  _SS.speak(u);
+}
+
+/* ── CLAUDE API ── */
+async function _askClaude(userText){
+  _H.push({role:'user',content:userText});
+  _setState('thinking');
+  _addMsg('bot','',true);
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:250,
+        system:SURAYA_SYSTEM,
+        messages:_H.slice(-10)
+      })
+    });
+    var d=await res.json();
+    var reply=(d&&d.content&&d.content[0]&&d.content[0].text)||null;
+    if(!reply)throw new Error('no reply');
+    _rmTyping();
+    _H.push({role:'assistant',content:reply});
+    _addMsg('bot',reply);
+    _speak(reply);
+    _mc++;if(_mc>=3){var wa=_E('vo-wa-link');if(wa)wa.style.display='flex';}
+  }catch(e){
+    _rmTyping();
+    // Fallback to local smart replies
+    var r=_fallback(userText);
+    _H.push({role:'assistant',content:r});
+    _addMsg('bot',r);
+    _speak(r);
+    _mc++;if(_mc>=3){var wa=_E('vo-wa-link');if(wa)wa.style.display='flex';}
+  }
+}
+
+/* ── FALLBACK (when API unavailable) ── */
+function _fallback(msg){
+  var m=(msg||'').toLowerCase();
+  if(/أهل|هلا|مرحب|السلام|كيف/.test(m))return 'هلا والله! كيف أقدر أساعدك اليوم؟';
+  if(/شات.?بوت|روبوت|chatbot|بوت/.test(m))return 'الشات بوت يبدأ من 500 ريال ويُسلَّم 48 ساعة، يرد على عملائك 24 ساعة بالعربي والإنجليزي. تبي تعرف أكثر؟';
+  if(/واتساب|whatsapp/.test(m))return 'أتمتة الواتساب من 800 ريال، نربط رقمك بذكاء اصطناعي يرد تلقائياً. تحب نرسل لك تفاصيل أكثر؟';
+  if(/حجز|موعد|تذكير/.test(m))return 'نظام الحجز الذكي من 700 ريال يرسل تذكيرات تلقائية للعملاء. هل تبي تعرف أكثر؟';
+  if(/سعر|كم|تكلف|باقة/.test(m))return 'أسعارنا تبدأ من 150 ريال. باقة المتجر 1499، وباقة الشركات 3499 ريال وهي الأكثر طلباً. أي باقة تهمك؟';
+  if(/وقت|تسليم|متى/.test(m))return 'معظم مشاريعنا تُسلَّم خلال 48 ساعة فقط!';
+  if(/استشار|مجاني|ابدأ/.test(m))return 'الاستشارة الأولى مجانية! تبي أوصل طلبك للفريق عشان يتواصلون معك؟';
+  if(/خدمات|خدمة|ماذا|ايش/.test(m))return 'عندنا 19 خدمة ذكاء اصطناعي! شات بوت، واتساب، تحليل بيانات، محتوى، وكيل مبيعات، وأكثر. أي خدمة تهمك؟';
+  if(/نعم|أيوه|إيه|موافق|تمام|صح/.test(m)&&_collectingLead)return 'تمام 👌 وش اسمك الكريم؟';
+  var def=['سؤال حلو! تواصل على واتساب 966564124426+ وسيجيبك الفريق بكل التفاصيل.','يسعدني مساعدتك! تبي أوصل طلبك للفريق عشان يتواصلون معك؟'];
+  return def[Math.floor(Math.random()*def.length)];
+}
+
+/* ── RECOGNITION ── */
+function _initRec(){
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){alert('متصفحك ما يدعم الصوت.\nجرّب Chrome أو Edge على الكمبيوتر.');return false;}
+  _rec=new SR();
+  _rec.lang='ar-SA';_rec.continuous=false;_rec.interimResults=false;
+  _rec.onresult=function(e){
+    var txt=e.results[0][0].transcript.trim();
+    if(!txt){_setState('idle');return;}
+    _addMsg('user',txt);
+    _askClaude(txt);
+  };
+  _rec.onerror=function(e){
+    console.warn('STT error:',e.error);
+    if(e.error!=='no-speech'){
+      var st=_E('vo-status');
+      if(st){st.textContent='⚠️ '+e.error+' — اضغط مرة ثانية';st.style.color='#ef4444';}
+    }
+    _setState('idle');
+  };
+  _rec.onend=function(){if(_S==='listening')_setState('idle');};
+  return true;
+}
+
+/* ── TOGGLE ── */
+function _toggle(){
+  if(_S==='speaking'){_SS.cancel();_setState('idle');return;}
+  if(_S==='thinking')return;
+  if(_S==='listening'){if(_rec)_rec.stop();_setState('idle');return;}
+  if(!_rec&&!_initRec())return;
+  _setState('listening');
+  try{_rec.start();}
+  catch(ex){_rec=null;if(_initRec()){try{_rec.start();}catch(e2){_setState('idle');}}}
+}
+
+/* ── CLEAR ── */
+function _clear(){
+  _H=[];_mc=0;_leadData={name:'',contact:''};_collectingLead=false;
+  var t=_E('vo-tx');if(t)t.innerHTML='';
+  _SS.cancel();_setState('idle');
+  var wa=_E('vo-wa-link');if(wa)wa.style.display='none';
+}
+
+/* ── WIRE BUTTONS ── */
+setTimeout(function(){
+  var mb=_E('vo-mic-btn');   if(mb)mb.onclick=function(e){e.stopPropagation();_toggle();};
+  var cb=_E('vo-core');      if(cb)cb.onclick=function(e){e.stopPropagation();_toggle();};
+  var bb=_E('vo-back-btn');  if(bb)bb.onclick=function(){closeVoiceSuraya();};
+  var cl=_E('vo-clear-btn'); if(cl)cl.onclick=function(){_clear();};
+  var vb=_E('vo-voice-btn'); if(vb)vb.onclick=function(){_cycleVoice();};
+  console.log('✅ Voice buttons ready | mic:',!!mb,'core:',!!cb);
+},300);
+
+/* ── KEYBOARD ── */
+document.addEventListener('keydown',function(e){
+  var ov=_E('voice-overlay');
+  if(!ov||ov.style.display==='none')return;
+  if(e.key==='Escape'){closeVoiceSuraya();return;}
+  if(e.code==='Space'&&e.target.tagName!=='INPUT'){e.preventDefault();_toggle();}
+});
+
+/* ── BACKGROUND CANVAS ── */
+(function(){
+  var c=_E('vo-canvas');if(!c)return;
+  var ctx=c.getContext('2d'),W,H;
+  function rsz(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  rsz();window.addEventListener('resize',rsz);
+  var orbs=[
+    {r:.42,n:28,sp:.00022,off:0,  a:.3, sz:1.4,col:[201,168,76]},
+    {r:.58,n:40,sp:.00015,off:.9, a:.18,sz:1.0,col:[201,168,76]},
+    {r:.74,n:54,sp:.0001, off:1.8,a:.11,sz:.75,col:[74,222,128]},
+    {r:.90,n:68,sp:.00006,off:2.9,a:.07,sz:.55,col:[201,168,76]},
+  ];
+  orbs.forEach(function(o){o.pts=Array.from({length:o.n},function(_,i){return{ao:(i/o.n)*Math.PI*2,sv:Math.random()*.5+.75};});});
+  var fl=Array.from({length:50},function(){return{x:Math.random()*1400,y:Math.random()*900,vx:(Math.random()-.5)*.2,vy:-Math.random()*.25-.05,r:Math.random()*1.1+.3,a:Math.random()*.18+.04};});
+  var t=0;
+  function tk(){
+    if(!_E('voice-overlay')||_E('voice-overlay').style.display==='none')return;
+    ctx.clearRect(0,0,W,H);var cx=W/2,cy=H/2;
+    orbs.forEach(function(o){
+      var r=Math.min(W,H)*o.r;
+      ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.strokeStyle='rgba(201,168,76,.03)';ctx.lineWidth=.5;ctx.stroke();
+      o.pts.forEach(function(p){
+        var a=p.ao+t*o.sp*Math.PI*2*1000+o.off,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r,sz=o.sz*p.sv;
+        ctx.beginPath();ctx.arc(x,y,sz,0,Math.PI*2);ctx.fillStyle='rgba('+o.col[0]+','+o.col[1]+','+o.col[2]+','+o.a+')';ctx.fill();
+        if(sz>1.1){ctx.beginPath();ctx.arc(x,y,sz*2.8,0,Math.PI*2);ctx.fillStyle='rgba('+o.col[0]+','+o.col[1]+','+o.col[2]+','+(o.a*.18)+')';ctx.fill();}
+      });
+    });
+    fl.forEach(function(p){
+      p.x+=p.vx;p.y+=p.vy;if(p.y<-5){p.y=H+5;p.x=Math.random()*W;}if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(201,168,76,'+p.a+')';ctx.fill();
+    });
+    t+=16;requestAnimationFrame(tk);
+  }
+  tk();
+})();
+
+/* ── OPEN / CLOSE ── */
+window.openVoiceSuraya=function(q){
+  var ov=_E('voice-overlay');if(!ov)return;
+  ov.style.display='flex';document.body.style.overflow='hidden';
+  setTimeout(function(){ov.style.opacity='1';},10);
+  _loadV();
+  if(!window._voGreeted){
+    window._voGreeted=true;
+    setTimeout(function(){
+      var msg='هلا والله! أنا سريا، مساعدتك الذكية من SURAYA AI. كيف أقدر أساعدك اليوم؟';
+      _H.push({role:'assistant',content:msg});
+      _addMsg('bot',msg);_speak(msg);
+    },500);
+  }
+  if(q&&q.trim()){
+    setTimeout(function(){_addMsg('user',q);_askClaude(q);},window._voGreeted?700:2500);
+  }
+};
+window.closeVoiceSuraya=function(){
+  _SS.cancel();
+  var ov=_E('voice-overlay');if(!ov)return;
+  ov.style.opacity='0';
+  setTimeout(function(){ov.style.display='none';document.body.style.overflow='';},400);
+};
+
+/* ── INJECT KEYFRAMES ── */
+(function(){
+  var s=document.createElement('style');
+  s.textContent='@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}'
+    +'@keyframes dot{0%,80%,100%{opacity:.3;transform:scale(.7)}40%{opacity:1;transform:scale(1)}}'
+    +'.dot{width:6px;height:6px;border-radius:50%;background:#c9a84c;animation:dot 1.2s ease-in-out infinite;display:inline-block}'
+    +'.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}';
+  document.head.appendChild(s);
+})();
+</script>
+
 </body>
 </html>
