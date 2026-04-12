@@ -34,7 +34,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 .logo-text{display:flex;align-items:center;gap:6px}
 .logo-text .suraya{color:#fff;letter-spacing:.12em}
 .logo-text .ai{color:var(--gold2);letter-spacing:.12em}
-/* Hexagon logo mark */
 .logo-hex{width:36px;height:36px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-hex svg{width:36px;height:36px}
 .logo-hex .hex-letter{font-family:'Syne',sans-serif;font-weight:800;font-size:.8rem;fill:#0a0d15;letter-spacing:0}
@@ -275,7 +274,6 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 .tech-stack-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .tech-pill{display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--text);transition:border-color .2s}
 .tech-pill:hover{border-color:rgba(201,168,76,.3)}
-.tech-pill span{font-size:1rem}
 
 /* ── CHATBOT WIDGET ── */
 #chat-bubble{position:fixed;bottom:28px;right:28px;z-index:400;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
@@ -332,6 +330,134 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
   .chat-window{width:calc(100vw - 56px)}
   .modal{padding:32px 24px}
 }
+
+/* ═══════════════════════════════════════
+   MOTION ADDITIONS — injected on top
+   No layout/color changes, pure animation
+═══════════════════════════════════════ */
+
+/* Scroll-reveal base state */
+.sr {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
+.sr.sr-on { opacity: 1; transform: translateY(0); }
+
+/* Stagger delays for children */
+.sr-stagger > *:nth-child(1){transition-delay:.05s}
+.sr-stagger > *:nth-child(2){transition-delay:.13s}
+.sr-stagger > *:nth-child(3){transition-delay:.21s}
+.sr-stagger > *:nth-child(4){transition-delay:.29s}
+.sr-stagger > *:nth-child(5){transition-delay:.37s}
+.sr-stagger > *:nth-child(6){transition-delay:.45s}
+.sr-stagger > *:nth-child(7){transition-delay:.53s}
+.sr-stagger > *:nth-child(8){transition-delay:.61s}
+.sr-stagger > *:nth-child(9){transition-delay:.69s}
+.sr-stagger > *:nth-child(10){transition-delay:.77s}
+.sr-stagger > *:nth-child(11){transition-delay:.85s}
+.sr-stagger > *:nth-child(12){transition-delay:.93s}
+.sr-stagger > *:nth-child(13){transition-delay:1.01s}
+.sr-stagger > *:nth-child(14){transition-delay:1.09s}
+.sr-stagger > *:nth-child(15){transition-delay:1.17s}
+.sr-stagger > *:nth-child(16){transition-delay:1.25s}
+.sr-stagger > *:nth-child(17){transition-delay:1.33s}
+.sr-stagger > *:nth-child(18){transition-delay:1.41s}
+.sr-stagger > *:nth-child(19){transition-delay:1.49s}
+
+/* Tags stagger */
+.tag, .tech-pill {
+  opacity: 0;
+  transform: scale(.82) translateY(6px);
+  transition: opacity .4s, transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.tags-on .tag, .tags-on .tech-pill { opacity: 1; transform: scale(1) translateY(0); }
+
+/* Individual tag delays */
+.tag:nth-child(1),.tech-pill:nth-child(1){transition-delay:.04s}
+.tag:nth-child(2),.tech-pill:nth-child(2){transition-delay:.1s}
+.tag:nth-child(3),.tech-pill:nth-child(3){transition-delay:.16s}
+.tag:nth-child(4),.tech-pill:nth-child(4){transition-delay:.22s}
+.tag:nth-child(5),.tech-pill:nth-child(5){transition-delay:.28s}
+.tag:nth-child(6),.tech-pill:nth-child(6){transition-delay:.34s}
+.tag:nth-child(7),.tech-pill:nth-child(7){transition-delay:.40s}
+.tag:nth-child(8),.tech-pill:nth-child(8){transition-delay:.46s}
+
+/* Tilt cards */
+.svc, .pkg, .story-card, .why-card, .sec-item {
+  transition: background .25s, border-color .2s, transform .25s cubic-bezier(.25,.46,.45,.94), box-shadow .25s;
+  will-change: transform;
+}
+
+/* Magnetic buttons */
+.btn-wa, .nav-wa, .pkg-cta, .lead-submit {
+  transition: transform .25s cubic-bezier(.25,.46,.45,.94), box-shadow .25s, opacity .2s, border-color .2s, background .2s, color .2s;
+  will-change: transform;
+}
+
+/* Particle canvas */
+#hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Counter animation */
+.stat-n { transition: color .3s; }
+
+/* Hero grid parallax */
+.hero-grid { will-change: transform; }
+
+/* Floating logo hex */
+.logo-hex svg { transition: transform .3s ease; }
+.logo:hover .logo-hex svg { transform: rotate(15deg) scale(1.1); }
+
+/* Nav scroll shrink */
+nav { transition: height .3s, background .3s, box-shadow .3s; }
+nav.scrolled { height: 54px; box-shadow: 0 4px 32px rgba(0,0,0,.4); }
+
+/* Ripple on chat toggle */
+@keyframes ripple-out {
+  0% { transform: scale(1); opacity: .6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.chat-toggle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: ripple-out 2.4s ease-out infinite;
+  z-index: -1;
+}
+
+/* Step number count-up glow */
+@keyframes step-glow {
+  0%, 100% { color: rgba(201,168,76,.12); }
+  50% { color: rgba(201,168,76,.28); }
+}
+.step-n { animation: step-glow 3s ease-in-out infinite; }
+
+/* Smooth stat bar entrance */
+.stat { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
+.stat.sr-on { opacity: 1; transform: translateY(0); }
+.stat:nth-child(1){transition-delay:.0s}
+.stat:nth-child(2){transition-delay:.1s}
+.stat:nth-child(3){transition-delay:.2s}
+.stat:nth-child(4){transition-delay:.3s}
+
+/* Sector hover bounce */
+.sector { transition: background .2s, transform .2s cubic-bezier(.34,1.56,.64,1); }
+.sector:hover { transform: translateY(-4px); }
+
+/* Step hover lift */
+.step { transition: background .2s, transform .2s cubic-bezier(.34,1.4,.64,1); }
+.step:hover { transform: translateY(-3px); }
+
+/* Contact opt slide */
+.contact-opt { transition: background .2s, border-color .2s, transform .25s cubic-bezier(.25,.46,.45,.94); }
+.contact-opt:hover { transform: translateX(-4px); }
 </style>
 </head>
 <body>
@@ -365,10 +491,8 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 <!-- ── NAV ── -->
 <nav>
   <a href="#home" class="logo">
-    <!-- Exact hexagon/diamond logo from original site -->
     <div class="logo-hex">
       <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-        <!-- Diamond/rhombus shape -->
         <polygon points="18,2 34,18 18,34 2,18" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
         <polygon points="18,5 31,18 18,31 5,18" fill="#c9a84c" opacity="0.15"/>
         <text x="18" y="23" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#e8c96d">S</text>
@@ -395,6 +519,7 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 
 <!-- ── HERO ── -->
 <section class="hero" id="home">
+  <canvas id="hero-particles"></canvas>
   <div class="hero-grid"></div>
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
@@ -415,18 +540,18 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 <!-- ── STATS ── -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-n">19+</div><div class="stat-l">خدمة متاحة</div></div>
-    <div class="stat"><div class="stat-n">48H</div><div class="stat-l">أسرع وقت تسليم</div></div>
-    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">دعم عربي</div></div>
-    <div class="stat"><div class="stat-n">5★</div><div class="stat-l">تقييم العملاء</div></div>
+    <div class="stat"><div class="stat-n" data-target="19" data-suffix="+">0</div><div class="stat-l">خدمة متاحة</div></div>
+    <div class="stat"><div class="stat-n" data-target="48" data-suffix="H">0</div><div class="stat-l">أسرع وقت تسليم</div></div>
+    <div class="stat"><div class="stat-n" data-target="100" data-suffix="%">0</div><div class="stat-l">دعم عربي</div></div>
+    <div class="stat"><div class="stat-n" data-target="5" data-suffix="★">0</div><div class="stat-l">تقييم العملاء</div></div>
   </div>
 </div>
 
 <!-- ── SERVICES ── -->
 <section class="sec" id="services">
-  <div class="lbl">خدماتنا</div>
-  <div class="ttl">كل ما تحتاجه من <span class="grad">ذكاء اصطناعي</span></div>
-  <div class="sub">خدمات ذكاء اصطناعي جاهزة للتنفيذ الفوري لأي نوع من الأعمال — اختر ما يناسبك</div>
+  <div class="lbl sr">خدماتنا</div>
+  <div class="ttl sr">كل ما تحتاجه من <span class="grad">ذكاء اصطناعي</span></div>
+  <div class="sub sr">خدمات ذكاء اصطناعي جاهزة للتنفيذ الفوري لأي نوع من الأعمال — اختر ما يناسبك</div>
 
   <div class="filter-row">
     <button class="filter-btn active" data-filter="all">الكل</button>
@@ -436,134 +561,134 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
     <button class="filter-btn" data-filter="ops">العمليات الداخلية</button>
   </div>
 
-  <div class="svc-grid">
-    <div class="svc" data-cat="chatbot" onclick="openModal('chatbot1')">
+  <div class="svc-grid sr-stagger">
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('chatbot1')">
       <div class="svc-head"><div class="svc-ico">🤖</div><span class="svc-price">من 500 ريال</span></div>
       <h3>شات بوت ذكي لموقعك</h3>
       <p>روبوت محادثة يرد على عملائك 24/7 باللغة العربية والإنجليزية ويتعلم من محتوى شركتك</p>
       <div class="svc-tags"><span class="tag">واتساب</span><span class="tag">موقع إلكتروني</span><span class="tag">عربي</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="chatbot" onclick="openModal('chatbot2')">
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('chatbot2')">
       <div class="svc-head"><div class="svc-ico">📱</div><span class="svc-price">من 800 ريال</span></div>
       <h3>أتمتة واتساب بالذكاء الاصطناعي</h3>
       <p>نربط واتساب بالذكاء الاصطناعي فيرد على عملائك تلقائياً، يحجز مواعيد، ويرسل تذكيرات</p>
       <div class="svc-tags"><span class="tag">واتساب API</span><span class="tag">أتمتة</span><span class="tag">24/7</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="chatbot" onclick="openModal('appt')">
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('appt')">
       <div class="svc-head"><div class="svc-ico">🗓️</div><span class="svc-price">من 700 ريال</span></div>
       <h3>نظام حجز مواعيد ذكي</h3>
       <p>نظام يحجز مواعيد العملاء تلقائياً ويرسل تذكيرات ويدير الجدول عبر واتساب أو الموقع</p>
       <div class="svc-tags"><span class="tag">حجز</span><span class="tag">تذكير</span><span class="tag">تلقائي</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="data" onclick="openModal('docs')">
+    <div class="svc sr" data-cat="data" onclick="openModal('docs')">
       <div class="svc-head"><div class="svc-ico">📄</div><span class="svc-price">من 300 ريال</span></div>
       <h3>تلخيص وتحليل المستندات</h3>
       <p>ارفع أي مستند PDF أو Word ونحلله لك في ثوانٍ — عقود، تقارير، بيانات مالية</p>
       <div class="svc-tags"><span class="tag">PDF</span><span class="tag">تحليل</span><span class="tag">سريع</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="data" onclick="openModal('data')">
+    <div class="svc sr" data-cat="data" onclick="openModal('data')">
       <div class="svc-head"><div class="svc-ico">📊</div><span class="svc-price">من 600 ريال</span></div>
       <h3>تحليل البيانات وإنتاج تقارير</h3>
       <p>ارفع بياناتك Excel أو CSV ونأخذ منها تقارير وإحصاءات واضحة ورسوم بيانية</p>
       <div class="svc-tags"><span class="tag">Excel</span><span class="tag">تقارير</span><span class="tag">رسوم بيانية</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="data" onclick="openModal('sentiment')">
+    <div class="svc sr" data-cat="data" onclick="openModal('sentiment')">
       <div class="svc-head"><div class="svc-ico">📈</div><span class="svc-price">من 700 ريال</span></div>
       <h3>تحليل مشاعر العملاء</h3>
       <p>نحلل تقييمات ومراجعات عملائك لتعرف ما يحبونه وما يزعجهم بدقة</p>
       <div class="svc-tags"><span class="tag">مشاعر</span><span class="tag">تقييمات</span><span class="tag">تحسين</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="content" onclick="openModal('content')">
+    <div class="svc sr" data-cat="content" onclick="openModal('content')">
       <div class="svc-head"><div class="svc-ico">✍️</div><span class="svc-price">من 150 ريال</span></div>
       <h3>كتابة محتوى تسويقي بالذكاء الاصطناعي</h3>
       <p>كتابة منشورات سوشيال ميديا، إعلانات، بريد إلكتروني بأسلوب شركتك</p>
       <div class="svc-tags"><span class="tag">سوشيال</span><span class="tag">إعلانات</span><span class="tag">SEO</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="content" onclick="openModal('translate')">
+    <div class="svc sr" data-cat="content" onclick="openModal('translate')">
       <div class="svc-head"><div class="svc-ico">🌐</div><span class="svc-price">من 200 ريال</span></div>
       <h3>ترجمة ذكية عربي ↔ إنجليزي</h3>
       <p>ترجمة احترافية تراعي السياق الثقافي للمستندات والمواقع والتسويق</p>
       <div class="svc-tags"><span class="tag">عربي</span><span class="tag">إنجليزي</span><span class="tag">سياق ثقافي</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="content" onclick="openModal('media')">
+    <div class="svc sr" data-cat="content" onclick="openModal('media')">
       <div class="svc-head"><div class="svc-ico">🖼️</div><span class="svc-price">من 300 ريال</span></div>
       <h3>توليد صور وفيديوهات بالذكاء الاصطناعي</h3>
       <p>صور تسويقية، لوغو مفاهيمي، فيديوهات قصيرة لمنصاتك الاجتماعية</p>
       <div class="svc-tags"><span class="tag">تصميم</span><span class="tag">فيديو</span><span class="tag">سوشيال</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="ops" onclick="openModal('email')">
+    <div class="svc sr" data-cat="ops" onclick="openModal('email')">
       <div class="svc-head"><div class="svc-ico">📧</div><span class="svc-price">من 400 ريال</span></div>
       <h3>أتمتة البريد الإلكتروني</h3>
       <p>ردود تلقائية ذكية على بريدك الإلكتروني، تصنيف الرسائل، وإرسال متابعات احترافية</p>
       <div class="svc-tags"><span class="tag">Gmail</span><span class="tag">Outlook</span><span class="tag">أتمتة</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="ops" onclick="openModal('search')">
+    <div class="svc sr" data-cat="ops" onclick="openModal('search')">
       <div class="svc-head"><div class="svc-ico">🔍</div><span class="svc-price">من 500 ريال</span></div>
       <h3>محرك بحث داخلي للشركة</h3>
       <p>ابحث في كل وثائق شركتك بلغة طبيعية — كأنك تسأل موظفاً خبيراً</p>
       <div class="svc-tags"><span class="tag">بحث ذكي</span><span class="tag">داخلي</span><span class="tag">سريع</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="ops" onclick="openModal('voice')">
+    <div class="svc sr" data-cat="ops" onclick="openModal('voice')">
       <div class="svc-head"><div class="svc-ico">🎙️</div><span class="svc-price">من 900 ريال</span></div>
       <h3>تحويل الصوت إلى نص وتحليله</h3>
       <p>نحول اجتماعاتك ومقابلاتك لنصوص مرتبة مع ملخص وأبرز النقاط</p>
       <div class="svc-tags"><span class="tag">Whisper AI</span><span class="tag">اجتماعات</span><span class="tag">ملخص</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="chatbot" onclick="openModal('sales')">
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('sales')">
       <div class="svc-head"><div class="svc-ico">💬</div><span class="svc-price">من 1,200 ريال</span></div>
       <h3>وكيل ذكاء اصطناعي للمبيعات</h3>
       <p>وكيل AI يتحدث مع عملائك المحتملين، يجيب على أسئلتهم، ويحول الاهتمام لمبيعات</p>
       <div class="svc-tags"><span class="tag">مبيعات</span><span class="tag">تحويل</span><span class="tag">ذكي</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="ops" onclick="openModal('news')">
+    <div class="svc sr" data-cat="ops" onclick="openModal('news')">
       <div class="svc-head"><div class="svc-ico">📰</div><span class="svc-price">من 250 ريال</span></div>
       <h3>ملخص يومي ذكي للأخبار والمجال</h3>
       <p>تصلك كل يوم ملخص بأهم أخبار مجالك، منافسيك، والسوق — مخصص لك</p>
       <div class="svc-tags"><span class="tag">أخبار</span><span class="tag">يومي</span><span class="tag">مخصص</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="data" onclick="openModal('ecom')">
+    <div class="svc sr" data-cat="data" onclick="openModal('ecom')">
       <div class="svc-head"><div class="svc-ico">🛒</div><span class="svc-price">من 800 ريال</span></div>
       <h3>توصيات ذكية لمتجرك</h3>
       <p>نظام توصية بالمنتجات مبني على ذكاء اصطناعي يزيد معدل الشراء ومتوسط الطلب</p>
       <div class="svc-tags"><span class="tag">e-Commerce</span><span class="tag">توصيات</span><span class="tag">مبيعات</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="chatbot" onclick="openModal('reception')">
+    <div class="svc sr" data-cat="chatbot" onclick="openModal('reception')">
       <div class="svc-head"><div class="svc-ico">🤝</div><span class="svc-price">من 600 ريال</span></div>
       <h3>موظف استقبال افتراضي</h3>
       <p>بدّل موظف الاستقبال بذكاء اصطناعي يرد بالعربية ويدير الزيارات والأسئلة 24 ساعة</p>
       <div class="svc-tags"><span class="tag">استقبال</span><span class="tag">اتصال</span><span class="tag">24/7</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="ops" onclick="openModal('hr')">
+    <div class="svc sr" data-cat="ops" onclick="openModal('hr')">
       <div class="svc-head"><div class="svc-ico">📋</div><span class="svc-price">من 350 ريال</span></div>
       <h3>توليد تقارير HR والموظفين</h3>
       <p>تقارير أداء وحضور وإجازات ومهام تلقائياً من بيانات شركتك</p>
       <div class="svc-tags"><span class="tag">HR</span><span class="tag">تقارير</span><span class="tag">أداء</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="ops" onclick="openModal('automate')">
+    <div class="svc sr" data-cat="ops" onclick="openModal('automate')">
       <div class="svc-head"><div class="svc-ico">⚡</div><span class="svc-price">من 500 ريال</span></div>
       <h3>أتمتة المهام المتكررة</h3>
       <p>نحول أي عملية يدوية متكررة في شركتك لعملية تلقائية توفر وقتاً وجهداً</p>
       <div class="svc-tags"><span class="tag">أتمتة</span><span class="tag">n8n</span><span class="tag">توفير وقت</span></div>
       <div class="svc-more">اعرف أكثر ←</div>
     </div>
-    <div class="svc" data-cat="data" onclick="openModal('consult')">
+    <div class="svc sr" data-cat="data" onclick="openModal('consult')">
       <div class="svc-head"><div class="svc-ico">🎓</div><span class="svc-price">من 400 ريال</span></div>
       <h3>استشارة AI لعملك</h3>
       <p>جلسة استشارية لتحديد أفضل حلول الذكاء الاصطناعي لشركتك وخارطة طريق للتطبيق</p>
@@ -576,12 +701,12 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 <!-- ── PACKAGES ── -->
 <div class="sec-full" id="packages">
   <div class="sec-full-inner">
-    <div class="lbl">الباقات</div>
-    <div class="ttl">باقات جاهزة لكل <span class="grad">قطاع</span></div>
-    <div class="sub">اخترنا أكثر الخدمات طلباً وجمعناها في باقات واضحة السعر</div>
+    <div class="lbl sr">الباقات</div>
+    <div class="ttl sr">باقات جاهزة لكل <span class="grad">قطاع</span></div>
+    <div class="sub sr">اخترنا أكثر الخدمات طلباً وجمعناها في باقات واضحة السعر</div>
 
     <div class="pkg-grid">
-      <div class="pkg">
+      <div class="pkg sr">
         <div class="pkg-ico">🏪</div>
         <div class="pkg-type">STARTER PACKAGE</div>
         <h3>باقة المتجر والمطعم</h3>
@@ -596,7 +721,7 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
         </ul>
         <a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a>
       </div>
-      <div class="pkg featured">
+      <div class="pkg featured sr">
         <div class="pkg-badge">الأكثر طلباً</div>
         <div class="pkg-ico">🏢</div>
         <div class="pkg-type">BUSINESS PACKAGE</div>
@@ -613,7 +738,7 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
         </ul>
         <a href="https://wa.me/966564124426" class="pkg-cta" target="_blank">ابدأ الآن</a>
       </div>
-      <div class="pkg">
+      <div class="pkg sr">
         <div class="pkg-ico">🏥</div>
         <div class="pkg-type">CLINIC PACKAGE</div>
         <h3>باقة العيادات والمراكز</h3>
@@ -634,51 +759,51 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 
 <!-- ── SECTORS ── -->
 <section class="sec" id="sectors">
-  <div class="lbl">القطاعات</div>
-  <div class="ttl">نخدم كل <span class="grad">القطاعات</span></div>
-  <div class="sub">خبرة عميقة في القطاعات الأكثر حاجة للذكاء الاصطناعي</div>
+  <div class="lbl sr">القطاعات</div>
+  <div class="ttl sr">نخدم كل <span class="grad">القطاعات</span></div>
+  <div class="sub sr">خبرة عميقة في القطاعات الأكثر حاجة للذكاء الاصطناعي</div>
 
   <div class="sector-grid">
-    <div class="sector"><div class="sector-ico">🏥</div><div class="sector-name">الصحة والعيادات</div><div class="sector-sub">حجز مواعيد، ملخصات طبية، دعم المرضى</div></div>
-    <div class="sector"><div class="sector-ico">🛒</div><div class="sector-name">التجارة الإلكترونية</div><div class="sector-sub">توصيات، خدمة عملاء، تحليل مبيعات</div></div>
-    <div class="sector"><div class="sector-ico">🏗️</div><div class="sector-name">العقارات والمقاولات</div><div class="sector-sub">إدارة عقود، تحليل مستندات</div></div>
-    <div class="sector"><div class="sector-ico">🎓</div><div class="sector-name">التعليم والتدريب</div><div class="sector-sub">مساعد تعليمي، تلخيص محاضرات</div></div>
-    <div class="sector"><div class="sector-ico">🍽️</div><div class="sector-name">المطاعم والضيافة</div><div class="sector-sub">طلبات، قوائم ذكية، رضا العملاء</div></div>
-    <div class="sector"><div class="sector-ico">⚖️</div><div class="sector-name">المحاماة والقانون</div><div class="sector-sub">تحليل عقود، بحث قانوني</div></div>
-    <div class="sector"><div class="sector-ico">💰</div><div class="sector-name">المالية والمحاسبة</div><div class="sector-sub">تقارير مالية، توقعات</div></div>
-    <div class="sector"><div class="sector-ico">🏭</div><div class="sector-name">التصنيع والمستودعات</div><div class="sector-sub">مراقبة جودة، فحص بصري</div></div>
-    <div class="sector"><div class="sector-ico">🚗</div><div class="sector-name">السيارات والخدمات</div><div class="sector-sub">حجز خدمات، دعم ذكي</div></div>
-    <div class="sector"><div class="sector-ico">📣</div><div class="sector-name">التسويق والإعلام</div><div class="sector-sub">محتوى، تحليل جمهور، حملات</div></div>
+    <div class="sector sr"><div class="sector-ico">🏥</div><div class="sector-name">الصحة والعيادات</div><div class="sector-sub">حجز مواعيد، ملخصات طبية، دعم المرضى</div></div>
+    <div class="sector sr"><div class="sector-ico">🛒</div><div class="sector-name">التجارة الإلكترونية</div><div class="sector-sub">توصيات، خدمة عملاء، تحليل مبيعات</div></div>
+    <div class="sector sr"><div class="sector-ico">🏗️</div><div class="sector-name">العقارات والمقاولات</div><div class="sector-sub">إدارة عقود، تحليل مستندات</div></div>
+    <div class="sector sr"><div class="sector-ico">🎓</div><div class="sector-name">التعليم والتدريب</div><div class="sector-sub">مساعد تعليمي، تلخيص محاضرات</div></div>
+    <div class="sector sr"><div class="sector-ico">🍽️</div><div class="sector-name">المطاعم والضيافة</div><div class="sector-sub">طلبات، قوائم ذكية، رضا العملاء</div></div>
+    <div class="sector sr"><div class="sector-ico">⚖️</div><div class="sector-name">المحاماة والقانون</div><div class="sector-sub">تحليل عقود، بحث قانوني</div></div>
+    <div class="sector sr"><div class="sector-ico">💰</div><div class="sector-name">المالية والمحاسبة</div><div class="sector-sub">تقارير مالية، توقعات</div></div>
+    <div class="sector sr"><div class="sector-ico">🏭</div><div class="sector-name">التصنيع والمستودعات</div><div class="sector-sub">مراقبة جودة، فحص بصري</div></div>
+    <div class="sector sr"><div class="sector-ico">🚗</div><div class="sector-name">السيارات والخدمات</div><div class="sector-sub">حجز خدمات، دعم ذكي</div></div>
+    <div class="sector sr"><div class="sector-ico">📣</div><div class="sector-name">التسويق والإعلام</div><div class="sector-sub">محتوى، تحليل جمهور، حملات</div></div>
   </div>
 </section>
 
 <!-- ── PROCESS ── -->
 <div class="sec-full" id="process">
   <div class="sec-full-inner">
-    <div class="lbl">كيف نعمل</div>
-    <div class="ttl">من الفكرة إلى <span class="grad">التنفيذ</span></div>
-    <div class="sub">عملية واضحة وسريعة للحصول على نتائج حقيقية</div>
+    <div class="lbl sr">كيف نعمل</div>
+    <div class="ttl sr">من الفكرة إلى <span class="grad">التنفيذ</span></div>
+    <div class="sub sr">عملية واضحة وسريعة للحصول على نتائج حقيقية</div>
 
     <div class="process-steps">
-      <div class="step">
+      <div class="step sr">
         <span class="step-arrow">←</span>
         <div class="step-n">01</div>
         <h4>استشارة مجانية</h4>
         <p>نفهم احتياجات شركتك ونحدد أفضل حل ذكاء اصطناعي يناسبك</p>
       </div>
-      <div class="step">
+      <div class="step sr">
         <span class="step-arrow">←</span>
         <div class="step-n">02</div>
         <h4>عرض سعر واضح</h4>
         <p>نقدم عرضاً مفصلاً بالتكلفة والوقت وكل ما ستحصل عليه بدون مفاجآت</p>
       </div>
-      <div class="step">
+      <div class="step sr">
         <span class="step-arrow">←</span>
         <div class="step-n">03</div>
         <h4>تطوير وتسليم</h4>
         <p>نبني الحل في 48 ساعة إلى أسبوعين حسب تعقيده — ونسلمه مع شرح كامل وتدريب</p>
       </div>
-      <div class="step">
+      <div class="step sr">
         <div class="step-n">04</div>
         <h4>دعم ومتابعة</h4>
         <p>ندعمك بعد التسليم ونتأكد إن كل شيء يعمل كما توقعت</p>
@@ -689,33 +814,33 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 
 <!-- ── WHY ── -->
 <section class="sec">
-  <div class="lbl">لماذا سريا AI</div>
-  <div class="ttl">ما يميزنا <span class="grad">عن غيرنا</span></div>
-  <div class="sub">نتحدث بالنتائج والأرقام لا بالوعود الفارغة</div>
+  <div class="lbl sr">لماذا سريا AI</div>
+  <div class="ttl sr">ما يميزنا <span class="grad">عن غيرنا</span></div>
+  <div class="sub sr">نتحدث بالنتائج والأرقام لا بالوعود الفارغة</div>
 
   <div class="why-grid">
-    <div class="why-card">
+    <div class="why-card sr">
       <div class="why-ico">⚡</div>
       <div>
         <h4>تسليم خلال 48 ساعة</h4>
         <p>معظم مشاريعنا تُسلَّم في يومين — سرعة بدون تنازل عن الجودة</p>
       </div>
     </div>
-    <div class="why-card">
+    <div class="why-card sr">
       <div class="why-ico">🔒</div>
       <div>
         <h4>بياناتك آمنة 100%</h4>
         <p>نبني حلول تعمل داخل بيئتك ولا تخرج بياناتك لأي طرف ثالث</p>
       </div>
     </div>
-    <div class="why-card">
+    <div class="why-card sr">
       <div class="why-ico">🌐</div>
       <div>
         <h4>ذكاء اصطناعي عربي متقدم</h4>
         <p>متخصصون في معالجة اللغة العربية بدقة عالية وفهم السياق الثقافي</p>
       </div>
     </div>
-    <div class="why-card">
+    <div class="why-card sr">
       <div class="why-ico">💎</div>
       <div>
         <h4>أسعار شفافة ومنطقية</h4>
@@ -728,14 +853,14 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 <!-- ── CUSTOM PROJECT STRIP ── -->
 <div class="sec-full">
   <div class="sec-full-inner">
-    <div class="cta-strip">
+    <div class="cta-strip sr">
       <div class="cta-text">
         <h3>لديك فكرة أو مشروع مختلف؟</h3>
         <p>لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة مهما كانت</p>
       </div>
       <div class="cta-btns">
         <a href="https://wa.me/966564124426" class="btn-wa" target="_blank">💬 ناقشنا فكرتك</a>
-        <a href="/cdn-cgi/l/email-protection#3a5b565f4040145b565e4f575b5354537a5d575b535614595557" class="btn-out">📧 راسلنا بالإيميل</a>
+        <a href="mailto:info@suraya.ai" class="btn-out">📧 راسلنا بالإيميل</a>
       </div>
     </div>
   </div>
@@ -743,12 +868,12 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 
 <!-- ── SUCCESS STORIES ── -->
 <section class="sec" id="stories">
-  <div class="lbl">قصص نجاح</div>
-  <div class="ttl">نتائج حقيقية لعملاء <span class="grad">حقيقيين</span></div>
-  <div class="sub">قبل وبعد — كيف غيّر الذكاء الاصطناعي أعمال عملائنا</div>
+  <div class="lbl sr">قصص نجاح</div>
+  <div class="ttl sr">نتائج حقيقية لعملاء <span class="grad">حقيقيين</span></div>
+  <div class="sub sr">قبل وبعد — كيف غيّر الذكاء الاصطناعي أعمال عملائنا</div>
 
   <div class="stories-grid">
-    <div class="story-card">
+    <div class="story-card sr">
       <div class="story-sector">🏥 قطاع الصحة</div>
       <h3>عيادة طب أسنان في الرياض وفّرت 80% من وقت الاستقبال</h3>
       <div class="story-results">
@@ -766,7 +891,7 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
       </div>
     </div>
 
-    <div class="story-card">
+    <div class="story-card sr">
       <div class="story-sector">🛒 التجارة الإلكترونية</div>
       <h3>متجر إلكتروني للعبايات رفع معدل التحويل بـ 40%</h3>
       <div class="story-results">
@@ -784,7 +909,7 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
       </div>
     </div>
 
-    <div class="story-card">
+    <div class="story-card sr">
       <div class="story-sector">⚖️ القانون والمحاماة</div>
       <h3>مكتب محاماة في جدة يحلل العقود في دقائق بدل ساعات</h3>
       <div class="story-results">
@@ -807,7 +932,7 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 <!-- ── LEAD MAGNET ── -->
 <div class="sec-full">
   <div class="sec-full-inner">
-    <div class="lead-box">
+    <div class="lead-box sr">
       <div>
         <div class="lbl">مجاناً</div>
         <div class="lead-title">قائمة جاهزية الذكاء الاصطناعي<br><span class="grad">للشركات السعودية</span></div>
@@ -840,22 +965,22 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 
 <!-- ── SECURITY SECTION ── -->
 <section class="sec" id="security">
-  <div class="lbl">الأمان والخصوصية</div>
-  <div class="ttl">بياناتك محمية <span class="grad">100%</span></div>
-  <div class="sub">نبني حلولاً تحترم خصوصية بيانات شركتك وعملائك — بدون تنازلات</div>
+  <div class="lbl sr">الأمان والخصوصية</div>
+  <div class="ttl sr">بياناتك محمية <span class="grad">100%</span></div>
+  <div class="sub sr">نبني حلولاً تحترم خصوصية بيانات شركتك وعملائك — بدون تنازلات</div>
 
   <div class="security-grid">
-    <div class="sec-item">
+    <div class="sec-item sr">
       <div class="sec-item-ico">🔒</div>
       <h4>بياناتك لا تغادر بيئتك</h4>
       <p>نبني الحلول لتعمل داخل خوادمك أو بيئتك السحابية الخاصة — بياناتك لا تُشارك مع أي طرف ثالث تحت أي ظرف</p>
     </div>
-    <div class="sec-item">
+    <div class="sec-item sr">
       <div class="sec-item-ico">🛡️</div>
       <h4>تشفير كامل للبيانات</h4>
       <p>كل البيانات مشفرة أثناء النقل وعند التخزين باستخدام معايير AES-256. لا أحد يستطيع الوصول إليها غيرك</p>
     </div>
-    <div class="sec-item">
+    <div class="sec-item sr">
       <div class="sec-item-ico">📋</div>
       <h4>توافق مع اللوائح السعودية</h4>
       <p>حلولنا متوافقة مع نظام حماية البيانات الشخصية السعودي (PDPL) ومتطلبات هيئة الاتصالات والفضاء والتقنية</p>
@@ -877,13 +1002,13 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
 
 <!-- ── CONTACT ── -->
 <section class="sec" id="contact">
-  <div class="lbl">تواصل معنا</div>
-  <div class="ttl">تواصل معنا مجاناً <span class="grad">الآن</span></div>
-  <div class="sub">استشارة مجانية — عرض سعر خلال 24 ساعة — تسليم خلال 48 ساعة</div>
+  <div class="lbl sr">تواصل معنا</div>
+  <div class="ttl sr">تواصل معنا مجاناً <span class="grad">الآن</span></div>
+  <div class="sub sr">استشارة مجانية — عرض سعر خلال 24 ساعة — تسليم خلال 48 ساعة</div>
 
   <div class="contact-grid">
     <div class="contact-options">
-      <a href="https://wa.me/966564124426" class="contact-opt" target="_blank">
+      <a href="https://wa.me/966564124426" class="contact-opt sr" target="_blank">
         <div class="contact-opt-ico wa">💬</div>
         <div>
           <h4>واتساب</h4>
@@ -891,16 +1016,16 @@ footer{border-top:1px solid var(--border);background:var(--bg2);padding:56px 52p
         </div>
         <span class="arr">←</span>
       </a>
-      <a href="/cdn-cgi/l/email-protection#bddcd1d8c7c793dcd1d9c8d0dcd4d3d4fddad0dcd4d193ded2d0" class="contact-opt">
+      <a href="mailto:info@suraya.ai" class="contact-opt sr">
         <div class="contact-opt-ico em">📧</div>
         <div>
           <h4>البريد الإلكتروني</h4>
-          <p><span class="__cf_email__" data-cfemail="12737e7768683c737e76677f737b7c7b52757f737b7e3c717d7f">[email&#160;protected]</span></p>
+          <p>info@suraya.ai</p>
         </div>
         <span class="arr">←</span>
       </a>
     </div>
-    <div class="custom-card">
+    <div class="custom-card sr">
       <h3>لديك مشروع أو فكرة خاصة؟</h3>
       <p>لا تجد ما تبحث عنه في قائمة خدماتنا؟ تواصل معنا مباشرة — نحن نحب التحديات الجديدة ونبني حلولاً مخصصة لأي فكرة</p>
       <ul class="custom-points">
@@ -1090,7 +1215,6 @@ function sendChat(){
   addMsg(msg, 'user');
   input.value = '';
   document.getElementById('chat-quick').style.display = 'none';
-  // Typing indicator
   const msgs = document.getElementById('chat-msgs');
   const t = document.createElement('div');
   t.className = 'msg bot typing';
@@ -1115,6 +1239,181 @@ function quickMsg(msg){
   if(!chatOpen) toggleChat();
   setTimeout(() => { document.getElementById('chat-in').value = msg; sendChat(); }, 150);
 }
+
+/* ═══════════════════════════════════════════
+   MOTION SYSTEM — injected, no layout change
+═══════════════════════════════════════════ */
+
+// 1. PARTICLE BACKGROUND in hero
+(function(){
+  const canvas = document.getElementById('hero-particles');
+  const hero   = document.getElementById('home');
+  if(!canvas || !hero) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize(){
+    W = canvas.width  = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+  resize();
+  new ResizeObserver(resize).observe(hero);
+
+  function mkParticle(){
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.6 + 0.3,
+      vx:(Math.random() - 0.5) * 0.3,
+      vy:-Math.random() * 0.4 - 0.08,
+      alpha: Math.random() * 0.55 + 0.1
+    };
+  }
+  for(let i = 0; i < 70; i++) particles.push(mkParticle());
+
+  function tick(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.y < -4) Object.assign(p, mkParticle(), { y: H + 4 });
+      if(p.x < -4) p.x = W + 4;
+      if(p.x > W + 4) p.x = -4;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,168,76,${p.alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+// 2. SCROLL REVEAL with IntersectionObserver
+(function(){
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('sr-on');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.sr').forEach(el => io.observe(el));
+})();
+
+// 3. ANIMATED COUNTERS in stats bar
+(function(){
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      const el     = e.target;
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      let cur = 0;
+      const step = () => {
+        cur += Math.ceil((target - cur) / 7);
+        el.textContent = (cur >= target ? target : cur) + suffix;
+        if(cur < target) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('[data-target]').forEach(el => io.observe(el));
+})();
+
+// 4. TAG / TECH-PILL stagger entrance
+(function(){
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      e.target.classList.add('tags-on');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.svc-tags, .tech-stack-row').forEach(el => io.observe(el));
+})();
+
+// 5. 3D TILT on service cards, packages, story cards
+document.querySelectorAll('.svc, .pkg, .story-card, .why-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const { left, top, width, height } = card.getBoundingClientRect();
+    const rx = ((e.clientY - top)  / height - 0.5) * -10;
+    const ry = ((e.clientX - left) / width  - 0.5) *  10;
+    card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// 6. MAGNETIC effect on CTA buttons
+document.querySelectorAll('.btn-wa, .nav-wa, .btn-gold, .lead-submit').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r  = btn.getBoundingClientRect();
+    const dx = (e.clientX - r.left - r.width  / 2) * 0.28;
+    const dy = (e.clientY - r.top  - r.height / 2) * 0.28;
+    btn.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+});
+
+// 7. NAV SHRINK on scroll
+(function(){
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+})();
+
+// 8. HERO GRID subtle parallax
+(function(){
+  const grid = document.querySelector('.hero-grid');
+  if(!grid) return;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY * 0.18;
+    grid.style.transform = `translateY(${y}px)`;
+  }, { passive: true });
+})();
+
+// 9. CURSOR SPOTLIGHT in hero
+(function(){
+  const hero = document.getElementById('home');
+  if(!hero) return;
+  let spotlight = document.createElement('div');
+  spotlight.style.cssText = `
+    position:absolute;width:400px;height:400px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,168,76,.07),transparent 70%);
+    pointer-events:none;z-index:1;transform:translate(-50%,-50%);
+    transition:left .12s ease,top .12s ease;left:-999px;top:-999px;
+  `;
+  hero.appendChild(spotlight);
+  hero.addEventListener('mousemove', e => {
+    const r = hero.getBoundingClientRect();
+    spotlight.style.left = (e.clientX - r.left) + 'px';
+    spotlight.style.top  = (e.clientY - r.top)  + 'px';
+  });
+  hero.addEventListener('mouseleave', () => {
+    spotlight.style.left = '-999px';
+    spotlight.style.top  = '-999px';
+  });
+})();
+
+// 10. SECTOR icon bounce on hover (CSS handles it, JS adds class for accessibility)
+document.querySelectorAll('.sector').forEach(s => {
+  s.addEventListener('mouseenter', () => {
+    const ico = s.querySelector('.sector-ico');
+    ico.style.transform = 'scale(1.25) translateY(-4px)';
+    ico.style.transition = 'transform .3s cubic-bezier(.34,1.56,.64,1)';
+  });
+  s.addEventListener('mouseleave', () => {
+    s.querySelector('.sector-ico').style.transform = '';
+  });
+});
 </script>
 </body>
 </html>
