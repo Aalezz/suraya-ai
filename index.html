@@ -951,22 +951,64 @@ const SURAYA_CONTACT = {
   whatsappNumber: '966564124426',
   email: 'alezz.aldumaini@gmail.com'
 };
-function surayaWhatsAppUrl(message='مرحباً سُريا AI، أريد الاستفسار عن خدماتكم.') {
-  return `https://wa.me/${SURAYA_CONTACT.whatsappNumber}?text=${encodeURIComponent(message)}`;
+const SURAYA_DEFAULT_WA_MESSAGE = 'مرحباً سُريا AI، وصلتكم من الموقع وأريد الاستفسار عن خدماتكم.';
+
+function isMobileWhatsAppClient(){
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '');
+}
+function surayaWhatsAppUrl(message=SURAYA_DEFAULT_WA_MESSAGE) {
+  const text = encodeURIComponent(message || SURAYA_DEFAULT_WA_MESSAGE);
+  // Desktop: open WhatsApp Web directly outside preview frames.
+  if(!isMobileWhatsAppClient()) {
+    return `https://web.whatsapp.com/send?phone=${SURAYA_CONTACT.whatsappNumber}&text=${text}`;
+  }
+  // Mobile: official click-to-chat link opens the WhatsApp app when available.
+  return `https://wa.me/${SURAYA_CONTACT.whatsappNumber}?text=${text}`;
+}
+function surayaRawWaMeUrl(message=SURAYA_DEFAULT_WA_MESSAGE) {
+  return `https://wa.me/${SURAYA_CONTACT.whatsappNumber}?text=${encodeURIComponent(message || SURAYA_DEFAULT_WA_MESSAGE)}`;
 }
 function surayaMailUrl(subject='استفسار عن خدمات سريا AI', body='') {
   return `mailto:${SURAYA_CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
+function getWhatsAppMessageFromHref(href, fallback=SURAYA_DEFAULT_WA_MESSAGE){
+  try{
+    const url = new URL(href, window.location.href);
+    return url.searchParams.get('text') || fallback;
+  }catch(e){
+    return fallback;
+  }
+}
+function openSurayaWhatsApp(message=SURAYA_DEFAULT_WA_MESSAGE){
+  const url = surayaWhatsAppUrl(message);
+  const opened = window.open(url, '_blank');
+  if(opened){ try{ opened.opener = null; }catch(e){} }
+  else{
+    try{ window.top.location.href = url; }
+    catch(e){ window.location.href = url; }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  const defaultMsg = 'مرحباً سُريا AI، وصلتكم من الموقع وأريد الاستفسار عن خدماتكم.';
-  document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a => {
-    if(!a.href.includes('?text=')) a.href = surayaWhatsAppUrl(defaultMsg);
+  document.querySelectorAll('a[href^="https://wa.me/"], a[href^="https://web.whatsapp.com/"]').forEach(a => {
+    const msg = getWhatsAppMessageFromHref(a.href, SURAYA_DEFAULT_WA_MESSAGE);
+    a.href = surayaRawWaMeUrl(msg);
+    a.setAttribute('target','_blank');
+    a.setAttribute('rel','noopener noreferrer');
   });
   document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
     if(!a.href.includes('alezz.aldumaini%40gmail.com') && !a.href.includes('alezz.aldumaini@gmail.com')) {
-      a.href = surayaMailUrl('استفسار عن خدمات سريا AI', defaultMsg);
+      a.href = surayaMailUrl('استفسار عن خدمات سريا AI', SURAYA_DEFAULT_WA_MESSAGE);
     }
   });
+});
+
+// WhatsApp links are forced to open outside any preview iframe/new tab.
+document.addEventListener('click', (e) => {
+  const a = e.target.closest && e.target.closest('a[href*="wa.me/"], a[href*="web.whatsapp.com/send"]');
+  if(!a) return;
+  e.preventDefault();
+  openSurayaWhatsApp(getWhatsAppMessageFromHref(a.href, SURAYA_DEFAULT_WA_MESSAGE));
 });
 
 /* ══════════════════════════════════════
@@ -1395,7 +1437,7 @@ function submitLead(){
   if(successLink) successLink.href = waUrl;
   document.getElementById('lead-form').style.display='none';
   document.getElementById('lead-success').style.display='block';
-  window.open(waUrl,'_blank');
+  openSurayaWhatsApp(message);
 }
 
 let chatOpen=false;
@@ -1445,7 +1487,7 @@ function sendChat(){
     addMsg(reply,'bot');
     if(reply.includes('واتساب')){
       const wa=document.createElement('a');
-      wa.href='https://wa.me/966564124426'; wa.target='_blank'; wa.className='btn-wa';
+      wa.href=surayaRawWaMeUrl('مرحباً سُريا AI، أريد الاستفسار عن خدماتكم.'); wa.target='_blank'; wa.rel='noopener noreferrer'; wa.className='btn-wa';
       wa.style.cssText='margin:6px 0 0;font-size:.8rem;padding:9px 16px;justify-content:center';
       wa.innerHTML='💬 تحدث معنا على واتساب';
       msgs.appendChild(wa);
