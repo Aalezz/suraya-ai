@@ -1084,17 +1084,49 @@ document.querySelectorAll('.btn-wa,.nav-wa,.btn-gold').forEach(btn => {
 // TALK TO SURAYA FULLSCREEN
 // ══════════════════════════════════════
 
-const TS_SYSTEM = `أنت سريا، المساعد الذكي لشركة SURAYA AI المتخصصة في حلول الذكاء الاصطناعي للشركات العربية والعربية.
+/* ══════════════════════════════════════════════════════
+   BACKEND CONFIG
+   Deploy suraya-worker.js (see file) then paste your
+   Worker URL below. Until you do, all chat surfaces will
+   automatically use the built-in keyword replies instead.
+══════════════════════════════════════════════════════ */
+const SURAYA_API_ENDPOINT = ''; // e.g. 'https://suraya-ai-proxy.yourname.workers.dev'
 
-مهمتك: مساعدة العملاء المحتملين وفهم احتياجاتهم وتوجيههم نحو الخدمة المناسبة.
+/**
+ * Calls the real Claude model through your backend proxy.
+ * Returns the reply text, or throws if the backend isn't
+ * configured / reachable — callers should catch and fall
+ * back to the local keyword replies.
+ */
+async function askSurayaBackend(system, historyMessages) {
+  if (!SURAYA_API_ENDPOINT) throw new Error('backend not configured');
+  const res = await fetch(SURAYA_API_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ system, messages: historyMessages }),
+  });
+  if (!res.ok) throw new Error('backend error ' + res.status);
+  const data = await res.json();
+  if (!data.reply) throw new Error('empty reply');
+  return data.reply;
+}
 
+const TS_SYSTEM = `أنتِ سريا، المساعدة الذكية لشركة SURAYA AI المتخصصة في حلول الذكاء الاصطناعي للشركات العربية.
+
+أنتِ مساعدة ذكاء اصطناعي حقيقية — أجيبي على أي سؤال يطرحه المستخدم بشكل طبيعي ومباشر ومفيد، تماماً مثل أي مساعد ذكي متطور، سواء كان السؤال عن خدمات الشركة أو سؤال عام أو شخصي أو معرفي أو حتى مزحة. لا تكتفي أبداً بالرد بجملة عامة مثل "تواصل معنا على واتساب" إلا إذا كان السؤال يحتاج فعلاً معلومات خاصة بحساب العميل أو عرض سعر دقيق لا تملكينه.
+
+إذا سُئلتِ "من أنتِ" أو أي سؤال عن هويتك، عرّفي عن نفسك بوضوح وود: أنتِ سريا، مساعدة ذكاء اصطناعي من شركة SURAYA AI السعودية، وصفي دورك باختصار.
+
+إذا كان السؤال عاماً أو معرفياً (مثل حساب رياضي، معلومة عامة، ترجمة كلمة، نصيحة) أجيبي عليه بنفسك مباشرة بأفضل ما لديك من معرفة، دون تحويل المستخدم لأي جهة أخرى.
+
+معلومات عن الشركة (استخدميها فقط عند الحاجة):
 خدماتنا: شات بوت، أتمتة واتساب، حجز مواعيد، تحليل مستندات، تحليل بيانات، تحليل مشاعر، محتوى تسويقي، ترجمة، صور وفيديو، أتمتة إيميل، بحث داخلي، صوت لنص، وكيل مبيعات، ملخص أخبار، توصيات متجر، استقبال افتراضي، تقارير HR، أتمتة مهام، استشارة.
-
 باقات: المتجر والمطعم، الشركات الصغيرة (الأكثر طلباً)، العيادات.
 التسليم: 48 ساعة لمعظم المشاريع. الاستشارة الأولى مجانية.
 واتساب: +966564124426 | إيميل: info@suraya.ai
 
-أسلوبك: ودي ومهني بالعربية، ردود قصيرة (3-5 جمل)، بدون markdown، أضف إيموجي مناسباً.`;
+أسلوبك: عربي سعودي/خليجي طبيعي ودافئ، ردود قصيرة وواضحة (2-5 جمل)، بدون markdown، إيموجي مناسب بدون مبالغة.`;
+
 
 let tsHistory = [];
 let tsThinking = false;
@@ -1192,9 +1224,16 @@ async function tsSend(overrideMsg) {
   tsHistory.push({role:'user', content:text});
   tsThinking = true; tsSetState('thinking'); tsShowTyping();
 
-  // Smart local replies (no API key needed)
-  await new Promise(r => setTimeout(r, 600 + Math.random()*800));
-  const reply = tsGetReply(text);
+  let reply;
+  try {
+    // Real AI — understands and answers any question
+    reply = await askSurayaBackend(TS_SYSTEM, tsHistory.slice(-12));
+  } catch (e) {
+    // Backend not deployed yet / offline — fall back to keyword replies
+    await new Promise(r => setTimeout(r, 500 + Math.random()*500));
+    reply = tsGetReply(text);
+  }
+
   tsHideTyping();
   tsHistory.push({role:'assistant', content:reply});
   tsSetState('speaking');
@@ -1208,7 +1247,7 @@ function tsGetReply(msg){
   const m = msg.toLowerCase();
   if(/^(هلا|هاي|هلو|السلام عليكم|صباح الخير|مساء الخير|مرحبا)/.test(m) || /كيف حالك|شخبارك/.test(m)) return 'هلا والله فيك! 😊 قولي وش تحتاج بالضبط، وأنا أوريك أقرب حل يناسبك.';
   if(/شكرا|شكراً|تسلم|يعطيك العافية/.test(m)) return 'العفو، حياك الله 🌿 إذا خطر ببالك أي سؤال ثاني أنا موجود.';
-  if(/من انتم|من أنتم|مين انتو|من صمم|من عملكم|شنو سريا|ايش سريا/.test(m)) return 'إحنا سريا AI، شركة سعودية متخصصة في حلول الذكاء الاصطناعي للشركات العربية — نبني لك الحل من الصفر ونسلّمه جاهز خلال أيام بس 🚀';
+  if(/من انت|من أنت|مين انت|انت مين|وش انت|منو انت|عرفني فيك|من صمم|من عملكم|من بناكم|من المهندس|شنو سريا|ايش سريا|من سريا/.test(m)) return 'أنا سريا 🤖 المساعد الذكي لشركة SURAYA AI — شركة سعودية متخصصة في حلول الذكاء الاصطناعي للأعمال العربية. مهمتي أساعدك تعرف خدماتنا وأربطك بالفريق إذا احتجت. تحب أعرّفك أكثر على شغلنا؟';
   if(/شات.?بوت|روبوت|chatbot/.test(m)) return 'الشات بوت يسوي لك شغل موظف كامل 🤖 يرد على عملائك أول بأول، ليل نهار، بالعربي والإنجليزي، ونسلّمه لك خلال يومين بس.';
   if(/واتساب|whatsapp/.test(m)) return 'نربط رقم الواتساب حقك بذكاء اصطناعي 📱 يرد على العملاء لحاله، يحجز لهم مواعيد، ويرسل تذكيرات — وكأنك موظف ثاني عندك بس ما يتعب ولا يوخذ إجازة 😄';
   if(/حجز|موعد|تذكير/.test(m)) return 'نظام الحجز الذكي 🗓️ يستقبل طلبات الحجز ويأكدها لحاله، وقبل الموعد يرسل تذكير للعميل عشان ما يفوّته.';
@@ -1377,7 +1416,7 @@ const responses={
 function getReply(msg){
   if(/^(هلا|هاي|hi|hello|السلام عليكم|مرحبا|صباح الخير|مساء الخير)/.test(msg)) return responses.greeting;
   if(/شكرا|شكراً|يعطيك العافية|thanks|thank you/.test(msg)) return responses.thanks;
-  if(/من انتم|من أنتم|مين انتو|من انتوا|من صاحب|من مطور|من صمم|من المهندس|من بناكم|من عملكم|شنو سريا|ايش سريا|من سريا/.test(msg)) return responses.who;
+  if(/من انت|من أنت|مين انت|انت مين|وش انت|منو انت|من انتوا|من صاحب|من مطور|من صمم|من المهندس|من بناكم|من عملكم|شنو سريا|ايش سريا|من سريا/.test(msg)) return responses.who;
   if(/باقة|باقات|package/.test(msg)) return responses.packages;
   if(/شات ?بوت|روبوت|chatbot|بوت محادثة/.test(msg)) return responses.chatbot;
   if(/واتساب|whatsapp/.test(msg)) return responses.whatsapp;
@@ -1409,29 +1448,38 @@ function addMsg(text,who){
   msgs.appendChild(div); msgs.scrollTop=msgs.scrollHeight;
   return div;
 }
-function sendChat(){
+let bubbleHistory = [];
+async function sendChat(){
   const input=document.getElementById('chat-in');
   const msg=input.value.trim(); if(!msg) return;
   addMsg(msg,'user'); input.value='';
   document.getElementById('chat-quick').style.display='none';
+  bubbleHistory.push({role:'user', content:msg});
   const msgs=document.getElementById('chat-msgs');
   const t=document.createElement('div');
   t.className='msg bot typing';
   t.innerHTML='<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
   msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight;
-  setTimeout(()=>{
-    t.remove();
-    const reply=getReply(msg);
-    addMsg(reply,'bot');
-    if(reply.includes('واتساب')){
-      const wa=document.createElement('a');
-      wa.href='https://wa.me/966564124426'; wa.target='_blank'; wa.className='btn-wa';
-      wa.style.cssText='margin:6px 0 0;font-size:.8rem;padding:9px 16px;justify-content:center';
-      wa.innerHTML='💬 تحدث معنا على واتساب';
-      msgs.appendChild(wa);
-    }
-    msgs.scrollTop=9999;
-  },900+Math.random()*500);
+
+  let reply;
+  try {
+    reply = await askSurayaBackend(TS_SYSTEM, bubbleHistory.slice(-12));
+  } catch(e) {
+    await new Promise(r=>setTimeout(r,700+Math.random()*400));
+    reply = getReply(msg);
+  }
+  bubbleHistory.push({role:'assistant', content:reply});
+
+  t.remove();
+  addMsg(reply,'bot');
+  if(reply.includes('واتساب')){
+    const wa=document.createElement('a');
+    wa.href='https://wa.me/966564124426'; wa.target='_blank'; wa.className='btn-wa';
+    wa.style.cssText='margin:6px 0 0;font-size:.8rem;padding:9px 16px;justify-content:center';
+    wa.innerHTML='💬 تحدث معنا على واتساب';
+    msgs.appendChild(wa);
+  }
+  msgs.scrollTop=9999;
 }
 function quickMsg(msg){
   if(!chatOpen) toggleChat();
@@ -1526,11 +1574,15 @@ function quickMsg(msg){
 ══════════════════════════════════════════ */
 
 /* ── SYSTEM PROMPT ── */
-var SURAYA_SYSTEM = `أنت سريا، مساعدة ذكية صوتية لشركة SURAYA AI.
+var SURAYA_SYSTEM = `أنتِ سريا، مساعدة ذكاء اصطناعي صوتية حقيقية لشركة SURAYA AI.
 
-تتحدثين بأسلوب عربي ودي وطبيعي تماماً مثل محادثة بشرية.
+أنتِ مساعدة ذكية متطورة — أجيبي على أي سؤال يطرحه المستخدم بنفسك مباشرة وبثقة، سواء كان عن الشركة أو سؤال عام أو معرفي أو شخصي عنك أنتِ. لا تحوّلي المستخدم لواتساب أو الفريق إلا إذا كان يحتاج فعلاً معلومة خاصة بحسابه أو عرض سعر دقيق لا تملكينه.
 
-قاعدة المعرفة — خدمات SURAYA AI:
+إذا سُئلتِ "من أنتِ" عرّفي عن نفسك بوضوح: أنتِ سريا، مساعدة ذكاء اصطناعي صوتية من شركة SURAYA AI السعودية.
+
+تتحدثين بأسلوب عربي سعودي/خليجي ودي وطبيعي تماماً مثل محادثة بشرية.
+
+قاعدة المعرفة — خدمات SURAYA AI (استخدميها عند الحاجة فقط):
 • شات بوت ذكي لموقعك — تسليم 48 ساعة
 • أتمتة واتساب بالذكاء الاصطناعي
 • نظام حجز مواعيد ذكي
@@ -1565,20 +1617,16 @@ var SURAYA_SYSTEM = `أنت سريا، مساعدة ذكية صوتية لشرك
 • إيميل: info@suraya.ai
 
 سير المحادثة:
-1. رحّبي بالعميل: "هلا والله! كيف أقدر أساعدك اليوم؟"
-2. افهمي احتياجه واسألي أسئلة توضيحية إذا لزم
-3. أجيبي من قاعدة المعرفة بدقة
-4. إذا احتاج متابعة من الفريق، اعرضي إرسال طلبه
-5. اجمعي: الاسم + رقم الجوال أو الإيميل
-6. أكّدي المعلومات قبل الإرسال
-7. أغلقي بـ: "تم 👍 الفريق بيتواصل معك قريب إن شاء الله"
+1. رحّبي بالعميل بشكل طبيعي
+2. أجيبي على أي سؤال يطرحه — سواء عن الشركة أو سؤال عام — بأفضل ما لديك
+3. إذا كان يهتم بخدمة معينة، اشرحيها ثم اسأليه إذا يبي يتواصل مع الفريق
+4. لا تحوّليه لواتساب كرد افتراضي — فقط عندما يحتاج فعلاً متابعة بشرية أو عرض سعر دقيق
 
 قواعد مهمة:
-- لا تخترعي معلومات غير موجودة في قاعدة المعرفة
-- الردود قصيرة (جملة أو جملتين) مناسبة للصوت
-- لا نقاط ولا قوائم — كلام طبيعي فقط
+- الردود قصيرة (جملة إلى ثلاث جمل) مناسبة للصوت
+- لا نقاط ولا قوائم — كلام طبيعي متصل فقط
 - اللهجة سعودية عامية دافئة
-- إذا ما عرفتِ الجواب: "ما عندي هذي المعلومة، بس أقدر أوصل سؤالك للفريق"`;
+- لا تكرري نفس الجملة "تواصل معنا على واتساب" في كل رد`;
 
 /* ── STATE ── */
 var _S='idle',_H=[],_mc=0,_rec=null,_vv=[],_sv=null,_vi=0;
@@ -1660,19 +1708,10 @@ async function _askClaude(userText){
   _setState('thinking');
   _addMsg('bot','',true);
   try{
-    var res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:250,
-        system:SURAYA_SYSTEM,
-        messages:_H.slice(-10)
-      })
-    });
-    var d=await res.json();
-    var reply=(d&&d.content&&d.content[0]&&d.content[0].text)||null;
-    if(!reply)throw new Error('no reply');
+    // askSurayaBackend is defined in the main site script (shared with the
+    // fullscreen text chat) and calls your deployed backend proxy, which
+    // holds the real Anthropic API key safely.
+    var reply = await askSurayaBackend(SURAYA_SYSTEM, _H.slice(-10));
     _rmTyping();
     _H.push({role:'assistant',content:reply});
     _addMsg('bot',reply);
@@ -1680,7 +1719,7 @@ async function _askClaude(userText){
     _mc++;if(_mc>=3){var wa=_E('vo-wa-link');if(wa)wa.style.display='flex';}
   }catch(e){
     _rmTyping();
-    // Fallback to local smart replies
+    // Backend not deployed yet / offline — fall back to local keyword replies
     var r=_fallback(userText);
     _H.push({role:'assistant',content:r});
     _addMsg('bot',r);
@@ -1694,7 +1733,7 @@ function _fallback(msg){
   var m=(msg||'').toLowerCase();
   if(/أهل|هلا|مرحب|السلام|شخبارك|كيف حالك/.test(m))return 'هلا والله فيك! كيف أقدر أخدمك اليوم؟';
   if(/شكرا|تسلم|يعطيك العافية/.test(m))return 'حياك الله، تسلم 🌿 أي سؤال ثاني أنا موجود.';
-  if(/من انتم|من أنتم|مين انتو|شنو سريا|ايش سريا/.test(m))return 'إحنا سريا AI، شركة سعودية متخصصة في حلول الذكاء الاصطناعي، نبني الحل ونسلمه لك جاهز بأسرع وقت.';
+  if(/من انت|من أنت|مين انت|انت مين|وش انت|منو انت|شنو سريا|ايش سريا/.test(m))return 'أنا سريا، المساعد الذكي لشركة سريا AI. إحنا شركة سعودية متخصصة في حلول الذكاء الاصطناعي، وأنا هنا أساعدك تعرف خدماتنا وأربطك بالفريق إذا احتجت شي.';
   if(/شات.?بوت|روبوت|chatbot|بوت/.test(m))return 'الشات بوت يرد على عملائك أول بأول، ليل نهار، بالعربي والإنجليزي، ونسلّمه خلال يومين تقريباً. تبي تعرف أكثر؟';
   if(/واتساب|whatsapp/.test(m))return 'نربط رقم الواتساب حقك بذكاء اصطناعي يرد على العملاء لحاله ويحجز لهم مواعيد. تحب أشرح لك أكثر؟';
   if(/حجز|موعد|تذكير/.test(m))return 'نظام الحجز الذكي يستقبل الحجوزات ويأكدها لحاله، وقبل الموعد يذكّر العميل تلقائي. تبي تعرف أكثر؟';
